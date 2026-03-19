@@ -84,7 +84,7 @@ button, .footer-contact a {
 
 
 header {
-    background: #162d60;
+    background: #de8f29;
     background-image: url('imagens/bg_cabecalho.png'); /* Substitua pelo caminho correto */
     background-size: cover; /* Para cobrir todo o cabeçalho */
     background-position: center; /* Centraliza a imagem */
@@ -448,7 +448,7 @@ button:hover {
 /* RODAPÉ */
 /* ============================= */
 .site-footer {
-  background: #162d60;
+  background: #de8f29;
   color: #fff;
   padding: 30px 16px;
   margin-top: 40px;
@@ -512,7 +512,7 @@ button:hover {
 }
 /* logo do parceiro */
 .partner-logo {
-  height: 48px;
+  height: 80px;
   width: auto;
   filter: brightness(1.05);
 }
