@@ -1,0 +1,22 @@
+{
+  "name": "Ita Serviços",
+  "short_name": "ItaServiços",
+  "description": "Catálogo de serviços locais de forma rápida e prática",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/imagens/icone-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/imagens/icone-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

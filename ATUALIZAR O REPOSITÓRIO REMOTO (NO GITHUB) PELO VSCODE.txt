@@ -1,0 +1,32 @@
+ATUALIZAR O REPOSITÓRIO REMOTO (NO GITHUB) PELO VSCODE
+(Passo à Passo)
+________________________________________________
+
+git add .
+git commit -m "Modificando repositório"
+git push
+
+________________________________________________
+
+
+
+
+git pull origin main
+git add .
+git commit -m "Modificando repositório"
+git push origin main
+
+
+ATUALIZAR O REPOSITÓRIO LOCAL
+
+
+
+
+git pull origin main --rebase
+
+BUILDAR APP
+
+cd android
+./gradlew assembleDebug
+
+local: android/app/build/outputs/apk/debug/app-debug.apk

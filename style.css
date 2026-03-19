@@ -1,0 +1,719 @@
+/*REGRA UNIVAERSAL DE PADRONIZAÇÃO DE TAMANHOS*/
+* {
+    box-sizing: border-box;
+}
+
+/* Escolha da font do site */
+body {
+  font-family: 'Montserrat', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+button, .footer-contact a {
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* Banner rotativo mobile */
+.banner-container {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Ajuste conforme necessário */
+    overflow: hidden;
+    border-radius: 12px;
+    margin-top: 16px; /* Distância entre o header e o banner */
+    margin-bottom: 12px; /* Distância entre o banner e o filtro de cidades*/
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out; /* Efeito de fade suave */
+    pointer-events: none; /* não permite clique */
+}
+
+.slide.active {
+    opacity: 1;
+    pointer-events: auto; /* somente o ativo pode ser clicado */
+}
+
+/* link ocupa todo banner */
+.banner-container a.slide{
+    display:block;
+    width:100%;
+    height:100%;
+}
+
+/* imagem dentro do link */
+.banner-container a.slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    
+}
+
+/* Mostrar apenas no mobile */
+@media (min-width:768px){
+    .banner{
+        display:none;
+    }
+}
+
+
+/* Texto "Filtrar por categoria" */
+.filter label {
+  color: #000000; /* branco */
+  font-weight: 500;
+}
+
+/* Texto "Exibindo todos os itens" */
+.feedback {
+  color: #041e3d; /* cinza claro elegante */
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+
+header {
+    background: #162d60;
+    background-image: url('imagens/bg_cabecalho.png'); /* Substitua pelo caminho correto */
+    background-size: cover; /* Para cobrir todo o cabeçalho */
+    background-position: center; /* Centraliza a imagem */
+    color: #fff;
+    padding: 0.2rem 0; /* Aumenta o espaço para destacar a imagem */
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    margin-top: 0px; /* Dá um respiro entre o header e o banner */
+}
+
+/* Estilo base (Mobile - um embaixo do outro) */
+.filter-search-container {
+    display: flex;
+    flex-direction: column; 
+    gap: 8px;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estilo unificado para Barra de Busca e Selects */
+#searchBar, #categoryFilter, #cityFilter {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+    padding-left: 45px; /* Abre o mesmo espaço para ícone/seta */
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #333;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    box-sizing: border-box; /* Garante que a borda esteja dentro dos 48px */
+    vertical-align: top;    /* Alinha todos pelo topo da linha */
+    margin: 0;              /* Remove margens invisíveis do navegador */
+    
+    /* Reset de aparência para customizar o ícone */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+    background-repeat: no-repeat;
+    background-position: 12px center; /* Mesma posição horizontal (12px) */
+}
+
+/* Ícone da Lupa (Busca) */
+#searchBar {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>');
+}
+
+/* Ícone da Setinha Cinza (Filtros) */
+#categoryFilter, #cityFilter {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23999" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
+    cursor: pointer;
+}
+
+/* Ajuste dos contêineres para ocupar 100% no mobile */
+.filter, .search {
+    width: 100%;
+    max-width: 100%; 
+    flex: none;
+}
+
+ .search {
+    margin-top: 5px;
+ }
+
+/* Ajuste para Desktop (Telas maiores que 768px) */
+@media (min-width: 768px) {
+    .filter-search-container {
+        flex-direction: row; /* Coloca um ao lado do outro */
+        align-items: center;
+	      justify-content: center; /* Centraliza o conjunto na tela */
+        gap: 12px;
+        max-width: 1200px; /* Impede que estique demais em monitores gigantes */
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 16px;
+    }
+
+    .search {
+        flex: 1; /* A barra de busca fica mais larga que os filtros */
+        max-width: 400px;
+        transform: translateY(-1px);
+    }
+
+    .filter {
+        flex: 1; /* Os selects ficam menores e iguais */
+        max-width: 400px;
+    }
+}
+
+/*------------------------------------*/
+/*           SEÇÃO DE CARDS           */
+/*------------------------------------*/
+
+/* Animação ao filtrar ou pesquisar */
+.card {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+
+/* Foco nos inputs */
+#searchBar:focus, .filter select:focus {
+    outline: none;
+    border-color: #162d60;
+    box-shadow: 0 0 5px rgba(22, 45, 96, 0.5);
+}
+
+/* Estilos dos cards */
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(4, 250px);
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+
+/* Animação dos cards */
+.item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    opacity: 0;                    /* ← novo */
+    transform: translateY(15px);   /* ← novo */
+
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    
+}
+
+/* Estado visível*/
+.item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estado oculto */
+.item.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Hover */
+.item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+/* Lista com ícone check verde */
+.lista-check {
+  list-style: none; /* remove a bolinha */
+  padding-left: 0;
+  margin: 6px 0 10px;
+  text-align: left;
+}
+
+.lista-check li {
+  position: relative;
+  padding-left: 22px; /* espaço pro ícone */
+  margin: 4px 0;
+  line-height: 1.4;
+}
+
+.lista-check li::before {
+  content: "✅";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #22c55e; /* verde bonito */
+  font-weight: bold;
+}
+
+
+
+/* Imagens dentro dos itens */
+.item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* Estilização de textos */
+.item h3 {
+    margin: 0.5rem 0;
+}
+
+.feedback {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+/* Melhorando a usabilidade de botões */
+button:hover {
+    background-color: #162d60;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.somente-esse {
+    text-align: left;
+}
+
+
+/* ============================= */
+/* AJUSTES PARA TELAS MENORES */
+/* ============================= */
+@media (max-width: 600px) {
+    .filter-search-container {
+        display: flex;
+        flex-direction: column;
+        gap: 4px; /* Aumentei um pouco para não ficarem grudados */
+        align-items: stretch;
+        width: 100%;
+    }
+
+    /* Removemos os tamanhos fixos (400px/340px) e usamos 100% */
+    .filter, .search {
+        max-width: 100%; 
+        width: 100%;
+    }
+
+    /* Força o select e o input a ocuparem toda a largura da div pai */
+    .filter select, 
+    .search input {
+        width: 100%;
+        display: block;
+        box-sizing: border-box; /* Garante que o padding não aumente a largura */
+        height: 45px; /* Opcional: deixa ambos com a mesma altura visual */
+        font-size: 16px; /* Evita o zoom automático no iPhone ao clicar */
+    }
+
+    /* Ajuste para o label não ficar desalinhado */
+    .filter label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .catalog {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================= */
+/* CONTEINER DAS REDES SOCIAIS */
+/* ============================= */
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* aproxima as cápsulas */
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+/* Cápsula */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 14px; /* cápsula menor */
+  background: #f8f8fa; /* branco creme */
+  border-radius: 999px;
+
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #162d60;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover elegante */
+.social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
+
+/* Ícones */
+.social-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/*Sombras das logos*/
+.social-link.whatsapp {
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.25);
+}
+
+.social-link.instagram {
+  box-shadow: 0 4px 10px rgba(225, 48, 108, 0.25);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .social {
+    gap: 8px;
+  }
+
+  .social-link {
+    padding: 8px 12px;
+  }
+}
+
+
+/* Textos das redes sociais pretos e em negrito */
+.social-link span {
+  color: #000000;     /* preto */
+  font-weight: 700;   /* negrito */
+}
+
+/* Texto com link sem cápsula */
+.link-texto {
+  margin-top: 10px;
+  text-align: center;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.link-texto a {
+  font-family: inherit;   /* garante herança */
+  text-decoration: none;
+  color: #162d60;
+  font-weight: 700;       /* negrito Montserrat */
+}
+
+.link-texto a:hover {
+  text-decoration: underline;
+}
+
+
+/* ============================= */
+/* RODAPÉ */
+/* ============================= */
+.site-footer {
+  background: #162d60;
+  color: #fff;
+  padding: 30px 16px;
+  margin-top: 40px;
+}
+
+/* Conteiner pai*/
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Conteiners filhos*/
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px; /* aproxima título + conteúdo */
+  margin: 0;
+}
+
+/* título ita serviços */
+.footer-heading--brand {
+  font-size: 0.85rem;      /* um tiquinho maior */
+  opacity: 0.9;            /* um pouco mais visível */
+  letter-spacing: 0.6px;   /* ajuste fino */
+  text-transform: none;
+  line-height: 1.5;
+}
+/* sobre o ita serviços */
+.footer-about {
+  font-size: 15px;
+  line-height: 1.5;
+  margin-top: 0;
+}
+/* título parceiro e contatos */
+.footer-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;  /* texto normal: none; , primeira letra maiúscula: capitalize; , caixa alta: uppercase;*/
+  letter-spacing: 1px;
+  font-weight: 400;   /* remove o negrito */
+  opacity: 0.7;
+  margin: 0;
+  line-height: 1.2;
+}
+/* conteiner logo do parceiro */
+.footer-partners {
+  display: flex;
+  flex-direction: column; /* título em cima */
+  align-items: center;
+  gap: 0px; /* aproxima título + conteúdo */
+  font-size: 1rem;
+  opacity: 1;
+  margin: 0;;
+}
+/* logo do parceiro */
+.partner-logo {
+  height: 48px;
+  width: auto;
+  filter: brightness(1.05);
+}
+/* conteiner dos canais de contato */
+.footer-section-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px; /* aproxima título + conteúdo */
+  margin: 0;
+}
+
+/* ícones dos canais de contato */
+.footer-contact {
+  display: flex;
+  gap: 16px;
+}
+/* Efeitos na logomarca da Shineray */
+a .partner-logo {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+a:hover .partner-logo {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.social-icon-footer {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  filter: brightness(0) invert(1);
+}
+.footer-contact a:hover .social-icon-footer {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+/* Ajuste do rodapé no celular */
+@media (max-width: 600px) {
+  .footer-contact {
+    flex-direction: flex;
+    gap: 16px;
+  }
+}
+
+.footer-copy {
+  font-size: 13px;
+  opacity: 0.8;
+  margin-top: 8px;
+}
+
+/* Ajuste opcional: forçar footer descer*/
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-wrapper {
+  flex: 1;
+}
+
+/* Fim de ajuste do rodapé no celular */
+
+/* ============================= */
+/* CONTAINER DOS BOTÕES FLUTUANTES */
+/* ============================= */
+
+.float-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* espaço entre os botões */
+}
+
+/* ============================= */
+/* BOTÕES (CADASTRO + INSTALAR) */
+/* ============================= */
+
+.float-buttons img {
+  width: 134px;
+  max-width: 70vw;
+  height: auto;
+  display: block;
+  cursor: pointer;
+
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.308);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: pulse 2.5s infinite;
+}
+
+.float-buttons img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* ============================= */
+/* Botões flutuantes no celular */
+/* ============================= */
+
+@media (max-width: 600px) {
+  .float-buttons img {
+    width: 120px;
+    border-radius: 32px;
+  }
+}
+
+/* ============================= */
+/* ANIMAÇÃO */
+/* ============================= */
+
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+/* ============================= */
+/* BOTÃO INSTALAR (CONTROLADO VIA JS) */
+/* ============================= */
+
+.install-float {
+  display: none;
+}
+
+/* Mostrar somente no mobile quando o JS liberar */
+@media (max-width: 600px) {
+  .install-float.show {
+    display: block;
+  }
+}
+
+
+/* ============================= */
+/* BOTÃO COMPARTILHAR */
+/* ============================= */
+/* Botão compartilhar – padrão visual das redes */
+.share-card {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+
+  background-color: #f8f8fa; /* branco creme */
+  color: #333;
+
+  border: none;
+  outline: none;
+
+  height: 36px;              /* força mesma altura */
+  padding: 0 18px;           /* remove variação vertical */
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* Remove estilos nativos */
+  -webkit-appearance: none;
+  appearance: none;
+
+  /* Remove highlight azul no mobile */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hover */
+.share-card:hover {
+  background-color: #ffffff;
+  color: #333;
+
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* Clique */
+.share-card:active {
+  background-color: #ffffff;
+  color: #333;
+
+  transform: scale(0.97);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Foco (remove azul do Chrome) */
+.share-card:focus,
+.share-card:focus-visible {
+  outline: none;
+  background-color: #ffffff;
+  color: #333;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
