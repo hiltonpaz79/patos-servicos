@@ -89,7 +89,7 @@ header {
     background-size: cover; /* Para cobrir todo o cabeçalho */
     background-position: center; /* Centraliza a imagem */
     color: #fff;
-    padding: 0.2rem 0; /* Aumenta o espaço para destacar a imagem */
+    padding: 0.05rem 0; /* Aumenta o espaço para destacar a imagem */
     text-align: center;
 }
 
