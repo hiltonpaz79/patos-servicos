@@ -25,3 +25,6 @@ Thumbs.db
 # Build (caso use no futuro)
 dist/
 build/
+
+# Arquivos
+.ATUALIZAR O REPOSITÓRIO REMOTO (NO GITHUB) PELO VSCODE.txt
