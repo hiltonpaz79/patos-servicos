@@ -4,8 +4,8 @@
   "description": "Catálogo de serviços locais de forma rápida e prática",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#2563eb",
+  "background_color": "#e6681a",
+  "theme_color": "#e6681a",
   "orientation": "portrait",
   "icons": [
     {
