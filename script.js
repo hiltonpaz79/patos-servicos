@@ -307,6 +307,29 @@ document.addEventListener("click", async (event) => {
     }
 });
 
+
+
+/* =========================
+   VISITAS NO SITE
+========================= */
+
+document.addEventListener('DOMContentLoaded', function() {
+    registrarAcesso();
+});
+
+async function registrarAcesso() {
+    try {
+        await fetch('https://patosservicos.vercel.app/api/save-access', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ site: 'Ita Serviços' })
+        });
+        console.log("Visita registrada com sucesso!");
+    } catch (error) {
+        console.error("Erro ao salvar visita:", error);
+    }
+}
+
 /* =========================
    TRACK DE CÓPIA
 ========================= */
