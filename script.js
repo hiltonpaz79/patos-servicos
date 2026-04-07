@@ -204,6 +204,7 @@ function formatCategoryName(category) {
         topografia: "Topografia",
         agronomia: "Agronomia",
         vidracaria: "Vidraçaria",
+        arquitetura:"Arquitetura",
         sopa: "Sopa",
         personalizados: "Personalizados",
         cosmeticos: "Cosméticos",
