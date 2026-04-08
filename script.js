@@ -129,6 +129,7 @@ function formatCategoryName(category) {
         mercadinho: "Mercadinho",
         personal_trainer: "Personal Trainer",
         confeccao_fardamentos: "Confecção de Fardamentos",
+        depilacao_feminina:"Depilação Feminina",
         roupas_vestuario: "Roupas e Vestuário",
         acessorios_femininos: "Acessórios Femininos",
         costureira: "Costureira",
@@ -431,8 +432,8 @@ try {
 
     // 3. Compartilhar o caminho do arquivo gerado
     await Share.share({
-      title: 'ITA Serviços',
-      text: "*Ita Serviços 2026*\n\nEncontre tudo o que você precisa em um só lugar!\nAcesse: https://itaservicos.vercel.app\n",
+      title: 'Patos Serviços',
+      text: "*Patos Serviços 2026*\n\nEncontre tudo o que você precisa em um só lugar!\nAcesse: https://patosservicos.vercel.app\n",
       url: savedFile.uri, // Aqui passamos o "endereço" do arquivo no celular
       dialogTitle: 'Compartilhar serviço',
     });
