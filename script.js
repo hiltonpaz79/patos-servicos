@@ -446,13 +446,13 @@ try {
 
     // LÓGICA PARA PWA/NAVEGADOR (WEB)
     canvas.toBlob(blob => {
-      const file = new File([blob], "ita-servicos.png", { type: "image/png" });
+      const file = new File([blob], "patos-servicos.png", { type: "image/png" });
 
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         navigator.share({
           files: [file],
-          title: "ITA Serviços",
-          text: "*Ita Serviços 2026*\n\nEncontre tudo o que você precisa em um só lugar!\nAcesse: https://itaservicos.vercel.app\n"
+          title: "Patos Serviços",
+          text: "*Patos Serviços 2026*\n\nEncontre tudo o que você precisa em um só lugar!\nAcesse: https://patosservicos.vercel.app\n"
         });
       } else {
         // fallback: download
