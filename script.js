@@ -140,6 +140,7 @@ function formatCategoryName(category) {
         climatizacao_automotiva: "Climatização Automotiva",
         podagem: "Podagem",
         temperos_ervas: "Temperos e Ervas",
+        eng_civil: "Engenheiro Civil",
         designer_grafico: "Designer Gráfico",
         jardinagem: "Jardinagem",
         terapeuta_ocupacional: "Terapeuta Ocupacional",
