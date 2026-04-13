@@ -143,6 +143,7 @@ function formatCategoryName(category) {
         designer_grafico: "Designer Gráfico",
         jardinagem: "Jardinagem",
         terapeuta_ocupacional: "Terapeuta Ocupacional",
+        maquiagem: "Maquiagem",
         salgados: "Salgados",
         conveniencia_bebidas: "Conveniência de Bebidas",
         oficina_motos: "Oficina de Motos",
