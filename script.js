@@ -147,6 +147,7 @@ function formatCategoryName(category) {
         maquiagem: "Maquiagem",
         salgados: "Salgados",
         conveniencia_bebidas: "Conveniência de Bebidas",
+        contabilidade: "Contabilidade",
         oficina_motos: "Oficina de Motos",
         assessorias_cursos: "Assessorias e Cursos",
         seg_eletronica: "Segurança Eletrônica",
