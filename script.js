@@ -200,6 +200,7 @@ function formatCategoryName(category) {
         educacao: "Educação",
         turismo: "Turismo",
         marketing_digital: "Marketing Digital",
+        agencia_marketing_digital_publicidade: "Agência de Marketing Digital e Publicidade",
         equipadora_automotiva: "Equipadora Automotiva",
         delivery_comida: "Delivery de Comida",
         lanches: "Lanches",
