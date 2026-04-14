@@ -146,6 +146,7 @@ function formatCategoryName(category) {
         terapeuta_ocupacional: "Terapeuta Ocupacional",
         maquiagem: "Maquiagem",
         salgados: "Salgados",
+        restaurante_chines: "Restaurante Chinês",
         conveniencia_bebidas: "Conveniência de Bebidas",
         contabilidade: "Contabilidade",
         oficina_motos: "Oficina de Motos",
