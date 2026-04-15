@@ -449,7 +449,7 @@ async function gerarECompartilhar(dados) {
 
     // IMAGENS
     const [bgData, fotoData] = await Promise.all([
-        obterImagemBase64('imagens/background-ita.png'),
+        obterImagemBase64('imagens/background-patos.png'),
         obterImagemBase64(dados.foto)
     ]);
 
