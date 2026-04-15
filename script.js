@@ -510,7 +510,7 @@ document.querySelectorAll('.share-card').forEach(button => {
         const dados = {
             nome: item.querySelector('h3')?.innerText || "Ita Serviços",
             ramo: item.querySelector('strong')?.innerText || "",
-            insta: item.querySelector('a[href*="instagram"] span')?.innerText || "@itaservicos_pb",
+            insta: item.querySelector('a[href*="instagram"] span')?.innerText || "patosservicos_pb",
             whats: item.querySelector('a[href*="wa.me"] span')?.innerText || "(83) 00000-0000",
             foto: item.querySelector('img')?.src // 🔥 corrigido aqui
         };
