@@ -153,6 +153,7 @@ function formatCategoryName(category) {
         assessorias_cursos: "Assessorias e Cursos",
         seg_eletronica: "Segurança Eletrônica",
         marmitas_caseiras: "Marmitas Caseiras",
+        marmoaria: "Marmoaria",
         marcenaria: "Marcenaria",
         mobilidade_urbana: "Mobilidade Urbana",
         carvao_vegetal: "Carvão Vegetal",
