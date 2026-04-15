@@ -483,7 +483,7 @@ async function gerarECompartilhar(dados) {
                 await navigator.share({
                     files: [file],
                     title: 'Ita Serviços',
-                    text: `🚀 Confira ${dados.nome} no Ita Serviços!\n\nEncontre o que você precisa em um só lugar.\n\n🌐 Acesse: https://itaservicos.vercel.app`
+                    text: `🚀 Confira ${dados.nome} no Patos Serviços!\n\nEncontre o que você precisa em um só lugar.\n\n🌐 Acesse: https://patosservicos.vercel.app/`
                 });
             } else {
                 // DOWNLOAD (PC)
