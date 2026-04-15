@@ -470,6 +470,124 @@ try {
   });
 });
 
+
+
+/* ====================================================
+   GERAÇÃO E COMPARTILHAMENTO DE CARTÃO DE VISITA
+   ================================================== */
+
+async function obterImagemBase64(url) {
+    try {
+        const response = await fetch(url, { mode: 'cors' });
+        if (!response.ok) throw new Error('Falha no download');
+
+        const blob = await response.blob();
+
+        return await new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result);
+            reader.onerror = reject;
+            reader.readAsDataURL(blob);
+        });
+
+    } catch (e) {
+        console.warn("⚠️ Base64 falhou, usando URL:", url);
+        return url;
+    }
+}
+
+// 🔥 função para esperar imagem carregar
+function esperarImagem(img) {
+    return new Promise((resolve) => {
+        if (img.complete) return resolve();
+        img.onload = resolve;
+        img.onerror = resolve;
+    });
+}
+
+async function gerarECompartilhar(dados) {
+    const template = document.getElementById('share-master-template');
+    const imgFoto = document.getElementById('master-foto');
+    const imgBg = document.getElementById('master-bg');
+
+    // TEXTOS
+    document.getElementById('master-nome').innerText = dados.nome;
+    document.getElementById('master-ramo').innerText = dados.ramo;
+    document.getElementById('master-insta').innerText = dados.insta;
+    document.getElementById('master-whats').innerText = dados.whats;
+
+    // IMAGENS
+    const [bgData, fotoData] = await Promise.all([
+        obterImagemBase64('imagens/background-ita.png'),
+        obterImagemBase64(dados.foto)
+    ]);
+
+    imgBg.src = bgData;
+    imgFoto.src = fotoData;
+
+    // 🔥 ESPERA REAL DAS IMAGENS (isso resolve seu problema)
+    await Promise.all([
+        esperarImagem(imgBg),
+        esperarImagem(imgFoto)
+    ]);
+
+    try {
+        const canvas = await html2canvas(template, {
+            useCORS: true,
+            allowTaint: true,
+            scale: 2,
+            backgroundColor: null
+        });
+
+        canvas.toBlob(async (blob) => {
+            const file = new File(
+                [blob],
+                `${dados.nome.toLowerCase().replace(/\s/g, '-')}.png`,
+                { type: 'image/png' }
+            );
+
+            // COMPARTILHAR (CELULAR)
+            if (navigator.share && navigator.canShare({ files: [file] })) {
+                await navigator.share({
+                    files: [file],
+                    title: 'Ita Serviços',
+                    text: `🚀 Confira ${dados.nome} no Ita Serviços!\n\nEncontre o que você precisa em um só lugar.\n\n🌐 Acesse: https://itaservicos.vercel.app`
+                });
+            } else {
+                // DOWNLOAD (PC)
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL("image/png");
+                link.download = file.name;
+                link.click();
+            }
+        }, 'image/png');
+
+    } catch (err) {
+        console.error("❌ Erro ao renderizar:", err);
+        alert("Erro ao gerar imagem.");
+    }
+}
+
+// BOTÕES
+document.querySelectorAll('.share-card').forEach(button => {
+    button.onclick = async (e) => {
+        e.preventDefault();
+
+        const item = button.closest('.item');
+
+        const dados = {
+            nome: item.querySelector('h3')?.innerText || "Ita Serviços",
+            ramo: item.querySelector('strong')?.innerText || "",
+            insta: item.querySelector('a[href*="instagram"] span')?.innerText || "@itaservicos_pb",
+            whats: item.querySelector('a[href*="wa.me"] span')?.innerText || "(83) 00000-0000",
+            foto: item.querySelector('img')?.src // 🔥 corrigido aqui
+        };
+
+        await gerarECompartilhar(dados);
+    };
+});
+
+
 /* =========================
    BANNER ROTATIVO ALEATÓRIO
 ========================= */

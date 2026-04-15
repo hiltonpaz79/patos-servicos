@@ -143,7 +143,7 @@
                 <div class="social">
                 <button class="social-link share-card">
                 <img src="/imagens/compartilhar.png" class="social-icon">
-                <span>Compartilhar</span>
+                <span>Cartão de Visita</span>
                 </button>
                 </div>
             </div>
@@ -178,7 +178,7 @@
                 <div class="social">
                 <button class="social-link share-card">
                 <img src="/imagens/compartilhar.png" class="social-icon">
-                <span>Compartilhar</span>
+                <span>Cartão de Visita</span>
                 </button>
                 </div>
             </div>
@@ -214,7 +214,7 @@
                 <div class="social">
                 <button class="social-link share-card">
                 <img src="/imagens/compartilhar.png" class="social-icon">
-                <span>Compartilhar</span>
+                <span>Cartão de Visita</span>
                 </button>
                 </div>
             </div>
@@ -260,7 +260,7 @@
                 <div class="social">
                 <button class="social-link share-card">
                 <img src="/imagens/compartilhar.png" class="social-icon">
-                <span>Compartilhar</span>
+                <span>Cartão de Visita</span>
                 </button>
                 </div>
             </div>
@@ -298,7 +298,7 @@
                 <div class="social">
                 <button class="social-link share-card">
                 <img src="/imagens/compartilhar.png" class="social-icon">
-                <span>Compartilhar</span>
+                <span>Cartão de Visita</span>
                 </button>
                 </div>
             </div>
@@ -330,7 +330,7 @@
                 <div class="social">
                 <button class="social-link share-card">
                 <img src="/imagens/compartilhar.png" class="social-icon">
-                <span>Compartilhar</span>
+                <span>Cartão de Visita</span>
                 </button>
                 </div>
             </div>
@@ -379,7 +379,7 @@
                 <div class="social">
                 <button class="social-link share-card">
                 <img src="/imagens/compartilhar.png" class="social-icon">
-                <span>Compartilhar</span>
+                <span>Cartão de Visita</span>
                 </button>
                 </div>
             </div>
@@ -415,7 +415,7 @@
                 <div class="social">
                 <button class="social-link share-card">
                 <img src="/imagens/compartilhar.png" class="social-icon">
-                <span>Compartilhar</span>
+                <span>Cartão de Visita</span>
                 </button>
                 </div>
             </div>
@@ -448,7 +448,7 @@
                 <div class="social">
                 <button class="social-link share-card">
                 <img src="/imagens/compartilhar.png" class="social-icon">
-                <span>Compartilhar</span>
+                <span>Cartão de Visita</span>
                 </button>
                 </div>
             </div>
@@ -486,7 +486,7 @@
                 <div class="social">
                 <button class="social-link share-card">
                 <img src="/imagens/compartilhar.png" class="social-icon">
-                <span>Compartilhar</span>
+                <span>Cartão de Visita</span>
                 </button>
                 </div>
             </div>
@@ -519,7 +519,7 @@
                 <div class="social">
                 <button class="social-link share-card">
                 <img src="/imagens/compartilhar.png" class="social-icon">
-                <span>Compartilhar</span>
+                <span>Cartão de Visita</span>
                 </button>
                 </div>
             </div>
@@ -552,7 +552,7 @@
                 <div class="social">
                 <button class="social-link share-card">
                 <img src="/imagens/compartilhar.png" class="social-icon">
-                <span>Compartilhar</span>
+                <span>Cartão de Visita</span>
                 </button>
                 </div>
             </div>
@@ -582,7 +582,7 @@
                 <div class="social">
                 <button class="social-link share-card">
                 <img src="/imagens/compartilhar.png" class="social-icon">
-                <span>Compartilhar</span>
+                <span>Cartão de Visita</span>
                 </button>
                 </div>
             </div>
@@ -624,7 +624,7 @@
                 <div class="social">
                 <button class="social-link share-card">
                 <img src="/imagens/compartilhar.png" class="social-icon">
-                <span>Compartilhar</span>
+                <span>Cartão de Visita</span>
                 </button>
                 </div>
             </div>
@@ -652,7 +652,7 @@
                 <div class="social">
                 <button class="social-link share-card">
                 <img src="/imagens/compartilhar.png" class="social-icon">
-                <span>Compartilhar</span>
+                <span>Cartão de Visita</span>
                 </button>
                 </div>
             </div>
@@ -726,8 +726,40 @@
 <!-- Fim do rodapé -->
 
 
-<!-- Biblioteca compartilhar card -->
+<!-- Biblioteca compartilhar Cartão de Visitas -->
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="script.js" defer></script>
+
+<div id="share-master-template" style="position: absolute; left: -9999px; top: 0; width: 1200px; height: 750px; background-color: #003366; overflow: hidden;">
+    <img id="master-bg" src="imagens/background-ita.png" crossorigin="anonymous" style="width: 1200px; height: 750px; position: absolute; top:0; left:0; z-index: 1; object-fit: cover;">
+    
+    <div style="position: absolute; top: 165px; left: 75px; width: 420px; height: 420px; border: none; border-radius: 25px; overflow: hidden; background: transparent; z-index: 2; display: flex; align-items: center; justify-content: center;">
+        <img id="master-foto" src="" crossorigin="anonymous" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+
+    <div style="position: absolute; top: 110px; left: 560px; color: white; font-family: 'Montserrat', sans-serif; z-index: 3; width: 600px; text-align: center;">
+        <h3 id="master-nome" style="font-size: 60px; margin: 0; text-transform: none; font-weight: 800; line-height: 1.1;"></h3>
+        <p id="master-ramo" style="font-size: 45px; margin: 10px 0 0 0; font-weight: 400;"></p>
+    </div>
+
+    <div style="position: absolute; top: 390px; left: 560px; width: 580px; z-index: 3;">
+        <div style="display: flex; align-items: center; border: 5px solid white; border-radius: 100px; padding: 18px 45px; margin-bottom: 30px; background: rgba(0,0,0,0.2);">
+            <img src="imagens/instagram.png" crossorigin="anonymous" style="width: 55px; margin-right: 25px;">
+            <span id="master-insta" style="color: white; font-size: 42px; font-weight: 700; font-family: 'Montserrat';"></span>
+        </div>
+        <div style="display: flex; align-items: center; border: 5px solid white; border-radius: 100px; padding: 18px 45px; background: rgba(0,0,0,0.2);">
+            <img src="imagens/whatsapp.png" crossorigin="anonymous" style="width: 55px; margin-right: 25px;">
+            <span id="master-whats" style="color: white; font-size: 42px; font-weight: 700; font-family: 'Montserrat';"></span>
+        </div>
+    </div>
+
+    <div style="position: absolute; top: 665px; left: 50%; transform: translateX(-50%); z-index: 3;">
+        <div style="display: flex; align-items: center; border: none; border-radius: none; background: transparent">
+            <img src="imagens/favicon.png" crossorigin="anonymous" style="width: 55px; margin-right: 10px;">
+            <span style="color: white; font-size: 42px; font-weight: 700; font-family: 'Montserrat';">Patos Serviços</span>
+        </div>
+    </div>
+</div>
 
  
 </body>
