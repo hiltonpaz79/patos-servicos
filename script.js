@@ -123,6 +123,7 @@ sortedCategories.forEach(category => {
 
 function formatCategoryName(category) {
     const names = {
+        a1_vagas_emprego: "# Vagas de Emprego",
         aa_aluguel_venda_imovel: "Aluguel e Venda de Imóvel",
         loja_animes: "Loja de Animes",
         consultoria_ambiental: "Consultoria Ambiental",
