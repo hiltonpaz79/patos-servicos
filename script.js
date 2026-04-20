@@ -130,6 +130,7 @@ function formatCategoryName(category) {
         mercadinho: "Mercadinho",
         personal_trainer: "Personal Trainer",
         confeccao_fardamentos: "Confecção de Fardamentos",
+        nutricionista: "Nutricionista",
         depilacao_feminina:"Depilação Feminina",
         roupas_vestuario: "Roupas e Vestuário",
         acessorios_femininos: "Acessórios Femininos",
