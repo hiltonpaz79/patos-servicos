@@ -154,10 +154,7 @@ cityFilter.addEventListener('change', () => {
 });
 searchBar.addEventListener('input', filterItems);
 
-/* =========================
-   CATEGORIAS
-========================= */
-// Opções de categoria carregadas diretamente do HTML
+
 
 /* ==============================================
    ATUALIZAR FILTRO DE CATEGORIA POR CIDADE
@@ -186,6 +183,35 @@ function updateCategoriesByCity() {
 
 const allCategoryOptions = Array.from(filter.options);
 updateCategoriesByCity();
+
+
+/* =========================
+   CATEGORIAS
+========================= */
+// Opções de categoria carregadas diretamente do HTML
+
+
+/* =========================
+   ORDENAÇÃO ALFABÉTICA DO FILTRO
+========================= */
+function ordenarCategorias() {
+    const select = document.getElementById('categoryFilter');
+    const options = Array.from(select.options);
+    
+    // Remove a opção "Todas" da lista para não entrar na conta da ordem A-Z
+    const todasOption = options.shift(); 
+
+    // Ordena as demais opções pelo texto (A-Z)
+    options.sort((a, b) => a.text.localeCompare(b, "pt-BR"));
+
+    // Limpa o select e recoloca na ordem certa
+    select.innerHTML = "";
+    select.add(todasOption); // Coloca "Todas" no topo primeiro
+    options.forEach(option => select.add(option));
+}
+
+// Chame a função logo após definir o select
+ordenarCategorias();
 
 /* =========================
    INICIALIZAÇÃO
