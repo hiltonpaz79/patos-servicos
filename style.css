@@ -812,7 +812,7 @@ body {
 }
 
 .load-more-btn:hover {
-    background-color: #ee9762;
+    background-color: #e67c3a;
     color: #ffffff;
     transform: translateY(-2px);
     box-shadow: 0 6px 18px rgba(63, 17, 6, 0.3);
