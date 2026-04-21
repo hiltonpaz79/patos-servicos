@@ -4,14 +4,16 @@ const searchBar = document.getElementById('searchBar');
 const items = document.querySelectorAll('.item');
 const feedback = document.getElementById('feedback');
 const copyCountDisplay = document.getElementById('copyCount');
+const loadMoreBtn = document.getElementById('loadMore');
 let copyCount = 0;
+let visibleLimit = 4;
 
 /* =========================
    ANIMAÇÃO DOS CARDS
 ========================= */
 function animateVisibleItems() {
     const visibleItems = Array.from(items).filter(
-        item => !item.classList.contains('hidden')
+        item => !item.classList.contains('hidden') && item.style.display !== 'none'
     );
 
     visibleItems.forEach((item, index) => {
@@ -19,6 +21,51 @@ function animateVisibleItems() {
         setTimeout(() => {
             item.classList.add('show');
         }, index * 80);
+    });
+}
+
+/* =========================
+   PAGINAÇÃO (EXIBIR MAIS)
+========================= */
+function applyVisibilityLimit() {
+    const category = filter.value;
+    const selectedCity = cityFilter.value;
+    const searchText = searchBar.value;
+
+    const isFiltered = category !== 'all' || selectedCity !== 'all' || searchText !== '';
+
+    // Itens que passaram pelo filtro (sem classe hidden)
+    const matchingItems = Array.from(items).filter(item => !item.classList.contains('hidden'));
+
+    if (isFiltered) {
+        // Filtro ativo: exibe todos os correspondentes, oculta botão
+        matchingItems.forEach(item => {
+            item.style.display = 'block';
+        });
+        if (loadMoreBtn) loadMoreBtn.classList.add('hidden-btn');
+    } else {
+        // Tela inicial: aplica limite de visibilidade
+        visibleLimit = Math.max(visibleLimit, 4);
+        matchingItems.forEach((item, index) => {
+            item.style.display = index < visibleLimit ? 'block' : 'none';
+        });
+        // Mostra ou oculta o botão "Exibir mais"
+        if (loadMoreBtn) {
+            if (matchingItems.length > visibleLimit) {
+                loadMoreBtn.classList.remove('hidden-btn');
+            } else {
+                loadMoreBtn.classList.add('hidden-btn');
+            }
+        }
+    }
+
+    animateVisibleItems();
+}
+
+if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', () => {
+        visibleLimit += 4;
+        applyVisibilityLimit();
     });
 }
 
@@ -91,8 +138,13 @@ function filterItems() {
         }
     });
 
+    // Restaura o limite ao voltar para o estado padrão
+    if (filter.value === "all" && cityFilter.value === "all" && searchBar.value === "") {
+        visibleLimit = 4;
+    }
+
     updateFeedback();
-    animateVisibleItems();
+    applyVisibilityLimit();
 }
 
 filter.addEventListener('change', filterItems);
@@ -105,193 +157,41 @@ searchBar.addEventListener('input', filterItems);
 /* =========================
    CATEGORIAS
 ========================= */
-let categories = new Set();
-items.forEach(item => {
-    item.dataset.category.split(',').forEach(cat => categories.add(cat.trim()));
-});
-
-let sortedCategories = Array.from(categories).sort((a, b) =>
-    a.localeCompare(b, "pt-BR")
-);
-
-filter.innerHTML = "";
-filter.appendChild(new Option("Todas as categoria", "all"));
-
-sortedCategories.forEach(category => {
-    filter.appendChild(new Option(formatCategoryName(category), category));
-});
-
-function formatCategoryName(category) {
-    const names = {
-        a1_vagas_emprego: "# Vagas de Emprego",
-        aa_aluguel_venda_imovel: "Aluguel e Venda de Imóvel",
-        loja_animes: "Loja de Animes",
-        consultoria_ambiental: "Consultoria Ambiental",
-        mercadinho: "Mercadinho",
-        personal_trainer: "Personal Trainer",
-        confeccao_fardamentos: "Confecção de Fardamentos",
-        nutricionista: "Nutricionista",
-        depilacao_feminina:"Depilação Feminina",
-        roupas_vestuario: "Roupas e Vestuário",
-        acessorios_femininos: "Acessórios Femininos",
-        costureira: "Costureira",
-        suporte_ita: "Suporte Ita Serviços",
-        montador_moveis: "Montador de Móveis",
-        artes_marciais: "Artes Marciais",
-        eletrica_automotiva: "Elétrica Automotiva",
-        climatizacao_automotiva: "Climatização Automotiva",
-        podagem: "Podagem",
-        temperos_ervas: "Temperos e Ervas",
-        eng_civil: "Engenheiro Civil",
-        designer_grafico: "Designer Gráfico",
-        jardinagem: "Jardinagem",
-        terapeuta_ocupacional: "Terapeuta Ocupacional",
-        maquiagem: "Maquiagem",
-        salgados: "Salgados",
-        restaurante_chines: "Restaurante Chinês",
-        conveniencia_bebidas: "Conveniência de Bebidas",
-        contabilidade: "Contabilidade",
-        oficina_motos: "Oficina de Motos",
-        assessorias_cursos: "Assessorias e Cursos",
-        seg_eletronica: "Segurança Eletrônica",
-        marmitas_caseiras: "Marmitas Caseiras",
-        marmoaria: "Marmoaria",
-        marcenaria: "Marcenaria",
-        mobilidade_urbana: "Mobilidade Urbana",
-        carvao_vegetal: "Carvão Vegetal",
-        encanador: "Encanador",
-        decoracoes_festas: "Decorações de Festas",
-        autoescola: "Autoescola",
-        consultoria_beleza: "Consultoria de Beleza",
-        personal_shopper: "Personal Shopper",
-        transportadora: "Transportadora",
-        pre_moldados: "Pré-Moldados",
-        const_civil: "Construção Civil",
-        design_sobrancelhas: "Design de Sobrancelhas",
-        eletricista: "Eletricista",
-        energia_solar: "Energia Solar",
-        doces: "Doces",
-        acaiteria: "Açaiteria",
-        gas: "Gás",
-        protecao_veicular: "Proteção Veicular",
-        holtel: "Hotel",
-        restaurante: "Restaurante",
-        seguradora: "Seguradora",
-        madeireira: "Madeireira",
-        viagens_fretes_encomendas: "Viagens, Fretes e Encomendas",
-        taxi: "Táxi",
-        corretor_imoveis: "Corretor de Imóveis",
-        grafica: "Gráfica",
-        pedreiro: "Pedreiro",
-        pintor: "Pintor",
-        croche: "Crochê",
-        borracharia: "Borracharia",
-        motocicleta: "Motocicletas",
-        serralheria: "Serralheria",
-        sorveteria: "Sorveteria",
-        moveis_planejados: "Móveis Planejados",
-        azulejista: "Azulejista",
-        moda_fitness: "Moda Fitness",
-        entrega_leite: "Entrega de Leite",
-        hamburgueria: "Hamburgueria",
-        home_care: "Home Care",
-        meteriais_esportivos: "Materiais Esportivos",
-        calcados: "Calçados",
-        tec_enfermagem: "Técnico em Enfermagem",
-        reforco_escolar: "Reforço Escolar",
-        agua_mineral: "Água Mineral",
-        porcelananto: "Porcelananto",
-        cursinho: "Cursinho",
-        educacao: "Educação",
-        turismo: "Turismo",
-        marketing_digital: "Marketing Digital",
-        agencia_marketing_digital_publicidade: "Agência de Marketing Digital e Publicidade",
-        equipadora_automotiva: "Equipadora Automotiva",
-        delivery_comida: "Delivery de Comida",
-        lanches: "Lanches",
-        higienizacao_estofados: "Higienização de Estofados",
-        topografia: "Topografia",
-        agronomia: "Agronomia",
-        vidracaria: "Vidraçaria",
-        arquitetura:"Arquitetura",
-        sopa: "Sopa",
-        personalizados: "Personalizados",
-        cosmeticos: "Cosméticos",
-        cama_mesa_banho: "Cama, Mesa e Banho",
-        roupas_infantis: "Roupas Infantis",
-        brinquedos: "Brinquedos",
-        conserto_eletronicos: "Conserto de Eletrônicos",
-        informatica: "Informática",
-        joias_acessorios: "Joias e Acessórios",
-        perfumaria: "Perfumaria",
-        manicure: "Manicure",
-        assistencia_tecnica_celulares: "Assistência Técnica de Celulares",
-        pedicure: "Pedicure",
-        gesso: "Gesso",
-        pizzaria: "Pizzaria",
-        artigos_femininos: "Artigos Femininos",
-        churrascaria: "Churrascaria",
-        serigrafia: "Serigrafia",
-        seguranca_tecnologia: "Segurança e Tecnologia",
-        barbearia: "Barbearia",
-        salao_beleza: "Salão de Beleza",
-        loja_veiculos: "Loja de Veículos",
-        locadora_veiculos: "Locadora de Veículos",
-        fisioterapia: "Fisioterapia",
-        pediatria: "Pediatria",
-        advocacia: "Advocacia"
-    };
-    return names[category] || category;
-}
+// Opções de categoria carregadas diretamente do HTML
 
 /* ==============================================
    ATUALIZAR FILTRO DE CATEGORIA POR CIDADE
 ============================================== */
 function updateCategoriesByCity() {
-
     const selectedCity = cityFilter.value;
-
     let availableCategories = new Set();
 
     items.forEach(item => {
-
         const itemCity = item.getAttribute('data-city') || "all";
-
         if (selectedCity === "all" || itemCity === selectedCity) {
-
             const itemCategories = item.dataset.category
                 ? item.dataset.category.split(',')
                 : [];
-
             itemCategories.forEach(cat => availableCategories.add(cat.trim()));
         }
-
     });
 
-    const sortedCategories = Array.from(availableCategories).sort((a, b) =>
-        a.localeCompare(b, "pt-BR")
-    );
-
-    // limpa o select
     filter.innerHTML = "";
-
-    // adiciona "todas"
-    filter.appendChild(new Option("Todas as categorias", "all"));
-
-    // adiciona apenas as categorias da cidade
-    sortedCategories.forEach(category => {
-        filter.appendChild(new Option(formatCategoryName(category), category));
+    allCategoryOptions.forEach(opt => {
+        if (opt.value === "all" || availableCategories.has(opt.value)) {
+            filter.appendChild(opt.cloneNode(true));
+        }
     });
-
 }
 
+const allCategoryOptions = Array.from(filter.options);
 updateCategoriesByCity();
 
 /* =========================
    INICIALIZAÇÃO
 ========================= */
 updateFeedback();
-animateVisibleItems();
+applyVisibilityLimit();
 
 /* =========================
    TRACK DE CLIQUES
@@ -317,8 +217,6 @@ document.addEventListener("click", async (event) => {
     }
 });
 
-
-
 /* =========================
    VISITAS NO SITE
 ========================= */
@@ -332,13 +230,14 @@ async function registrarAcesso() {
         await fetch('https://patosservicos.vercel.app/api/save-access', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ site: 'Ita Serviços' })
+            body: JSON.stringify({ site: 'Ita' })
         });
         console.log("Visita registrada com sucesso!");
     } catch (error) {
         console.error("Erro ao salvar visita:", error);
     }
 }
+
 
 /* =========================
    TRACK DE CÓPIA
@@ -404,33 +303,35 @@ if (installBtn) {
 }
 
 
+/* =========================
+   FUNÇÃO NOVA COMPARTILHAR
+========================= */
 
 
-/* ====================================================
-   GERAÇÃO E COMPARTILHAMENTO DE CARTÃO DE VISITA
-   ================================================== */
+
+/* ==================================
+   GERAÇÃO E COMPARTILHAMENTO DE CARD
+   ================================== */
 
 async function obterImagemBase64(url) {
     try {
+        // Para arquivos locais no Android (file://), o fetch pode falhar. 
+        // Se falhar, ele cai no catch e tenta usar a URL original.
         const response = await fetch(url, { mode: 'cors' });
         if (!response.ok) throw new Error('Falha no download');
-
         const blob = await response.blob();
-
         return await new Promise((resolve, reject) => {
             const reader = new FileReader();
             reader.onloadend = () => resolve(reader.result);
             reader.onerror = reject;
             reader.readAsDataURL(blob);
         });
-
     } catch (e) {
-        console.warn("⚠️ Base64 falhou, usando URL:", url);
+        console.warn("⚠️ Base64 falhou, usando URL original:", url);
         return url;
     }
 }
 
-// 🔥 função para esperar imagem carregar
 function esperarImagem(img) {
     return new Promise((resolve) => {
         if (img.complete) return resolve();
@@ -444,13 +345,15 @@ async function gerarECompartilhar(dados) {
     const imgFoto = document.getElementById('master-foto');
     const imgBg = document.getElementById('master-bg');
 
-    // TEXTOS
+    // FeedBack visual rápido
+    const btnAtivo = document.activeElement;
+    if(btnAtivo) btnAtivo.style.opacity = "0.5";
+
     document.getElementById('master-nome').innerText = dados.nome;
     document.getElementById('master-ramo').innerText = dados.ramo;
     document.getElementById('master-insta').innerText = dados.insta;
     document.getElementById('master-whats').innerText = dados.whats;
 
-    // IMAGENS
     const [bgData, fotoData] = await Promise.all([
         obterImagemBase64('imagens/background-patos.png'),
         obterImagemBase64(dados.foto)
@@ -459,46 +362,80 @@ async function gerarECompartilhar(dados) {
     imgBg.src = bgData;
     imgFoto.src = fotoData;
 
-    // 🔥 ESPERA REAL DAS IMAGENS (isso resolve seu problema)
-    await Promise.all([
-        esperarImagem(imgBg),
-        esperarImagem(imgFoto)
-    ]);
+    await Promise.all([esperarImagem(imgBg), esperarImagem(imgFoto)]);
 
     try {
         const canvas = await html2canvas(template, {
             useCORS: true,
-            allowTaint: true,
+            allowTaint: false, // Mudei para false para garantir a segurança do Blob
             scale: 2,
             backgroundColor: null
         });
 
-        canvas.toBlob(async (blob) => {
-            const file = new File(
-                [blob],
-                `${dados.nome.toLowerCase().replace(/\s/g, '-')}.png`,
-                { type: 'image/png' }
-            );
+        const dataUrl = canvas.toDataURL("image/png");
+        const fileName = `${dados.nome.toLowerCase().replace(/\s/g, '-')}.png`;
 
-            // COMPARTILHAR (CELULAR)
-            if (navigator.share && navigator.canShare({ files: [file] })) {
-                await navigator.share({
-                    files: [file],
-                    title: 'Ita Serviços',
-                    text: `🚀 Confira ${dados.nome} no Patos Serviços!\n\nEncontre o que você precisa em um só lugar.\n\n🌐 Acesse: https://patosservicos.vercel.app/`
-                });
-            } else {
-                // DOWNLOAD (PC)
-                const link = document.createElement('a');
-                link.href = canvas.toDataURL("image/png");
-                link.download = file.name;
-                link.click();
+        const isWebShareSupported = navigator.share && navigator.canShare;
+        const isAndroid = /Android/i.test(navigator.userAgent);
+
+        // 📱 1. TENTA COMPARTILHAR (MELHOR OPÇÃO PARA WHATSAPP)
+        if (isWebShareSupported) {
+            try {
+                const response = await fetch(dataUrl);
+                const blob = await response.blob();
+                const file = new File([blob], fileName, { type: 'image/png' });
+
+                if (navigator.canShare({ files: [file] })) {
+                    await navigator.share({
+                        files: [file],
+                        title: 'Patos Serviços',
+                        text: `🚀 Confira ${dados.nome} e outros empreendimentos no Patos Serviços!\nAcesse: https://patosservicos.vercel.app`
+                    });
+                    if(btnAtivo) btnAtivo.style.opacity = "1";
+                    return;
+                }
+            } catch (e) {
+                console.warn("⚠️ Share falhou");
             }
-        }, 'image/png');
+        }
+
+        // 🤖 2. FALLBACK PARA ANDROID/APK (MODAL DE PREVIEW)
+        if (isAndroid) {
+            let modal = document.getElementById('preview-share');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'preview-share';
+                modal.style = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:9999; padding:20px;";
+                document.body.appendChild(modal);
+            }
+
+            modal.innerHTML = `
+                <p style="color:#fff; margin-bottom:15px; font-family:Montserrat;text-align: center;">
+                    Este cartão de visita pode ser baixado ou compartilhado no site: 
+                    <a href="https://patosservicos.vercel.app" style="color:#fff; text-decoration: underline;">https://patosservicos.vercel.app</a>
+                </p>
+
+                <img src="${dataUrl}" style="width:100%; max-width:400px; border: 2px solid #fff;">
+                <button id="fecharPreview" style="margin-top:20px; padding:15px 30px; background:#fff; border:none; border-radius:5px; font-weight:bold;">FECHAR</button>`;
+
+            document.getElementById('fecharPreview').onclick = () => {
+                modal.remove();
+                if(btnAtivo) btnAtivo.style.opacity = "1";
+            };
+            return;
+        }
+
+        // 💻 3. PC (DOWNLOAD DIRETO)
+        const link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = fileName;
+        link.click();
+        if(btnAtivo) btnAtivo.style.opacity = "1";
 
     } catch (err) {
-        console.error("❌ Erro ao renderizar:", err);
+        console.error("❌ Erro:", err);
         alert("Erro ao gerar imagem.");
+        if(btnAtivo) btnAtivo.style.opacity = "1";
     }
 }
 
@@ -506,21 +443,17 @@ async function gerarECompartilhar(dados) {
 document.querySelectorAll('.share-card').forEach(button => {
     button.onclick = async (e) => {
         e.preventDefault();
-
         const item = button.closest('.item');
-
         const dados = {
-            nome: item.querySelector('h3')?.innerText || "Ita Serviços",
+            nome: item.querySelector('h3')?.innerText || "Patos Serviços",
             ramo: item.querySelector('strong')?.innerText || "",
             insta: item.querySelector('a[href*="instagram"] span')?.innerText || "patosservicos_pb",
             whats: item.querySelector('a[href*="wa.me"] span')?.innerText || "(83) 00000-0000",
-            foto: item.querySelector('img')?.src // 🔥 corrigido aqui
+            foto: item.querySelector('img')?.src
         };
-
         await gerarECompartilhar(dados);
     };
 });
-
 
 /* =========================
    BANNER ROTATIVO ALEATÓRIO
