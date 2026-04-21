@@ -190,28 +190,35 @@ updateCategoriesByCity();
 ========================= */
 // Opções de categoria carregadas diretamente do HTML
 
-
 /* =========================
-   ORDENAÇÃO ALFABÉTICA DO FILTRO
+    ORDENAÇÃO ALFABÉTICA DO FILTRO
 ========================= */
-function ordenarCategorias() {
-    const select = document.getElementById('categoryFilter');
+document.addEventListener("DOMContentLoaded", function () {
+    const select = document.getElementById("categoryFilter");
+
+    if (!select) return;
+
     const options = Array.from(select.options);
-    
-    // Remove a opção "Todas" da lista para não entrar na conta da ordem A-Z
-    const todasOption = options.shift(); 
 
-    // Ordena as demais opções pelo texto (A-Z)
-    options.sort((a, b) => a.text.localeCompare(b, "pt-BR"));
+    // Pega a opção "Todas"
+    const todasOption = options.find(opt => opt.value === "all");
 
-    // Limpa o select e recoloca na ordem certa
+    // Filtra o restante
+    const outras = options.filter(opt => opt.value !== "all");
+
+    // Ordena pelo TEXTO (não pelo value)
+    outras.sort((a, b) => a.text.localeCompare(b.text, "pt-BR"));
+
+    // Limpa tudo
     select.innerHTML = "";
-    select.add(todasOption); // Coloca "Todas" no topo primeiro
-    options.forEach(option => select.add(option));
-}
 
-// Chame a função logo após definir o select
-ordenarCategorias();
+    // Adiciona "Todas" no topo
+    if (todasOption) select.add(todasOption);
+
+    // Adiciona as outras ordenadas
+    outras.forEach(opt => select.add(opt));
+});
+
 
 /* =========================
    INICIALIZAÇÃO
