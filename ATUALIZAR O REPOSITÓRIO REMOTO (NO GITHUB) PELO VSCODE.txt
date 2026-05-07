@@ -1,28 +1,25 @@
-ATUALIZAR O REPOSITÓRIO REMOTO (NO GITHUB) PELO VSCODE
-(Passo à Passo)
 ________________________________________________
+ATUALIZAR O REPOSITÓRIO NA NÚVEM
 
 git add .
-git commit -m "Modificando repositório"
+git commit -m "Modificação no repositório"
 git push
+________________________________________________
+________________________________________________
+ATUALIZAR O REPOSITÓRIO NO COMPUTADOR
 
+
+git fetch origin
+git pull origin main --rebase
 ________________________________________________
 
 
 
 
-git pull origin main
-git add .
-git commit -m "Modificando repositório"
-git push origin main
-
-
-ATUALIZAR O REPOSITÓRIO LOCAL
 
 
 
 
-git pull origin main --rebase
 
 BUILDAR APP
 
