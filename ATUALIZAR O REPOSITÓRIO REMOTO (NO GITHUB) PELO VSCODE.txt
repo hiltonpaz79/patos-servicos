@@ -8,22 +8,15 @@ ________________________________________________
 ________________________________________________
 ATUALIZAR O REPOSITÓRIO NO COMPUTADOR
 
-
 git fetch origin
 git pull origin main --rebase
+________________________________________________
+________________________________________________
+GIT RESET (ATUALIZAR O REPOSITÓRIO NO COMPUTADOR FORÇADAMENTE)
+
+git fetch origin
+git reset --hard origin/main
 ________________________________________________
 
 
 
-
-
-
-
-
-
-BUILDAR APP
-
-cd android
-./gradlew assembleDebug
-
-local: android/app/build/outputs/apk/debug/app-debug.apk
