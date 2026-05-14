@@ -6,14 +6,16 @@ git commit -m "Modificação no repositório"
 git push
 ________________________________________________
 ________________________________________________
-ATUALIZAR O REPOSITÓRIO NO COMPUTADOR
-
-git fetch origin
-git pull origin main --rebase
-________________________________________________
-________________________________________________
 GIT RESET (ATUALIZAR O REPOSITÓRIO NO COMPUTADOR FORÇADAMENTE)
 
 git fetch origin
 git reset --hard origin/main
+
+________________________________________________
+________________________________________________
+
+ATUALIZAR O REPOSITÓRIO NO COMPUTADOR
+
+git fetch origin
+git pull origin main --rebase
 ________________________________________________
