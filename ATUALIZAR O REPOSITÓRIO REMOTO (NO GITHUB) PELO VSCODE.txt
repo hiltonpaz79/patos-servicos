@@ -10,12 +10,4 @@ GIT RESET (ATUALIZAR O REPOSITÓRIO NO COMPUTADOR FORÇADAMENTE)
 
 git fetch origin
 git reset --hard origin/main
-
-________________________________________________
-________________________________________________
-
-ATUALIZAR O REPOSITÓRIO NO COMPUTADOR
-
-git fetch origin
-git pull origin main --rebase
 ________________________________________________
