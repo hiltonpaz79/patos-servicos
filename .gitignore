@@ -3,6 +3,7 @@ node_modules/
 
 # Pastas desnecessárias
 android/
+assets/
 
 # Variáveis de ambiente
 .env
