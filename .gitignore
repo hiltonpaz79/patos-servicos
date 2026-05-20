@@ -28,7 +28,7 @@ dist/
 build/
 
 # Arquivos
-.ATUALIZAR O REPOSITÓRIO REMOTO (NO GITHUB) PELO VSCODE.txt
-.app-release.aab
-app-release.aab
-ita-servicos-key.keystore
+# Chaves de assinatura e pacotes de produção
+*.keystore
+*.aab
+*.txt
