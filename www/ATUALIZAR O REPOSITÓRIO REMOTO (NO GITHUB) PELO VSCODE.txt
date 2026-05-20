@@ -1,0 +1,13 @@
+________________________________________________
+ATUALIZAR O REPOSITÓRIO NA NÚVEM
+
+git add .
+git commit -m "Modificação no repositório"
+git push
+________________________________________________
+________________________________________________
+GIT RESET (ATUALIZAR O REPOSITÓRIO NO COMPUTADOR FORÇADAMENTE)
+
+git fetch origin
+git reset --hard origin/main
+________________________________________________
