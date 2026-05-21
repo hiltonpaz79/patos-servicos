@@ -250,6 +250,16 @@ document.addEventListener("click", async (event) => {
     }
 });
 
+// Troque o caminho relativo pela URL real da Vercel onde sua API está hospedada
+await fetch("https://patosservicos.vercel.app/api/track-click", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+        link: link.href,
+        action: "click"
+    })
+});
+
 /* =========================
    VISITAS NO SITE
 ========================= */
