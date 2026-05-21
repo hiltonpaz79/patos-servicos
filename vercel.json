@@ -1,11 +1,3 @@
 {
   "outputDirectory": "www",
-  "builds": [
-    { "src": "www/**/*", "use": "@vercel/static" },
-    { "src": "www/api/**/*.js", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "www/api/$1" },
-    { "src": "/(.*)", "dest": "www/$1" }
-  ]
 }
