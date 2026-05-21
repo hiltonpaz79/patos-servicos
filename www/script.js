@@ -234,7 +234,7 @@ document.addEventListener("click", async (event) => {
     if (!link) return;
 
     try {
-        await fetch("/api/track-click", {
+        await fetch("/www/api/track-click", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
