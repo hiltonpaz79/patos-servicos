@@ -1,8 +1,6 @@
 {
   "outputDirectory": "www"
-}
-
-{
+  
   "builds": [
     { "src": "www/**/*", "use": "@vercel/static" },
     { "src": "www/api/**/*.js", "use": "@vercel/node" }
