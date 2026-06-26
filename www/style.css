@@ -226,7 +226,7 @@ header {
 
 /* Animação dos cards */
 .item {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /*Mudança de font*/
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -360,6 +360,7 @@ button:hover {
 /* CONTEINER DAS REDES SOCIAIS */
 /* ============================= */
 .social {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /*Mudança de font*/
   display: flex;
   justify-content: center;
   gap: 10px; /* aproxima as cápsulas */
