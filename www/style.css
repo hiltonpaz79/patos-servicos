@@ -491,7 +491,8 @@ button:hover {
 }
 /* título parceiro e contatos */
 .footer-heading {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /*font-family: 'Montserrat', sans-serif;*/
+  
   font-size: 0.75rem;
   text-transform: uppercase;  /* texto normal: none; , primeira letra maiúscula: capitalize; , caixa alta: uppercase;*/
   letter-spacing: 1px;
