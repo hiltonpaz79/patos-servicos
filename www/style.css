@@ -370,7 +370,6 @@ button:hover {
 
 /* Cápsula */
 .social-link {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /*Mudança de font*/
   display: inline-flex;
   align-items: center;
   gap: 8px;
