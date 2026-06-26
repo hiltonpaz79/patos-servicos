@@ -790,6 +790,109 @@ body {
     overflow: hidden;
 }
 
+/* ==========================================
+   CARD: FABIANA ARAÚJO (UNIFORMES)
+========================================== */
+
+.card-descricao-uniformes {
+    background-color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333333;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    max-width: 450px;
+    margin: 15px auto;
+    border: 1px solid #eaeaea;
+}
+
+.card-descricao-uniformes h2 {
+    color: #b5944b; /* Tom dourado elegante baseado na logo dela */
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.card-descricao-uniformes .tagline {
+    font-size: 1.05rem;
+    color: #111111;
+    text-align: center;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.card-descricao-uniformes .introducao {
+    font-size: 0.95rem;
+    color: #666666;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.card-descricao-uniformes hr {
+    border: 0;
+    border-top: 1px solid #eeeeee;
+    margin: 15px 0;
+}
+
+.card-descricao-uniformes h3 {
+    font-size: 1.1rem;
+    color: #222222;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.card-descricao-uniformes ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.card-descricao-uniformes ul li {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+    color: #444444;
+}
+
+/* Ícone de check dourado antes de cada diferencial */
+.card-descricao-uniformes ul li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #b5944b;
+    font-weight: bold;
+}
+
+.card-descricao-uniformes .card-destaque {
+    background-color: #fcf9f2; /* Fundo suave champagne */
+    border-left: 4px solid #b5944b;
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.card-descricao-uniformes .card-destaque p {
+    margin: 0;
+    color: #7a612d;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.card-descricao-uniformes .card-rodape {
+    font-size: 0.9rem;
+    color: #555555;
+    line-height: 1.6;
+}
+
+.card-descricao-uniformes .card-rodape p {
+    margin: 6px 0;
+}
+
 /* ============================= */
 /* BOTÃO EXIBIR MAIS             */
 /* ============================= */
