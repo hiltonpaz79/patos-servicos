@@ -226,6 +226,7 @@ header {
 
 /* Animação dos cards */
 .item {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -491,8 +492,7 @@ button:hover {
 }
 /* título parceiro e contatos */
 .footer-heading {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /*font-family: 'Montserrat', sans-serif;*/
-  
+  font-family: 'Montserrat', sans-serif;
   font-size: 0.75rem;
   text-transform: uppercase;  /* texto normal: none; , primeira letra maiúscula: capitalize; , caixa alta: uppercase;*/
   letter-spacing: 1px;
