@@ -1,0 +1,4465 @@
+{
+  "versao": 1,
+  "cadastros": [
+    {
+      "id": "wanderley-junior",
+      "ativo": true,
+      "secao": "premium",
+      "cadastro": "2026-04-07",
+      "comentario": "Início do card Wanderley Júnior Cadastro 07/04/2026",
+      "categorias": [
+        "arquitetura"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/wanderley.png",
+      "alt": "Wanderley Júnior",
+      "nome": "Wanderley Júnior",
+      "ramo": "Arquitetura e interiores",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<em>Arquitetura que inspira: projetos modernos e sob medida.</em>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/juniorsoareswg/",
+          "rotulo": "juniorsoareswg"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583987908055?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98790-8055"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "instituto-educacional-vera-cruz",
+      "ativo": true,
+      "secao": "premium",
+      "cadastro": "2026-05-07",
+      "comentario": "Início do card Instituto Educacional Vera Cruz Cadastro 07/05/2026",
+      "categorias": [
+        "educacao",
+        "escola"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/vera_cruz.png",
+      "alt": "Vera Cruz",
+      "nome": "Instituto Educacional Vera Cruz",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Há 60 anos transformando vidas através da Educação em Patos. O Instituto Educacional Vera Cruz oferece ensino completo: do Berçário, para crianças a partir de 1 ano, Ensino Fundamental, Ensino Médio e curso Técnico, além da Educação em tempo integral."
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/veracruzpatospb/",
+          "rotulo": "veracruzpatospb"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583996270239?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99627-0239"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "(83) 3421-3405",
+          "icone": "/imagens_icons/telefone.png",
+          "alt": "WhatsApp"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto",
+          "html": "#quermudarvempracá<br/> #vemserfelizvemserveracruz"
+        }
+      ]
+    },
+    {
+      "id": "bricia",
+      "ativo": true,
+      "secao": "premium",
+      "cadastro": "2026-05-08",
+      "comentario": "Início do card Brícia Seguros Cadastro 08/05/2026",
+      "categorias": [
+        "seguros"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/bricia.png",
+      "alt": "Brícia Seguros",
+      "nome": "Brícia",
+      "ramo": "Loja de seguros",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "A Brícia Seguros e Consórcios está há mais de 38 anos protegendo você e seu patrimônio com credibilidade e realizando sonhos através do consórcio."
+        },
+        {
+          "tipo": "texto",
+          "html": "Matriz: <strong>Patos-PB</strong><br/>Filial: <strong>Pau dos Ferros-RN</strong><br/>Atendemos por todo Brasil"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/briciaseguros/",
+          "rotulo": "briciaseguros"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583996301818?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99630-1818"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "marmores-e-granitos-copacabana",
+      "ativo": true,
+      "secao": "premium",
+      "cadastro": "2026-04-15",
+      "comentario": "Início do card Copacabana Cadastro 15/04/2026",
+      "categorias": [
+        "arquitetura",
+        "const_civil",
+        "marmoaria"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/copacabana.png",
+      "alt": "Copacabana",
+      "nome": "Mármores e Granitos Copacabana",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>Soluções sob medida em mármores e granitos</strong>"
+        },
+        {
+          "tipo": "texto",
+          "html": "<em>Qualidade • Sofisticação • Durabilidade </em>"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>📩 Solicite seu orçamento</strong>"
+        },
+        {
+          "tipo": "texto",
+          "html": "📍 Rua Francisco Paulo Licarião. Número 101.<br/>Próximo a nova ponte do monte castelo.<br/>Patos-PB"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/copacabanamarmoraria/",
+          "rotulo": "copacabanamarmoraria"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583996131225?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99613-1225"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "allison-reboque",
+      "ativo": true,
+      "secao": "premium",
+      "cadastro": "2026-04-28",
+      "comentario": "Início do card Allison Reboque Cadastro 28/04/2026",
+      "categorias": [
+        "reboque"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/allison_reboque.png",
+      "alt": "Allison Reboque",
+      "nome": "Allison Reboque",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Se o seu veículo te deixou na mão, não perca tempo. O Allison Reboque oferece assistência 24 horas com agilidade e o cuidado que seu carro merece."
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "lista-check",
+          "html": "<li>Troca de pneu e bateria;</li> <li>Carga de bateria;</li> <li>Atendimento em Patos e cidades vizinhas;</li> <li>Aceitamos cartões de crédito</li> <li>Preços competitivos e atendimento especializado</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/allisonreboque/",
+          "rotulo": "allisonreboque"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583996370482?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99637-0482"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583921485768?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 92148-5768"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "moderna-planejados",
+      "ativo": true,
+      "secao": "premium",
+      "cadastro": "2026-04-07",
+      "comentario": "Início do card Moderna Planejados Cadastro 07/04/2026",
+      "categorias": [
+        "arquitetura",
+        "moveis_planejados"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/moderna_planejados.png",
+      "alt": "Wanderley Júnior",
+      "nome": "Moderna Planejados",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Aposte na qualidade que só a Moderna Planejados oferece.<br/> O nosso melhor para o seu ambiente."
+        },
+        {
+          "tipo": "contato",
+          "rede": "link",
+          "url": "pdfs/moderna_planejados.pdf",
+          "rotulo": "Nosso trabalho",
+          "classe": "social-link instagram",
+          "icone": "/imagens_icons/logo_pdf.png",
+          "alt": "Moderna"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/m.planejados12/",
+          "rotulo": "m.planejados12"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583987464019?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98746-4019"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ],
+      "notas": [
+        "Encarte"
+      ]
+    },
+    {
+      "id": "ampliar-moveis-planejados",
+      "ativo": true,
+      "secao": "premium",
+      "cadastro": "2026-04-20",
+      "comentario": "Início do card Ampliar Móveis Planejados Cadastro 20/04/2026",
+      "categorias": [
+        "const_civil",
+        "moveis_planejados"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/ampliar_moveis_plan.png",
+      "alt": "Ampliar Móveis Planejados",
+      "nome": "Ampliar Móveis Planejados",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>Seu ambiente no nível que você mereçe!</strong>"
+        },
+        {
+          "tipo": "texto",
+          "html": "📍 Rua Manoel Mota, s/N, Bairro Jatobá, Patos-PB<br/>Em frente à UFCG"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583999523132?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99952-3132",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/ampliar_moveis/",
+          "rotulo": "ampliar_moveis",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "iluminar",
+      "ativo": true,
+      "secao": "premium",
+      "cadastro": "2026-05-07",
+      "comentario": "Início do card Iluminar Cadastro 07/05/2026",
+      "categorias": [
+        "iluminacao_profissional",
+        "producoes_eventos"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/iluminar.png",
+      "alt": "Wanderley Júnior",
+      "nome": "Iluminar",
+      "ramo": "Produções e eventos",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Somos uma empresa de produção de eventos corporativos e festas contando com uma estrutura de:"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Som</li> <li>Palco</li> <li>Iluminação</li> <li>Painel de LED</li> <li>Grid</li> <li>Tendas</li> <li>Cadeiras e mesas</li> <li>Disciplinadores</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/1iluminar/",
+          "rotulo": "1iluminar"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583988217636?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98821-7636"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "ana-guedes",
+      "ativo": true,
+      "secao": "premium",
+      "cadastro": "2026-04-14",
+      "comentario": "Início do card Ana Guedes Cadastro 14/04/2026",
+      "categorias": [
+        "contabilidade"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/ana_guedes.png",
+      "alt": "Ana Guedes",
+      "nome": "Ana Guedes",
+      "ramo": "Contabilidade",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Olá! Tudo bem?"
+        },
+        {
+          "tipo": "texto",
+          "html": "Quero te convidar a conhecer meus serviços de contabilidade, pensados para trazer mais organização, segurança e tranquilidade para a sua vida financeira ou para o seu negócio."
+        },
+        {
+          "tipo": "texto",
+          "html": "Seja para cuidar da sua empresa, manter suas obrigações fiscais em dia ou ajudar no seu planejamento financeiro, estou aqui para oferecer um atendimento próximo, eficiente e totalmente personalizado às suas necessidades."
+        },
+        {
+          "tipo": "texto",
+          "html": "Com um acompanhamento profissional, você ganha mais tempo para focar no que realmente importa: o crescimento do seu negócio."
+        },
+        {
+          "tipo": "texto",
+          "html": "Se quiser conversar melhor e entender como posso te ajudar, será um prazer falar com você!"
+        },
+        {
+          "tipo": "texto",
+          "html": "Fico à disposição 😊"
+        },
+        {
+          "tipo": "contato",
+          "rede": "link",
+          "url": "pdfs/servicos_contabeis.pdf",
+          "rotulo": "Serviços Contábeis",
+          "classe": "social-link instagram",
+          "icone": "/imagens_icons/logo_pdf.png",
+          "alt": "Rainha dos Loiros"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/ana.guedes_a/",
+          "rotulo": "ana.guedes_a"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583999793428?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99979-3428"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ],
+      "notas": [
+        "Encarte"
+      ]
+    },
+    {
+      "id": "casa-oriental",
+      "ativo": true,
+      "secao": "premium",
+      "cadastro": "2026-04-14",
+      "comentario": "Início do card Casa Oriental Cadastro 14/04/2026",
+      "categorias": [
+        "restaurante_chines",
+        "delivery_comida"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/casa_oriental.png",
+      "alt": "Casa Oriental",
+      "nome": "Casa Oriental",
+      "ramo": "Culinária oriental",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "A Casa Oriental está há 10 anos no mercado, levando o melhor da comida chinesa com qualidade, sabor e tradição. Trabalhamos com pratos preparados com muito carinho para proporcionar uma experiência deliciosa aos nossos clientes."
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>🕕 Funcionamento</strong><br/>terça a domingo, das 18h às 22h"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>🛵 Também estamos no Quero Delivery.</strong>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/casaorientalpatos/",
+          "rotulo": "casaorientalpatos"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583982084513?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "Faça seu pedido"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "dalila-teotonio",
+      "ativo": true,
+      "secao": "premium",
+      "cadastro": "2026-04-20",
+      "comentario": "Início do card Dalila Nutricionista Cadastro em 20/04/2026",
+      "categorias": [
+        "nutricionista"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/dalila_teotonio.png",
+      "alt": "Dalila Nutricionista",
+      "nome": "Dalila Teotonio",
+      "ramo": "Nutricionista Clínica",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Nutrição Funcional;</li> <li>Metabolismo e fisiologia do esporte.</li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "Meu atendimento é baseado em uma abordagem humanizada e integrativa, respeitando os desejos, as necessidades e, acima de tudo, a individualidade bioquímica de cada paciente."
+        },
+        {
+          "tipo": "texto",
+          "html": "Meu objetivo é te ajudar a alcançar o emagrecimento de forma saudável, consciente e sustentável."
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583981949071?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98194-9071",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/nutridalilateotonio/",
+          "rotulo": "nutridalilateotonio",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "antonio-azulejista",
+      "ativo": true,
+      "secao": "premium",
+      "cadastro": "2026-04-20",
+      "comentario": "Início do card Antônio Azulejista Cadastro 20/04/2026",
+      "categorias": [
+        "const_civil",
+        "azulejista"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/antonio_azulejista.png",
+      "alt": "Antônio Azulejista",
+      "nome": "Antônio Azulejista",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>Porcelanatos e acabamento em geral</strong>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583999648821?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99964-8821",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/antonioguimaraesdealmeida/",
+          "rotulo": "antonioguimaraesdealmeida",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "dev-print",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-09-17",
+      "plano": "1M",
+      "comentario": "Início do card Dev Print Cadastro 17/09/2026 1M",
+      "categorias": [
+        "grafica",
+        "personalizados"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/devprint.png",
+      "alt": "Dev Print",
+      "nome": "Dev Print",
+      "ramo": "Gráfica personalizados",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "html": "<li>Impressão rápida;</li> <li>Qualidade profissional;</li> <li>Design que vende.</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583996555335?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Ita%20Serviços.",
+          "rotulo": "(83) 99655-5335"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "igreen-energy-mutirao-do-desconto-na-conta-de-energia",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-08-01",
+      "comentario": "Início do card Mutirão do Desconto - iGreen Energy Cadastro 01/08/2026",
+      "categorias": [
+        "desconto_energia"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/igreen.png",
+      "alt": "Mutirão do Desconto - iGreen Energy",
+      "nome": "⚡ iGreen Energy Mutirão do Desconto na Conta de Energia",
+      "nome_html": "⚡ iGreen Energy<br/>Mutirão do Desconto na Conta de Energia",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Totalmente Grátis;</li> <li>Sem Placa;</li> <li>Desconto Garantido;</li> <li>Sustentabilidade;</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583999271951?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Ita%20Serviços.",
+          "rotulo": "(83) 99927-1951"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5584987450675?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Ita%20Serviços.",
+          "rotulo": "(84) 98745-0675"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "ke-confeccoes",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-07-28",
+      "plano": "1/3M",
+      "comentario": "Início do card KE Confecções Cadastro 28/07/2026 1/3M",
+      "categorias": [
+        "confeccao_fardamentos"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/ke_confeccoes.png",
+      "alt": "KE Confecções",
+      "nome": "KE Confecções",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Somos especializados na fabricação de fardamentos personalizados, atendendo empresas, clínicas, hospitais, escolas, indústrias, academias, comércios e equipes em geral."
+        },
+        {
+          "tipo": "texto",
+          "html": "Contamos com produção própria, oferecendo bordado, sublimação e personalização com acabamento de alta qualidade, unindo conforto, durabilidade e excelente custo-benefício."
+        },
+        {
+          "tipo": "texto",
+          "html": "Será um prazer apresentar nossas soluções e preparar um orçamento de acordo com a necessidade da sua empresa, sem compromisso."
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/ke_confeccoes",
+          "rotulo": "ke_confeccoes",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583981337542?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Ita%20Serviços.",
+          "rotulo": "(83) 98133-7542"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583981766161?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Ita%20Serviços.",
+          "rotulo": "(83) 98176-6161"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto",
+          "html": "KE Confecções<br/> Fabricação própria • Pedidos a partir de 10 peças • Enviamos para todo o Brasil"
+        }
+      ]
+    },
+    {
+      "id": "do-pinturas",
+      "ativo": true,
+      "secao": "basico",
+      "comentario": "Início do card Dó Pinturas",
+      "categorias": [
+        "pintor",
+        "const_civil"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/do_pinturas.png",
+      "alt": "Dó Pinturas",
+      "nome": "Dó Pinturas",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Pinturas;</li> <li>Residencial;</li> <li>Comercial;</li> <li>Crafiato;</li> <li>Textura;</li> <li>Verniz;</li> <li>Portas e portões;</li> <li>Cimento queimado.</li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "Aceitamos pix e todos os cartões de crédito"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583996505616?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Ita%20Serviços.",
+          "rotulo": "(83) 99650-5616"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "nossos-diferenciais",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-06-26",
+      "comentario": "Início do card Fabiana Araújo — Uniformes Profissionais Cadastro 26/06/2026",
+      "categorias": [
+        "confeccao_fardamentos"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/fabiana-araujo.png",
+      "alt": "Fabiana Araújo",
+      "nome": "Nossos Diferenciais:",
+      "topo": [
+        {
+          "tag": "h2",
+          "classe": null,
+          "html": "Fabiana Araújo — Uniformes Profissionais"
+        },
+        {
+          "tag": "p",
+          "classe": "tagline",
+          "html": "<strong>Uniformes profissionais para quem cuida com excelência!</strong>"
+        },
+        {
+          "tag": "p",
+          "classe": "introducao",
+          "html": "Qualidade, conforto e elegância para valorizar sua equipe e transmitir profissionalismo em cada detalhe."
+        },
+        {
+          "tag": "hr",
+          "classe": null
+        }
+      ],
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "html": "<li><strong>Scrubs</strong> Masculinos e Femininos</li> <li><strong>Jalecos</strong> Personalizados</li> <li>Tecidos de <strong>Alta Qualidade</strong></li> <li>Diversas <strong>Cores e Estampas</strong></li> <li>Conforto, Estilo e Durabilidade</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/fa_uniformes/",
+          "rotulo": "fa_uniformes",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5587988751029?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98875-1029"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto",
+          "tag": "div",
+          "classe": "card-destaque",
+          "html": "<p><em>\"Vestimos propósito, cuidado e confiança!\"</em></p>"
+        },
+        {
+          "tipo": "texto",
+          "tag": "hr"
+        },
+        {
+          "tipo": "texto",
+          "tag": "div",
+          "classe": "card-rodape",
+          "html": "<p>📍 <strong>Localização:</strong> Rua Nelsom Rodrigues N 21 ao lado do der • Bairro Santo Antônio, Patos, Paraíba, Brazil 58701130<br/>(Atendemos Patos e região)</p> <p>👥 Uniformes para toda a equipe</p> <p>💬 <strong>Fale conosco e faça seu orçamento!</strong></p>"
+        }
+      ]
+    },
+    {
+      "id": "ivandir-pedreiro",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-06-17",
+      "comentario": "Início do card André Morais Cadastro 17/06/2026",
+      "categorias": [
+        "const_civil",
+        "pedreiro"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/ivandir_pedreiro.png",
+      "alt": "André Morais",
+      "nome": "Ivandir Pedreiro",
+      "conteudo": [
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5587998376302?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99837-6302"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "andre-morais",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-06-17",
+      "comentario": "Início do card André Morais Cadastro 17/06/2026",
+      "categorias": [
+        "const_civil",
+        "revestimentos_forros"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/andre_morais.png",
+      "alt": "André Morais",
+      "nome": "André Morais",
+      "ramo": "Revestimento em PVC",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Trabalhamos com teto vinílico, forro madeirado, forro branco, porta sanfona e etc."
+        },
+        {
+          "tipo": "texto",
+          "html": "Faça já seu orçamento. Entre em contato conosco e agende seu orçamento."
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/orei.dopvc/",
+          "rotulo": "orei.dopvc",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5587999314343?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(87) 9 99652-9253"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "d-marie-atelie",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-06-01",
+      "comentario": "Início do card D Marie Ateliê Cadastro 01/06/2026",
+      "categorias": [
+        "doces",
+        "doceria"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/d_marie_atelie.png",
+      "alt": "D Marie Ateliê",
+      "nome": "D Marie Ateliê",
+      "ramo": "Doces finos e personalizados",
+      "conteudo": [
+        {
+          "tipo": "contato",
+          "rede": "link",
+          "url": "pdfs/d_marie_atelie.pdf",
+          "rotulo": "Fotos",
+          "classe": "social-link instagram",
+          "icone": "/imagens_icons/logo_pdf.png",
+          "alt": "Brícia Seguros"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/dmarie_delicatessen.ita/",
+          "rotulo": "dmarie_delicatessen.ita",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5587999314343?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(87) 9 9931-4343"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ],
+      "notas": [
+        "Encarte"
+      ]
+    },
+    {
+      "id": "buda-pintor",
+      "ativo": false,
+      "secao": "basico",
+      "categorias": [
+        "pintor",
+        "const_civil"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/buda_pintor.png",
+      "alt": "Buda Pintor",
+      "nome": "Buda Pintor",
+      "ramo": "Mais que pintar, é transformar!",
+      "conteudo": [
+        {
+          "tipo": "social_html",
+          "html": "<a class=\"social-link whatsapp\" target=\"_blank\"> <span>Pintura<br/>Residencial e comercial</span> </a>"
+        },
+        {
+          "tipo": "social_html",
+          "html": "<a class=\"social-link whatsapp\" target=\"_blank\"> <span>Acabamento<br/>de qualidade</span> </a>"
+        },
+        {
+          "tipo": "texto",
+          "html": "Compromisso e confiança."
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583996661148?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99666-1148"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "transporte-de-passageiros",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-27",
+      "comentario": "Início do card Transporte de Passageiros Cadastro 27/05/2026",
+      "categorias": [
+        "viagens_fretes_encomendas"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/transporte_sao_joao.jpeg",
+      "alt": "Davi Oliveira",
+      "nome": "Transporte de Passageiros",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Estamos à sua disposição durante o período junino em Patos-PB</p> <ul class=\"somente-esse\"> <li>Manhã</li> <li>Tarde</li> <li>Noite (até às 22h)</li> </ul> <p>Segurança, conforto e pontualidade.</p> <p>Marque seu horário exclusivo pelo whatsapp!</p> <div class=\"social\"> <a class=\"social-link whatsapp\" href=\"https://wa.me/5583999258906?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.\" target=\"_blank\"> <img alt=\"WhatsApp\" class=\"social-icon\" src=\"/imagens_icons/whatsapp.png\"/> <span>(83) 99925-8906</span> </a> </div> <div class=\"social\"> <button class=\"social-link share-card\"> <img class=\"social-icon\" src=\"/imagens_icons/compartilhar.png\"/> <span>Cartão de Visita</span> </button> </div> <p><em>*Preços baseados no App 99</em></p>"
+        }
+      ]
+    },
+    {
+      "id": "pet-bem",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-28",
+      "comentario": "Início do card Pet Bem Cadastro em 28/05/2026",
+      "categorias": [
+        "med_veterinario"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/pet_bem.png",
+      "alt": "Pet Bem",
+      "nome": "Pet Bem",
+      "ramo": "Centro Veterinário",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<strong>Serviços oferecidos:</strong> <li>Atendimento clínico;</li> <li>Atendimento dermatológico;</li> <li>Consultas;</li> <li>Farmacia;</li> <li>Banho e Tosa;</li> <li>Internamento;</li> <li>Cirurgias.</li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "📍 R. João da Mata, número 67, - Centro, Patos - PB, Próximo ao Teatro"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/centrovetpetbem/",
+          "rotulo": "centrovetpetbem",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583998460646?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99846-0646",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "pousada-vithay",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-08-07",
+      "plano": "1A",
+      "comentario": "Início do card Hospedagem CredVithay Cadastro em 07/08/2026 1A",
+      "categorias": [
+        "pousada"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/pousada_vithay.jpg",
+      "alt": "Hospedagem",
+      "nome": "Pousada Vithay",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Faça sua reserva e garanta <strong>o melhor conforto</strong> para o seu descanço."
+        },
+        {
+          "tipo": "texto",
+          "html": "estacionamento + Wi-fi, tudo grátis para você aproveitar ao máximo sua hospedagem."
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/pousadavithay/",
+          "rotulo": "pousadavithay",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583999271951?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99927-1951",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "credvithay-emprestimos",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-08-07",
+      "plano": "1A",
+      "comentario": "Início do card CredVithay Empréstimos Cadastro em 07/08/2026 1A",
+      "categorias": [
+        "credito_pessoal"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/credvithay.png",
+      "alt": "CredVithay",
+      "nome": "CredVithay - Empréstimos",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Precisando de dinheiro extra? Faça um empréstimo e receba seu <strong>dinheiro na hora!</strong>"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<strong>Atendemos</strong> <li>INSS;</li> <li>Governo;</li> <li>Federal;</li> <li>FGTS;</li> <li>CLT;</li> <li>Forças Armadas;</li> <li>Bolsa Família;</li> <li>Consignados.</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583999271951?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99927-1951",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583987450675?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98745-0675",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "#credito pessoal"
+        }
+      ]
+    },
+    {
+      "id": "claudio",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-09-04",
+      "plano": "1M",
+      "comentario": "Início do card Iras Pinturas Cadastro em 04/09/2026 1M",
+      "categorias": [
+        "pintor",
+        "const_civil"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/claudio-pinturas.png",
+      "alt": "Iras Pinturas",
+      "nome": "Cláudio",
+      "ramo": "Pintura &amp; Texturas Especiais",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Pintura em geral, textura marmorizada e aplicação de todos os tipos de texturas decorativas"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>Atendimento:</strong> Residencial e comercial."
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583998308464?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99830-8464",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "#pintor"
+        }
+      ]
+    },
+    {
+      "id": "iras-pinturas",
+      "ativo": false,
+      "secao": "basico",
+      "categorias": [
+        "pintor",
+        "const_civil"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/iras_pinturas.png",
+      "alt": "Iras Pinturas",
+      "nome": "Iras Pinturas",
+      "ramo": "Pinturas em geral",
+      "conteudo": [
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/souzairaja/",
+          "rotulo": "souzairaja",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5584999849786?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(84) 99984-9786",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "#pintor"
+        }
+      ]
+    },
+    {
+      "id": "vet-home",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-23",
+      "comentario": "Início do card Dra Soraia Vital Cadastro em 23/05/2026",
+      "categorias": [
+        "med_veterinario"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/vet_home.png",
+      "alt": "Palmares Playgrounds",
+      "nome": "Vet Home",
+      "ramo": "Dra Soraia Vital",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Médica Veterinaria, formada desde 2007 pela UFCG, com ênfase no Atendimento de Pequenos Animais e residência em Patologia Clínica Veterinária."
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Atendimento veterinário domiciliar;</li> <li>Aplicação de vacinas;</li> <li>Coleta de exames;</li> <li>Tratamento de feridas domiciliar;</li> <li>Atestado sanitário de viagem.</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583996429593?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99642-9593"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583988156104?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "8398815-6104"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "alceu-martins",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-22",
+      "comentario": "Início do card Alceu Martins Cadastro em 22/05/2026",
+      "categorias": [
+        "cons_empresarial"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/alceu_martins.png",
+      "alt": "Palmares Playgrounds",
+      "nome": "Alceu Martins",
+      "ramo": "Consultoria empresarial",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>Diretor Executivo e consultor de empresas</strong> com mais de <strong>19 anos de experiência</strong> em gestão empresarial de alta performance, focado em transformar estratégias em resultados concretos. Expertise na liderança de operações multimercados e reestruturação de negócios, elevando a performance operacional. Sólida atuação em <strong>gestão de equipe, melhoria de processos, gestão financeira, estruturação de indicadores e monitoramento de performance e resultados</strong>."
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Pós-graduado em Gestão de Negócios (MBA);</li> <li>Pós-graduado em Finanças (MBA);</li> <li> Especialização em Gestão de Projetos; e</li> <li>Bacharel em Administração de Empresas.</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/alceumartinss/",
+          "rotulo": "alceumartinss"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583991356271?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99135-6271"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "palmares-playgrounds",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-22",
+      "comentario": "Início do card Palmares Playgrounds Cadastro em 22/05/2026",
+      "categorias": [
+        "brinquedos",
+        "playgrouns"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/palmares_playground.png",
+      "alt": "Palmares Playgrounds",
+      "nome": "Palmares Playgrounds",
+      "ramo": "Parques, playgrounds e soluções recreativas",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Desde 1987 Realizando Sonhos"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>Playgrounds Infantis no Nordeste</strong><br/> Hoteis | Escolas | Praças"
+        },
+        {
+          "tipo": "texto",
+          "html": "🥇 Garantia de Segurança ABNT"
+        },
+        {
+          "tipo": "contato",
+          "rede": "link",
+          "url": "pdfs/palmares_playgrounds.pdf",
+          "rotulo": "Playgrounds",
+          "classe": "social-link instagram",
+          "icone": "/imagens_icons/logo_pdf.png",
+          "alt": "Brícia Seguros"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/palmaresplayground/",
+          "rotulo": "palmaresplayground"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5581998312244?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "81 99831-2244"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto",
+          "tag": "div",
+          "classe": "link-texto",
+          "html": "<a class=\"\" href=\"https://www.palmaresplaygrounds.com.br/\" target=\"_blank\"> <strong>www.palmaresplaygrounds.com.br</strong> </a>"
+        }
+      ],
+      "notas": [
+        "Encarte",
+        "Encarte texto com link"
+      ]
+    },
+    {
+      "id": "jose-ailton",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-20",
+      "comentario": "Início do card Artico Pescados Cadastro em 20/05/2026",
+      "categorias": [
+        "produtos_orientais",
+        "pescados"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/jv_pescados.png",
+      "alt": "JV Pescados",
+      "nome": "José Ailton",
+      "ramo": "Representante comercial",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Produtos orientais e da linha Food Service, levando qualidade, sabor e inovação para pizzarias, lanchonetes, hamburguerias, peixarias e mercados em geral."
+        },
+        {
+          "tipo": "contato",
+          "rede": "link",
+          "url": "pdfs/ailton_representante.pdf",
+          "rotulo": "Produtos",
+          "classe": "social-link instagram",
+          "icone": "/imagens_icons/logo_pdf.png",
+          "alt": "Brícia Seguros"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583996086771?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99608-6771"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ],
+      "notas": [
+        "Encarte"
+      ]
+    },
+    {
+      "id": "raniere-do-frete",
+      "ativo": true,
+      "secao": "basico",
+      "comentario": "Início do card Davi Oliveira",
+      "categorias": [
+        "viagens_fretes_encomendas"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/raniere.png",
+      "alt": "Davi Oliveira",
+      "nome": "Raniere do Frete",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<strong>Área de Atuação</strong> <li>Fretes de lojas de Patos para qualquer região.</li> <li>Encomendas para Campina Grande e João Pessoa.</li>"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<strong>Serviços Residenciais e Comerciais</strong> <li>Pequenas mudanças (residenciais ou comerciais).</li> <li>Coletas e entregas em geral.</li>"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<strong>Transporte de Pets (Consultas, Banho e Tosa):</strong> <li>Serviço de busca e entrega do pet diretamente na residência.</li> <em>⚠️ Observação: É necessário que o tutor disponibilize a gaiola ou caixa de transporte.</em>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5584981665472?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(84) 98166-5472"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "realiza",
+      "ativo": false,
+      "secao": "basico",
+      "categorias": [
+        "const_civil",
+        "construtora"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/realiza_construtora.png",
+      "alt": "Realiza",
+      "nome": "Realiza",
+      "ramo": "Construtora",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "A sua casa dos sonhos está mais perto do que você imagina.<br/> Conte com a nossa construtora para transformar seus desejos em realidade.<br/> 🙏🏗️"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/construtora_realiza10/",
+          "rotulo": "construtora_realiza10"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5517997736499?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(17) 99773-6499"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "#construtora #construção #pedreiro"
+        }
+      ]
+    },
+    {
+      "id": "l-j-construcoes",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-17",
+      "comentario": "Início do card L&J Construção Cadastro 17/05/2026",
+      "categorias": [
+        "const_civil",
+        "construtora"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/lj_contrucoes.png",
+      "alt": "L&J Construção",
+      "nome": "L&J Construções",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "- Reformas e acabamentos de alto padrão.<br/> - Nossa empresa é especialista em acabamentos finos.<br/> - Construções em geral.<br/> - Sua obra ,nosso compromisso."
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/lej_construcoes/",
+          "rotulo": "lej_construcoes"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583981238733?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98123-8733"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "#construtora #construção #pedreiro"
+        }
+      ]
+    },
+    {
+      "id": "rafael-refrigeracao-e-climatizacao",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-13",
+      "comentario": "Início do card Rafael Refrigeração Cadastro 13/05/2026",
+      "categorias": [
+        "ar_condicionado",
+        "refrigeracao"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/rafael_refrigeracao.png",
+      "alt": "Refrigerar Refrigeração",
+      "nome": "Rafael Refrigeração e Climatização",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>Manutenção, instalação e conserto</strong>"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Ar-condicionados</li> <li>Geladeiras</li> <li>Máquinas de lavar</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/rafael_refrigeracao_climatiza/",
+          "rotulo": "rafael_refrigeracao_climatiza"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583998605450?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99860-5450"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "eletrotec",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-13",
+      "comentario": "Início do card Eletrotec Cadastro 13/05/2026",
+      "categorias": [
+        "assistencia_tecnica",
+        "conserto_eletronicos",
+        "ar_condicionado",
+        "refrigeracao"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/eletrotec.png",
+      "alt": "Eletrotec",
+      "nome": "Eletrotec",
+      "ramo": "🚨Consertos de eletrodomésticos em geral❄️",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": ""
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Máquina de lavar, geladeira, microondas, lava e seca, tanquinho, ar-condicionado e etc;</li> <li>Instalação de sup de TV;</li> <li>Reparos em placas eletrônicas;</li> <li>Montagem de móveis.</li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "➡️ Pegamos seu eletrodomésticos na sua residência.<br/> ✅ Orçamento grátis.<br/> ✅ Manutenção, higienização, vendas e consertos.<br/> ✅ Serviço com garantia.<br/> ✅ Aceitamos todos os cartões."
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/gsclimatizacao___/",
+          "rotulo": "gsclimatizacao___"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583998897680?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99889-7680"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "marcelo-soldagem",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-08",
+      "comentario": "Início do card Marcelo Soldagem Cadastro 08/05/2026",
+      "categorias": [
+        "serralheria",
+        "soldagem"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/marcelo_soldagem.png",
+      "alt": "Marcelo Soldagem",
+      "nome": "Marcelo Soldagem",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<strong>Realizamos consertos de</strong> <li>Portões</li> <li>Janelas</li> <li>Fechaduras</li> <li>Roldanas</li> <li>Ferrolhos</li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>Serviços de soldagem em geral</strong><br/>Estamos a sua disposição"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/marcelooliveira.1847/",
+          "rotulo": "marcelooliveira.1847"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583994043555?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99404-3555"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "jana-churros",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-11",
+      "comentario": "Início do card Jana Churros Cadastro 11/05/2026",
+      "categorias": [
+        "churros",
+        "doceria",
+        "doces"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/jana_churros.png",
+      "alt": "Jana Churros",
+      "nome": "Jana Churros",
+      "conteudo": [
+        {
+          "tipo": "texto_solto",
+          "html": "Churros & doces"
+        },
+        {
+          "tipo": "contato",
+          "rede": "link",
+          "url": "https://drive.google.com/file/d/1jIexwqUeH78vZxYYjyIbVn2Jvpr9kvZc/view",
+          "rotulo": "Delicie-se",
+          "classe": "social-link instagram",
+          "icone": "/imagens_icons/logo_pdf.png",
+          "alt": "Jana Churros"
+        },
+        {
+          "tipo": "texto",
+          "html": "⏰ Funcionamento<br/> <strong>Sextas:</strong> Das 18h às 22h<br/> <strong>Domingos:</strong> Das 16h às 22h"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/janachurros1/",
+          "rotulo": "janachurros1"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583987383181?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98738-3181"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ],
+      "notas": [
+        "Encarte"
+      ]
+    },
+    {
+      "id": "gm-climatizacao",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-08",
+      "comentario": "Início do card GM Climatização Cadastro 08/05/2026",
+      "categorias": [
+        "ar_condicionado",
+        "climatizacao"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/gm_climatizacao.png",
+      "alt": "GM Climatização",
+      "nome": "GM Climatização",
+      "ramo": "Seu ambiente na temperatura ideal",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Instalação</li> <li>Manutenção</li> <li>Conserto</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583981381987?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98138-1987"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "hellyson-mendes",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-07",
+      "comentario": "Início do card Hellyson Mendes Cadastro 07/05/2026",
+      "categorias": [
+        "contabilidade"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/hm_contabilidade.png",
+      "alt": "Hellyson Mendes",
+      "nome": "Hellyson Mendes",
+      "ramo": "Contabilidade",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Transformamos números em decisões inteligentes para empresas e empreendedores. 📊✨"
+        },
+        {
+          "tipo": "texto",
+          "html": "Atuamos com contabilidade consultiva, abertura de empresas, regularização, setor fiscal, trabalhista, imposto de renda e suporte completo para o crescimento do seu negócio — tudo com atendimento próximo, ágil e estratégico. 🚀"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/hellysonmendescontabilidade/",
+          "rotulo": "hellysonmendescontabilidade"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583999439478?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99943-9478"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto",
+          "tag": "div",
+          "classe": "link-texto",
+          "html": "<a class=\"\" href=\"https://hellysonmendes.base44.app/\" target=\"_blank\"> <strong>hellysonmendes.com.br</strong> </a>"
+        }
+      ],
+      "notas": [
+        "Encarte texto com link"
+      ]
+    },
+    {
+      "id": "tf-climatizacao",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-04",
+      "comentario": "Início do card TF Climatização Cadastro 04/05/2026",
+      "categorias": [
+        "ar_condicionado",
+        "climatizacao"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/tf_climatizacao.png",
+      "alt": "Wanderley Júnior",
+      "nome": "TF Climatização",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>O conforto que você merece,<br/>a qualidade que você confia.</strong>"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Instalação profissional;</li> <li>Manutenção preventiva;</li> <li>Higienização completa;</li> <li>Eficiência e economia.</li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "Fale conosco<br/><strong>agora mesmo!</strong>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/tfclimatizacao.pb/",
+          "rotulo": "tfclimatizacao.pb"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583986766979?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98676-6979"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "jecton-cameras",
+      "ativo": false,
+      "secao": "basico",
+      "categorias": [
+        "seguranca_tecnologia",
+        "cameras_seguranca"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/jecton_cameras.png",
+      "alt": "Jecton Câmeras",
+      "nome": "Jecton Câmeras",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Produtos de segurança eletrônica;</li> <li>Câmeras;</li> <li>Motores de portão;</li> <li>Controles de portão;</li> <li>Roteadores;</li> <li>Cerca elétrica.</li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>Entre em contato e faça seu orçamento!</strong>"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "-- Câmeras de Segurança --"
+        },
+        {
+          "tipo": "contato",
+          "rede": "link",
+          "url": "imagens_icons/cards/jecton_cameras_kit.jpeg",
+          "rotulo": "Kit câmeras",
+          "classe": "social-link instagram",
+          "icone": "/imagens_icons/imagem_icon.png",
+          "alt": "MV Capacho"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "-- Câmeras de Segurança --"
+        },
+        {
+          "tipo": "contato",
+          "rede": "link",
+          "url": "pdfs/jecton_cameras_seguranca.pdf",
+          "rotulo": "Câmeras",
+          "classe": "social-link instagram",
+          "icone": "/imagens_icons/logo_pdf.png",
+          "alt": "MV Capacho"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "-- Motor de portão --"
+        },
+        {
+          "tipo": "contato",
+          "rede": "link",
+          "url": "pdfs/jecton_motor_portao.mp4",
+          "rotulo": "Motor de portão",
+          "classe": "social-link instagram",
+          "icone": "/imagens_icons/video_icon.png",
+          "alt": "Jecton"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/jectoncamera/",
+          "rotulo": "jectoncamera"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583999244751?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99924-4751"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "ja-manutencao-em-geral",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-06",
+      "comentario": "Início do card JR Manutenção em geral Cadastro 06/05/2026",
+      "categorias": [
+        "manutencao_motores_portao",
+        "montador_moveis",
+        "manutencao_aluminio_vidros"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/jr_manutencao.png",
+      "alt": "JA Manutenção em geral",
+      "nome": "JA Manutenção em geral",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Alumínio e vidros em geral;</li> <li>Motores de portão;</li> <li>Portão de ferro;</li> <li>Cerca elétrica;</li> <li>Manutenção de box.</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583998513141?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99851-3141"
+        },
+        {
+          "tipo": "contato",
+          "rede": "link",
+          "url": "imagens_icons/cards/ja_manutencao_cartao_visita.png",
+          "rotulo": "Cartão de Visita",
+          "classe": "social-link instagram",
+          "icone": "/imagens_icons/compartilhar.png",
+          "alt": "Cartão de Visita"
+        }
+      ],
+      "notas": [
+        "Cartão de Visita Consertado"
+      ]
+    },
+    {
+      "id": "vania-silva",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-05",
+      "comentario": "Início do card Vania Silva Cadastro 05/05/2026",
+      "categorias": [
+        "farmacia"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/vania_silva.png",
+      "alt": "Vania Silva",
+      "nome": "Vania Silva",
+      "ramo": "Especialista em assistência de vendas farmacêuticas",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Atendimento humanizado que faz a diferença!<br/>Aqui cada cliente é atendido com respeito, dedicação e carinho."
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/wannia_silva/",
+          "rotulo": "wannia_silva"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583993295665?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99329-5665"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "#saude"
+        }
+      ]
+    },
+    {
+      "id": "edicleudo-climatizacao",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-04",
+      "comentario": "Início do card Edicleudo Climatização Cadastro 04/05/2026",
+      "categorias": [
+        "ar_condicionado",
+        "climatizacao"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/edicleudo.png",
+      "alt": "Wanderley Júnior",
+      "nome": "Edicleudo Climatização",
+      "ramo": "Instalação, manutenção e conserto de ar-condicionado",
+      "conteudo": [
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/edicleudoclimatização/",
+          "rotulo": "edicleudoclimatização"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583991967202?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99196-7202"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "yamaha-consorcio",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-04",
+      "comentario": "Início do card Yamaha Consórcio Cadastro 04/05/2026",
+      "categorias": [
+        "consorcio"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/yamaha_consorcio.png",
+      "alt": "Yamaha Consórcio",
+      "nome": "Yamaha Consórcio",
+      "ramo": "Representante autorizado",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>AQUI VOCÊ REALIZA SEM PESAR NO BOLSO!</strong>"
+        },
+        {
+          "tipo": "texto",
+          "html": "As <strong>melhores opções</strong> de parcelamento para conquistar o que você precisa, hoje."
+        },
+        {
+          "tipo": "contato",
+          "rede": "link",
+          "url": "imagens_icons/cards/yamaha_consorcio.jpeg",
+          "rotulo": "Saiba mais",
+          "classe": "social-link instagram",
+          "icone": "/imagens_icons/logo_pdf.png",
+          "alt": "MV Capacho"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/joao_evangelista_araujo/",
+          "rotulo": "joao_evangelista_araujo"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583993982626?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99398-2626"
+        },
+        {
+          "tipo": "contato",
+          "rede": "link",
+          "url": "imagens_icons/cards/yamaha_consorcio_cartao_visita.png",
+          "rotulo": "Cartão de Visita",
+          "classe": "social-link instagram",
+          "icone": "/imagens_icons/compartilhar.png",
+          "alt": "Cartão de Visita"
+        }
+      ],
+      "notas": [
+        "Encarte",
+        "Cartão de Visita Consertado"
+      ]
+    },
+    {
+      "id": "petrocapas",
+      "ativo": false,
+      "secao": "basico",
+      "categorias": [
+        "estofamentos_automotivos",
+        "servicos_automotivos"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/petrocapas.png",
+      "alt": "Petrocapas",
+      "nome": "Petrocapas",
+      "ramo": "Estofamentos em geral, em couro e sintético!",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Serviços de capotaria</li> <li>Tetos de carros</li> <li>Capota de carros</li> <li>Painel de carros</li> <li>Tapetes de carros</li> <li>Volante de carros</li> <li>Bancos de carros</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/petrocapas/",
+          "rotulo": "petrocapas"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583999965919?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99996-5919"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "mv-capacho",
+      "ativo": false,
+      "secao": "basico",
+      "categorias": [
+        "tapestes_personalizados"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/mv_capacho.png",
+      "alt": "MV Capacho",
+      "nome": "MV Capacho",
+      "ramo": "Tapetes personalizados de alta qualidade",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>📦 Enviamos para todo o Brasil</strong>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "link",
+          "url": "pdfs/catalogo_tapetes.pdf",
+          "rotulo": "Catálogo de Tapetes",
+          "classe": "social-link instagram",
+          "icone": "/imagens_icons/logo_pdf.png",
+          "alt": "MV Capacho"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/mv_capacho/",
+          "rotulo": "mv_capacho"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583981483623?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98148-3623"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "beto-cell",
+      "ativo": false,
+      "secao": "basico",
+      "categorias": [
+        "assistencia_celular",
+        "assistencia_tecnica"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/beto_cell.png",
+      "alt": "Beto Cell",
+      "nome": "Beto Cell",
+      "ramo": "Assistência técnica especializada",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>🚨 SEU CELULAR QUEBROU? A GENTE RESOLVE!</strong><br/>💥 Tela quebrada? Sem imagem? Touch não funciona? Você não precisa comprar outro aparelho.<br/><br/>💰 Telas a partir de R$130,00<br/><br/>🔧 Serviço com garantia<br/>📱 Qualidade e confiança no conserto"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<strong>🔥 SERVIÇOS</strong> <li>Troca de tela;</li> <li>Troca de bateria;</li> <li>Conector de carga;</li> <li>Câmera com defeito;</li> <li>Alto-falante e microfone;</li> <li>Desbloqueio de aparelho;</li> <li>Formatação e limpeza;</li> <li>Atualização de sistema.</li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "📍 Patos - PB<br/> 📌 Rua João Leite, 31 – Bairro Maternidade"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>Fale agora no WhatsApp</strong>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/betocellpatos83/",
+          "rotulo": "betocellpatos83"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583921498919?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 92149-8919"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "limpa-caixa",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-03",
+      "comentario": "Início do card Limpa Caixa Cadastro 03/05/2026",
+      "categorias": [
+        "limpeza_caixa_d_agua",
+        "servico_limpeza"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/limpa_caixa.png",
+      "alt": "Limpa Caixa",
+      "nome": "Limpa Caixa",
+      "ramo": "Compromisso com sua saúde!",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Limpeza de caixa d'água;</li> <li>Limpeza de placas solares;</li> <li>Montagem de caixa.</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/limpacaixa/",
+          "rotulo": "limpacaixa"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583988764214?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98876-4214"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "martyna-torres",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-01",
+      "comentario": "Início do card Martyna Torres Cadastro 01/05/2026",
+      "categorias": [
+        "cuidadora_hospitalar",
+        "diarista"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/martyna.png",
+      "alt": "Martyna",
+      "nome": "Martyna Torres",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Acompanhante hospitalar</li> <li>Cuidadora</li> <li>Diarista</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583988487612?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98848-7612"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "gfm",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-29",
+      "comentario": "Início do card GFM Cadastro 29/04/2026",
+      "categorias": [
+        "transportadora",
+        "mudancas"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/grm_mudanças.png",
+      "alt": "Wanderley Júnior",
+      "nome": "GFM",
+      "ramo": "Mudanças e tranportes",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>Levamos sua mudança com segurança e rapidez</strong>"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Mudanças residenciais e comerciais;</li> <li>Montagem de móveis;</li> <li>Instalação de ar-condicionado;</li> <li>Embalagem profissional;</li> <li>Ajudantes especializados;</li> <li>Orçamento grátis!</li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>De Patos-PB para todo o Brasil</strong>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/gfm_mudancasoficial/",
+          "rotulo": "gfm_mudancasoficial"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583996306934?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99630-6934"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "#fretes"
+        }
+      ]
+    },
+    {
+      "id": "tq-servicos-eletricos",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-07-16",
+      "comentario": "Início do card TQ Serviços Elétricos Cadastro 16/07/2026",
+      "categorias": [
+        "eletricista"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/tq_servicos_eletricos.png",
+      "alt": "TQ Serviços Elétricos",
+      "nome": "TQ Serviços Elétricos",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Instalações, manutenções e reparos com qualidade e segurança."
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<strong>🔧 Serviços: </strong> <li>Instalação elétrica;</li> <li>Manutenção e reparos;</li> <li>Montagem e organização de quadro de distribuição;</li> <li>Instalação de chuveiro;</li> <li>Iluminação em gera.l</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/thiago_eletricistaa/",
+          "rotulo": "thiago_eletricistaa"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583994147304?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99414-7304"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "dede-pedreiro",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-28",
+      "renovacao": "2026-06-15",
+      "comentario": "Início do card Dedé Pedreiro Cadastro 28/04/2026 - Última renovação 15/06/2026",
+      "categorias": [
+        "pedreiro"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/dede_pedreiro.png",
+      "alt": "Dedé Pedreiro",
+      "nome": "Dedé Pedreiro",
+      "conteudo": [
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583982126248?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98212-6248"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "oberto-padilha",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-09-14",
+      "plano": "1M",
+      "comentario": "Início do card Oberto Padilha Cadastro 14/09/2026 1M",
+      "categorias": [
+        "pedreiro"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/oberto_padilha.png",
+      "alt": "Oberto Padilha",
+      "nome": "Oberto Padilha",
+      "ramo": "Pedreiro",
+      "conteudo": [
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5581999576500?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(81) 99957-6500"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "dede",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-07-02",
+      "comentario": "Início do card Dedé Removedor Cadastro 02/07/2026",
+      "categorias": [
+        "removedor_aranha"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/ded_teia_aranha.png",
+      "alt": "Dedé Removedor de Teia de Aranha",
+      "nome": "Dedé",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Removedor de Teia de Aranha"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583982126248?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98212-6248"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "ab-climatizacao",
+      "ativo": false,
+      "secao": "basico",
+      "categorias": [
+        "climatizacao",
+        "refrigeracao"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/hp_climatizacao.png",
+      "alt": "Wanderley Júnior",
+      "nome": "AB Climatização",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Instalação e manutenção de ar-condicionado"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583998186488?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99818-6488"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "floarte-paisagismo",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-28",
+      "comentario": "Início do card Floarte Paisagismo Cadastro 28/04/2026",
+      "categorias": [
+        "paisagismo"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/floarte.png",
+      "alt": "Floarte Paisagismo",
+      "nome": "Floarte Paisagismo",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Plantas ornamentais;</li> <li>Frutíferas;</li> <li>Gramas;</li> <li>Bonsai;</li> <li>Lagos artificiais;</li> <li>Projetamos, reformamos e implantamos jardins;</li> <li>Fazemos manutenções;</li> <li>Controles de pragas;</li> <li>Adubações.</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/florartepaisagismo/",
+          "rotulo": "florartepaisagismo"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583999692291?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99969-2291"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "gil-consertos",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-27",
+      "comentario": "Início do card Gil Consertos Cadastro 27/04/2026",
+      "categorias": [
+        "conserto_eletronicos"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/gil_consertos.png",
+      "alt": "Gil Consertos",
+      "nome": "Gil Consertos",
+      "ramo": "Manutenção e Consertos de eletrodomésticos e ferramentas elétricas em geral",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "lista-check",
+          "html": "<li>Assistência técnica especializada;</li> <li>Garantia de confiança;</li> <li>Compromisso com você!</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/gil.consertos_/",
+          "rotulo": "gil.consertos_"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583981272233?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98127-2233"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "inove-refrigeracao",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-27",
+      "comentario": "Início do card Inove Refrigeração Cadastro 27/04/2026",
+      "categorias": [
+        "climatizacao",
+        "ar_condicionado"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/inova_refrigeracao.png",
+      "alt": "Inova Refrigeração",
+      "nome": "Inove Refrigeração",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Materiais para instalação de ar-condicionado;</li> <li>Peças eletrônicas para ar-condicionado e geladeiras;</li> <li>Gás para refrigeração.</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583991129721?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99112-9721"
+        },
+        {
+          "tipo": "contato",
+          "rede": "link",
+          "url": "imagens_icons/cards/inova_refrigeracao_cartao_visita.png",
+          "rotulo": "Cartão de Visita",
+          "classe": "social-link instagram",
+          "icone": "/imagens_icons/compartilhar.png",
+          "alt": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "#ar-condicionado #climatização"
+        }
+      ],
+      "notas": [
+        "Cartão de Visita Consertado"
+      ]
+    },
+    {
+      "id": "walderlan-medeiros",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-26",
+      "comentario": "Início do card Wanderley Júnior Cadastro 26/04/2026",
+      "categorias": [
+        "climatizacao",
+        "ar_condicionado"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/vip_climatizacao.png",
+      "alt": "Wanderley Júnior",
+      "nome": "Walderlan Medeiros",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>Climatizações</strong>"
+        },
+        {
+          "tipo": "texto",
+          "html": "Especialista em Climatização de Ambientes"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/walderlanmedeiross/",
+          "rotulo": "walderlanmedeiross"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583981897014?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98189-7014"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "#ar-condicionado #climatização"
+        }
+      ]
+    },
+    {
+      "id": "sublime-artesanatos",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-26",
+      "comentario": "Início do card Sublime Artesanatos Cadastro 26/04/2026",
+      "categorias": [
+        "artesanato"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/sublime_artesanatos.png",
+      "alt": "Sublime Artesanatos",
+      "nome": "Sublime Artesanatos",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "✨ Artesanato feito à mão com muito cuidado e criatividade! ✨<br/> Produzo peças únicas em biscuit, perfeitas pra quem gosta de estilo e personalidade no dia a dia 💫<br/> 🔥 Capas para isqueiro — apenas R$10<br/> 🌿 Incensários — apenas R$13<br/> 🚚 Entrega grátis<br/> 💡 Aceito referências! Você pode pedir do jeitinho que quiser, do seu estilo, personagem ou ideia 💭<br/> Garanta já a sua peça exclusiva! 💖"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/sublime_artesanatos/",
+          "rotulo": "sublime_artesanatos"
+        },
+        {
+          "tipo": "social_html",
+          "html": "<strong>📦 Encomendas pelo WhatsApp</strong> <a class=\"social-link whatsapp\" href=\"https://wa.me/5583996796064?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.\" target=\"_blank\"> <img alt=\"WhatsApp\" class=\"social-icon\" src=\"/imagens_icons/whatsapp.png\"/> <span>(83) 99679-6064</span> </a>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "frigerar-refrigeracao",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-25",
+      "comentario": "Início do card Refrigerar Refrigeração Cadastro 25/04/2026",
+      "categorias": [
+        "ar_condicionado",
+        "refrigeracao"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/refrigerar.png",
+      "alt": "Refrigerar Refrigeração",
+      "nome": "Frigerar Refrigeração",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Instalação de ar-condicionado, Manutenção preventiva e corretiva, Conserto de geladeiras, freezer e balcões refrigeradores."
+        },
+        {
+          "tipo": "texto",
+          "html": "Patos e Região"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/frigerarcoldgmail.com8/",
+          "rotulo": "frigerarcoldgmail.com8"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583999731552?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99973-1552"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "alan",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-24",
+      "comentario": "Início do card Alan Personal Trainer Cadastro 24/04/2026",
+      "categorias": [
+        "personal_trainer"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/alan_personal_trainer.png",
+      "alt": "Alan Personal Trainer",
+      "nome": "Alan",
+      "ramo": "Personal Trainer",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Atendimento particular com hora marcada e reserva mensal; recebo alunos pós cirúrgicos e com lesões leves, além de tratar através da musculação alunos com hérnia discal e fibromialgia."
+        },
+        {
+          "tipo": "texto",
+          "html": "Especialista em emagrecimento e performance"
+        },
+        {
+          "tipo": "texto",
+          "html": "CREF 5777-G PB<br/>10 anos de experiência"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/_alanpersonal/",
+          "rotulo": "_alanpersonal"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583987174930?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98717-4930"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "portal-barao-da-midia",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-24",
+      "comentario": "Início do card Barão da Mídia Cadastro 24/04/2026",
+      "categorias": [
+        "agencia_marketing_digital_publicidade",
+        "publicidade",
+        "noticia"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/barao_midia.png",
+      "alt": "Barão da Mídia",
+      "nome": "Portal Barão da Mídia",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>A mídia não pode parar!</strong>"
+        },
+        {
+          "tipo": "texto",
+          "html": "📢 Cobertura • Entretenimento • Notícias"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/baraodamidiaoficial/",
+          "rotulo": "baraodamidiaoficial"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583993624538?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99362-4538"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "garimpo-do-barao",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-24",
+      "comentario": "Início do card Barão da Mídia Cadastro 24/04/2026",
+      "categorias": [
+        "agencia_marketing_digital_publicidade",
+        "publicidade",
+        "noticia"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/garimpo_barao.png",
+      "alt": "Barão da Mídia",
+      "nome": "Garimpo do Barão",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Frutaria;</li> <li>Doceria;</li> <li>Loja de Acessórios;</li> <li>iPhone e Xiaomi Lacrados.</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/garimpodobaraoo/",
+          "rotulo": "garimpodobaraoo"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583993624538?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99362-4538"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "michele-cerimonial",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-23",
+      "comentario": "Início do card Michele Cerimonial Cadastro 23/04/2026",
+      "categorias": [
+        "cerimonialista"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/michele_cerimonial.png",
+      "alt": "Michele Cerimonial",
+      "nome": "Michele Cerimonial",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>Festas e eventos</strong>"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Eventos sociais:</li> <li>Casamentos:</li> <li>Festa de 15 anos:</li> <li>Formaturas;</li> <li>Aniversários em geral;</li> <li>Corporativos.</li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>14 anos de experiência em eventos</strong>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/michelecerimonialista/",
+          "rotulo": "michelecerimonialista"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583991436308?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99143-6308"
+        },
+        {
+          "tipo": "contato",
+          "rede": "link",
+          "url": "imagens_icons/cards/michele_cerimonial_cartao_visita.png",
+          "rotulo": "Cartão de Visita",
+          "classe": "social-link instagram",
+          "icone": "/imagens_icons/compartilhar.png",
+          "alt": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "#cerimonialista"
+        }
+      ],
+      "notas": [
+        "Cartão de Visita Consertado"
+      ]
+    },
+    {
+      "id": "shop-da-jak",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-23",
+      "comentario": "Início do card Shop da Jak Cadastro 23/04/2026",
+      "categorias": [
+        "cosmeticos"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/shop_jak.png",
+      "alt": "Shop da Jak",
+      "nome": "Shop da Jak",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>Cosméticos &amp; Presentes</strong>"
+        },
+        {
+          "tipo": "texto",
+          "html": "Trabalhamos com as melhores marcas do mercado:<br/> 🌿 Natura | 🌸 O Boticário | 💄 Eudora<br/><br/> ✨ Além de diversas marcas, oferecemos qualidade, variedade e as melhores opções para presentear. 🎁<br/> Estamos à disposição! 🛍️"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/shopdajak_/",
+          "rotulo": "shopdajak_"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583981387780?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98138-7780"
+        },
+        {
+          "tipo": "contato",
+          "rede": "link",
+          "url": "imagens_icons/cards/shop_jak_cartao_visitas.png",
+          "rotulo": "Cartão de Visita",
+          "classe": "social-link instagram",
+          "icone": "/imagens_icons/compartilhar.png",
+          "alt": "Cartão de Visita"
+        }
+      ],
+      "notas": [
+        "Cartão de Visita Consertado"
+      ]
+    },
+    {
+      "id": "mg-gesso",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-23",
+      "comentario": "Início do card MG Gesso Cadastro 23/04/2026",
+      "categorias": [
+        "gesso",
+        "const_civil"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/mg_gesso.png",
+      "alt": "MG Gesso",
+      "nome": "MG Gesso",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Sancas</li> <li>Forro</li> <li>Divisórias</li> <li>Painel 3D</li> <li>Guarda roupas</li> <li>Etc.</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/mggesso__/",
+          "rotulo": "mggesso__"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583981183174?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98118-3174"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "fisio-quiro",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-23",
+      "comentario": "Início do card Fisio Quiro Cadastro 23/04/2026",
+      "categorias": [
+        "fisioterapia",
+        "acupuntura"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/fisio_quiro.png",
+      "alt": "Fisio Quiro",
+      "nome": "Fisio Quiro",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong><em>Você não precisa mais viver com dor</em></strong>"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Fisioterapia</li> <li>Acunputura</li> <li>Quiropraxia</li> <li>Posturologia</li> <li>Reiki</li> <li>Drenagem linfática</li> <li>Massagem com pedras quentes</li> <li>Ventosaterapia</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/acupuntura.edsondiniz/",
+          "rotulo": "acupuntura.edsondiniz"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583999015154?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99901-5154"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "c-e",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-22",
+      "comentario": "Início do card C&E Radiadores e Intercooler Cadastro em 22/04/2026",
+      "categorias": [
+        "radiadores_intercooler",
+        "servicos_automotivos"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/ce_radiadores.png",
+      "alt": "C&E Radiadores e Intercooler",
+      "nome": "C&E",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>Radiadores e Intercooler</strong>"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "💥 Solução completa em arrefecimento"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<p><strong>CONSERTOS EM RADIADORES<br/>IMPORTADOS E NACIONAIS</strong></p> <strong>LINHAS LEVES E PESADAS</strong> <li>Teste no sistema de arrefecimento;</li> <li>Conserto de intercooler;</li> <li>Tanque de combustível;</li> <li>Remoção de óleo no sistema de arrefecimento;</li> <li>Solda em alumínio;</li> <li>Soldas em geral;</li> <li>Limpeza de arrefecimento;</li> <li>Varetamento;</li> <li>Peças em geral.</li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>Teste no sistema de arrefeicimento | conserto de intercooler | tanque de combustível | solda em geral | solda em alumínio<br/>- Peças em geral -</strong>"
+        },
+        {
+          "tipo": "texto",
+          "html": "📍 Rua Luzia Ferreira Leitao, Patos-PB"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583987162768?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98716-2768",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/centraldos_radiadores/",
+          "rotulo": "centraldos_radiadores",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "mtechpb",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-22",
+      "comentario": "Início do card MtechPB Cadastro em 22/04/2026",
+      "categorias": [
+        "informatica",
+        "design"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/mtechpb.png",
+      "alt": "MtechPB",
+      "nome": "MtechPB",
+      "ramo": "Soluções em informática e design",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "✅ +20 ANOS DE EXPERIÊNCIA<br/>"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "🚀 Softwares<br/> 📐 Design Gráfico Profissional<br/> ⚡ SUPORTE REMOTO OU PRESENCIAL<br/> 📅 Horário com Hora Marcada<br/>"
+        },
+        {
+          "tipo": "texto",
+          "html": "📍 Rua Dantas Trigueiro, Jardim Europa, Patos-PB."
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583999379674?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99937-9674",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/mtech.pb/",
+          "rotulo": "mtech.pb",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "super-frio",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-22",
+      "comentario": "Início do card Super Frio Cadastro em 22/04/2026",
+      "categorias": [
+        "ar_condicionado",
+        "climatizacao"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/super_frio.png",
+      "alt": "Super Frio",
+      "nome": "Super Frio",
+      "ramo": "Refrigeração e climatização",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<p><strong>CONSERTOS EM</strong></p> <li>Lavadora de roupas;</li> <li>Geladeira;</li> <li>Ar-condicionado;</li> <li>Microondas;</li> <li>Cliatizador de ar;</li> <li>Gela água;</li> <li>Bebedouros industriais.</li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "Fazemos também higienização de lavadora de roupas e climatizadores"
+        },
+        {
+          "tipo": "texto",
+          "html": "📍 Rua Pedro Benedito, n 150, Bairro São Sebastião, Patos-PB"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583999861311?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99986-1311",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583986681994?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98668-1994",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/superfrioclimatizacao/",
+          "rotulo": "superfrioclimatizacao",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "jose-washington",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-21",
+      "comentario": "Início do card José Washington Cadastro 21/04/2026",
+      "categorias": [
+        "const_civil",
+        "pedreiro",
+        "azulejista"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/jose_washington.png",
+      "alt": "José Washington",
+      "nome": "José Washington",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>Pedreiro e Azulejista</strong>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583988718263?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98871-8263",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "michele",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-21",
+      "comentario": "Início do card Michele Cadastro 21/04/2026",
+      "categorias": [
+        "auxiliar_servicos",
+        "auxiliar_cozinha"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/michele.png",
+      "alt": "Michele",
+      "nome": "Michele",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>Auxiliar de serviços gerais e auxiliar de cozinha</strong>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5581996962063?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(81) 99696-2063",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "maria-bonita",
+      "ativo": true,
+      "secao": "basico",
+      "comentario": "Início do card Maria Bonita",
+      "categorias": [
+        "roupas_vestuario",
+        "confeccao_fardamentos"
+      ],
+      "cidades": [
+        "itaporanga",
+        "patos"
+      ],
+      "imagem": "imagens_cards/maria_bonita.png",
+      "alt": "Maria Bonita",
+      "nome": "MARIA BONITA",
+      "ramo": "Uniformização e confecção profissional",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Pronta entrega de jalecos, scrubs e pijamas hospitalares;</li> <li>Confecção sob encomenda de uniformes personalizados;</li> <li>Atendemos clínicas, hospitais, escolas, empresas e instituições;</li> <li>Uniformes para profissionais autônomos (individual ou em equipe).</li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>Foco em qualidade, conforto e identidade profissional</strong>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583998666213?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99866-6213",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/mariabonitascrub/",
+          "rotulo": "mariabonitascrub",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "#fardamento"
+        }
+      ]
+    },
+    {
+      "id": "sofy-digital",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-14",
+      "comentario": "Início do card Sofy Digital Cadastro 14/04/2026",
+      "categorias": [
+        "marketing_digital",
+        "agencia_marketing_digital_publicidade"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/sofy_digital.png",
+      "alt": "Sofy Digital",
+      "nome": "Sofy Digital",
+      "ramo": "Agência de Marketing Digital e Publicidade",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Especialistas em produção de conteúdo, estratégia e marketing de influência."
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/sofydigital/",
+          "rotulo": "sofydigital"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583994056218?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99405-6218"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "jardel-brasil",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-13",
+      "comentario": "Início do card Jardel Brasil Cadastro 13/04/2026",
+      "categorias": [
+        "const_civil",
+        "eng_civil"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/jardel_brasil.png",
+      "alt": "Wanderley Júnior",
+      "nome": "Jardel Brasil",
+      "ramo": "Engenheiro Civil",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>Projetos</strong>"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Pavimentação;</li> <li>Loteamento;</li> <li>... etc.</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/eng.jardelbrasil/",
+          "rotulo": "eng.jardelbrasil"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583996244814?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99624-4814"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "philip-aires-profissional",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-13",
+      "comentario": "Início do card Philip Aires Profissional Cadastro 13/04/2026",
+      "categorias": [
+        "cabeleireiro",
+        "maquiagem"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/philip_aires.png",
+      "alt": "Wanderley Júnior",
+      "nome": "Philip Aires Profissional",
+      "ramo": "Cabeleireiro e Maquiador",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>Faça seu agendamento pelo WhatsApp</strong>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/philipairesprofessional/",
+          "rotulo": "philipairesprofessional"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583981456534?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98145-6534"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "wagner-pintor",
+      "ativo": false,
+      "secao": "basico",
+      "categorias": [
+        "pintor",
+        "const_civil"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/wagner_pintor.png",
+      "alt": "Wagner Pintor",
+      "nome": "Wagner Pintor",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<strong>Pintura de</strong> <li>Portas;</li> <li>Paredes;</li> <li>Portões;</li> <li>Envernização.</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583987444150?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98744-4150",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "israel-pinturas",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-05-15",
+      "comentario": "Início do card Israel Pinturas Cadastro em 15/05/2026",
+      "categorias": [
+        "pintor",
+        "const_civil"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/israel_pinturas.png",
+      "alt": "Israel Pinturas",
+      "nome": "Israel Pinturas",
+      "ramo": "Pinturas em geral",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "Faça já seu orçamento<br/> Pintura pra deixa seu lar mais bonito<br/> Atendimento patos PB"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/israel_pinturas35/",
+          "rotulo": "israel_pinturas35",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583921467696?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 92146-7696",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "#pintor"
+        }
+      ]
+    },
+    {
+      "id": "marcenaria-santo-antonio",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-13",
+      "comentario": "Início do card Marcenaria Santo Antônio - Cadastro 13/04/2026",
+      "categorias": [
+        "marcenaria"
+      ],
+      "cidades": [
+        "conceicao"
+      ],
+      "imagem": "imagens_cards/marcenaria_st_antonio.png",
+      "alt": "Marcenaria Santo Antônio",
+      "nome": "Marcenaria Santo Antônio",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Portas;</li> <li>Janelas;</li> <li>Forras;</li> <li>Móveis de Madeira;</li> <li>Cadeiras de Madeira.</li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "Somos referência em esquadria de madeira em Conceição-PB e região.🚪<br/>📐Projetos sob medida com acabamento premium!"
+        },
+        {
+          "tipo": "texto",
+          "html": "👇Solicite seu orçamento exclusivo:"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583996749534?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99674-9534",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5588999582958?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(88) 99958-2958",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/marcenaria_santoantonio0/",
+          "rotulo": "marcenaria_santoantonio0",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "gercica-rodrigues",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-07",
+      "comentario": "Início do card Gércica Rodrigues Cadastro 07/04/2026",
+      "categorias": [
+        "depilacao_feminina"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/gercica_rodrigues.png",
+      "alt": "Gércica Rodrigues",
+      "nome": "Gércica Rodrigues",
+      "ramo": "Serviços de depilação corporal feminina",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Especialista em Depilação Express</li> <li>Método Espanhol 🍯🍃</li> <li>Resultado impecável &amp; Pele bem cuidada!</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/gercicarodriguesdepil/",
+          "rotulo": "gercicarodriguesdepil"
+        },
+        {
+          "tipo": "contato",
+          "rede": "link",
+          "url": "https://agendeonline.salonsoft.com.br/claricerodriguesbs?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGn9oxvCO6AlaL1ZDqe6b7msfKj1EwehTlbLs1Vxfo14WqQkIwyEl5zh1N8Dag_aem_XgWnFlH1gPOydqt_Y3CXTg",
+          "rotulo": "Agendamentos",
+          "classe": "social-link whatsapp",
+          "icone": "/imagens_icons/reservation.png",
+          "alt": "WhatsApp"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "laurencia-queiroz",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-07",
+      "comentario": "Início do card Laurencia Queiroz Cadastro 07/04/2026",
+      "categorias": [
+        "personal_trainer"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/laurencia_queiroz.png",
+      "alt": "Wanderley Júnior",
+      "nome": "Laurencia Queiroz",
+      "ramo": "Personal Trainer",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "A prática de atividade física, pode ser uma pequena parte do seu dia, transformada em VIDA"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>Atendimento presencial e online</strong>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/laurenciaqueirozpersocoach/",
+          "rotulo": "laurenciaqueirozpersocoach"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583999038853?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99903-8853"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "estilo-planejado",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-04-04",
+      "comentario": "Início do card Estilo Planejado Cadastro 04/04/2026",
+      "categorias": [
+        "moveis_planejados"
+      ],
+      "cidades": [
+        "pedra_branca"
+      ],
+      "imagem": "imagens_cards/estilo_projetado.png",
+      "alt": "Estilo Planejado",
+      "nome": "Estilo Planejado",
+      "ramo": "Você planeja, nós projetamos.",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Portas;</li> <li>Forras;</li> <li>Janelas;</li> <li>E móveis planejados em geral.</li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>Atendemos em toda a Paraíba</strong>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/estiloplanejado/",
+          "rotulo": "estiloplanejado"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583982087854?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 98208-7854"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "davi-oliveira",
+      "ativo": true,
+      "secao": "basico",
+      "comentario": "Início do card Davi Oliveira",
+      "categorias": [
+        "viagens_fretes_encomendas"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/davi_oliveira.png",
+      "alt": "Davi Oliveira",
+      "nome": "Davi Oliveira",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "a",
+          "html": "<strong>Motorista particular</strong>"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li><strong>Percurso de Itaporanga, Patos, Campina Grande e João Pessoa</strong></li> Saindo aos domingos às 22h30, Retornando nas segundas às 11h30. <li><strong>Fretes</strong></li> <li><strong>Encomendas</strong></li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>Pontualidade, conforto e segurança</strong>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583998225416?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99822-5416"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "#viagem #turismo"
+        }
+      ]
+    },
+    {
+      "id": "ag-rottas",
+      "ativo": true,
+      "secao": "basico",
+      "cadastro": "2026-02-04",
+      "comentario": "Início do card AG ROTTAS Cadastro em 04/02/2026",
+      "categorias": [
+        "transportadora"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/ag_rottas.png",
+      "alt": "AG ROTTAS",
+      "nome": "AG ROTTAS",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "a",
+          "html": "<strong>Transportadora</strong>"
+        },
+        {
+          "tipo": "texto",
+          "html": "Mudanças com agilidade, segurança e total cuidado com seus bens."
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583999280614?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99928-0614"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/ag.rottas/",
+          "rotulo": "ag.rottas"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "fernando-marcondes",
+      "ativo": true,
+      "secao": "basico",
+      "comentario": "Início do card Fernando Marcondes",
+      "categorias": [
+        "viagens_fretes_encomendas",
+        "turismo",
+        "taxi"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/fernando.png",
+      "alt": "Alexandro Turismo",
+      "nome": "Fernando Marcondes",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "a",
+          "html": "<strong>Patos &lt;-&gt; Itaporanga</strong>"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Táxi;</li> <li>Viagens;</li> <li>Fretes;</li> <li>Encomendas.</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583998708105?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99870-8105"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "#viagem #turismo"
+        }
+      ]
+    },
+    {
+      "id": "otaku-house",
+      "ativo": true,
+      "secao": "basico",
+      "comentario": "Início do card Otaku House",
+      "categorias": [
+        "loja_animes"
+      ],
+      "cidades": [
+        "itaporanga",
+        "patos"
+      ],
+      "imagem": "imagens_cards/otaku-house.png",
+      "alt": "Loja de Animes",
+      "nome": "Otaku House",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>Aqui você encontra uma diversidade de produtos personalizados com seus animes favoritos.</strong>"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Chaveiros;</li> <li>Camisetas;</li> <li>Bermudas Moletom;</li> <li>Mangás;</li> <li>Copos;</li> <li>Bottons;</li> <li>Actions Figures;</li> <p><strong>... e muito mais.</strong></p>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583996363922?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99636-3922"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/otaku_house22/",
+          "rotulo": "@otaku_house22"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "recuperacao-de-logotipo",
+      "ativo": true,
+      "secao": "basico",
+      "comentario": "Início do card RL",
+      "categorias": [
+        "designer_grafico"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/rl.png",
+      "alt": "RL",
+      "nome": "Recuperação de logotipo",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "a",
+          "html": "Designer gráfico especializado em vetorização de logotipos"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li><strong>Recupere sua identidade:</strong> Refazemos sua logo com precisão caso você tenha perdido os arquivos originais.</li>"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li><strong>Pronta para qualquer aplicação:</strong> Sua marca vetorizada para que possa ser estampada em uniformes ou impressa em alta resolução em banners e fachadas, sem perder a qualidade.</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583998624640?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99862-4640",
+          "classe": "social-link"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        }
+      ]
+    },
+    {
+      "id": "auxiliar-de-servicos-gerais",
+      "ativo": false,
+      "secao": "vagas",
+      "categorias": [
+        "a1_vagas_emprego"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/cont_auxiliar_de_servicos_gerais.png",
+      "alt": "vendedora",
+      "nome": "Auxiliar de serviços gerais",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "html": "<strong>Limpeza e organização</strong>"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "Envie seu currículo ou entregue pessoalmente"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/558334211413?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 3421-1413"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>Panificadora Canaã</strong>"
+        }
+      ]
+    },
+    {
+      "id": "vendedor-a-de-consorcio",
+      "ativo": false,
+      "secao": "vagas",
+      "categorias": [
+        "a1_vagas_emprego"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/cont_vendedor_consorcio.png",
+      "alt": "vendedora",
+      "nome": "Vendedor(a) de consórcio",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<p><strong>Requisitos</strong></p> <li>Boa comunicação</li> <li>Trabalhar em equipe</li> <li>Proativo</li> <li>Experiência com vendas</li> <li>Boa desenvoltura em vídeo.</li>"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "Envie seu currículo para o e-mail"
+        },
+        {
+          "tipo": "social_html",
+          "html": "<a class=\"social-link whatsapp\" target=\"_blank\"> <img alt=\"WhatsApp\" class=\"social-icon\" src=\"/imagens_icons/e-mail.png\"/> <span>akarconsorcio@gmail.com</span> </a>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>Akar Veículos</strong>"
+        }
+      ]
+    },
+    {
+      "id": "vagas-de-emprego-disponiveis",
+      "ativo": false,
+      "secao": "vagas",
+      "categorias": [
+        "a1_vagas_emprego"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/cont_hiper_queiroz_patos.png",
+      "alt": "vendedora",
+      "nome": "Vagas de emprego disponíveis",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Padeiro</li> <li>Vagas PCD</li> <li>Operador de loja</li> <li>Auxiliar de depósito</li> <li>Balconista de açougue</li> <li>Balconista de padaria parcial</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/hiperqueirozoficial/",
+          "rotulo": "hiperqueirozoficial"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>Hiper Queiroz Patos</strong>"
+        }
+      ]
+    },
+    {
+      "id": "vagas-de-emprego-disponiveis-2",
+      "ativo": false,
+      "secao": "vagas",
+      "categorias": [
+        "a1_vagas_emprego"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/cont_queiroz_atacadao_patos.png",
+      "alt": "vendedora",
+      "nome": "Vagas de emprego disponíveis",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Operador de loja</li> <li>Balconista de frios</li> <li>Repositor de hortifruti</li>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "instagram",
+          "url": "https://www.instagram.com/queirozatacadaopatos/",
+          "rotulo": "queirozatacadaopatos"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>Queiroz Atacadão Patos</strong>"
+        }
+      ]
+    },
+    {
+      "id": "contratando-consultor-externo",
+      "ativo": false,
+      "secao": "vagas",
+      "categorias": [
+        "a1_vagas_emprego"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/cont_ancore.jpeg",
+      "alt": "vendedora",
+      "nome": "Contratando consultor externo",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>GANHO ACIMA DA MÉDIA</li> <li>PLANO DE CAREIRA</li> <li>PREMIAÇÕES CONSTANTES</li>"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<p><strong>Localidades disponíveis</strong></p> <li>Patos</li> <li>Texeira</li> <li>Desterro</li> <li>Matureia</li> <li>Juazeirinho</li> <li>Areia de Baraúnas</li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>Entre em contato</strong>"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583996636475?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99663-6475"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>Ancore<br/>Proteção Veicular</strong>"
+        }
+      ]
+    },
+    {
+      "id": "vendedora",
+      "ativo": false,
+      "secao": "vagas",
+      "categorias": [
+        "a1_vagas_emprego"
+      ],
+      "cidades": [
+        "patos"
+      ],
+      "imagem": "imagens_cards/cont_dona_diva_vendedora.png",
+      "alt": "vendedora",
+      "nome": "Vendedora",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<strong>Requisitos</strong> <li>Ensino médio completo</li> <li>Boa Comunicação e simpatia</li> <li>Experiência com nicho de loja de roupas</li> <li>Disponibilidade para trabalhar aos finais de semana</li> <li>Ser dinâmica e focada em metas.</li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>Benefícios</strong><br/>Salário + comissões"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "Envie seu currículo"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583998024575?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99802-4575"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto",
+          "html": "<strong>Dona Diva</strong>"
+        }
+      ]
+    },
+    {
+      "id": "card",
+      "ativo": false,
+      "secao": "vagas",
+      "categorias": [
+        "aa_aluguel_venda_imovel"
+      ],
+      "cidades": [],
+      "nome": "🏠",
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "tag": "a",
+          "html": "Aqui você pode anunciar<br/>o seu imóvel para <strong>aluguel</strong> ou <strong>venda</strong>."
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583996476030?text=Olá!%20Quero%20anunciar%20meu%20imóvel%20para%20aluguel.",
+          "rotulo": "Anunciar"
+        }
+      ]
+    }
+  ]
+}

@@ -1,18 +1,249 @@
 const filter = document.getElementById('categoryFilter');
 const cityFilter = document.getElementById('cityFilter');
 const searchBar = document.getElementById('searchBar');
-const items = document.querySelectorAll('.item');
+const catalog = document.getElementById('catalog');
 const feedback = document.getElementById('feedback');
 const copyCountDisplay = document.getElementById('copyCount');
 const loadMoreBtn = document.getElementById('loadMore');
-let copyCount = 0;
+
+let items = [];
+let copyCount = Number(localStorage.getItem('copyCount')) || 0;
 let visibleLimit = 4;
+let allCategoryOptions = [];
+
+/* =========================
+   ORDENAÇÃO ALFABÉTICA DO FILTRO
+========================= */
+function sortCategoryOptions() {
+    if (!filter) return;
+    const options = Array.from(filter.options);
+    const todasOption = options.find(opt => opt.value === "all");
+    const outras = options.filter(opt => opt.value !== "all");
+
+    outras.sort((a, b) => a.text.localeCompare(b.text, "pt-BR"));
+
+    filter.innerHTML = "";
+    if (todasOption) filter.appendChild(todasOption);
+    outras.forEach(opt => filter.appendChild(opt));
+
+    allCategoryOptions = Array.from(filter.options).map(opt => opt.cloneNode(true));
+}
+
+/* =========================
+   RENDERIZAÇÃO DINÂMICA DOS CARDS (JSON)
+========================= */
+function criarElementoCard(cadastro) {
+    const card = document.createElement('div');
+    card.className = 'item';
+    card.dataset.id = cadastro.id || '';
+    card.dataset.category = (cadastro.categorias || []).join(',');
+    if (cadastro.cidades && cadastro.cidades.length > 0) {
+        card.setAttribute('data-city', cadastro.cidades.join(','));
+    }
+
+    // Imagem principal do card
+    if (cadastro.imagem) {
+        const img = document.createElement('img');
+        img.src = cadastro.imagem.replace(/\\/g, '/');
+        img.alt = cadastro.alt || cadastro.nome || '';
+        img.loading = 'lazy';
+        card.appendChild(img);
+    }
+
+    // Elementos de topo customizados (ex: Fabiana Araújo)
+    if (Array.isArray(cadastro.topo)) {
+        cadastro.topo.forEach(blocoTopo => {
+            const el = document.createElement(blocoTopo.tag || 'div');
+            if (blocoTopo.classe) el.className = blocoTopo.classe;
+            if (blocoTopo.html) el.innerHTML = blocoTopo.html;
+            card.appendChild(el);
+        });
+    }
+
+    // Título (h3)
+    if (cadastro.nome_html || cadastro.nome) {
+        const h3 = document.createElement('h3');
+        if (cadastro.nome_html) {
+            h3.innerHTML = cadastro.nome_html;
+        } else {
+            h3.textContent = cadastro.nome;
+        }
+        card.appendChild(h3);
+    }
+
+    // Ramo / Subtítulo (strong)
+    if (cadastro.ramo) {
+        const strong = document.createElement('strong');
+        strong.innerHTML = cadastro.ramo;
+        card.appendChild(strong);
+    }
+
+    // Conteúdo dinâmico (textos, listas, links, botões)
+    (cadastro.conteudo || []).forEach(bloco => {
+        if (bloco.tipo === 'texto') {
+            if (bloco.tag === 'ul') {
+                const ul = document.createElement('ul');
+                if (bloco.classe) ul.className = bloco.classe;
+                ul.innerHTML = bloco.html || '';
+                card.appendChild(ul);
+            } else if (bloco.tag === 'div') {
+                const div = document.createElement('div');
+                if (bloco.classe) div.className = bloco.classe;
+                div.innerHTML = bloco.html || '';
+                card.appendChild(div);
+            } else if (bloco.tag === 'hr') {
+                const hr = document.createElement('hr');
+                if (bloco.classe) hr.className = bloco.classe;
+                card.appendChild(hr);
+            } else if (bloco.tag === 'a') {
+                const a = document.createElement('a');
+                if (bloco.classe) a.className = bloco.classe;
+                a.innerHTML = bloco.html || '';
+                card.appendChild(a);
+            } else {
+                const p = document.createElement('p');
+                if (bloco.classe) p.className = bloco.classe;
+                p.innerHTML = bloco.html || '';
+                card.appendChild(p);
+            }
+        } else if (bloco.tipo === 'texto_solto') {
+            const spanWrapper = document.createElement('div');
+            spanWrapper.innerHTML = bloco.html || '';
+            while (spanWrapper.firstChild) {
+                card.appendChild(spanWrapper.firstChild);
+            }
+        } else if (bloco.tipo === 'social_html') {
+            const socialDiv = document.createElement('div');
+            socialDiv.className = 'social';
+            socialDiv.innerHTML = bloco.html || '';
+            card.appendChild(socialDiv);
+        } else if (bloco.tipo === 'contato') {
+            const socialDiv = document.createElement('div');
+            socialDiv.className = 'social';
+
+            if (bloco.rede === 'compartilhar') {
+                const btn = document.createElement('button');
+                btn.className = bloco.classe || 'social-link share-card';
+
+                const iconImg = document.createElement('img');
+                iconImg.src = bloco.icone || '/imagens_icons/compartilhar.png';
+                iconImg.alt = bloco.alt || 'Compartilhar';
+                iconImg.className = 'social-icon';
+
+                const span = document.createElement('span');
+                span.textContent = bloco.rotulo || 'Cartão de Visita';
+
+                btn.appendChild(iconImg);
+                btn.appendChild(span);
+
+                // Apenas o botão "Cartão de Visita" dispara a geração de imagem
+                if ((bloco.rotulo || 'Cartão de Visita').toLowerCase().includes('cartão')) {
+                    btn.addEventListener('click', async (e) => {
+                        e.preventDefault();
+                        const dados = extrairDadosParaCartao(cadastro, card);
+                        await gerarECompartilhar(dados);
+                    });
+                }
+
+                socialDiv.appendChild(btn);
+            } else {
+                const a = document.createElement('a');
+                a.href = bloco.url || '#';
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+
+                if (bloco.classe) {
+                    a.className = bloco.classe;
+                } else if (bloco.rede === 'instagram') {
+                    a.className = 'social-link instagram';
+                } else if (bloco.rede === 'whatsapp') {
+                    a.className = 'social-link whatsapp';
+                } else {
+                    a.className = 'social-link';
+                }
+
+                let defaultIcon = '/imagens_icons/logo_pdf.png';
+                let defaultAlt = bloco.rotulo || 'Link';
+                if (bloco.rede === 'instagram') {
+                    defaultIcon = '/imagens_icons/instagram.png';
+                    defaultAlt = 'Instagram';
+                } else if (bloco.rede === 'whatsapp') {
+                    defaultIcon = '/imagens_icons/whatsapp.png';
+                    defaultAlt = 'WhatsApp';
+                }
+
+                const iconImg = document.createElement('img');
+                iconImg.src = bloco.icone || defaultIcon;
+                iconImg.alt = bloco.alt || defaultAlt;
+                iconImg.className = 'social-icon';
+
+                const span = document.createElement('span');
+                span.textContent = bloco.rotulo || '';
+
+                a.appendChild(iconImg);
+                a.appendChild(span);
+                socialDiv.appendChild(a);
+            }
+
+            card.appendChild(socialDiv);
+        }
+    });
+
+    return card;
+}
+
+function extrairDadosParaCartao(cadastro, cardElement) {
+    const instaItem = (cadastro.conteudo || []).find(c => c.tipo === 'contato' && c.rede === 'instagram');
+    const whatsItem = (cadastro.conteudo || []).find(c => c.tipo === 'contato' && c.rede === 'whatsapp');
+
+    let nome = cadastro.nome || cardElement.querySelector('h3')?.innerText || 'Patos Serviços';
+    if (nome === 'Nossos Diferenciais:' && Array.isArray(cadastro.topo)) {
+        const h2Topo = cadastro.topo.find(t => t.tag === 'h2');
+        if (h2Topo) nome = h2Topo.html.replace(/<[^>]*>/g, '');
+    }
+
+    return {
+        nome: nome,
+        ramo: cadastro.ramo || cardElement.querySelector('strong')?.innerText || '',
+        insta: instaItem?.rotulo || cardElement.querySelector('a[href*="instagram"] span')?.innerText || 'patosservicos_pb',
+        whats: whatsItem?.rotulo || cardElement.querySelector('a[href*="wa.me"] span')?.innerText || '(83) 00000-0000',
+        foto: (cadastro.imagem || cardElement.querySelector('img')?.src || '').replace(/\\/g, '/')
+    };
+}
+
+async function carregarCadastros() {
+    try {
+        const response = await fetch('cadastros.json');
+        if (!response.ok) {
+            throw new Error(`Erro HTTP ao carregar cadastros.json: ${response.status}`);
+        }
+        const data = await response.json();
+        const ativos = (data.cadastros || []).filter(item => item.ativo !== false);
+
+        if (catalog) {
+            catalog.innerHTML = '';
+            ativos.forEach(cadastro => {
+                const cardEl = criarElementoCard(cadastro);
+                catalog.appendChild(cardEl);
+            });
+        }
+
+        items = Array.from(document.querySelectorAll('.item'));
+        updateCategoriesByCity();
+        filterItems();
+    } catch (error) {
+        console.error('Erro ao carregar cadastros.json:', error);
+        if (feedback) {
+            feedback.textContent = 'Erro ao carregar os serviços. Tente recarregar a página.';
+        }
+    }
+}
 
 /* =========================
    ANIMAÇÃO DOS CARDS
 ========================= */
 function animateVisibleItems() {
-    const visibleItems = Array.from(items).filter(
+    const visibleItems = items.filter(
         item => !item.classList.contains('hidden') && item.style.display !== 'none'
     );
 
@@ -28,28 +259,24 @@ function animateVisibleItems() {
    PAGINAÇÃO (EXIBIR MAIS)
 ========================= */
 function applyVisibilityLimit() {
-    const category = filter.value;
-    const selectedCity = cityFilter.value;
-    const searchText = searchBar.value;
+    const category = filter ? filter.value : 'all';
+    const selectedCity = cityFilter ? cityFilter.value : 'all';
+    const searchText = searchBar ? searchBar.value : '';
 
     const isFiltered = category !== 'all' || selectedCity !== 'all' || searchText !== '';
-
-    // Itens que passaram pelo filtro (sem classe hidden)
-    const matchingItems = Array.from(items).filter(item => !item.classList.contains('hidden'));
+    const matchingItems = items.filter(item => !item.classList.contains('hidden'));
 
     if (isFiltered) {
-        // Filtro ativo: exibe todos os correspondentes, oculta botão
         matchingItems.forEach(item => {
             item.style.display = 'block';
         });
         if (loadMoreBtn) loadMoreBtn.classList.add('hidden-btn');
     } else {
-        // Tela inicial: aplica limite de visibilidade
         visibleLimit = Math.max(visibleLimit, 4);
         matchingItems.forEach((item, index) => {
             item.style.display = index < visibleLimit ? 'block' : 'none';
         });
-        // Mostra ou oculta o botão "Exibir mais"
+
         if (loadMoreBtn) {
             if (matchingItems.length > visibleLimit) {
                 loadMoreBtn.classList.remove('hidden-btn');
@@ -73,12 +300,12 @@ if (loadMoreBtn) {
    FEEDBACK
 ========================= */
 function updateFeedback() {
-    const visibleItems = Array.from(items).filter(
+    if (!feedback) return;
+    const visibleItems = items.filter(
         item => !item.classList.contains('hidden')
     );
 
-    // Se estiver na categoria "Todas", não mostra quantidade
-    if (filter.value === "all") {
+    if (filter && filter.value === "all" && (!cityFilter || cityFilter.value === "all") && (!searchBar || searchBar.value === "")) {
         feedback.textContent = "Exibindo todos os serviços";
         return;
     }
@@ -87,48 +314,27 @@ function updateFeedback() {
 }
 
 /* =========================
-   FEEDBACK EXIBIR TODOS OS ITENS
-
-function updateFeedback() {
-    const visibleItems = Array.from(items).filter(
-        item => !item.classList.contains('hidden')
-    );
-    feedback.textContent = `Exibindo ${visibleItems.length} ${visibleItems.length === 1 ? 'item' : 'itens'}`;
-}
-========================= */
-
-/* =========================
-   FILTRO E BUSCA (CORRIGIDO)
+   FILTRO E BUSCA (SUPORTE A MÚLTIPLAS CIDADES)
 ========================= */
 function filterItems() {
-    const category = filter.value;
-    const selectedCity = cityFilter.value;
-    const searchText = searchBar.value.toLowerCase();
+    const category = filter ? filter.value : 'all';
+    const selectedCity = cityFilter ? cityFilter.value : 'all';
+    const searchText = searchBar ? searchBar.value.toLowerCase() : '';
 
     items.forEach(item => {
-        // 1. Obtém as categorias do dataset (convertendo para array)
-        const itemCategories = item.dataset.category ? item.dataset.category.split(',') : [];
-        
-        // 2. Obtém a cidade ou define como "all" se não existir
-        const itemCity = item.getAttribute('data-city') || "all";
-        
-        // 3. Obtém todo o texto do card para a busca
+        const itemCategories = item.dataset.category
+            ? item.dataset.category.split(',').map(c => c.trim())
+            : [];
+
+        const rawCity = item.getAttribute('data-city') || "all";
+        const itemCities = rawCity.split(',').map(c => c.trim());
+
         const searchableText = item.innerText.toLowerCase();
 
-        // Lógica de Comparação
         const matchesCategory = category === "all" || itemCategories.includes(category);
-        const matchesCity = selectedCity === 'all' || itemCity === selectedCity;
-        const matchesSearch = searchableText.includes(searchText); // Corrigido de itemText para searchableText
+        const matchesCity = selectedCity === 'all' || itemCities.includes(selectedCity);
+        const matchesSearch = searchableText.includes(searchText);
 
-        // Ocultar banner ao selecionar filtro
-        const banner = document.querySelector('.banner'); // Ou o nome da sua classe
-        if (filter.value !== "all" || cityFilter.value !== "all" || searchBar.value !== "") {
-            banner.style.display = "none"; // Esconde o banner ao filtrar
-        } else {
-            banner.style.display = "block"; // Mostra o banner na tela inicial "Limpa"
-        }
-
-        // Aplica o filtro visual
         if (matchesCategory && matchesCity && matchesSearch) {
             item.classList.remove("hidden");
             item.style.display = "block";
@@ -138,8 +344,16 @@ function filterItems() {
         }
     });
 
-    // Restaura o limite ao voltar para o estado padrão
-    if (filter.value === "all" && cityFilter.value === "all" && searchBar.value === "") {
+    const banner = document.querySelector('.banner');
+    if (banner) {
+        if (category !== "all" || selectedCity !== "all" || searchText !== "") {
+            banner.style.display = "none";
+        } else {
+            banner.style.display = "block";
+        }
+    }
+
+    if (category === "all" && selectedCity === "all" && searchText === "") {
         visibleLimit = 4;
     }
 
@@ -147,25 +361,29 @@ function filterItems() {
     applyVisibilityLimit();
 }
 
-filter.addEventListener('change', filterItems);
-cityFilter.addEventListener('change', () => {
-    updateCategoriesByCity();
-    filterItems();
-});
-searchBar.addEventListener('input', filterItems);
-
-
+if (filter) filter.addEventListener('change', filterItems);
+if (cityFilter) {
+    cityFilter.addEventListener('change', () => {
+        updateCategoriesByCity();
+        filterItems();
+    });
+}
+if (searchBar) searchBar.addEventListener('input', filterItems);
 
 /* ==============================================
    ATUALIZAR FILTRO DE CATEGORIA POR CIDADE
 ============================================== */
 function updateCategoriesByCity() {
+    if (!filter || !cityFilter) return;
     const selectedCity = cityFilter.value;
+    const currentCategory = filter.value;
     let availableCategories = new Set();
 
     items.forEach(item => {
-        const itemCity = item.getAttribute('data-city') || "all";
-        if (selectedCity === "all" || itemCity === selectedCity) {
+        const rawCity = item.getAttribute('data-city') || "all";
+        const itemCities = rawCity.split(',').map(c => c.trim());
+
+        if (selectedCity === "all" || itemCities.includes(selectedCity)) {
             const itemCategories = item.dataset.category
                 ? item.dataset.category.split(',')
                 : [];
@@ -179,52 +397,14 @@ function updateCategoriesByCity() {
             filter.appendChild(opt.cloneNode(true));
         }
     });
+
+    // Mantém a categoria selecionada se ela ainda existir na cidade escolhida
+    if (Array.from(filter.options).some(opt => opt.value === currentCategory)) {
+        filter.value = currentCategory;
+    } else {
+        filter.value = "all";
+    }
 }
-
-const allCategoryOptions = Array.from(filter.options);
-updateCategoriesByCity();
-
-
-/* =========================
-   CATEGORIAS
-========================= */
-// Opções de categoria carregadas diretamente do HTML
-
-/* =========================
-    ORDENAÇÃO ALFABÉTICA DO FILTRO
-========================= */
-document.addEventListener("DOMContentLoaded", function () {
-    const select = document.getElementById("categoryFilter");
-
-    if (!select) return;
-
-    const options = Array.from(select.options);
-
-    // Pega a opção "Todas"
-    const todasOption = options.find(opt => opt.value === "all");
-
-    // Filtra o restante
-    const outras = options.filter(opt => opt.value !== "all");
-
-    // Ordena pelo TEXTO (não pelo value)
-    outras.sort((a, b) => a.text.localeCompare(b.text, "pt-BR"));
-
-    // Limpa tudo
-    select.innerHTML = "";
-
-    // Adiciona "Todas" no topo
-    if (todasOption) select.add(todasOption);
-
-    // Adiciona as outras ordenadas
-    outras.forEach(opt => select.add(opt));
-});
-
-
-/* =========================
-   INICIALIZAÇÃO
-========================= */
-updateFeedback();
-applyVisibilityLimit();
 
 /* =========================
    TRACK DE CLIQUES
@@ -250,29 +430,21 @@ document.addEventListener("click", async (event) => {
     }
 });
 
-
-
 /* =========================
    VISITAS NO SITE
 ========================= */
-
-document.addEventListener('DOMContentLoaded', function() {
-    registrarAcesso();
-});
-
 async function registrarAcesso() {
     try {
         await fetch('https://patosservicos.vercel.app/api/save-access', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ site: 'Ita' })
+            body: JSON.stringify({ site: 'Patos' })
         });
         console.log("Visita registrada com sucesso!");
     } catch (error) {
         console.error("Erro ao salvar visita:", error);
     }
 }
-
 
 /* =========================
    TRACK DE CÓPIA
@@ -282,11 +454,13 @@ document.addEventListener("copy", async () => {
 
     if (selection.includes("wa.me") || selection.includes("instagram.com")) {
         copyCount++;
-        copyCountDisplay.textContent = `Links copiados: ${copyCount}`;
+        if (copyCountDisplay) {
+            copyCountDisplay.textContent = `Links copiados: ${copyCount}`;
+        }
         localStorage.setItem('copyCount', copyCount);
 
         try {
-            await fetch("/api/track-click", {
+            await fetch("https://patosservicos.vercel.app/api/track-click", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -306,52 +480,42 @@ document.addEventListener("copy", async () => {
 /* =========================
    INSTALAR APPS
 ========================= */
-
 let deferredPrompt = null;
 
 window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
+    e.preventDefault();
+    deferredPrompt = e;
 
-  const installFloat = document.querySelector(".install-float");
-  if (installFloat) {
-    installFloat.style.display = "block";
-  }
+    const installFloat = document.querySelector(".install-float");
+    if (installFloat) {
+        installFloat.style.display = "block";
+    }
 });
 
 const installBtn = document.getElementById("installApp");
 
 if (installBtn) {
-  installBtn.addEventListener("click", async () => {
-    if (!deferredPrompt) return;
+    installBtn.addEventListener("click", async () => {
+        if (!deferredPrompt) return;
 
-    deferredPrompt.prompt();
-    const choiceResult = await deferredPrompt.userChoice;
+        deferredPrompt.prompt();
+        const choiceResult = await deferredPrompt.userChoice;
 
-    if (choiceResult.outcome === "accepted") {
-      console.log("App instalado");
-    }
+        if (choiceResult.outcome === "accepted") {
+            console.log("App instalado");
+        }
 
-    deferredPrompt = null;
-    document.querySelector(".install-float").style.display = "none";
-  });
+        deferredPrompt = null;
+        const installFloat = document.querySelector(".install-float");
+        if (installFloat) installFloat.style.display = "none";
+    });
 }
 
-
-/* =========================
-   FUNÇÃO NOVA COMPARTILHAR
-========================= */
-
-
-
 /* ==================================
-   GERAÇÃO E COMPARTILHAMENTO DE CARD
-   ================================== */
-
+   GERAÇÃO E COMPARTILHAMENTO DE CARD
+================================== */
 async function obterImagemBase64(url) {
     try {
-        // Para arquivos locais no Android (file://), o fetch pode falhar. 
-        // Se falhar, ele cai no catch e tenta usar a URL original.
         const response = await fetch(url, { mode: 'cors' });
         if (!response.ok) throw new Error('Falha no download');
         const blob = await response.blob();
@@ -380,9 +544,8 @@ async function gerarECompartilhar(dados) {
     const imgFoto = document.getElementById('master-foto');
     const imgBg = document.getElementById('master-bg');
 
-    // FeedBack visual rápido
     const btnAtivo = document.activeElement;
-    if(btnAtivo) btnAtivo.style.opacity = "0.5";
+    if (btnAtivo) btnAtivo.style.opacity = "0.5";
 
     document.getElementById('master-nome').innerText = dados.nome;
     document.getElementById('master-ramo').innerText = dados.ramo;
@@ -390,7 +553,7 @@ async function gerarECompartilhar(dados) {
     document.getElementById('master-whats').innerText = dados.whats;
 
     const [bgData, fotoData] = await Promise.all([
-        obterImagemBase64('imagens/background-patos.png'),
+        obterImagemBase64('imagens_icons/background-patos.png'),
         obterImagemBase64(dados.foto)
     ]);
 
@@ -402,18 +565,18 @@ async function gerarECompartilhar(dados) {
     try {
         const canvas = await html2canvas(template, {
             useCORS: true,
-            allowTaint: false, // Mudei para false para garantir a segurança do Blob
+            allowTaint: false,
             scale: 2,
             backgroundColor: null
         });
 
         const dataUrl = canvas.toDataURL("image/png");
-        const fileName = `${dados.nome.toLowerCase().replace(/\s/g, '-')}.png`;
+        const fileName = `${dados.nome.toLowerCase().replace(/\s+/g, '-')}.png`;
 
         const isWebShareSupported = navigator.share && navigator.canShare;
         const isAndroid = /Android/i.test(navigator.userAgent);
 
-        // 📱 1. TENTA COMPARTILHAR (MELHOR OPÇÃO PARA WHATSAPP)
+        // 1. TENTA COMPARTILHAR (MOBILE / WHATSAPP)
         if (isWebShareSupported) {
             try {
                 const response = await fetch(dataUrl);
@@ -426,7 +589,7 @@ async function gerarECompartilhar(dados) {
                         title: 'Patos Serviços',
                         text: `🚀 Confira ${dados.nome} e outros empreendimentos no Patos Serviços!\nAcesse: https://patosservicos.vercel.app`
                     });
-                    if(btnAtivo) btnAtivo.style.opacity = "1";
+                    if (btnAtivo) btnAtivo.style.opacity = "1";
                     return;
                 }
             } catch (e) {
@@ -434,7 +597,7 @@ async function gerarECompartilhar(dados) {
             }
         }
 
-        // 🤖 2. FALLBACK PARA ANDROID/APK (MODAL DE PREVIEW)
+        // 2. FALLBACK PARA ANDROID/APK (MODAL DE PREVIEW)
         if (isAndroid) {
             let modal = document.getElementById('preview-share');
             if (!modal) {
@@ -455,40 +618,24 @@ async function gerarECompartilhar(dados) {
 
             document.getElementById('fecharPreview').onclick = () => {
                 modal.remove();
-                if(btnAtivo) btnAtivo.style.opacity = "1";
+                if (btnAtivo) btnAtivo.style.opacity = "1";
             };
             return;
         }
 
-        // 💻 3. PC (DOWNLOAD DIRETO)
+        // 3. PC (DOWNLOAD DIRETO)
         const link = document.createElement('a');
         link.href = dataUrl;
         link.download = fileName;
         link.click();
-        if(btnAtivo) btnAtivo.style.opacity = "1";
+        if (btnAtivo) btnAtivo.style.opacity = "1";
 
     } catch (err) {
         console.error("❌ Erro:", err);
         alert("Erro ao gerar imagem.");
-        if(btnAtivo) btnAtivo.style.opacity = "1";
+        if (btnAtivo) btnAtivo.style.opacity = "1";
     }
 }
-
-// BOTÕES
-document.querySelectorAll('.share-card').forEach(button => {
-    button.onclick = async (e) => {
-        e.preventDefault();
-        const item = button.closest('.item');
-        const dados = {
-            nome: item.querySelector('h3')?.innerText || "Patos Serviços",
-            ramo: item.querySelector('strong')?.innerText || "",
-            insta: item.querySelector('a[href*="instagram"] span')?.innerText || "patosservicos_pb",
-            whats: item.querySelector('a[href*="wa.me"] span')?.innerText || "(83) 00000-0000",
-            foto: item.querySelector('img')?.src
-        };
-        await gerarECompartilhar(dados);
-    };
-});
 
 /* =========================
    BANNER ROTATIVO ALEATÓRIO
@@ -497,14 +644,10 @@ function initBanner() {
     const slides = document.querySelectorAll('.slide');
     if (slides.length === 0) return;
 
-    // 1. Escolhe um índice aleatório entre 0 e o total de banners
     const randomIndex = Math.floor(Math.random() * slides.length);
     let currentSlide = randomIndex;
 
-    // 2. Remove a classe 'active' de todos (limpeza inicial)
     slides.forEach(slide => slide.classList.remove('active'));
-
-    // 3. Ativa o banner sorteado
     slides[currentSlide].classList.add('active');
 
     function nextSlide() {
@@ -513,9 +656,15 @@ function initBanner() {
         slides[currentSlide].classList.add('active');
     }
 
-    // Mantém a rotação a cada 4 segundos
     setInterval(nextSlide, 4000);
 }
 
-// Inicializa quando o DOM estiver pronto
-document.addEventListener('DOMContentLoaded', initBanner);
+/* =========================
+   INICIALIZAÇÃO GERAL
+========================= */
+document.addEventListener('DOMContentLoaded', () => {
+    sortCategoryOptions();
+    initBanner();
+    registrarAcesso();
+    carregarCadastros();
+});
