@@ -1,5 +1,5 @@
 ________________________________________________
-ATUALIZAR O REPOSITÓRIO NA NÚVEM
+ATUALIZAR O REPOSITÓRIO NO GITHUB
 
 git add .
 git commit -m "Modificação no repositório"
