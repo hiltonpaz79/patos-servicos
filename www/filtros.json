@@ -1,0 +1,695 @@
+{
+  "versao": 1,
+  "cidades": [
+    {
+      "valor": "patos",
+      "nome": "Patos"
+    },
+    {
+      "valor": "itaporanga",
+      "nome": "Itaporanga"
+    },
+    {
+      "valor": "pombal",
+      "nome": "Pombal"
+    },
+    {
+      "valor": "conceicao",
+      "nome": "Conceição"
+    },
+    {
+      "valor": "pedra_branca",
+      "nome": "Pedra Branca"
+    }
+  ],
+  "categorias": [
+    {
+      "valor": "a1_vagas_emprego",
+      "nome": "# Vagas de Emprego"
+    },
+    {
+      "valor": "acupuntura",
+      "nome": "Acupuntura"
+    },
+    {
+      "valor": "advocacia",
+      "nome": "Advocacia"
+    },
+    {
+      "valor": "agronomia",
+      "nome": "Agronomia"
+    },
+    {
+      "valor": "agencia_marketing_digital_publicidade",
+      "nome": "Agência de Marketing Digital e Publicidade"
+    },
+    {
+      "valor": "a2_aluguel_venda_imovel",
+      "nome": "Aluguel e Venda de Imóvel"
+    },
+    {
+      "valor": "ar_condicionado",
+      "nome": "Ar-condicionado"
+    },
+    {
+      "valor": "arquitetura",
+      "nome": "Arquitetura"
+    },
+    {
+      "valor": "artes_marciais",
+      "nome": "Artes Marciais"
+    },
+    {
+      "valor": "artesanato",
+      "nome": "Artesanato"
+    },
+    {
+      "valor": "artigos_femininos",
+      "nome": "Artigos Femininos"
+    },
+    {
+      "valor": "assessorias_cursos",
+      "nome": "Assessorias e Cursos"
+    },
+    {
+      "valor": "assistencia_tecnica",
+      "nome": "Assistência Técnica"
+    },
+    {
+      "valor": "assistencia_celular",
+      "nome": "Assistência Técnica de Celulares"
+    },
+    {
+      "valor": "autoescola",
+      "nome": "Autoescola"
+    },
+    {
+      "valor": "auxiliar_cozinha",
+      "nome": "Auxiliar de Cozinha"
+    },
+    {
+      "valor": "auxiliar_servicos",
+      "nome": "Auxiliar de Serviços Gerais"
+    },
+    {
+      "valor": "azulejista",
+      "nome": "Azulejista"
+    },
+    {
+      "valor": "acaiteria",
+      "nome": "Açaiteria"
+    },
+    {
+      "valor": "barbearia",
+      "nome": "Barbearia"
+    },
+    {
+      "valor": "bolos",
+      "nome": "Bolos"
+    },
+    {
+      "valor": "borracharia",
+      "nome": "Borracharia"
+    },
+    {
+      "valor": "brinquedos",
+      "nome": "Brinquedos"
+    },
+    {
+      "valor": "cabeleireiro",
+      "nome": "Cabeleireiro"
+    },
+    {
+      "valor": "cafeteria",
+      "nome": "Cafeteria"
+    },
+    {
+      "valor": "calcados",
+      "nome": "Calçados"
+    },
+    {
+      "valor": "cama_mesa_banho",
+      "nome": "Cama, Mesa e Banho"
+    },
+    {
+      "valor": "carvao_vegetal",
+      "nome": "Carvão Vegetal"
+    },
+    {
+      "valor": "cerimonialista",
+      "nome": "Cerimonialista"
+    },
+    {
+      "valor": "churrascaria",
+      "nome": "Churrascaria"
+    },
+    {
+      "valor": "churros",
+      "nome": "Churros"
+    },
+    {
+      "valor": "chacara",
+      "nome": "Chácara"
+    },
+    {
+      "valor": "climatizacao",
+      "nome": "Climatização"
+    },
+    {
+      "valor": "climatizacao_automotiva",
+      "nome": "Climatização Automotiva"
+    },
+    {
+      "valor": "confeccao_fardamentos",
+      "nome": "Confecção de Fardamentos"
+    },
+    {
+      "valor": "conserto_eletronicos",
+      "nome": "Conserto de Eletrônicos"
+    },
+    {
+      "valor": "construtora",
+      "nome": "Construtora Reboque Consultoria Ambiental Consultoria de Beleza Conveniência de Bebidas Cosméticos Costureira Crochê Cursinho Decorações de Festas Delivery de Comida Design de Sobrancelhas Designer Gráfico Doceria Doces Educação Escola Elétrica Automotiva Artesanato Eletricista Encanador Energia Solar Entrega de Leite Equipadora Automotiva Evento Fisioterapia Gás Gesso Gráfica Hamburgueria Higienização de Estofados Estofamentos Automotivos Home Care Informática Jardinagem Joias e Acessórios Lanches Locadora de Veículos Loja de Animes Loja de Veículos Madeireira Manicure Marcenaria Marketing Digital Marmitas Caseiras Materiais Esportivos Mercadinho Microcrédito Mobilidade Urbana Moda Fitness Montador de Móveis Motocicletas Móveis Planejados Oficina de Motos Pedicure Pedreiro Perfumaria Personal Shopper Personal Trainer Personalizados Pintor Pintura e Artes Pizzaria Podagem Porcelananto Pré-Moldados Projetos Elétricos Proteção Veicular Revestimentos e forros Reforço Escolar Restaurante Roupas e Vestuário Roupas Infantis Sacolé Gourmet Salão de Beleza Salgados Segurança e Tecnologia Sopa Sorveteria Táxi Técnico em Enfermagem Temperos e Ervas Terapeuta Ocupacional Topografia Transportadora Turismo Viagens, Fretes e Encomendas Vidraçaria Workshop Serviços Automotivos Arquitetura Serviço de Limpeza Limpeza de caixa d'água Nutricionista Auxiliar de Serviços Gerais Cerimonialista Auxiliar de Cozinha Marmoaria Restaurante Chinês Contabilidade Engenheiro Civil Cabeleireiro Fisioterapia Paisagismo Cuidadora Hospitalar Diarista Notícia Publicidade Acupuntura Maquiagem Depilação Feminina Mudanças Manutenção em motores de portão Manutenção em alumínio e vidros"
+    },
+    {
+      "valor": "const_civil",
+      "nome": "Construção Civil"
+    },
+    {
+      "valor": "consultoria_ambiental",
+      "nome": "Consultoria Ambiental"
+    },
+    {
+      "valor": "consultoria_beleza",
+      "nome": "Consultoria de Beleza"
+    },
+    {
+      "valor": "cons_empresarial",
+      "nome": "Consultoria Empresarial"
+    },
+    {
+      "valor": "consorcio",
+      "nome": "Consórcio"
+    },
+    {
+      "valor": "contabilidade",
+      "nome": "Contabilidade"
+    },
+    {
+      "valor": "conveniencia_bebidas",
+      "nome": "Conveniência de Bebidas"
+    },
+    {
+      "valor": "cosmeticos",
+      "nome": "Cosméticos"
+    },
+    {
+      "valor": "costureira",
+      "nome": "Costureira"
+    },
+    {
+      "valor": "croche",
+      "nome": "Crochê"
+    },
+    {
+      "valor": "credito_pessoal",
+      "nome": "Crédito Pessoal"
+    },
+    {
+      "valor": "cuidadora_hospitalar",
+      "nome": "Cuidadora Hospitalar"
+    },
+    {
+      "valor": "cursinho",
+      "nome": "Cursinho"
+    },
+    {
+      "valor": "cameras_seguranca",
+      "nome": "Câmeras de Segurança"
+    },
+    {
+      "valor": "decoracoes_festas",
+      "nome": "Decorações de Festas"
+    },
+    {
+      "valor": "delivery_comida",
+      "nome": "Delivery de Comida"
+    },
+    {
+      "valor": "depilacao_feminina",
+      "nome": "Depilação Feminina"
+    },
+    {
+      "valor": "desconto_energia",
+      "nome": "Desconto em Energia Elétrica"
+    },
+    {
+      "valor": "design",
+      "nome": "Design"
+    },
+    {
+      "valor": "design_sobrancelhas",
+      "nome": "Design de Sobrancelhas"
+    },
+    {
+      "valor": "designer_grafico",
+      "nome": "Designer Gráfico"
+    },
+    {
+      "valor": "diarista",
+      "nome": "Diarista"
+    },
+    {
+      "valor": "doceria",
+      "nome": "Doceria"
+    },
+    {
+      "valor": "doces",
+      "nome": "Doces"
+    },
+    {
+      "valor": "educacao",
+      "nome": "Educação"
+    },
+    {
+      "valor": "eletricista",
+      "nome": "Eletricista"
+    },
+    {
+      "valor": "eletrica_automotiva",
+      "nome": "Elétrica Automotiva"
+    },
+    {
+      "valor": "encanador",
+      "nome": "Encanador"
+    },
+    {
+      "valor": "energia_solar",
+      "nome": "Energia Solar"
+    },
+    {
+      "valor": "eng_civil",
+      "nome": "Engenheiro Civil"
+    },
+    {
+      "valor": "entrega_leite",
+      "nome": "Entrega de Leite"
+    },
+    {
+      "valor": "equipadora_automotiva",
+      "nome": "Equipadora Automotiva"
+    },
+    {
+      "valor": "escola",
+      "nome": "Escola"
+    },
+    {
+      "valor": "estofamentos_automotivos",
+      "nome": "Estofamentos Automotivos"
+    },
+    {
+      "valor": "evento",
+      "nome": "Evento"
+    },
+    {
+      "valor": "farmacia",
+      "nome": "Farmácia"
+    },
+    {
+      "valor": "fisioterapia",
+      "nome": "Fisioterapia"
+    },
+    {
+      "valor": "gesso",
+      "nome": "Gesso"
+    },
+    {
+      "valor": "grafica",
+      "nome": "Gráfica"
+    },
+    {
+      "valor": "gas",
+      "nome": "Gás"
+    },
+    {
+      "valor": "hamburgueria",
+      "nome": "Hamburgueria"
+    },
+    {
+      "valor": "higienizacao_estofados",
+      "nome": "Higienização de Estofados"
+    },
+    {
+      "valor": "home_care",
+      "nome": "Home Care"
+    },
+    {
+      "valor": "iluminacao_profissional",
+      "nome": "Iluminação Profissional"
+    },
+    {
+      "valor": "informatica",
+      "nome": "Informática"
+    },
+    {
+      "valor": "jardinagem",
+      "nome": "Jardinagem"
+    },
+    {
+      "valor": "joias_acessorios",
+      "nome": "Joias e Acessórios"
+    },
+    {
+      "valor": "lanches",
+      "nome": "Lanches"
+    },
+    {
+      "valor": "limpeza_caixa_d_agua",
+      "nome": "Limpeza de caixa d'água"
+    },
+    {
+      "valor": "locadora_veiculos",
+      "nome": "Locadora de Veículos"
+    },
+    {
+      "valor": "loja_animes",
+      "nome": "Loja de Animes"
+    },
+    {
+      "valor": "loja_veiculos",
+      "nome": "Loja de Veículos"
+    },
+    {
+      "valor": "madeireira",
+      "nome": "Madeireira"
+    },
+    {
+      "valor": "manicure",
+      "nome": "Manicure"
+    },
+    {
+      "valor": "manutencao_aluminio_vidros",
+      "nome": "Manutenção em alumínio e vidros"
+    },
+    {
+      "valor": "manutencao_motores_portao",
+      "nome": "Manutenção em motores de portão"
+    },
+    {
+      "valor": "maquiagem",
+      "nome": "Maquiagem"
+    },
+    {
+      "valor": "marcenaria",
+      "nome": "Marcenaria"
+    },
+    {
+      "valor": "marketing_digital",
+      "nome": "Marketing Digital"
+    },
+    {
+      "valor": "marmitas_caseiras",
+      "nome": "Marmitas Caseiras"
+    },
+    {
+      "valor": "marmoaria",
+      "nome": "Marmoaria"
+    },
+    {
+      "valor": "meteriais_esportivos",
+      "nome": "Materiais Esportivos"
+    },
+    {
+      "valor": "mercadinho",
+      "nome": "Mercadinho"
+    },
+    {
+      "valor": "microcredito",
+      "nome": "Microcrédito"
+    },
+    {
+      "valor": "mobilidade_urbana",
+      "nome": "Mobilidade Urbana"
+    },
+    {
+      "valor": "moda_fitness",
+      "nome": "Moda Fitness"
+    },
+    {
+      "valor": "montador_moveis",
+      "nome": "Montador de Móveis"
+    },
+    {
+      "valor": "motocicleta",
+      "nome": "Motocicletas"
+    },
+    {
+      "valor": "mudancas",
+      "nome": "Mudanças"
+    },
+    {
+      "valor": "med_veterinario",
+      "nome": "Médico Veterinário"
+    },
+    {
+      "valor": "moveis_planejados",
+      "nome": "Móveis Planejados"
+    },
+    {
+      "valor": "noticia",
+      "nome": "Notícia"
+    },
+    {
+      "valor": "nutricionista",
+      "nome": "Nutricionista"
+    },
+    {
+      "valor": "oficina_motos",
+      "nome": "Oficina de Motos"
+    },
+    {
+      "valor": "paisagismo",
+      "nome": "Paisagismo"
+    },
+    {
+      "valor": "pedicure",
+      "nome": "Pedicure"
+    },
+    {
+      "valor": "pedreiro",
+      "nome": "Pedreiro"
+    },
+    {
+      "valor": "perfumaria",
+      "nome": "Perfumaria"
+    },
+    {
+      "valor": "personal_shopper",
+      "nome": "Personal Shopper"
+    },
+    {
+      "valor": "personal_trainer",
+      "nome": "Personal Trainer"
+    },
+    {
+      "valor": "personalizados",
+      "nome": "Personalizados"
+    },
+    {
+      "valor": "pescados",
+      "nome": "Pescados"
+    },
+    {
+      "valor": "pintor",
+      "nome": "Pintor"
+    },
+    {
+      "valor": "pintura_artes",
+      "nome": "Pintura e Artes"
+    },
+    {
+      "valor": "pizzaria",
+      "nome": "Pizzaria"
+    },
+    {
+      "valor": "playgrounds",
+      "nome": "Playgrounds"
+    },
+    {
+      "valor": "podagem",
+      "nome": "Podagem"
+    },
+    {
+      "valor": "porcelananto",
+      "nome": "Porcelananto"
+    },
+    {
+      "valor": "pousada",
+      "nome": "Pousada"
+    },
+    {
+      "valor": "produtos_orientais",
+      "nome": "Produtos Orientais"
+    },
+    {
+      "valor": "producoes_eventos",
+      "nome": "Produções e Eventos"
+    },
+    {
+      "valor": "projetos_eletricos",
+      "nome": "Projetos Elétricos"
+    },
+    {
+      "valor": "protecao_veicular",
+      "nome": "Proteção Veicular"
+    },
+    {
+      "valor": "pre_moldados",
+      "nome": "Pré-Moldados"
+    },
+    {
+      "valor": "publicidade",
+      "nome": "Publicidade"
+    },
+    {
+      "valor": "radiadores_intercooler",
+      "nome": "Radiadores e Intercooler"
+    },
+    {
+      "valor": "reboque",
+      "nome": "Reboque"
+    },
+    {
+      "valor": "reforco_escolar",
+      "nome": "Reforço Escolar"
+    },
+    {
+      "valor": "refrigeracao",
+      "nome": "Refrigeração"
+    },
+    {
+      "valor": "removedor_aranha",
+      "nome": "Removedor de Teia de Aranha"
+    },
+    {
+      "valor": "restaurante",
+      "nome": "Restaurante"
+    },
+    {
+      "valor": "restaurante_chines",
+      "nome": "Restaurante Chinês"
+    },
+    {
+      "valor": "revestimentos_forros",
+      "nome": "Revestimentos e forros"
+    },
+    {
+      "valor": "roupas_vestuario",
+      "nome": "Roupas e Vestuário"
+    },
+    {
+      "valor": "roupas_infantis",
+      "nome": "Roupas Infantis"
+    },
+    {
+      "valor": "sacole_gourmet",
+      "nome": "Sacolé Gourmet"
+    },
+    {
+      "valor": "salgados",
+      "nome": "Salgados"
+    },
+    {
+      "valor": "salao_beleza",
+      "nome": "Salão de Beleza"
+    },
+    {
+      "valor": "seguranca_tecnologia",
+      "nome": "Segurança e Tecnologia"
+    },
+    {
+      "valor": "seguros",
+      "nome": "Seguros"
+    },
+    {
+      "valor": "serralheria",
+      "nome": "Serralheria"
+    },
+    {
+      "valor": "servico_limpeza",
+      "nome": "Serviço de Limpeza"
+    },
+    {
+      "valor": "servicos_automotivos",
+      "nome": "Serviços Automotivos"
+    },
+    {
+      "valor": "serv_bancarios",
+      "nome": "Serviços Bancários"
+    },
+    {
+      "valor": "soldagem",
+      "nome": "Soldagem"
+    },
+    {
+      "valor": "sopa",
+      "nome": "Sopa"
+    },
+    {
+      "valor": "sorveteria",
+      "nome": "Sorveteria"
+    },
+    {
+      "valor": "tapestes_personalizados",
+      "nome": "Tapestes Personalizados"
+    },
+    {
+      "valor": "temperos_ervas",
+      "nome": "Temperos e Ervas"
+    },
+    {
+      "valor": "terapeuta_ocupacional",
+      "nome": "Terapeuta Ocupacional"
+    },
+    {
+      "valor": "topografia",
+      "nome": "Topografia"
+    },
+    {
+      "valor": "transportadora",
+      "nome": "Transportadora"
+    },
+    {
+      "valor": "turismo",
+      "nome": "Turismo"
+    },
+    {
+      "valor": "taxi",
+      "nome": "Táxi"
+    },
+    {
+      "valor": "tec_enfermagem",
+      "nome": "Técnico em Enfermagem"
+    },
+    {
+      "valor": "vet_home",
+      "nome": "Vet Home"
+    },
+    {
+      "valor": "viagens_fretes_encomendas",
+      "nome": "Viagens, Fretes e Encomendas"
+    },
+    {
+      "valor": "vidracaria",
+      "nome": "Vidraçaria"
+    },
+    {
+      "valor": "workshop",
+      "nome": "Workshop"
+    },
+    {
+      "valor": "agua_mineral",
+      "nome": "Água Mineral"
+    }
+  ]
+}

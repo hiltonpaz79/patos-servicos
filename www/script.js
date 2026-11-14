@@ -1,519 +1,327 @@
-const filter = document.getElementById('categoryFilter');
-const cityFilter = document.getElementById('cityFilter');
-const searchBar = document.getElementById('searchBar');
-const catalog = document.getElementById('catalog');
-const feedback = document.getElementById('feedback');
-const copyCountDisplay = document.getElementById('copyCount');
-const loadMoreBtn = document.getElementById('loadMore');
-
-let items = [];
-let copyCount = Number(localStorage.getItem('copyCount')) || 0;
-let visibleLimit = 4;
-let allCategoryOptions = [];
-
-/* =========================
-   ORDENAÇÃO ALFABÉTICA DO FILTRO
-========================= */
-function sortCategoryOptions() {
-    if (!filter) return;
-    const options = Array.from(filter.options);
-    const todasOption = options.find(opt => opt.value === "all");
-    const outras = options.filter(opt => opt.value !== "all");
-
-    outras.sort((a, b) => a.text.localeCompare(b.text, "pt-BR"));
-
-    filter.innerHTML = "";
-    if (todasOption) filter.appendChild(todasOption);
-    outras.forEach(opt => filter.appendChild(opt));
-
-    allCategoryOptions = Array.from(filter.options).map(opt => opt.cloneNode(true));
-}
+/* =====================================================================
+   PATOS SERVIÇOS — script.js
+   1. Configuração
+   2. Carregamento (cadastros.json e filtros.json) e renderização dos cards
+   3. Filtros, busca e paginação
+   4. Rastreamento (cliques, cópias e visitas)
+   5. Cartão de visita (compartilhar)
+   6. Banner rotativo
+   7. Instalar app
+   8. Inicialização
+===================================================================== */
 
 /* =========================
-   RENDERIZAÇÃO DINÂMICA DOS CARDS (JSON)
+   1. CONFIGURAÇÃO
 ========================= */
-function criarElementoCard(cadastro) {
-    const card = document.createElement('div');
-    card.className = 'item';
-    card.dataset.id = cadastro.id || '';
-    card.dataset.category = (cadastro.categorias || []).join(',');
-    if (cadastro.cidades && cadastro.cidades.length > 0) {
-        card.setAttribute('data-city', cadastro.cidades.join(','));
-    }
+const CONFIG = {
+    cadastrosUrl: 'cadastros.json',
+    filtrosUrl: 'filtros.json',   // lista de cidades e categorias dos filtros
+    apiBase: 'https://patosservicos.vercel.app', // base da API (track-click / save-access)
+    siteId: 'Ita',
+    itensPorPagina: 4
+};
 
-    // Imagem principal do card
-    if (cadastro.imagem) {
-        const img = document.createElement('img');
-        img.src = cadastro.imagem.replace(/\\/g, '/');
-        img.alt = cadastro.alt || cadastro.nome || '';
-        img.loading = 'lazy';
-        card.appendChild(img);
-    }
+// Modelos de contato: no JSON basta informar "rede", "url" e "rotulo".
+// Qualquer campo informado no próprio contato sobrescreve o modelo.
+const REDES = {
+    instagram:    { classe: 'social-link instagram',   icone: '/imagens_icons/instagram.png',    alt: 'Instagram' },
+    whatsapp:     { classe: 'social-link whatsapp',    icone: '/imagens_icons/whatsapp.png',     alt: 'WhatsApp' },
+    compartilhar: { classe: 'social-link share-card',  icone: '/imagens_icons/compartilhar.png', botao: true },
+    link:         { classe: 'social-link' }
+};
 
-    // Elementos de topo customizados (ex: Fabiana Araújo)
-    if (Array.isArray(cadastro.topo)) {
-        cadastro.topo.forEach(blocoTopo => {
-            const el = document.createElement(blocoTopo.tag || 'div');
-            if (blocoTopo.classe) el.className = blocoTopo.classe;
-            if (blocoTopo.html) el.innerHTML = blocoTopo.html;
-            card.appendChild(el);
-        });
-    }
+const $ = (id) => document.getElementById(id);
+const filtroCategoria = $('categoryFilter');
+const filtroCidade    = $('cityFilter');
+const campoBusca      = $('searchBar');
+const feedback        = $('feedback');
+const catalogo        = $('catalog');
+const btnExibirMais   = $('loadMore');
+const contadorCopias  = $('copyCount');
 
-    // Título (h3)
-    if (cadastro.nome_html || cadastro.nome) {
-        const h3 = document.createElement('h3');
-        if (cadastro.nome_html) {
-            h3.innerHTML = cadastro.nome_html;
-        } else {
-            h3.textContent = cadastro.nome;
-        }
-        card.appendChild(h3);
-    }
+let cards = [];                       // [{ dados, el, busca }]
+let limiteVisivel = CONFIG.itensPorPagina;
+let copyCount = 0;
+let opcoesCategoria = [];             // <option> originais, já em ordem alfabética
 
-    // Ramo / Subtítulo (strong)
-    if (cadastro.ramo) {
-        const strong = document.createElement('strong');
-        strong.innerHTML = cadastro.ramo;
-        card.appendChild(strong);
-    }
+const normalizar = (s) => (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
-    // Conteúdo dinâmico (textos, listas, links, botões)
-    (cadastro.conteudo || []).forEach(bloco => {
-        if (bloco.tipo === 'texto') {
-            if (bloco.tag === 'ul') {
-                const ul = document.createElement('ul');
-                if (bloco.classe) ul.className = bloco.classe;
-                ul.innerHTML = bloco.html || '';
-                card.appendChild(ul);
-            } else if (bloco.tag === 'div') {
-                const div = document.createElement('div');
-                if (bloco.classe) div.className = bloco.classe;
-                div.innerHTML = bloco.html || '';
-                card.appendChild(div);
-            } else if (bloco.tag === 'hr') {
-                const hr = document.createElement('hr');
-                if (bloco.classe) hr.className = bloco.classe;
-                card.appendChild(hr);
-            } else if (bloco.tag === 'a') {
-                const a = document.createElement('a');
-                if (bloco.classe) a.className = bloco.classe;
-                a.innerHTML = bloco.html || '';
-                card.appendChild(a);
-            } else {
-                const p = document.createElement('p');
-                if (bloco.classe) p.className = bloco.classe;
-                p.innerHTML = bloco.html || '';
-                card.appendChild(p);
-            }
-        } else if (bloco.tipo === 'texto_solto') {
-            const spanWrapper = document.createElement('div');
-            spanWrapper.innerHTML = bloco.html || '';
-            while (spanWrapper.firstChild) {
-                card.appendChild(spanWrapper.firstChild);
-            }
-        } else if (bloco.tipo === 'social_html') {
-            const socialDiv = document.createElement('div');
-            socialDiv.className = 'social';
-            socialDiv.innerHTML = bloco.html || '';
-            card.appendChild(socialDiv);
-        } else if (bloco.tipo === 'contato') {
-            const socialDiv = document.createElement('div');
-            socialDiv.className = 'social';
-
-            if (bloco.rede === 'compartilhar') {
-                const btn = document.createElement('button');
-                btn.className = bloco.classe || 'social-link share-card';
-
-                const iconImg = document.createElement('img');
-                iconImg.src = bloco.icone || '/imagens_icons/compartilhar.png';
-                iconImg.alt = bloco.alt || 'Compartilhar';
-                iconImg.className = 'social-icon';
-
-                const span = document.createElement('span');
-                span.textContent = bloco.rotulo || 'Cartão de Visita';
-
-                btn.appendChild(iconImg);
-                btn.appendChild(span);
-
-                // Apenas o botão "Cartão de Visita" dispara a geração de imagem
-                if ((bloco.rotulo || 'Cartão de Visita').toLowerCase().includes('cartão')) {
-                    btn.addEventListener('click', async (e) => {
-                        e.preventDefault();
-                        const dados = extrairDadosParaCartao(cadastro, card);
-                        await gerarECompartilhar(dados);
-                    });
-                }
-
-                socialDiv.appendChild(btn);
-            } else {
-                const a = document.createElement('a');
-                a.href = bloco.url || '#';
-                a.target = '_blank';
-                a.rel = 'noopener noreferrer';
-
-                if (bloco.classe) {
-                    a.className = bloco.classe;
-                } else if (bloco.rede === 'instagram') {
-                    a.className = 'social-link instagram';
-                } else if (bloco.rede === 'whatsapp') {
-                    a.className = 'social-link whatsapp';
-                } else {
-                    a.className = 'social-link';
-                }
-
-                let defaultIcon = '/imagens_icons/logo_pdf.png';
-                let defaultAlt = bloco.rotulo || 'Link';
-                if (bloco.rede === 'instagram') {
-                    defaultIcon = '/imagens_icons/instagram.png';
-                    defaultAlt = 'Instagram';
-                } else if (bloco.rede === 'whatsapp') {
-                    defaultIcon = '/imagens_icons/whatsapp.png';
-                    defaultAlt = 'WhatsApp';
-                }
-
-                const iconImg = document.createElement('img');
-                iconImg.src = bloco.icone || defaultIcon;
-                iconImg.alt = bloco.alt || defaultAlt;
-                iconImg.className = 'social-icon';
-
-                const span = document.createElement('span');
-                span.textContent = bloco.rotulo || '';
-
-                a.appendChild(iconImg);
-                a.appendChild(span);
-                socialDiv.appendChild(a);
-            }
-
-            card.appendChild(socialDiv);
-        }
-    });
-
-    return card;
+/* =========================
+   2. CARREGAR E RENDERIZAR
+========================= */
+async function carregarJson(url) {
+    const resp = await fetch(url, { cache: 'no-cache' });
+    if (!resp.ok) throw new Error(`${url}: HTTP ${resp.status}`);
+    return resp.json();
 }
 
-function extrairDadosParaCartao(cadastro, cardElement) {
-    const instaItem = (cadastro.conteudo || []).find(c => c.tipo === 'contato' && c.rede === 'instagram');
-    const whatsItem = (cadastro.conteudo || []).find(c => c.tipo === 'contato' && c.rede === 'whatsapp');
-
-    let nome = cadastro.nome || cardElement.querySelector('h3')?.innerText || 'Patos Serviços';
-    if (nome === 'Nossos Diferenciais:' && Array.isArray(cadastro.topo)) {
-        const h2Topo = cadastro.topo.find(t => t.tag === 'h2');
-        if (h2Topo) nome = h2Topo.html.replace(/<[^>]*>/g, '');
-    }
-
+async function carregarDados() {
+    const [cad, filtros] = await Promise.all([
+        carregarJson(CONFIG.cadastrosUrl),
+        carregarJson(CONFIG.filtrosUrl)
+    ]);
     return {
-        nome: nome,
-        ramo: cadastro.ramo || cardElement.querySelector('strong')?.innerText || '',
-        insta: instaItem?.rotulo || cardElement.querySelector('a[href*="instagram"] span')?.innerText || 'patosservicos_pb',
-        whats: whatsItem?.rotulo || cardElement.querySelector('a[href*="wa.me"] span')?.innerText || '(83) 00000-0000',
-        foto: (cadastro.imagem || cardElement.querySelector('img')?.src || '').replace(/\\/g, '/')
+        cadastros: (cad.cadastros || []).filter(c => c.ativo !== false),
+        cidades: filtros.cidades || [],
+        categorias: filtros.categorias || []
     };
 }
 
-async function carregarCadastros() {
-    try {
-        const response = await fetch('cadastros.json');
-        if (!response.ok) {
-            throw new Error(`Erro HTTP ao carregar cadastros.json: ${response.status}`);
-        }
-        const data = await response.json();
-        const ativos = (data.cadastros || []).filter(item => item.ativo !== false);
+// Acrescenta as opções do JSON ao <select> (a opção "Todas..." já está no HTML)
+function preencherSelect(select, lista) {
+    const frag = document.createDocumentFragment();
+    lista.forEach(item => {
+        const o = document.createElement('option');
+        o.value = item.valor;
+        o.textContent = item.nome;
+        frag.appendChild(o);
+    });
+    select.appendChild(frag);
+}
 
-        if (catalog) {
-            catalog.innerHTML = '';
-            ativos.forEach(cadastro => {
-                const cardEl = criarElementoCard(cadastro);
-                catalog.appendChild(cardEl);
-            });
-        }
+function criar(tag, classe) {
+    const n = document.createElement(tag);
+    if (classe) n.className = classe;
+    return n;
+}
 
-        items = Array.from(document.querySelectorAll('.item'));
-        updateCategoriesByCity();
-        filterItems();
-    } catch (error) {
-        console.error('Erro ao carregar cadastros.json:', error);
-        if (feedback) {
-            feedback.textContent = 'Erro ao carregar os serviços. Tente recarregar a página.';
-        }
+function criarBloco(e) {
+    if (e.tipo === 'texto_solto') {
+        const t = document.createElement('template');
+        t.innerHTML = e.html;
+        return t.content;
     }
+    const n = criar(e.tag || 'p', e.classe);
+    if (e.html != null) n.innerHTML = e.html;
+    return n;
+}
+
+function criarContato(c) {
+    const p = { ...REDES[c.rede || 'link'], ...c };
+    const wrap = criar('div', 'social');
+
+    if (c.tipo === 'social_html') { wrap.innerHTML = c.html; return wrap; }
+
+    const raiz = criar(p.botao ? 'button' : 'a', p.classe);
+    if (!p.botao) {
+        raiz.setAttribute('href', p.url);
+        raiz.setAttribute('target', p.target ?? '_blank');
+    }
+    if (p.icone) {
+        const img = criar('img', 'social-icon');
+        img.setAttribute('src', p.icone);
+        if (p.alt != null) img.setAttribute('alt', p.alt);
+        raiz.appendChild(img);
+    }
+    const span = document.createElement('span');
+    span.textContent = p.rotulo;
+    raiz.appendChild(span);
+    wrap.appendChild(raiz);
+    return wrap;
+}
+
+function criarCard(d) {
+    const card = criar('div', 'item');
+    card.dataset.category = d.categorias.join(',');
+    card.dataset.city = d.cidades.join(',');
+    card.dataset.id = d.id;
+
+    if (d.imagem) {
+        const img = document.createElement('img');
+        img.setAttribute('src', d.imagem);
+        img.setAttribute('alt', d.alt || d.nome);
+        img.loading = 'lazy';          // só baixa a imagem quando o card aparece
+        img.decoding = 'async';
+        card.appendChild(img);
+    }
+    (d.topo || []).forEach(e => card.appendChild(criarBloco(e)));
+
+    const h3 = document.createElement('h3');
+    if (d.nome_html) h3.innerHTML = d.nome_html; else h3.textContent = d.nome;
+    card.appendChild(h3);
+
+    if (d.ramo) {
+        const s = document.createElement('strong');
+        s.innerHTML = d.ramo;
+        card.appendChild(s);
+    }
+    (d.conteudo || []).forEach(e => {
+        const ehContato = e.tipo === 'contato' || e.tipo === 'social_html';
+        card.appendChild(ehContato ? criarContato(e) : criarBloco(e));
+    });
+    return card;
+}
+
+function renderizarCards(lista) {
+    const frag = document.createDocumentFragment();
+    cards = lista.map(dados => {
+        const el = criarCard(dados);
+        frag.appendChild(el);
+        return { dados, el, busca: normalizar(el.textContent) };
+    });
+    catalogo.replaceChildren(frag);
 }
 
 /* =========================
-   ANIMAÇÃO DOS CARDS
+   3. FILTROS, BUSCA, PAGINAÇÃO
 ========================= */
-function animateVisibleItems() {
-    const visibleItems = items.filter(
-        item => !item.classList.contains('hidden') && item.style.display !== 'none'
-    );
+let timersAnimacao = [];
 
-    visibleItems.forEach((item, index) => {
-        item.classList.remove('show');
-        setTimeout(() => {
-            item.classList.add('show');
-        }, index * 80);
+function animarVisiveis(visiveis) {
+    timersAnimacao.forEach(clearTimeout);
+    timersAnimacao = [];
+    cards.forEach(c => c.el.classList.remove('show'));
+    visiveis.forEach((c, i) => {
+        timersAnimacao.push(setTimeout(() => c.el.classList.add('show'), Math.min(i, 8) * 80));
     });
 }
 
-/* =========================
-   PAGINAÇÃO (EXIBIR MAIS)
-========================= */
-function applyVisibilityLimit() {
-    const category = filter ? filter.value : 'all';
-    const selectedCity = cityFilter ? cityFilter.value : 'all';
-    const searchText = searchBar ? searchBar.value : '';
+function aplicarFiltros() {
+    const categoria = filtroCategoria.value;
+    const cidade    = filtroCidade.value;
+    const texto     = normalizar(campoBusca.value).trim();
+    const filtrando = categoria !== 'all' || cidade !== 'all' || texto !== '';
 
-    const isFiltered = category !== 'all' || selectedCity !== 'all' || searchText !== '';
-    const matchingItems = items.filter(item => !item.classList.contains('hidden'));
-
-    if (isFiltered) {
-        matchingItems.forEach(item => {
-            item.style.display = 'block';
-        });
-        if (loadMoreBtn) loadMoreBtn.classList.add('hidden-btn');
-    } else {
-        visibleLimit = Math.max(visibleLimit, 4);
-        matchingItems.forEach((item, index) => {
-            item.style.display = index < visibleLimit ? 'block' : 'none';
-        });
-
-        if (loadMoreBtn) {
-            if (matchingItems.length > visibleLimit) {
-                loadMoreBtn.classList.remove('hidden-btn');
-            } else {
-                loadMoreBtn.classList.add('hidden-btn');
-            }
-        }
-    }
-
-    animateVisibleItems();
-}
-
-if (loadMoreBtn) {
-    loadMoreBtn.addEventListener('click', () => {
-        visibleLimit += 4;
-        applyVisibilityLimit();
-    });
-}
-
-/* =========================
-   FEEDBACK
-========================= */
-function updateFeedback() {
-    if (!feedback) return;
-    const visibleItems = items.filter(
-        item => !item.classList.contains('hidden')
-    );
-
-    if (filter && filter.value === "all" && (!cityFilter || cityFilter.value === "all") && (!searchBar || searchBar.value === "")) {
-        feedback.textContent = "Exibindo todos os serviços";
-        return;
-    }
-
-    feedback.textContent = `Exibindo ${visibleItems.length} ${visibleItems.length === 1 ? 'item' : 'itens'}`;
-}
-
-/* =========================
-   FILTRO E BUSCA (SUPORTE A MÚLTIPLAS CIDADES)
-========================= */
-function filterItems() {
-    const category = filter ? filter.value : 'all';
-    const selectedCity = cityFilter ? cityFilter.value : 'all';
-    const searchText = searchBar ? searchBar.value.toLowerCase() : '';
-
-    items.forEach(item => {
-        const itemCategories = item.dataset.category
-            ? item.dataset.category.split(',').map(c => c.trim())
-            : [];
-
-        const rawCity = item.getAttribute('data-city') || "all";
-        const itemCities = rawCity.split(',').map(c => c.trim());
-
-        const searchableText = item.innerText.toLowerCase();
-
-        const matchesCategory = category === "all" || itemCategories.includes(category);
-        const matchesCity = selectedCity === 'all' || itemCities.includes(selectedCity);
-        const matchesSearch = searchableText.includes(searchText);
-
-        if (matchesCategory && matchesCity && matchesSearch) {
-            item.classList.remove("hidden");
-            item.style.display = "block";
-        } else {
-            item.classList.add("hidden");
-            item.style.display = "none";
-        }
-    });
-
+    // banner só aparece na tela inicial "limpa"
     const banner = document.querySelector('.banner');
-    if (banner) {
-        if (category !== "all" || selectedCity !== "all" || searchText !== "") {
-            banner.style.display = "none";
-        } else {
-            banner.style.display = "block";
-        }
+    if (banner) banner.style.display = filtrando ? 'none' : 'block';
+
+    if (!filtrando) limiteVisivel = Math.max(limiteVisivel, CONFIG.itensPorPagina);
+
+    const correspondentes = cards.filter(c =>
+        (categoria === 'all' || c.dados.categorias.includes(categoria)) &&
+        (cidade === 'all'    || c.dados.cidades.includes(cidade)) &&
+        c.busca.includes(texto)
+    );
+    const conjunto = new Set(correspondentes);
+    const exibidos = filtrando ? correspondentes : correspondentes.slice(0, limiteVisivel);
+    const exibSet = new Set(exibidos);
+
+    cards.forEach(c => {
+        c.el.classList.toggle('hidden', !conjunto.has(c));
+        c.el.style.display = exibSet.has(c) ? 'block' : 'none';
+    });
+
+    if (btnExibirMais) {
+        btnExibirMais.classList.toggle('hidden-btn', filtrando || correspondentes.length <= limiteVisivel);
     }
 
-    if (category === "all" && selectedCity === "all" && searchText === "") {
-        visibleLimit = 4;
-    }
+    const n = correspondentes.length;
+    feedback.textContent = categoria === 'all'
+        ? 'Exibindo todos os serviços'
+        : `Exibindo ${n} ${n === 1 ? 'item' : 'itens'}`;
 
-    updateFeedback();
-    applyVisibilityLimit();
+    animarVisiveis(exibidos);
 }
 
-if (filter) filter.addEventListener('change', filterItems);
-if (cityFilter) {
-    cityFilter.addEventListener('change', () => {
-        updateCategoriesByCity();
-        filterItems();
+function atualizarCategoriasPorCidade() {
+    const cidade = filtroCidade.value;
+    const disponiveis = new Set();
+    cards.forEach(c => {
+        if (cidade === 'all' || c.dados.cidades.includes(cidade)) {
+            c.dados.categorias.forEach(cat => disponiveis.add(cat));
+        }
     });
+    const atual = filtroCategoria.value;
+    filtroCategoria.replaceChildren(
+        ...opcoesCategoria
+            .filter(o => o.value === 'all' || disponiveis.has(o.value))
+            .map(o => o.cloneNode(true))
+    );
+    if ([...filtroCategoria.options].some(o => o.value === atual)) filtroCategoria.value = atual;
 }
-if (searchBar) searchBar.addEventListener('input', filterItems);
 
-/* ==============================================
-   ATUALIZAR FILTRO DE CATEGORIA POR CIDADE
-============================================== */
-function updateCategoriesByCity() {
-    if (!filter || !cityFilter) return;
-    const selectedCity = cityFilter.value;
-    const currentCategory = filter.value;
-    let availableCategories = new Set();
+function prepararOpcoesCategoria() {
+    const todas = Array.from(filtroCategoria.options);
+    const primeira = todas.find(o => o.value === 'all');
+    const outras = todas.filter(o => o.value !== 'all')
+        .sort((a, b) => a.text.localeCompare(b.text, 'pt-BR'));
+    opcoesCategoria = primeira ? [primeira, ...outras] : outras;
+}
 
-    items.forEach(item => {
-        const rawCity = item.getAttribute('data-city') || "all";
-        const itemCities = rawCity.split(',').map(c => c.trim());
+function iniciarFiltros() {
+    prepararOpcoesCategoria();
+    atualizarCategoriasPorCidade();
 
-        if (selectedCity === "all" || itemCities.includes(selectedCity)) {
-            const itemCategories = item.dataset.category
-                ? item.dataset.category.split(',')
-                : [];
-            itemCategories.forEach(cat => availableCategories.add(cat.trim()));
-        }
+    filtroCategoria.addEventListener('change', () => { limiteVisivel = CONFIG.itensPorPagina; aplicarFiltros(); });
+    filtroCidade.addEventListener('change', () => {
+        atualizarCategoriasPorCidade();
+        limiteVisivel = CONFIG.itensPorPagina;
+        aplicarFiltros();
     });
-
-    filter.innerHTML = "";
-    allCategoryOptions.forEach(opt => {
-        if (opt.value === "all" || availableCategories.has(opt.value)) {
-            filter.appendChild(opt.cloneNode(true));
-        }
+    let t;
+    campoBusca.addEventListener('input', () => {
+        clearTimeout(t);
+        t = setTimeout(() => { limiteVisivel = CONFIG.itensPorPagina; aplicarFiltros(); }, 150);
     });
-
-    // Mantém a categoria selecionada se ela ainda existir na cidade escolhida
-    if (Array.from(filter.options).some(opt => opt.value === currentCategory)) {
-        filter.value = currentCategory;
-    } else {
-        filter.value = "all";
+    if (btnExibirMais) {
+        btnExibirMais.addEventListener('click', () => {
+            limiteVisivel += CONFIG.itensPorPagina;
+            aplicarFiltros();
+        });
     }
 }
 
 /* =========================
-   TRACK DE CLIQUES
+   4. RASTREAMENTO
 ========================= */
-document.addEventListener("click", async (event) => {
-    const link = event.target.closest('a[href*="wa.me"], a[href*="instagram.com"]');
-    if (!link) return;
+function enviarApi(rota, corpo) {
+    return fetch(`${CONFIG.apiBase}/api/${rota}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(corpo),
+        keepalive: true
+    });
+}
 
-    try {
-        await fetch("https://patosservicos.vercel.app/api/track-click", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
+function iniciarRastreamento() {
+    // Cliques em WhatsApp / Instagram
+    document.addEventListener('click', async (event) => {
+        const link = event.target.closest('a[href*="wa.me"], a[href*="instagram.com"]');
+        if (!link) return;
+        try {
+            await enviarApi('track-click', {
                 link: link.href,
                 x: event.clientX,
                 y: event.clientY,
                 element: event.target.tagName,
-                action: "click"
-            })
-        });
-    } catch (error) {
-        console.error("Erro ao registrar clique:", error);
-    }
-});
-
-/* =========================
-   VISITAS NO SITE
-========================= */
-async function registrarAcesso() {
-    try {
-        await fetch('https://patosservicos.vercel.app/api/save-access', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ site: 'Patos' })
-        });
-        console.log("Visita registrada com sucesso!");
-    } catch (error) {
-        console.error("Erro ao salvar visita:", error);
-    }
-}
-
-/* =========================
-   TRACK DE CÓPIA
-========================= */
-document.addEventListener("copy", async () => {
-    const selection = document.getSelection().toString().trim();
-
-    if (selection.includes("wa.me") || selection.includes("instagram.com")) {
-        copyCount++;
-        if (copyCountDisplay) {
-            copyCountDisplay.textContent = `Links copiados: ${copyCount}`;
-        }
-        localStorage.setItem('copyCount', copyCount);
-
-        try {
-            await fetch("https://patosservicos.vercel.app/api/track-click", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    link: selection,
-                    x: null,
-                    y: null,
-                    element: "copy",
-                    action: "copied"
-                })
+                action: 'click'
             });
         } catch (error) {
-            console.error("Erro ao registrar cópia:", error);
+            console.error('Erro ao registrar clique:', error);
         }
-    }
-});
+    });
 
-/* =========================
-   INSTALAR APPS
-========================= */
-let deferredPrompt = null;
+    // Cópia de links
+    document.addEventListener('copy', async () => {
+        const selecao = document.getSelection().toString().trim();
+        if (!selecao.includes('wa.me') && !selecao.includes('instagram.com')) return;
 
-window.addEventListener("beforeinstallprompt", (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
+        copyCount++;
+        if (contadorCopias) contadorCopias.textContent = `Links copiados: ${copyCount}`;
+        try { localStorage.setItem('copyCount', copyCount); } catch (_) {}
 
-    const installFloat = document.querySelector(".install-float");
-    if (installFloat) {
-        installFloat.style.display = "block";
-    }
-});
-
-const installBtn = document.getElementById("installApp");
-
-if (installBtn) {
-    installBtn.addEventListener("click", async () => {
-        if (!deferredPrompt) return;
-
-        deferredPrompt.prompt();
-        const choiceResult = await deferredPrompt.userChoice;
-
-        if (choiceResult.outcome === "accepted") {
-            console.log("App instalado");
+        try {
+            await enviarApi('track-click', { link: selecao, x: null, y: null, element: 'copy', action: 'copied' });
+        } catch (error) {
+            console.error('Erro ao registrar cópia:', error);
         }
-
-        deferredPrompt = null;
-        const installFloat = document.querySelector(".install-float");
-        if (installFloat) installFloat.style.display = "none";
     });
 }
 
-/* ==================================
-   GERAÇÃO E COMPARTILHAMENTO DE CARD
-================================== */
+async function registrarAcesso() {
+    try {
+        const r = await enviarApi('save-access', { site: CONFIG.siteId });
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        console.log('Visita registrada com sucesso!');
+    } catch (error) {
+        console.error('Erro ao salvar visita:', error);
+    }
+}
+
+/* =========================
+   5. CARTÃO DE VISITA
+========================= */
 async function obterImagemBase64(url) {
     try {
         const response = await fetch(url, { mode: 'cors' });
@@ -526,7 +334,7 @@ async function obterImagemBase64(url) {
             reader.readAsDataURL(blob);
         });
     } catch (e) {
-        console.warn("⚠️ Base64 falhou, usando URL original:", url);
+        console.warn('⚠️ Base64 falhou, usando URL original:', url);
         return url;
     }
 }
@@ -540,20 +348,20 @@ function esperarImagem(img) {
 }
 
 async function gerarECompartilhar(dados) {
-    const template = document.getElementById('share-master-template');
-    const imgFoto = document.getElementById('master-foto');
-    const imgBg = document.getElementById('master-bg');
+    const template = $('share-master-template');
+    const imgFoto = $('master-foto');
+    const imgBg = $('master-bg');
 
     const btnAtivo = document.activeElement;
-    if (btnAtivo) btnAtivo.style.opacity = "0.5";
+    if (btnAtivo) btnAtivo.style.opacity = '0.5';
 
-    document.getElementById('master-nome').innerText = dados.nome;
-    document.getElementById('master-ramo').innerText = dados.ramo;
-    document.getElementById('master-insta').innerText = dados.insta;
-    document.getElementById('master-whats').innerText = dados.whats;
+    $('master-nome').innerText = dados.nome;
+    $('master-ramo').innerText = dados.ramo;
+    $('master-insta').innerText = dados.insta;
+    $('master-whats').innerText = dados.whats;
 
     const [bgData, fotoData] = await Promise.all([
-        obterImagemBase64('imagens_icons/background-patos.png'),
+        obterImagemBase64('imagens/background-patos.png'),
         obterImagemBase64(dados.foto)
     ]);
 
@@ -563,108 +371,157 @@ async function gerarECompartilhar(dados) {
     await Promise.all([esperarImagem(imgBg), esperarImagem(imgFoto)]);
 
     try {
-        const canvas = await html2canvas(template, {
-            useCORS: true,
-            allowTaint: false,
-            scale: 2,
-            backgroundColor: null
-        });
-
-        const dataUrl = canvas.toDataURL("image/png");
-        const fileName = `${dados.nome.toLowerCase().replace(/\s+/g, '-')}.png`;
+        const canvas = await html2canvas(template, { useCORS: true, allowTaint: false, scale: 2, backgroundColor: null });
+        const dataUrl = canvas.toDataURL('image/png');
+        const fileName = `${dados.nome.toLowerCase().replace(/\s/g, '-')}.png`;
 
         const isWebShareSupported = navigator.share && navigator.canShare;
         const isAndroid = /Android/i.test(navigator.userAgent);
 
-        // 1. TENTA COMPARTILHAR (MOBILE / WHATSAPP)
+        // 1. Compartilhar (melhor opção para WhatsApp)
         if (isWebShareSupported) {
             try {
-                const response = await fetch(dataUrl);
-                const blob = await response.blob();
+                const blob = await (await fetch(dataUrl)).blob();
                 const file = new File([blob], fileName, { type: 'image/png' });
-
                 if (navigator.canShare({ files: [file] })) {
                     await navigator.share({
                         files: [file],
                         title: 'Patos Serviços',
                         text: `🚀 Confira ${dados.nome} e outros empreendimentos no Patos Serviços!\nAcesse: https://patosservicos.vercel.app`
                     });
-                    if (btnAtivo) btnAtivo.style.opacity = "1";
+                    if (btnAtivo) btnAtivo.style.opacity = '1';
                     return;
                 }
             } catch (e) {
-                console.warn("⚠️ Share falhou");
+                console.warn('⚠️ Share falhou');
             }
         }
 
-        // 2. FALLBACK PARA ANDROID/APK (MODAL DE PREVIEW)
+        // 2. Fallback Android/APK (modal de pré-visualização)
         if (isAndroid) {
-            let modal = document.getElementById('preview-share');
+            let modal = $('preview-share');
             if (!modal) {
                 modal = document.createElement('div');
                 modal.id = 'preview-share';
-                modal.style = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:9999; padding:20px;";
+                modal.style = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:9999; padding:20px;';
                 document.body.appendChild(modal);
             }
-
             modal.innerHTML = `
                 <p style="color:#fff; margin-bottom:15px; font-family:Montserrat;text-align: center;">
-                    Este cartão de visita pode ser baixado ou compartilhado no site: 
+                    Este cartão de visita pode ser baixado ou compartilhado no site:
                     <a href="https://patosservicos.vercel.app" style="color:#fff; text-decoration: underline;">https://patosservicos.vercel.app</a>
                 </p>
-
                 <img src="${dataUrl}" style="width:100%; max-width:400px; border: 2px solid #fff;">
                 <button id="fecharPreview" style="margin-top:20px; padding:15px 30px; background:#fff; border:none; border-radius:5px; font-weight:bold;">FECHAR</button>`;
-
-            document.getElementById('fecharPreview').onclick = () => {
+            $('fecharPreview').onclick = () => {
                 modal.remove();
-                if (btnAtivo) btnAtivo.style.opacity = "1";
+                if (btnAtivo) btnAtivo.style.opacity = '1';
             };
             return;
         }
 
-        // 3. PC (DOWNLOAD DIRETO)
+        // 3. PC (download direto)
         const link = document.createElement('a');
         link.href = dataUrl;
         link.download = fileName;
         link.click();
-        if (btnAtivo) btnAtivo.style.opacity = "1";
+        if (btnAtivo) btnAtivo.style.opacity = '1';
 
     } catch (err) {
-        console.error("❌ Erro:", err);
-        alert("Erro ao gerar imagem.");
-        if (btnAtivo) btnAtivo.style.opacity = "1";
+        console.error('❌ Erro:', err);
+        alert('Erro ao gerar imagem.');
+        if (btnAtivo) btnAtivo.style.opacity = '1';
     }
 }
 
+function iniciarCompartilhar() {
+    // Delegação de evento: funciona para cards criados dinamicamente
+    catalogo.addEventListener('click', async (e) => {
+        const botao = e.target.closest('.share-card');
+        if (!botao) return;
+        e.preventDefault();
+        const item = botao.closest('.item');
+        await gerarECompartilhar({
+            nome: item.querySelector('h3')?.innerText || 'Patos Serviços',
+            ramo: item.querySelector('strong')?.innerText || '',
+            insta: item.querySelector('a[href*="instagram"] span')?.innerText || 'patosservicos_pb',
+            whats: item.querySelector('a[href*="wa.me"] span')?.innerText || '(83) 00000-0000',
+            foto: item.querySelector('img')?.src
+        });
+    });
+}
+
 /* =========================
-   BANNER ROTATIVO ALEATÓRIO
+   6. BANNER ROTATIVO
 ========================= */
-function initBanner() {
+function iniciarBanner() {
     const slides = document.querySelectorAll('.slide');
     if (slides.length === 0) return;
 
-    const randomIndex = Math.floor(Math.random() * slides.length);
-    let currentSlide = randomIndex;
+    let atual = Math.floor(Math.random() * slides.length);
+    slides.forEach(s => s.classList.remove('active'));
+    slides[atual].classList.add('active');
 
-    slides.forEach(slide => slide.classList.remove('active'));
-    slides[currentSlide].classList.add('active');
-
-    function nextSlide() {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('active');
-    }
-
-    setInterval(nextSlide, 4000);
+    setInterval(() => {
+        slides[atual].classList.remove('active');
+        atual = (atual + 1) % slides.length;
+        slides[atual].classList.add('active');
+    }, 4000);
 }
 
 /* =========================
-   INICIALIZAÇÃO GERAL
+   7. INSTALAR APP
 ========================= */
-document.addEventListener('DOMContentLoaded', () => {
-    sortCategoryOptions();
-    initBanner();
+function iniciarInstalacao() {
+    let deferredPrompt = null;
+    const instalarFloat = document.querySelector('.install-float');
+    const btn = $('installApp');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (instalarFloat) instalarFloat.style.display = 'block';
+    });
+
+    if (btn) {
+        btn.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            const escolha = await deferredPrompt.userChoice;
+            if (escolha.outcome === 'accepted') console.log('App instalado');
+            deferredPrompt = null;
+            if (instalarFloat) instalarFloat.style.display = 'none';
+        });
+    }
+}
+
+/* =========================
+   8. INICIALIZAÇÃO
+========================= */
+async function iniciar() {
+    iniciarBanner();
+    iniciarInstalacao();
+    iniciarRastreamento();
+    iniciarCompartilhar();
     registrarAcesso();
-    carregarCadastros();
-});
+
+    feedback.textContent = 'Carregando cadastros...';
+    try {
+        const dados = await carregarDados();
+        renderizarCards(dados.cadastros);
+        preencherSelect(filtroCidade, dados.cidades);
+        preencherSelect(filtroCategoria, dados.categorias);
+    } catch (error) {
+        console.error('Erro ao carregar os dados (cadastros.json / filtros.json):', error);
+        feedback.textContent = 'Não foi possível carregar os cadastros. Atualize a página para tentar novamente.';
+        return;
+    }
+    iniciarFiltros();
+    aplicarFiltros();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', iniciar);
+} else {
+    iniciar();
+}

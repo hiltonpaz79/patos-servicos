@@ -1040,7 +1040,36 @@
       "conteudo": [
         {
           "tipo": "texto",
-          "html": "Estamos à sua disposição durante o período junino em Patos-PB</p> <ul class=\"somente-esse\"> <li>Manhã</li> <li>Tarde</li> <li>Noite (até às 22h)</li> </ul> <p>Segurança, conforto e pontualidade.</p> <p>Marque seu horário exclusivo pelo whatsapp!</p> <div class=\"social\"> <a class=\"social-link whatsapp\" href=\"https://wa.me/5583999258906?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.\" target=\"_blank\"> <img alt=\"WhatsApp\" class=\"social-icon\" src=\"/imagens_icons/whatsapp.png\"/> <span>(83) 99925-8906</span> </a> </div> <div class=\"social\"> <button class=\"social-link share-card\"> <img class=\"social-icon\" src=\"/imagens_icons/compartilhar.png\"/> <span>Cartão de Visita</span> </button> </div> <p><em>*Preços baseados no App 99</em></p>"
+          "html": "Estamos à sua disposição durante o período junino em Patos-PB"
+        },
+        {
+          "tipo": "texto",
+          "tag": "ul",
+          "classe": "somente-esse",
+          "html": "<li>Manhã</li> <li>Tarde</li> <li>Noite (até às 22h)</li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "Segurança, conforto e pontualidade."
+        },
+        {
+          "tipo": "texto",
+          "html": "Marque seu horário exclusivo pelo whatsapp!"
+        },
+        {
+          "tipo": "contato",
+          "rede": "whatsapp",
+          "url": "https://wa.me/5583999258906?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(83) 99925-8906"
+        },
+        {
+          "tipo": "contato",
+          "rede": "compartilhar",
+          "rotulo": "Cartão de Visita"
+        },
+        {
+          "tipo": "texto",
+          "html": "<em>*Preços baseados no App 99</em>"
         }
       ]
     },
@@ -1376,7 +1405,7 @@
       "comentario": "Início do card Palmares Playgrounds Cadastro em 22/05/2026",
       "categorias": [
         "brinquedos",
-        "playgrouns"
+        "playgrounds"
       ],
       "cidades": [
         "patos"
@@ -4443,7 +4472,7 @@
       "ativo": false,
       "secao": "vagas",
       "categorias": [
-        "aa_aluguel_venda_imovel"
+        "a2_aluguel_venda_imovel"
       ],
       "cidades": [],
       "nome": "🏠",
