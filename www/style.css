@@ -851,7 +851,7 @@ body {
 :root {
     --laranja: #e25101;
     --laranja-escuro: #c2410c;     /* contraste ok com texto branco */
-    --foto-proporcao: 5 / 4;       /* proporção das capas dos cards (largura / altura). Mais alta = capa maior: 1 / 1 */
+    --foto-proporcao: 1 / 1;       /* só do esqueleto de carregamento (a capa real mantém a proporção da imagem) */
 }
 
 /* ---------- 1. Cards premium em destaque ---------- */
@@ -885,18 +885,9 @@ body {
     hyphens: auto;
 }
 
-/* ---------- 3. Fotos dos cards padronizadas ---------- */
-.item > img {
-    display: block;
-    width: calc(100% + 2rem);      /* a capa vai de ponta a ponta do card (anula o padding de 1rem) */
-    max-width: none;
-    height: auto;
-    margin: -1rem -1rem 0.25rem;
-    aspect-ratio: var(--foto-proporcao);
-    object-fit: contain;           /* mostra a imagem inteira, sem cortar logos. Use "cover" se todas forem fotos */
-    background: #fff;
-    border-radius: 7px 7px 0 0;    /* acompanha o canto arredondado do card */
-}
+/* ---------- 3. Capas dos cards ---------- */
+/* Tamanho original: a capa respeita as margens do card, ocupa no máximo a largura
+   disponível e mantém a proporção natural da imagem (regra ".item img" lá em cima). */
 
 /* ---------- 4. Barra de filtros fixa ---------- */
 #filtrosSentinela { height: 1px; margin-bottom: -1px; }
@@ -997,7 +988,7 @@ body {
     background-size: 400% 100%;
     animation: esqueleto-brilho 1.4s ease infinite;
 }
-.esqueleto .foto   { aspect-ratio: var(--foto-proporcao); margin: -1rem -1rem 4px; border-radius: 7px 7px 0 0; }
+.esqueleto .foto   { aspect-ratio: var(--foto-proporcao); }
 .esqueleto .linha  { height: 14px; }
 .esqueleto .titulo { height: 20px; width: 70%; margin: 4px auto 0; }
 .esqueleto .curta  { width: 45%; margin: 0 auto; }
