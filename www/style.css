@@ -124,7 +124,7 @@ header {
     padding-left: 45px; /* Abre o mesmo espaço para ícone/seta */
     font-size: 16px;
     font-family: 'Montserrat', Arial, sans-serif;
-    /* border: 1px solid #e6e6e6; */
+    border: 1px solid #e6e6e6;
     border-radius: 8px;
     background-color: #ffffff;
     color: #333;
