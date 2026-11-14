@@ -858,10 +858,10 @@ body {
 
 .item[data-secao="premium"] {
     border: 2px;
-    box-shadow: 0 4px 14px;
+    box-shadow: 0 4px 14px #d4d4d2; /** sombra do card */
 }
 .item[data-secao="premium"]:hover {
-    box-shadow: 0 8px 20px ;
+    box-shadow: 0 8px 20px #d4d4d2; /* sombra do card */
 }
 .item[data-secao="premium"]::before {
     content: "Destaque";
