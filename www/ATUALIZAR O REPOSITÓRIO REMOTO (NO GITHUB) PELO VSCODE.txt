@@ -4,6 +4,7 @@ ATUALIZAR O REPOSITÓRIO NO GITHUB
 git add .
 git commit -m "Modificação no repositório"
 git push
+
 ________________________________________________
 ________________________________________________
 GIT RESET (ATUALIZAR O REPOSITÓRIO NO COMPUTADOR FORÇADAMENTE)
