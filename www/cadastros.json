@@ -1024,7 +1024,7 @@
     },
     {
       "id": "transporte-de-passageiros",
-      "ativo": true,
+      "ativo": false,
       "secao": "basico",
       "cadastro": "2026-05-27",
       "comentario": "Início do card Transporte de Passageiros Cadastro 27/05/2026",
