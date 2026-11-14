@@ -130,7 +130,7 @@ header {
     color: #333;
     outline: none;
     transition: all 0.3s ease;
-    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);*/
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
     box-sizing: border-box; /* Garante que a borda esteja dentro dos 48px */
     vertical-align: top;    /* Alinha todos pelo topo da linha */
