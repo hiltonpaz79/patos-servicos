@@ -55,7 +55,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/vera_cruz.png",
-      "alt": "Vera Cruz",
+      "alt": "Instituto Educacional Vera Cruz",
       "nome": "Instituto Educacional Vera Cruz",
       "conteudo": [
         {
@@ -105,7 +105,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/bricia.png",
-      "alt": "Brícia Seguros",
+      "alt": "Brícia",
       "nome": "Brícia",
       "ramo": "Loja de seguros",
       "conteudo": [
@@ -151,7 +151,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/copacabana.png",
-      "alt": "Copacabana",
+      "alt": "Mármores e Granitos Copacabana",
       "nome": "Mármores e Granitos Copacabana",
       "conteudo": [
         {
@@ -254,7 +254,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/moderna_planejados.png",
-      "alt": "Wanderley Júnior",
+      "alt": "Moderna Planejados",
       "nome": "Moderna Planejados",
       "conteudo": [
         {
@@ -268,7 +268,7 @@
           "rotulo": "Nosso trabalho",
           "classe": "social-link instagram",
           "icone": "/imagens_icons/logo_pdf.png",
-          "alt": "Moderna"
+          "alt": ""
         },
         {
           "tipo": "contato",
@@ -352,7 +352,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/iluminar.png",
-      "alt": "Wanderley Júnior",
+      "alt": "Iluminar",
       "nome": "Iluminar",
       "ramo": "Produções e eventos",
       "conteudo": [
@@ -433,7 +433,7 @@
           "rotulo": "Serviços Contábeis",
           "classe": "social-link instagram",
           "icone": "/imagens_icons/logo_pdf.png",
-          "alt": "Rainha dos Loiros"
+          "alt": ""
         },
         {
           "tipo": "contato",
@@ -519,7 +519,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/dalila_teotonio.png",
-      "alt": "Dalila Nutricionista",
+      "alt": "Dalila Teotonio",
       "nome": "Dalila Teotonio",
       "ramo": "Nutricionista Clínica",
       "conteudo": [
@@ -650,7 +650,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/igreen.png",
-      "alt": "Mutirão do Desconto - iGreen Energy",
+      "alt": "iGreen Energy Mutirão do Desconto na Conta de Energia",
       "nome": "⚡ iGreen Energy Mutirão do Desconto na Conta de Energia",
       "nome_html": "⚡ iGreen Energy<br/>Mutirão do Desconto na Conta de Energia",
       "conteudo": [
@@ -857,7 +857,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/ivandir_pedreiro.png",
-      "alt": "André Morais",
+      "alt": "Ivandir Pedreiro",
       "nome": "Ivandir Pedreiro",
       "conteudo": [
         {
@@ -944,7 +944,7 @@
           "rotulo": "Fotos",
           "classe": "social-link instagram",
           "icone": "/imagens_icons/logo_pdf.png",
-          "alt": "Brícia Seguros"
+          "alt": ""
         },
         {
           "tipo": "contato",
@@ -1023,7 +1023,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/transporte_sao_joao.jpeg",
-      "alt": "Davi Oliveira",
+      "alt": "Transporte de Passageiros",
       "nome": "Transporte de Passageiros",
       "conteudo": [
         {
@@ -1123,7 +1123,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/pousada_vithay.jpg",
-      "alt": "Hospedagem",
+      "alt": "Pousada Vithay",
       "nome": "Pousada Vithay",
       "conteudo": [
         {
@@ -1169,7 +1169,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/credvithay.png",
-      "alt": "CredVithay",
+      "alt": "CredVithay - Empréstimos",
       "nome": "CredVithay - Empréstimos",
       "conteudo": [
         {
@@ -1222,7 +1222,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/claudio-pinturas.png",
-      "alt": "Iras Pinturas",
+      "alt": "Cláudio",
       "nome": "Cláudio",
       "ramo": "Pintura &amp; Texturas Especiais",
       "conteudo": [
@@ -1306,7 +1306,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/vet_home.png",
-      "alt": "Palmares Playgrounds",
+      "alt": "Vet Home",
       "nome": "Vet Home",
       "ramo": "Dra Soraia Vital",
       "conteudo": [
@@ -1352,7 +1352,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/alceu_martins.png",
-      "alt": "Palmares Playgrounds",
+      "alt": "Alceu Martins",
       "nome": "Alceu Martins",
       "ramo": "Consultoria empresarial",
       "conteudo": [
@@ -1422,7 +1422,7 @@
           "rotulo": "Playgrounds",
           "classe": "social-link instagram",
           "icone": "/imagens_icons/logo_pdf.png",
-          "alt": "Brícia Seguros"
+          "alt": ""
         },
         {
           "tipo": "contato",
@@ -1446,6 +1446,10 @@
           "tag": "div",
           "classe": "link-texto",
           "html": "<a class=\"\" href=\"https://www.palmaresplaygrounds.com.br/\" target=\"_blank\"> <strong>www.palmaresplaygrounds.com.br</strong> </a>"
+        },
+        {
+          "tipo": "texto_solto",
+          "html": "#brinquedos #parquinho #diversão"
         }
       ],
       "notas": [
@@ -1467,7 +1471,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/jv_pescados.png",
-      "alt": "JV Pescados",
+      "alt": "José Ailton",
       "nome": "José Ailton",
       "ramo": "Representante comercial",
       "conteudo": [
@@ -1482,7 +1486,7 @@
           "rotulo": "Produtos",
           "classe": "social-link instagram",
           "icone": "/imagens_icons/logo_pdf.png",
-          "alt": "Brícia Seguros"
+          "alt": ""
         },
         {
           "tipo": "contato",
@@ -1512,7 +1516,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/raniere.png",
-      "alt": "Davi Oliveira",
+      "alt": "Raniere do Frete",
       "nome": "Raniere do Frete",
       "conteudo": [
         {
@@ -1603,7 +1607,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/lj_contrucoes.png",
-      "alt": "L&J Construção",
+      "alt": "L&J Construções",
       "nome": "L&J Construções",
       "conteudo": [
         {
@@ -1647,7 +1651,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/rafael_refrigeracao.png",
-      "alt": "Refrigerar Refrigeração",
+      "alt": "Rafael Refrigeração e Climatização",
       "nome": "Rafael Refrigeração e Climatização",
       "conteudo": [
         {
@@ -1807,7 +1811,7 @@
           "rotulo": "Delicie-se",
           "classe": "social-link instagram",
           "icone": "/imagens_icons/logo_pdf.png",
-          "alt": "Jana Churros"
+          "alt": ""
         },
         {
           "tipo": "texto",
@@ -1939,7 +1943,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/tf_climatizacao.png",
-      "alt": "Wanderley Júnior",
+      "alt": "TF Climatização",
       "nome": "TF Climatização",
       "conteudo": [
         {
@@ -2011,7 +2015,7 @@
           "rotulo": "Kit câmeras",
           "classe": "social-link instagram",
           "icone": "/imagens_icons/imagem_icon.png",
-          "alt": "MV Capacho"
+          "alt": ""
         },
         {
           "tipo": "texto_solto",
@@ -2024,7 +2028,7 @@
           "rotulo": "Câmeras",
           "classe": "social-link instagram",
           "icone": "/imagens_icons/logo_pdf.png",
-          "alt": "MV Capacho"
+          "alt": ""
         },
         {
           "tipo": "texto_solto",
@@ -2037,7 +2041,7 @@
           "rotulo": "Motor de portão",
           "classe": "social-link instagram",
           "icone": "/imagens_icons/video_icon.png",
-          "alt": "Jecton"
+          "alt": ""
         },
         {
           "tipo": "contato",
@@ -2095,7 +2099,7 @@
           "rotulo": "Cartão de Visita",
           "classe": "social-link instagram",
           "icone": "/imagens_icons/compartilhar.png",
-          "alt": "Cartão de Visita"
+          "alt": ""
         }
       ],
       "notas": [
@@ -2160,7 +2164,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/edicleudo.png",
-      "alt": "Wanderley Júnior",
+      "alt": "Edicleudo Climatização",
       "nome": "Edicleudo Climatização",
       "ramo": "Instalação, manutenção e conserto de ar-condicionado",
       "conteudo": [
@@ -2215,7 +2219,7 @@
           "rotulo": "Saiba mais",
           "classe": "social-link instagram",
           "icone": "/imagens_icons/logo_pdf.png",
-          "alt": "MV Capacho"
+          "alt": ""
         },
         {
           "tipo": "contato",
@@ -2236,7 +2240,7 @@
           "rotulo": "Cartão de Visita",
           "classe": "social-link instagram",
           "icone": "/imagens_icons/compartilhar.png",
-          "alt": "Cartão de Visita"
+          "alt": ""
         }
       ],
       "notas": [
@@ -2311,7 +2315,7 @@
           "rotulo": "Catálogo de Tapetes",
           "classe": "social-link instagram",
           "icone": "/imagens_icons/logo_pdf.png",
-          "alt": "MV Capacho"
+          "alt": ""
         },
         {
           "tipo": "contato",
@@ -2442,7 +2446,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/martyna.png",
-      "alt": "Martyna",
+      "alt": "Martyna Torres",
       "nome": "Martyna Torres",
       "conteudo": [
         {
@@ -2478,7 +2482,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/grm_mudanças.png",
-      "alt": "Wanderley Júnior",
+      "alt": "GFM",
       "nome": "GFM",
       "ramo": "Mudanças e tranportes",
       "conteudo": [
@@ -2638,7 +2642,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/ded_teia_aranha.png",
-      "alt": "Dedé Removedor de Teia de Aranha",
+      "alt": "Dedé",
       "nome": "Dedé",
       "conteudo": [
         {
@@ -2670,7 +2674,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/hp_climatizacao.png",
-      "alt": "Wanderley Júnior",
+      "alt": "AB Climatização",
       "nome": "AB Climatização",
       "conteudo": [
         {
@@ -2787,7 +2791,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/inova_refrigeracao.png",
-      "alt": "Inova Refrigeração",
+      "alt": "Inove Refrigeração",
       "nome": "Inove Refrigeração",
       "conteudo": [
         {
@@ -2809,7 +2813,7 @@
           "rotulo": "Cartão de Visita",
           "classe": "social-link instagram",
           "icone": "/imagens_icons/compartilhar.png",
-          "alt": "Cartão de Visita"
+          "alt": ""
         },
         {
           "tipo": "texto_solto",
@@ -2834,7 +2838,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/vip_climatizacao.png",
-      "alt": "Wanderley Júnior",
+      "alt": "Walderlan Medeiros",
       "nome": "Walderlan Medeiros",
       "conteudo": [
         {
@@ -2919,7 +2923,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/refrigerar.png",
-      "alt": "Refrigerar Refrigeração",
+      "alt": "Frigerar Refrigeração",
       "nome": "Frigerar Refrigeração",
       "conteudo": [
         {
@@ -2962,7 +2966,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/alan_personal_trainer.png",
-      "alt": "Alan Personal Trainer",
+      "alt": "Alan",
       "nome": "Alan",
       "ramo": "Personal Trainer",
       "conteudo": [
@@ -3012,7 +3016,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/barao_midia.png",
-      "alt": "Barão da Mídia",
+      "alt": "Portal Barão da Mídia",
       "nome": "Portal Barão da Mídia",
       "conteudo": [
         {
@@ -3057,7 +3061,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/garimpo_barao.png",
-      "alt": "Barão da Mídia",
+      "alt": "Garimpo do Barão",
       "nome": "Garimpo do Barão",
       "conteudo": [
         {
@@ -3134,7 +3138,7 @@
           "rotulo": "Cartão de Visita",
           "classe": "social-link instagram",
           "icone": "/imagens_icons/compartilhar.png",
-          "alt": "Cartão de Visita"
+          "alt": ""
         },
         {
           "tipo": "texto_solto",
@@ -3188,7 +3192,7 @@
           "rotulo": "Cartão de Visita",
           "classe": "social-link instagram",
           "icone": "/imagens_icons/compartilhar.png",
-          "alt": "Cartão de Visita"
+          "alt": ""
         }
       ],
       "notas": [
@@ -3297,7 +3301,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/ce_radiadores.png",
-      "alt": "C&E Radiadores e Intercooler",
+      "alt": "C&E",
       "nome": "C&E",
       "conteudo": [
         {
@@ -3541,7 +3545,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/maria_bonita.png",
-      "alt": "Maria Bonita",
+      "alt": "MARIA BONITA",
       "nome": "MARIA BONITA",
       "ramo": "Uniformização e confecção profissional",
       "conteudo": [
@@ -3635,7 +3639,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/jardel_brasil.png",
-      "alt": "Wanderley Júnior",
+      "alt": "Jardel Brasil",
       "nome": "Jardel Brasil",
       "ramo": "Engenheiro Civil",
       "conteudo": [
@@ -3682,7 +3686,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/philip_aires.png",
-      "alt": "Wanderley Júnior",
+      "alt": "Philip Aires Profissional",
       "nome": "Philip Aires Profissional",
       "ramo": "Cabeleireiro e Maquiador",
       "conteudo": [
@@ -3907,7 +3911,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/laurencia_queiroz.png",
-      "alt": "Wanderley Júnior",
+      "alt": "Laurencia Queiroz",
       "nome": "Laurencia Queiroz",
       "ramo": "Personal Trainer",
       "conteudo": [
@@ -4089,7 +4093,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/fernando.png",
-      "alt": "Alexandro Turismo",
+      "alt": "Fernando Marcondes",
       "nome": "Fernando Marcondes",
       "conteudo": [
         {
@@ -4133,7 +4137,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/otaku-house.png",
-      "alt": "Loja de Animes",
+      "alt": "Otaku House",
       "nome": "Otaku House",
       "conteudo": [
         {
@@ -4177,7 +4181,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/rl.png",
-      "alt": "RL",
+      "alt": "Recuperação de logotipo",
       "nome": "Recuperação de logotipo",
       "conteudo": [
         {
@@ -4222,7 +4226,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/cont_auxiliar_de_servicos_gerais.png",
-      "alt": "vendedora",
+      "alt": "Auxiliar de serviços gerais",
       "nome": "Auxiliar de serviços gerais",
       "conteudo": [
         {
@@ -4261,7 +4265,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/cont_vendedor_consorcio.png",
-      "alt": "vendedora",
+      "alt": "Vendedor(a) de consórcio",
       "nome": "Vendedor(a) de consórcio",
       "conteudo": [
         {
@@ -4300,7 +4304,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/cont_hiper_queiroz_patos.png",
-      "alt": "vendedora",
+      "alt": "Vagas de emprego disponíveis",
       "nome": "Vagas de emprego disponíveis",
       "conteudo": [
         {
@@ -4337,7 +4341,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/cont_queiroz_atacadao_patos.png",
-      "alt": "vendedora",
+      "alt": "Vagas de emprego disponíveis",
       "nome": "Vagas de emprego disponíveis",
       "conteudo": [
         {
@@ -4374,7 +4378,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/cont_ancore.jpeg",
-      "alt": "vendedora",
+      "alt": "Contratando consultor externo",
       "nome": "Contratando consultor externo",
       "conteudo": [
         {
@@ -4421,7 +4425,7 @@
         "patos"
       ],
       "imagem": "imagens_cards/cont_dona_diva_vendedora.png",
-      "alt": "vendedora",
+      "alt": "Vendedora",
       "nome": "Vendedora",
       "conteudo": [
         {

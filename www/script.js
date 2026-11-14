@@ -28,10 +28,11 @@ const reduzirMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').m
 
 // Modelos de contato: no JSON basta informar "rede", "url" e "rotulo".
 // Qualquer campo informado no próprio contato sobrescreve o modelo.
+// alt vazio ('') = ícone decorativo: o texto do botão já diz o que ele faz.
 const REDES = {
     instagram:    { classe: 'social-link instagram',   icone: '/imagens_icons/instagram.png',    alt: 'Instagram' },
     whatsapp:     { classe: 'social-link whatsapp',    icone: '/imagens_icons/whatsapp.png',     alt: 'WhatsApp' },
-    compartilhar: { classe: 'social-link share-card',  icone: '/imagens_icons/compartilhar.png', botao: true },
+    compartilhar: { classe: 'social-link share-card',  icone: '/imagens_icons/compartilhar.png', alt: '', botao: true },
     link:         { classe: 'social-link' }
 };
 
