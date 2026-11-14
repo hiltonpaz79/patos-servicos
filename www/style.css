@@ -217,8 +217,8 @@ header {
 /* Foco nos inputs */
 #searchBar:focus, .filter select:focus {
     outline: none;
-    border-color: #ff9800;
-    box-shadow: 0 0 5px #ff9800;
+    border-color: #162d60;
+    box-shadow: 0 0 5px rgba(22, 45, 96, 0.5);
 }
 
 /* Estilos dos cards */
@@ -858,10 +858,10 @@ body {
 
 .item[data-secao="premium"] {
     border: 2px;
-    box-shadow: 0 4px 14px rgba(194, 192, 190, 0.25);
+    box-shadow: 0 4px 14px #ffe500; /* sombra amarela */
 }
 .item[data-secao="premium"]:hover {
-    box-shadow: 0 8px 20px rgba(194, 192, 190, 0.25);
+    box-shadow: 0 8px 20px #ffe500; /* sombra amarela */
 }
 .item[data-secao="premium"]::before {
     content: "Destaque";
@@ -871,7 +871,7 @@ body {
     z-index: 1;
     padding: 3px 10px;
     border-radius: 999px;
-    background: #ffe500;
+    background: var(--laranja-escuro);
     color: #fff;
     font: 700 12px/1.4 'Montserrat', Arial, sans-serif;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
