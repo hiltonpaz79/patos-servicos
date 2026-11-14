@@ -19,8 +19,11 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 
-# Arquivos de cache
+# Arquivos de conversão de imagens
 converter_webp.py
+
+#Bolco de notas
+ATUALIZAR O REPOSITÓRIO REMOTO (NO GITHUB) PELO VSCODE.txt
 
 # Editor
 .vscode/
