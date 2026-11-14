@@ -217,8 +217,8 @@ header {
 /* Foco nos inputs */
 #searchBar:focus, .filter select:focus {
     outline: none;
-    border-color: #162d60;
-    box-shadow: 0 0 5px rgba(22, 45, 96, 0.5);
+    border-color: #ff9800;
+    box-shadow: 0 0 5px #ff9800;
 }
 
 /* Estilos dos cards */
@@ -858,10 +858,10 @@ body {
 
 .item[data-secao="premium"] {
     border: 2px solid var(--laranja);
-    box-shadow: 0 4px 14px rgba(226, 81, 1, 0.22);
+    box-shadow: 0 4px 14px #ff9800;
 }
 .item[data-secao="premium"]:hover {
-    box-shadow: 0 8px 20px rgba(226, 81, 1, 0.32);
+    box-shadow: 0 8px 20px #ff9800;
 }
 .item[data-secao="premium"]::before {
     content: "Destaque";
