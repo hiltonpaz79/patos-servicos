@@ -8,7 +8,12 @@ body {
   font-family: 'Montserrat', Arial, sans-serif;
   margin: 0;
   padding: 0;
+  /* Degradê do topo da página: laranja da marca -> cor de fundo do site.
+     Termina exatamente em #f4f4f9, então não existe linha de fronteira. */
+  --degrade-altura: 50vh; /* até onde o degradê vai (ex.: 40vh, 400px) */
   background-color: #f4f4f9;
+  background-image: linear-gradient(to bottom, #e25101 0, #f4f4f9 var(--degrade-altura));
+  background-repeat: no-repeat;
 }
 
 h1, h2, h3 {
@@ -84,9 +89,8 @@ button, .footer-contact a {
 
 
 header {
-    /* Degradê de cima (laranja da marca) para baixo (branco) */
-    background: linear-gradient(to bottom, #e25101 0%, #ffffff 100%);
-    color: #041e3d; /* texto escuro: a parte de baixo do degradê é clara */
+    /* Sem fundo próprio: o degradê vem do body e continua abaixo do cabeçalho */
+    color: #041e3d;
     padding: 0.05rem 0;
     text-align: center;
 }
