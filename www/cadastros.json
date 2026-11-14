@@ -778,7 +778,7 @@
       ]
     },
     {
-      "id": "nossos-diferenciais",
+      "id": "fabiana-araujo",
       "ativo": true,
       "secao": "basico",
       "cadastro": "2026-06-26",
@@ -791,67 +791,55 @@
       ],
       "imagem": "imagens_cards/fabiana-araujo.png",
       "alt": "Fabiana Araújo",
-      "nome": "Nossos Diferenciais:",
-      "topo": [
-        {
-          "tag": "h2",
-          "classe": null,
-          "html": "Fabiana Araújo — Uniformes Profissionais"
-        },
-        {
-          "tag": "p",
-          "classe": "tagline",
-          "html": "<strong>Uniformes profissionais para quem cuida com excelência!</strong>"
-        },
-        {
-          "tag": "p",
-          "classe": "introducao",
-          "html": "Qualidade, conforto e elegância para valorizar sua equipe e transmitir profissionalismo em cada detalhe."
-        },
-        {
-          "tag": "hr",
-          "classe": null
-        }
-      ],
+      "nome": "Fabiana Araújo",
+      "ramo": "Uniformes Profissionais",
       "conteudo": [
         {
           "tipo": "texto",
+          "html": "<em>Uniformes profissionais para quem cuida com excelência!</em>"
+        },
+        {
+          "tipo": "texto",
+          "html": "Qualidade, conforto e elegância para valorizar sua equipe e transmitir profissionalismo em cada detalhe."
+        },
+        {
+          "tipo": "texto",
           "tag": "ul",
+          "classe": "somente-esse",
           "html": "<li><strong>Scrubs</strong> Masculinos e Femininos</li> <li><strong>Jalecos</strong> Personalizados</li> <li>Tecidos de <strong>Alta Qualidade</strong></li> <li>Diversas <strong>Cores e Estampas</strong></li> <li>Conforto, Estilo e Durabilidade</li>"
+        },
+        {
+          "tipo": "texto",
+          "html": "<em>“Vestimos propósito, cuidado e confiança!”</em>"
+        },
+        {
+          "tipo": "texto",
+          "html": "📍 <strong>Localização:</strong> Rua Nelsom Rodrigues N 21 ao lado do der • Bairro Santo Antônio, Patos, Paraíba, Brazil 58701130<br/>(Atendemos Patos e região)"
+        },
+        {
+          "tipo": "texto",
+          "html": "👥 Uniformes para toda a equipe"
+        },
+        {
+          "tipo": "texto",
+          "html": "💬 <strong>Fale conosco e faça seu orçamento!</strong>"
         },
         {
           "tipo": "contato",
           "rede": "instagram",
           "url": "https://www.instagram.com/fa_uniformes/",
-          "rotulo": "fa_uniformes",
-          "classe": "social-link"
+          "rotulo": "fa_uniformes"
         },
         {
           "tipo": "contato",
           "rede": "whatsapp",
-          "url": "https://wa.me/5587988751029?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "url": "https://wa.me/5583988751029?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
           "rotulo": "(83) 98875-1029"
         },
         {
           "tipo": "contato",
           "rede": "compartilhar",
           "rotulo": "Cartão de Visita"
-        },
-        {
-          "tipo": "texto",
-          "tag": "div",
-          "classe": "card-destaque",
-          "html": "<p><em>\"Vestimos propósito, cuidado e confiança!\"</em></p>"
-        },
-        {
-          "tipo": "texto",
-          "tag": "hr"
-        },
-        {
-          "tipo": "texto",
-          "tag": "div",
-          "classe": "card-rodape",
-          "html": "<p>📍 <strong>Localização:</strong> Rua Nelsom Rodrigues N 21 ao lado do der • Bairro Santo Antônio, Patos, Paraíba, Brazil 58701130<br/>(Atendemos Patos e região)</p> <p>👥 Uniformes para toda a equipe</p> <p>💬 <strong>Fale conosco e faça seu orçamento!</strong></p>"
         }
       ]
     },
@@ -875,7 +863,7 @@
         {
           "tipo": "contato",
           "rede": "whatsapp",
-          "url": "https://wa.me/5587998376302?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "url": "https://wa.me/5583998376302?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
           "rotulo": "(83) 99837-6302"
         },
         {
@@ -921,8 +909,8 @@
         {
           "tipo": "contato",
           "rede": "whatsapp",
-          "url": "https://wa.me/5587999314343?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
-          "rotulo": "(87) 9 99652-9253"
+          "url": "https://wa.me/55879996529253?text=Olá!%20Vim%20pelo%20Catálogo%20do%20Patos%20Serviços.",
+          "rotulo": "(87) 999652-9253"
         },
         {
           "tipo": "contato",
@@ -1024,7 +1012,7 @@
     },
     {
       "id": "transporte-de-passageiros",
-      "ativo": false,
+      "ativo": true,
       "secao": "basico",
       "cadastro": "2026-05-27",
       "comentario": "Início do card Transporte de Passageiros Cadastro 27/05/2026",
