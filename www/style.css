@@ -84,12 +84,10 @@ button, .footer-contact a {
 
 
 header {
-    background: #e25101;
-    background-image: url('imagens/bg_cabecalho.png'); /* Substitua pelo caminho correto */
-    background-size: cover; /* Para cobrir todo o cabeçalho */
-    background-position: center; /* Centraliza a imagem */
-    color: #fff;
-    padding: 0.05rem 0; /* Aumenta o espaço para destacar a imagem */
+    /* Degradê de cima (laranja da marca) para baixo (branco) */
+    background: linear-gradient(to bottom, #e25101 0%, #ffffff 100%);
+    color: #041e3d; /* texto escuro: a parte de baixo do degradê é clara */
+    padding: 0.05rem 0;
     text-align: center;
 }
 
@@ -226,7 +224,7 @@ header {
 
 /* Animação dos cards */
 .item {
-    font-family: 'Montserrat', sans-serif;    /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /*Mudança de font*/
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -360,7 +358,7 @@ button:hover {
 /* CONTEINER DAS REDES SOCIAIS */
 /* ============================= */
 .social {
-  font-family: 'Montserrat', sans-serif;    /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /*Mudança de font*/
   display: flex;
   justify-content: center;
   gap: 10px; /* aproxima as cápsulas */
@@ -797,7 +795,7 @@ body {
 
 .card-descricao-uniformes {
     background-color: #ffffff;
-    font-family: 'Montserrat', sans-serif;    /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333333;
     padding: 20px;
     border-radius: 12px;
