@@ -851,7 +851,7 @@ body {
 :root {
     --laranja: #e25101;
     --laranja-escuro: #c2410c;     /* contraste ok com texto branco */
-    --foto-proporcao: 4 / 3;       /* proporção das fotos dos cards (ex.: 1 / 1, 16 / 9) */
+    --foto-proporcao: 5 / 4;       /* proporção das capas dos cards (largura / altura). Mais alta = capa maior: 1 / 1 */
 }
 
 /* ---------- 1. Cards premium em destaque ---------- */
@@ -888,13 +888,14 @@ body {
 /* ---------- 3. Fotos dos cards padronizadas ---------- */
 .item > img {
     display: block;
-    width: 100%;
-    max-width: 100%;
+    width: calc(100% + 2rem);      /* a capa vai de ponta a ponta do card (anula o padding de 1rem) */
+    max-width: none;
     height: auto;
+    margin: -1rem -1rem 0.25rem;
     aspect-ratio: var(--foto-proporcao);
     object-fit: contain;           /* mostra a imagem inteira, sem cortar logos. Use "cover" se todas forem fotos */
     background: #fff;
-    border-radius: 8px;
+    border-radius: 7px 7px 0 0;    /* acompanha o canto arredondado do card */
 }
 
 /* ---------- 4. Barra de filtros fixa ---------- */
@@ -996,7 +997,7 @@ body {
     background-size: 400% 100%;
     animation: esqueleto-brilho 1.4s ease infinite;
 }
-.esqueleto .foto   { aspect-ratio: var(--foto-proporcao); }
+.esqueleto .foto   { aspect-ratio: var(--foto-proporcao); margin: -1rem -1rem 4px; border-radius: 7px 7px 0 0; }
 .esqueleto .linha  { height: 14px; }
 .esqueleto .titulo { height: 20px; width: 70%; margin: 4px auto 0; }
 .esqueleto .curta  { width: 45%; margin: 0 auto; }
