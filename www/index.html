@@ -62,6 +62,11 @@
 </div>
 
 
+<!-- Botão voltar ao topo -->
+<button type="button" id="backToTop" class="voltar-topo hidden-btn" aria-label="Voltar ao topo">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
+</button>
+
     <!-----------------------------------BLOCO 04--------------------------------------->
     <!-----------------------------------CABEÇALHO-------------------------------------->
     <!----------------------------------------------------------------------------------> 
@@ -108,7 +113,8 @@
         <!-----------------------------------BLOCO 06--------------------------------------->
         <!-------------------------------FILTROS E BUSCA------------------------------------>
         <!----------------------------------------------------------------------------------> 
-        <div class="filter-search-container">
+        <div id="filtrosSentinela" aria-hidden="true"></div>
+        <div class="filter-search-container" id="filtrosBarra">
             <div class="filter">
                 <label for="cityFilter"> </label>
                 <select id="cityFilter">
@@ -128,18 +134,30 @@
             <div class="search">
                 <input type="text" id="searchBar" placeholder="Pesquisar...">
             </div>           
+            <button type="button" id="clearFilters" class="clear-filters hidden-btn">Limpar filtros</button>
         </div>
 
         <div class="feedback" id="feedback">Exibindo todos os itens</div>
 
         <div class="catalog" id="catalog">
-            <!-- Os cards são carregados de cadastros.json por script.js -->
+            <!-- Os cards são carregados de cadastros.json por script.js. Enquanto isso, mostra o esqueleto: -->
+            <div class="esqueleto" aria-hidden="true"><span class="foto"></span><span class="linha titulo"></span><span class="linha curta"></span><span class="linha"></span><span class="linha"></span><span class="botao"></span></div>
+            <div class="esqueleto" aria-hidden="true"><span class="foto"></span><span class="linha titulo"></span><span class="linha curta"></span><span class="linha"></span><span class="linha"></span><span class="botao"></span></div>
+            <div class="esqueleto" aria-hidden="true"><span class="foto"></span><span class="linha titulo"></span><span class="linha curta"></span><span class="linha"></span><span class="linha"></span><span class="botao"></span></div>
+            <div class="esqueleto" aria-hidden="true"><span class="foto"></span><span class="linha titulo"></span><span class="linha curta"></span><span class="linha"></span><span class="linha"></span><span class="botao"></span></div>
         </div>
 
         <!-----------------------------------BLOCO 09--------------------------------------->
+        <!-------------------------------SEM RESULTADOS------------------------------------>
+        <div id="noResults" class="sem-resultados hidden-btn" role="status">
+            <p class="sem-resultados-titulo" id="noResultsText">Nenhum resultado encontrado.</p>
+            <p class="sem-resultados-dica">Confira a escrita, tente outra palavra ou escolha outra categoria.</p>
+            <button type="button" id="noResultsClear" class="clear-filters">Limpar filtros</button>
+        </div>
+
         <!-------------------------------BOTÃO EXIBIR MAIS---------------------------------->
         <!---------------------------------------------------------------------------------->
-        <button id="loadMore" class="load-more-btn">Exibir mais</button>
+        <button id="loadMore" class="load-more-btn hidden-btn">Exibir mais</button>
         
     </div>
 
@@ -208,7 +226,7 @@
         <img id="master-foto" src="" crossorigin="anonymous" style="width: 100%; height: 100%; object-fit: cover;">
     </div>
 
-    <div style="position: absolute; top: 110px; left: 560px; color: white; font-family: 'Montserrat', sans-serif; z-index: 3; width: 600px; text-align: center;">
+    <div style="position: absolute; top: 110px; left: 560px; color: white; font-family: 'Montserrat', Arial, sans-serif; z-index: 3; width: 600px; text-align: center;">
         <h3 id="master-nome" style="font-size: 60px; margin: 0; text-transform: none; font-weight: 800; line-height: 1.1;"></h3>
         <p id="master-ramo" style="font-size: 45px; margin: 10px 0 0 0; font-weight: 400;"></p>
     </div>
@@ -216,18 +234,18 @@
     <div style="position: absolute; top: 390px; left: 560px; width: 580px; z-index: 3;">
         <div style="display: flex; align-items: center; border: 5px solid white; border-radius: 100px; padding: 18px 45px; margin-bottom: 30px; background: rgba(0,0,0,0.2);">
             <img src="imagens_icons/instagram.png" crossorigin="anonymous" style="width: 55px; margin-right: 25px;">
-            <span id="master-insta" style="color: white; font-size: 42px; font-weight: 700; font-family: 'Montserrat';"></span>
+            <span id="master-insta" style="color: white; font-size: 42px; font-weight: 700; font-family: 'Montserrat', Arial, sans-serif;"></span>
         </div>
         <div style="display: flex; align-items: center; border: 5px solid white; border-radius: 100px; padding: 18px 45px; background: rgba(0,0,0,0.2);">
             <img src="imagens_icons/whatsapp.png" crossorigin="anonymous" style="width: 55px; margin-right: 25px;">
-            <span id="master-whats" style="color: white; font-size: 42px; font-weight: 700; font-family: 'Montserrat';"></span>
+            <span id="master-whats" style="color: white; font-size: 42px; font-weight: 700; font-family: 'Montserrat', Arial, sans-serif;"></span>
         </div>
     </div>
 
     <div style="position: absolute; top: 665px; left: 50%; transform: translateX(-50%); z-index: 3;">
         <div style="display: flex; align-items: center; border: none; border-radius: none; background: transparent">
             <img src="imagens_icons/favicon.png" crossorigin="anonymous" style="width: 55px; margin-right: 10px;">
-            <span style="color: white; font-size: 42px; font-weight: 700; font-family: 'Montserrat';">Patos Serviços</span>
+            <span style="color: white; font-size: 42px; font-weight: 700; font-family: 'Montserrat', Arial, sans-serif;">Patos Serviços</span>
         </div>
     </div>
 </div>

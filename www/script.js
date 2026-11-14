@@ -3,11 +3,12 @@
    1. Configuração
    2. Carregamento (cadastros.json e filtros.json) e renderização dos cards
    3. Filtros, busca e paginação
-   4. Rastreamento (cliques, cópias e visitas)
-   5. Cartão de visita (compartilhar)
-   6. Banner rotativo
-   7. Instalar app
-   8. Inicialização
+   4. Barra de filtros fixa e botão voltar ao topo
+   5. Rastreamento (cliques, cópias e visitas)
+   6. Cartão de visita (compartilhar)
+   7. Banner rotativo (com bolinhas)
+   8. Instalar app
+   9. Inicialização
 ===================================================================== */
 
 /* =========================
@@ -18,8 +19,12 @@ const CONFIG = {
     filtrosUrl: 'filtros.json',   // lista de cidades e categorias dos filtros
     apiBase: 'https://patosservicos.vercel.app', // base da API (track-click / save-access)
     siteId: 'Ita',
-    itensPorPagina: 4
+    itensPorPagina: 4,
+    textoLongo: 90,         // parágrafos maiores que isso ficam alinhados à esquerda
+    corteTolerancia: 40     // só recorta a descrição se o excesso passar de ~40px (a altura máxima fica em --corpo-max, no CSS)
 };
+
+const reduzirMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Modelos de contato: no JSON basta informar "rede", "url" e "rotulo".
 // Qualquer campo informado no próprio contato sobrescreve o modelo.
@@ -38,6 +43,13 @@ const feedback        = $('feedback');
 const catalogo        = $('catalog');
 const btnExibirMais   = $('loadMore');
 const contadorCopias  = $('copyCount');
+const btnLimpar       = $('clearFilters');
+const semResultados   = $('noResults');
+const semResultadosTx = $('noResultsText');
+const btnSemResLimpar = $('noResultsClear');
+const barraFiltros    = $('filtrosBarra');
+const sentinela       = $('filtrosSentinela');
+const btnTopo         = $('backToTop');
 
 let cards = [];                       // [{ dados, el, busca }]
 let limiteVisivel = CONFIG.itensPorPagina;
@@ -93,6 +105,7 @@ function criarBloco(e) {
     }
     const n = criar(e.tag || 'p', e.classe);
     if (e.html != null) n.innerHTML = e.html;
+    if (n.tagName === 'P' && n.textContent.length > CONFIG.textoLongo) n.classList.add('texto-longo');
     return n;
 }
 
@@ -120,11 +133,83 @@ function criarContato(c) {
     return wrap;
 }
 
+/* ---- Descrição recortável ("Mostrar completo") ---- */
+function criarBotaoExpandir(corpo) {
+    const b = criar('button', 'card-expandir');
+    b.type = 'button';
+    b.hidden = true;                                  // só aparece se a descrição for recortada
+    b.setAttribute('aria-expanded', 'false');
+    b.setAttribute('aria-controls', corpo.id);
+    b.innerHTML = '<span class="card-expandir-texto">Mostrar completo</span>' +
+        '<svg class="card-expandir-seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+    return b;
+}
+
+const alturaMaxCorpo = (corpo) =>
+    parseFloat(getComputedStyle(corpo).getPropertyValue('--corpo-max')) || 176;
+
+// Decide se a descrição precisa ser recortada. Roda quando o card aparece
+// ou muda de tamanho (girar o celular, fonte carregando etc.).
+function avaliarCorpo(corpo) {
+    if (corpo.classList.contains('expandido') || corpo.dataset.animando) return;
+    if (corpo.offsetParent === null) return;          // card oculto: avalia quando aparecer
+    const recortar = corpo.scrollHeight > alturaMaxCorpo(corpo) + CONFIG.corteTolerancia;
+    if (corpo.classList.contains('recortavel') !== recortar) {
+        corpo.classList.toggle('recortavel', recortar);
+        corpo.nextElementSibling.hidden = !recortar;
+    }
+}
+
+const observadorCorpo = new ResizeObserver(entradas => entradas.forEach(e => avaliarCorpo(e.target)));
+
+function alternarCorpo(botao) {
+    const corpo = botao.previousElementSibling;
+    const abrir = botao.getAttribute('aria-expanded') !== 'true';
+    const limite = alturaMaxCorpo(corpo);
+
+    const terminar = () => {
+        clearTimeout(reserva);
+        corpo.removeEventListener('transitionend', aoTerminar);
+        corpo.style.maxHeight = '';
+        delete corpo.dataset.animando;
+    };
+    const aoTerminar = (ev) => { if (ev.propertyName === 'max-height') terminar(); };
+    const reserva = setTimeout(terminar, 500);        // garantia caso o navegador não dispare o evento
+    corpo.dataset.animando = '1';
+    corpo.addEventListener('transitionend', aoTerminar);
+
+    if (abrir) {
+        corpo.style.maxHeight = corpo.clientHeight + 'px';
+        corpo.classList.add('expandido');
+        requestAnimationFrame(() => { corpo.style.maxHeight = corpo.scrollHeight + 'px'; });
+    } else {
+        corpo.style.maxHeight = corpo.scrollHeight + 'px';
+        corpo.classList.remove('expandido');
+        void corpo.offsetHeight;                      // força o navegador a registrar o ponto de partida
+        corpo.style.maxHeight = limite + 'px';
+        // se o topo do card ficou para cima da tela, traz ele de volta à vista
+        const card = botao.closest('.item');
+        if (card.getBoundingClientRect().top < 0) {
+            card.scrollIntoView({ block: 'nearest', behavior: reduzirMovimento ? 'auto' : 'smooth' });
+        }
+    }
+    botao.setAttribute('aria-expanded', abrir ? 'true' : 'false');
+    botao.querySelector('.card-expandir-texto').textContent = abrir ? 'Mostrar menos' : 'Mostrar completo';
+}
+
+function iniciarExpandir() {
+    catalogo.addEventListener('click', (e) => {
+        const botao = e.target.closest('.card-expandir');
+        if (botao) alternarCorpo(botao);
+    });
+}
+
 function criarCard(d) {
     const card = criar('div', 'item');
     card.dataset.category = d.categorias.join(',');
     card.dataset.city = d.cidades.join(',');
     card.dataset.id = d.id;
+    if (d.secao) card.dataset.secao = d.secao;   // premium ganha destaque via CSS
 
     if (d.imagem) {
         const img = document.createElement('img');
@@ -145,18 +230,36 @@ function criarCard(d) {
         s.innerHTML = d.ramo;
         card.appendChild(s);
     }
+    // A descrição (tudo antes do 1º contato) fica numa caixa recortável com botão
+    // "Mostrar completo". Os contatos nunca são escondidos.
+    let corpo = null;
+    let chegouContato = false;
     (d.conteudo || []).forEach(e => {
         const ehContato = e.tipo === 'contato' || e.tipo === 'social_html';
-        card.appendChild(ehContato ? criarContato(e) : criarBloco(e));
+        if (ehContato) {
+            chegouContato = true;
+            card.appendChild(criarContato(e));
+        } else if (chegouContato) {
+            card.appendChild(criarBloco(e));
+        } else {
+            if (!corpo) {
+                corpo = criar('div', 'card-corpo');
+                corpo.id = `corpo-${d.id}`;
+                card.append(corpo, criarBotaoExpandir(corpo));
+            }
+            corpo.appendChild(criarBloco(e));
+        }
     });
     return card;
 }
 
 function renderizarCards(lista) {
     const frag = document.createDocumentFragment();
+    observadorCorpo.disconnect();
     cards = lista.map(dados => {
         const el = criarCard(dados);
         frag.appendChild(el);
+        el.querySelectorAll('.card-corpo').forEach(c => observadorCorpo.observe(c));
         return { dados, el, busca: normalizar(el.textContent) };
     });
     catalogo.replaceChildren(frag);
@@ -172,6 +275,7 @@ function animarVisiveis(visiveis) {
     timersAnimacao = [];
     cards.forEach(c => c.el.classList.remove('show'));
     visiveis.forEach((c, i) => {
+        if (reduzirMovimento) { c.el.classList.add('show'); return; }
         timersAnimacao.push(setTimeout(() => c.el.classList.add('show'), Math.min(i, 8) * 80));
     });
 }
@@ -207,11 +311,33 @@ function aplicarFiltros() {
     }
 
     const n = correspondentes.length;
-    feedback.textContent = categoria === 'all'
+    feedback.textContent = !filtrando
         ? 'Exibindo todos os serviços'
         : `Exibindo ${n} ${n === 1 ? 'item' : 'itens'}`;
 
+    if (btnLimpar) btnLimpar.classList.toggle('hidden-btn', !filtrando);
+
+    if (semResultados) {
+        const vazio = n === 0;
+        semResultados.classList.toggle('hidden-btn', !vazio);
+        if (vazio) {
+            const termo = campoBusca.value.trim();
+            semResultadosTx.textContent = termo
+                ? `Nenhum resultado para “${termo}”.`
+                : 'Nenhum resultado encontrado.';
+        }
+    }
+
     animarVisiveis(exibidos);
+}
+
+function limparFiltros() {
+    filtroCidade.value = 'all';
+    atualizarCategoriasPorCidade();
+    filtroCategoria.value = 'all';
+    campoBusca.value = '';
+    limiteVisivel = CONFIG.itensPorPagina;
+    aplicarFiltros();
 }
 
 function atualizarCategoriasPorCidade() {
@@ -254,6 +380,8 @@ function iniciarFiltros() {
         clearTimeout(t);
         t = setTimeout(() => { limiteVisivel = CONFIG.itensPorPagina; aplicarFiltros(); }, 150);
     });
+    if (btnLimpar) btnLimpar.addEventListener('click', limparFiltros);
+    if (btnSemResLimpar) btnSemResLimpar.addEventListener('click', limparFiltros);
     if (btnExibirMais) {
         btnExibirMais.addEventListener('click', () => {
             limiteVisivel += CONFIG.itensPorPagina;
@@ -263,7 +391,50 @@ function iniciarFiltros() {
 }
 
 /* =========================
-   4. RASTREAMENTO
+   4. BARRA DE FILTROS FIXA + VOLTAR AO TOPO
+========================= */
+function iniciarBarraFiltros() {
+    if (!barraFiltros || !sentinela) return;
+    const celular = window.matchMedia('(max-width: 600px)');
+    let fixa = false;
+
+    // Marca a barra como "fixa" quando ela encosta no topo da tela
+    new IntersectionObserver(([entrada]) => {
+        fixa = !entrada.isIntersecting && entrada.boundingClientRect.top < 0;
+        barraFiltros.classList.toggle('fixa', fixa);
+        if (!fixa) barraFiltros.classList.remove('escondida');
+    }).observe(sentinela);
+
+    // No celular: esconde ao rolar para baixo e volta ao rolar para cima
+    let ultimoY = window.scrollY;
+    let agendado = false;
+    window.addEventListener('scroll', () => {
+        if (agendado) return;
+        agendado = true;
+        requestAnimationFrame(() => {
+            const y = window.scrollY;
+            if (fixa && celular.matches && !barraFiltros.contains(document.activeElement)) {
+                if (y > ultimoY + 4) barraFiltros.classList.add('escondida');
+                else if (y < ultimoY - 4) barraFiltros.classList.remove('escondida');
+            }
+            ultimoY = y;
+            agendado = false;
+        });
+    }, { passive: true });
+}
+
+function iniciarVoltarTopo() {
+    if (!btnTopo) return;
+    const atualizar = () => btnTopo.classList.toggle('hidden-btn', window.scrollY < 600);
+    window.addEventListener('scroll', atualizar, { passive: true });
+    btnTopo.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: reduzirMovimento ? 'auto' : 'smooth' });
+    });
+    atualizar();
+}
+
+/* =========================
+   5. RASTREAMENTO
 ========================= */
 function enviarApi(rota, corpo) {
     return fetch(`${CONFIG.apiBase}/api/${rota}`, {
@@ -320,7 +491,7 @@ async function registrarAcesso() {
 }
 
 /* =========================
-   5. CARTÃO DE VISITA
+   6. CARTÃO DE VISITA
 ========================= */
 async function obterImagemBase64(url) {
     try {
@@ -407,7 +578,7 @@ async function gerarECompartilhar(dados) {
                 document.body.appendChild(modal);
             }
             modal.innerHTML = `
-                <p style="color:#fff; margin-bottom:15px; font-family:Montserrat;text-align: center;">
+                <p style="color:#fff; margin-bottom:15px; font-family:'Montserrat', Arial, sans-serif;text-align: center;">
                     Este cartão de visita pode ser baixado ou compartilhado no site:
                     <a href="https://patosservicos.vercel.app" style="color:#fff; text-decoration: underline;">https://patosservicos.vercel.app</a>
                 </p>
@@ -452,25 +623,49 @@ function iniciarCompartilhar() {
 }
 
 /* =========================
-   6. BANNER ROTATIVO
+   7. BANNER ROTATIVO
 ========================= */
 function iniciarBanner() {
+    const container = document.querySelector('.banner-container');
     const slides = document.querySelectorAll('.slide');
-    if (slides.length === 0) return;
+    if (!container || slides.length === 0) return;
 
     let atual = Math.floor(Math.random() * slides.length);
-    slides.forEach(s => s.classList.remove('active'));
-    slides[atual].classList.add('active');
+    let timer = null;
 
-    setInterval(() => {
+    // Bolinhas (indicadores)
+    const dots = document.createElement('div');
+    dots.className = 'banner-dots';
+    const botoes = Array.from(slides).map((_, i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', `Ir para o banner ${i + 1}`);
+        b.addEventListener('click', () => { mostrarSlide(i); reiniciarTimer(); });
+        dots.appendChild(b);
+        return b;
+    });
+    container.appendChild(dots);
+
+    function mostrarSlide(i) {
         slides[atual].classList.remove('active');
-        atual = (atual + 1) % slides.length;
+        atual = i;
         slides[atual].classList.add('active');
-    }, 4000);
+        botoes.forEach((b, k) => b.setAttribute('aria-current', k === atual ? 'true' : 'false'));
+    }
+
+    function reiniciarTimer() {
+        clearInterval(timer);
+        if (reduzirMovimento) return;   // quem prefere menos movimento troca de banner pelas bolinhas
+        timer = setInterval(() => mostrarSlide((atual + 1) % slides.length), 4000);
+    }
+
+    slides.forEach(s => s.classList.remove('active'));
+    mostrarSlide(atual);
+    reiniciarTimer();
 }
 
 /* =========================
-   7. INSTALAR APP
+   8. INSTALAR APP
 ========================= */
 function iniciarInstalacao() {
     let deferredPrompt = null;
@@ -496,28 +691,54 @@ function iniciarInstalacao() {
 }
 
 /* =========================
-   8. INICIALIZAÇÃO
+   9. INICIALIZAÇÃO
 ========================= */
+function mostrarErro() {
+    const caixa = document.createElement('div');
+    caixa.className = 'catalogo-erro';
+    const p = document.createElement('p');
+    p.textContent = 'Não foi possível carregar os cadastros. Verifique sua conexão e tente de novo.';
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'clear-filters';
+    b.textContent = 'Tentar novamente';
+    b.addEventListener('click', carregarCatalogo);
+    caixa.append(p, b);
+    catalogo.replaceChildren(caixa);
+    feedback.textContent = 'Não foi possível carregar os cadastros.';
+}
+
+let filtrosIniciados = false;
+
+async function carregarCatalogo() {
+    feedback.textContent = 'Carregando cadastros...';
+    try {
+        const dados = await carregarDados();
+        renderizarCards(dados.cadastros);
+        if (!filtrosIniciados) {
+            preencherSelect(filtroCidade, dados.cidades);
+            preencherSelect(filtroCategoria, dados.categorias);
+            iniciarFiltros();
+            filtrosIniciados = true;
+        }
+    } catch (error) {
+        console.error('Erro ao carregar os dados (cadastros.json / filtros.json):', error);
+        mostrarErro();
+        return;
+    }
+    aplicarFiltros();
+}
+
 async function iniciar() {
     iniciarBanner();
     iniciarInstalacao();
     iniciarRastreamento();
     iniciarCompartilhar();
+    iniciarExpandir();
+    iniciarBarraFiltros();
+    iniciarVoltarTopo();
     registrarAcesso();
-
-    feedback.textContent = 'Carregando cadastros...';
-    try {
-        const dados = await carregarDados();
-        renderizarCards(dados.cadastros);
-        preencherSelect(filtroCidade, dados.cidades);
-        preencherSelect(filtroCategoria, dados.categorias);
-    } catch (error) {
-        console.error('Erro ao carregar os dados (cadastros.json / filtros.json):', error);
-        feedback.textContent = 'Não foi possível carregar os cadastros. Atualize a página para tentar novamente.';
-        return;
-    }
-    iniciarFiltros();
-    aplicarFiltros();
+    await carregarCatalogo();
 }
 
 if (document.readyState === 'loading') {

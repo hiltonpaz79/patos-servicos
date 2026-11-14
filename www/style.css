@@ -16,6 +16,10 @@ body {
   background-repeat: no-repeat;
 }
 
+button, input, select, textarea {
+  font-family: inherit;
+}
+
 h1, h2, h3 {
   font-weight: 600;
 }
@@ -119,7 +123,7 @@ header {
     padding: 0 16px;
     padding-left: 45px; /* Abre o mesmo espaço para ícone/seta */
     font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     border: 1px solid #e6e6e6;
     border-radius: 8px;
     background-color: #ffffff;
@@ -228,7 +232,7 @@ header {
 
 /* Animação dos cards */
 .item {
-    font-family: 'Montserrat', sans-serif;    /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; Mudança de font*/
+    font-family: 'Montserrat', Arial, sans-serif;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -362,7 +366,7 @@ button:hover {
 /* CONTEINER DAS REDES SOCIAIS */
 /* ============================= */
 .social {
-  font-family: 'Montserrat', sans-serif;    /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; Mudança de font*/
+  font-family: 'Montserrat', Arial, sans-serif;
   display: flex;
   justify-content: center;
   gap: 10px; /* aproxima as cápsulas */
@@ -467,7 +471,7 @@ button:hover {
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
 }
 
 /* Conteiners filhos*/
@@ -495,7 +499,7 @@ button:hover {
 }
 /* título parceiro e contatos */
 .footer-heading {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
   font-size: 0.75rem;
   text-transform: uppercase;  /* texto normal: none; , primeira letra maiúscula: capitalize; , caixa alta: uppercase;*/
   letter-spacing: 1px;
@@ -703,7 +707,7 @@ body {
 /* ============================= */
 /* Botão compartilhar – padrão visual das redes */
 .share-card {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 700;
 
   background-color: #f8f8fa; /* branco creme */
@@ -793,109 +797,6 @@ body {
     overflow: hidden;
 }
 
-/* ==========================================
-   CARD: FABIANA ARAÚJO (UNIFORMES)
-========================================== */
-
-.card-descricao-uniformes {
-    background-color: #ffffff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333333;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    max-width: 450px;
-    margin: 15px auto;
-    border: 1px solid #eaeaea;
-}
-
-.card-descricao-uniformes h2 {
-    color: #b5944b; /* Tom dourado elegante baseado na logo dela */
-    font-size: 1.4rem;
-    margin-top: 0;
-    margin-bottom: 8px;
-    font-weight: 700;
-    text-align: center;
-}
-
-.card-descricao-uniformes .tagline {
-    font-size: 1.05rem;
-    color: #111111;
-    text-align: center;
-    margin-bottom: 12px;
-    line-height: 1.4;
-}
-
-.card-descricao-uniformes .introducao {
-    font-size: 0.95rem;
-    color: #666666;
-    text-align: center;
-    line-height: 1.5;
-    margin-bottom: 15px;
-}
-
-.card-descricao-uniformes hr {
-    border: 0;
-    border-top: 1px solid #eeeeee;
-    margin: 15px 0;
-}
-
-.card-descricao-uniformes h3 {
-    font-size: 1.1rem;
-    color: #222222;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-.card-descricao-uniformes ul {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 20px;
-}
-
-.card-descricao-uniformes ul li {
-    font-size: 0.95rem;
-    margin-bottom: 8px;
-    padding-left: 20px;
-    position: relative;
-    color: #444444;
-}
-
-/* Ícone de check dourado antes de cada diferencial */
-.card-descricao-uniformes ul li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: #b5944b;
-    font-weight: bold;
-}
-
-.card-descricao-uniformes .card-destaque {
-    background-color: #fcf9f2; /* Fundo suave champagne */
-    border-left: 4px solid #b5944b;
-    padding: 10px 15px;
-    border-radius: 4px;
-    margin: 15px 0;
-    text-align: center;
-}
-
-.card-descricao-uniformes .card-destaque p {
-    margin: 0;
-    color: #7a612d;
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-
-.card-descricao-uniformes .card-rodape {
-    font-size: 0.9rem;
-    color: #555555;
-    line-height: 1.6;
-}
-
-.card-descricao-uniformes .card-rodape p {
-    margin: 6px 0;
-}
-
 /* ============================= */
 /* BOTÃO EXIBIR MAIS             */
 /* ============================= */
@@ -905,7 +806,7 @@ body {
     padding: 14px 40px;
     background-color: #e6681a;
     color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     font-size: 15px;
     font-weight: 600;
     border: none;
@@ -938,5 +839,342 @@ body {
         width: 90%;
         padding: 14px 20px;
         font-size: 14px;
+    }
+}
+
+/* =====================================================================
+   MELHORIAS VISUAIS
+   (este bloco vem por último de propósito: ajusta regras anteriores)
+   ===================================================================== */
+
+:root {
+    --laranja: #e25101;
+    --laranja-escuro: #c2410c;     /* contraste ok com texto branco */
+    --foto-proporcao: 4 / 3;       /* proporção das fotos dos cards (ex.: 1 / 1, 16 / 9) */
+}
+
+/* ---------- 1. Cards premium em destaque ---------- */
+.item { position: relative; }
+
+.item[data-secao="premium"] {
+    border: 2px solid var(--laranja);
+    box-shadow: 0 4px 14px rgba(226, 81, 1, 0.22);
+}
+.item[data-secao="premium"]:hover {
+    box-shadow: 0 8px 20px rgba(226, 81, 1, 0.32);
+}
+.item[data-secao="premium"]::before {
+    content: "Destaque";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--laranja-escuro);
+    color: #fff;
+    font: 700 12px/1.4 'Montserrat', Arial, sans-serif;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- 2. Textos longos alinhados à esquerda ---------- */
+/* (a classe .texto-longo é colocada pelo script em parágrafos com mais de 90 caracteres) */
+.item .texto-longo {
+    text-align: left;
+    line-height: 1.55;
+    hyphens: auto;
+}
+
+/* ---------- 3. Fotos dos cards padronizadas ---------- */
+.item > img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: var(--foto-proporcao);
+    object-fit: contain;           /* mostra a imagem inteira, sem cortar logos. Use "cover" se todas forem fotos */
+    background: #fff;
+    border-radius: 8px;
+}
+
+/* ---------- 4. Barra de filtros fixa ---------- */
+#filtrosSentinela { height: 1px; margin-bottom: -1px; }
+
+.filter-search-container {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    transition: transform 0.25s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.filter-search-container.fixa {
+    padding: 8px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.94);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+.filter-search-container.escondida { transform: translateY(-120%); }
+
+/* Botão "Limpar filtros" */
+.clear-filters {
+    height: 48px;
+    padding: 0 18px;
+    border: 1.5px solid var(--laranja-escuro);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--laranja-escuro);
+    font: 600 15px 'Montserrat', Arial, sans-serif;
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.clear-filters:hover,
+.clear-filters:focus-visible {
+    background: var(--laranja-escuro);
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .clear-filters { width: 100%; height: 44px; }
+
+    /* Barra compacta quando está fixa no topo do celular */
+    .filter-search-container.fixa {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+    }
+    .filter-search-container.fixa .search,
+    .filter-search-container.fixa .clear-filters { grid-column: 1 / -1; margin-top: 0; }
+    /* (usa #id porque as regras originais dos campos também usam, e id tem prioridade) */
+    .filter-search-container.fixa #cityFilter,
+    .filter-search-container.fixa #categoryFilter,
+    .filter-search-container.fixa #searchBar { height: 40px; }
+    /* seta à direita para sobrar espaço ao texto das opções */
+    .filter-search-container.fixa #cityFilter,
+    .filter-search-container.fixa #categoryFilter {
+        padding-left: 10px;
+        padding-right: 26px;
+        background-position: right 6px center;
+        text-overflow: ellipsis;
+    }
+    .filter-search-container.fixa .clear-filters { height: 38px; }
+    .filter-search-container.fixa .filter label { display: none; }
+}
+
+/* ---------- Aviso de "sem resultados" ---------- */
+.sem-resultados {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-width: 420px;
+    margin: 1.5rem auto;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+.sem-resultados p { margin: 0; }
+.sem-resultados-titulo { font-size: 1.1rem; font-weight: 700; color: #041e3d; }
+.sem-resultados-dica   { font-size: 0.95rem; color: #555; }
+.sem-resultados .clear-filters { width: auto; margin-top: 6px; }
+
+/* ---------- 5. Esqueleto de carregamento ---------- */
+.esqueleto {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 340px;
+    padding: 1rem;
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 8px;
+}
+.esqueleto > span {
+    display: block;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #ececf1 25%, #f7f7fa 37%, #ececf1 63%);
+    background-size: 400% 100%;
+    animation: esqueleto-brilho 1.4s ease infinite;
+}
+.esqueleto .foto   { aspect-ratio: var(--foto-proporcao); }
+.esqueleto .linha  { height: 14px; }
+.esqueleto .titulo { height: 20px; width: 70%; margin: 4px auto 0; }
+.esqueleto .curta  { width: 45%; margin: 0 auto; }
+.esqueleto .botao  { height: 44px; width: 60%; margin: auto auto 0; border-radius: 999px; }
+
+@keyframes esqueleto-brilho {
+    0%   { background-position: 100% 50%; }
+    100% { background-position: 0 50%; }
+}
+@media (max-width: 600px) {
+    .esqueleto:nth-child(n+3) { display: none; }
+}
+
+/* Mensagem de erro ao carregar os dados */
+.catalogo-erro {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 2rem 1rem;
+    text-align: center;
+    color: #041e3d;
+}
+.catalogo-erro p { margin: 0; }
+
+/* ---------- Banner: indicadores (bolinhas) ---------- */
+.banner-dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 2px;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+}
+.banner-dots button {
+    position: relative;
+    width: 24px;
+    height: 32px;                  /* área de toque confortável */
+    padding: 0;
+    border: none;
+    background: transparent;
+    pointer-events: auto;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.banner-dots button::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    transform: translate(-50%, -50%);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.65);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+    transition: width 0.25s ease, background-color 0.25s ease;
+}
+.banner-dots button[aria-current="true"]::before { width: 20px; background: #fff; }
+.banner-dots button:hover,
+.banner-dots button:focus-visible { background: transparent; }
+.banner-dots button:hover::before { background: #fff; }
+
+/* ---------- Botão voltar ao topo ---------- */
+.voltar-topo {
+    position: fixed;
+    left: 16px;
+    bottom: 20px;
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--laranja-escuro);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.voltar-topo:hover,
+.voltar-topo:focus-visible { background: #9a3412; color: #fff; }
+
+/* ---------- Botões de contato com área de toque de 44px ---------- */
+.social-link,
+.share-card { min-height: 44px; }
+
+/* ---------- Foco visível para teclado ---------- */
+.clear-filters:focus-visible,
+.voltar-topo:focus-visible,
+.banner-dots button:focus-visible,
+.load-more-btn:focus-visible,
+.social-link:focus-visible,
+#searchBar:focus-visible,
+#categoryFilter:focus-visible,
+#cityFilter:focus-visible {
+    outline: 3px solid #041e3d;
+    outline-offset: 2px;
+}
+
+/* =====================================================================
+   DESCRIÇÃO RECORTÁVEL ("Mostrar completo")
+   A altura máxima da descrição é --corpo-max. O script só ativa o corte
+   (.recortavel) quando o texto passa bem desse limite.
+   ===================================================================== */
+.item { --corpo-max: 176px; scroll-margin-top: 96px; }
+
+.card-corpo { position: relative; }
+
+.card-corpo.recortavel {
+    max-height: var(--corpo-max);
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+.card-corpo.recortavel.expandido { max-height: none; }
+
+/* degradê que "apaga" a última linha cortada */
+.card-corpo.recortavel:not(.expandido)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 56px;
+    background: linear-gradient(rgba(255, 255, 255, 0), #fff 85%);
+    pointer-events: none;
+}
+
+.card-expandir {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    min-height: 40px;
+    margin-top: 2px;
+    padding: 6px 8px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--laranja-escuro);
+    font: 600 13px 'Montserrat', Arial, sans-serif;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.card-expandir[hidden] { display: none; }
+.card-expandir:hover,
+.card-expandir:focus-visible {
+    background: rgba(194, 65, 12, 0.08);
+    color: var(--laranja-escuro);
+}
+.card-expandir:focus-visible { outline: 3px solid #041e3d; outline-offset: 2px; }
+
+/* mesma setinha dos filtros */
+.card-expandir-seta {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.25s ease;
+}
+.card-expandir[aria-expanded="true"] .card-expandir-seta { transform: rotate(180deg); }
+
+/* ---------- Respeitar quem prefere menos movimento ---------- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
     }
 }
