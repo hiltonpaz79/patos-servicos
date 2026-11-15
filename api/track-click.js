@@ -22,11 +22,11 @@ export default async function handler(req, res) {
     // Agora apontando para a tabela do Patos
     await client.query(
       `
-      INSERT INTO click_stats_patos (link, total_clicks, last_click)
+      INSERT INTO clique_patos (link, total_clicks, last_click)
       VALUES ($1, 1, NOW())
       ON CONFLICT (link)
       DO UPDATE SET
-        total_clicks = click_stats_patos.total_clicks + 1,
+        total_clicks = clique_patos.total_clicks + 1,
         last_click = NOW();
       `,
       [link]
