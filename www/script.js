@@ -487,13 +487,33 @@ function iniciarRastreamento() {
     });
 }
 
+// Conta no máximo UMA visita por visitante (navegador/aparelho) por dia.
+// O "dia" segue o horário da Paraíba, o mesmo que a API usa para agrupar.
+function diaDeHoje() {
+    try {
+        return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Fortaleza' }).format(new Date());  // AAAA-MM-DD
+    } catch (_) {
+        return new Date().toISOString().slice(0, 10);
+    }
+}
+
 async function registrarAcesso() {
+    const chave = `acesso_dia_${CONFIG.siteId}`;
+    const hoje = diaDeHoje();
+
+    // Já contou hoje neste aparelho? Então não envia de novo (recarregar a página não conta).
+    try {
+        if (localStorage.getItem(chave) === hoje) return;
+        localStorage.setItem(chave, hoje);       // marca antes de enviar: evita contar duas abas abertas juntas
+    } catch (_) { /* armazenamento bloqueado (aba privada): conta normalmente */ }
+
     try {
         const r = await enviarApi('save-access', { site: CONFIG.siteId });
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         console.log('Visita registrada com sucesso!');
     } catch (error) {
         console.error('Erro ao salvar visita:', error);
+        try { localStorage.removeItem(chave); } catch (_) {}   // falhou: tenta de novo na próxima abertura
     }
 }
 
