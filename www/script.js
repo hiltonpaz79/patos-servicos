@@ -1,5 +1,5 @@
 /* =====================================================================
-   PATOS SERVIÇOS — script.js
+   GUIA DE SERVIÇOS — script.js (igual no Patos e no Ita; só o CONFIG muda)
    1. Configuração
    2. Carregamento (cadastros.json e filtros.json) e renderização dos cards
    3. Filtros, busca e paginação
@@ -17,8 +17,14 @@
 const CONFIG = {
     cadastrosUrl: 'cadastros.json',
     filtrosUrl: 'filtros.json',   // lista de cidades e categorias dos filtros
+    // ---- dados próprios de cada site (a única parte que muda entre Patos e Ita) ----
+    siteNome: 'Patos Serviços',
+    siteUrl: 'https://patosservicos.vercel.app',
     apiBase: 'https://patosservicos.vercel.app', // base da API (track-click / save-access)
-    siteId: 'Ita',
+    siteId: 'Patos',
+    instaPadrao: 'patosservicos_pb',             // usado no cartão de visita se o card não tiver Instagram
+    fundoCartao: 'imagens_icons/background-patos.png', // fundo do cartão de visita
+    // ---- ajustes gerais ----
     itensPorPagina: 4,
     textoLongo: 90,         // parágrafos maiores que isso ficam alinhados à esquerda
     corteTolerancia: 40     // só recorta a descrição se o excesso passar de ~40px (a altura máxima fica em --corpo-max, no CSS)
@@ -533,7 +539,7 @@ async function gerarECompartilhar(dados) {
     $('master-whats').innerText = dados.whats;
 
     const [bgData, fotoData] = await Promise.all([
-        obterImagemBase64('imagens/background-patos.png'),
+        obterImagemBase64(CONFIG.fundoCartao),
         obterImagemBase64(dados.foto)
     ]);
 
@@ -558,8 +564,8 @@ async function gerarECompartilhar(dados) {
                 if (navigator.canShare({ files: [file] })) {
                     await navigator.share({
                         files: [file],
-                        title: 'Patos Serviços',
-                        text: `🚀 Confira ${dados.nome} e outros empreendimentos no Patos Serviços!\nAcesse: https://patosservicos.vercel.app`
+                        title: CONFIG.siteNome,
+                        text: `🚀 Confira ${dados.nome} e outros empreendimentos no ${CONFIG.siteNome}!\nAcesse: ${CONFIG.siteUrl}`
                     });
                     if (btnAtivo) btnAtivo.style.opacity = '1';
                     return;
@@ -581,7 +587,7 @@ async function gerarECompartilhar(dados) {
             modal.innerHTML = `
                 <p style="color:#fff; margin-bottom:15px; font-family:'Montserrat', Arial, sans-serif;text-align: center;">
                     Este cartão de visita pode ser baixado ou compartilhado no site:
-                    <a href="https://patosservicos.vercel.app" style="color:#fff; text-decoration: underline;">https://patosservicos.vercel.app</a>
+                    <a href="${CONFIG.siteUrl}" style="color:#fff; text-decoration: underline;">${CONFIG.siteUrl}</a>
                 </p>
                 <img src="${dataUrl}" style="width:100%; max-width:400px; border: 2px solid #fff;">
                 <button id="fecharPreview" style="margin-top:20px; padding:15px 30px; background:#fff; border:none; border-radius:5px; font-weight:bold;">FECHAR</button>`;
@@ -614,9 +620,9 @@ function iniciarCompartilhar() {
         e.preventDefault();
         const item = botao.closest('.item');
         await gerarECompartilhar({
-            nome: item.querySelector('h3')?.innerText || 'Patos Serviços',
+            nome: item.querySelector('h3')?.innerText || CONFIG.siteNome,
             ramo: item.querySelector('strong')?.innerText || '',
-            insta: item.querySelector('a[href*="instagram"] span')?.innerText || 'patosservicos_pb',
+            insta: item.querySelector('a[href*="instagram"] span')?.innerText || CONFIG.instaPadrao,
             whats: item.querySelector('a[href*="wa.me"] span')?.innerText || '(83) 00000-0000',
             foto: item.querySelector('img')?.src
         });
