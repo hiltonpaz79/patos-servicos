@@ -20,7 +20,7 @@ const CONFIG = {
     // ---- dados próprios de cada site (a única parte que muda entre Patos e Ita) ----
     siteNome: 'Patos Serviços',
     siteUrl: 'https://patosservicos.vercel.app',
-    apiBase: 'https://patosservicos.vercel.app', // base da API (track-click / save-access)
+    apiBase: '',  // vazio = a API fica no mesmo endereço do site (funciona na Vercel, na Cloudflare e em qualquer domínio)
     siteId: 'Patos',
     instaPadrao: 'patosservicos_pb',             // usado no cartão de visita se o card não tiver Instagram
     fundoCartao: 'imagens_icons/background-patos.png', // fundo do cartão de visita
@@ -459,6 +459,7 @@ function iniciarRastreamento() {
         if (!link) return;
         try {
             await enviarApi('track-click', {
+                site: CONFIG.siteId,
                 link: link.href,
                 x: event.clientX,
                 y: event.clientY,
@@ -480,7 +481,7 @@ function iniciarRastreamento() {
         try { localStorage.setItem('copyCount', copyCount); } catch (_) {}
 
         try {
-            await enviarApi('track-click', { link: selecao, x: null, y: null, element: 'copy', action: 'copied' });
+            await enviarApi('track-click', { site: CONFIG.siteId, link: selecao, x: null, y: null, element: 'copy', action: 'copied' });
         } catch (error) {
             console.error('Erro ao registrar cópia:', error);
         }

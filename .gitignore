@@ -24,9 +24,11 @@ converter_webp.py
 #Arquivos compactador
 patos.zip
 
-#Bolco de notas
+#Arquivos de instruções
 ATUALIZAR O REPOSITÓRIO REMOTO (NO GITHUB) PELO VSCODE.txt
 MIGRACAO-CLOUDFLARE.md
+neon-acessos.sql
+d1/
 
 # Editor
 .vscode/
