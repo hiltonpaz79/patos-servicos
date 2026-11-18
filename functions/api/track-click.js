@@ -25,6 +25,19 @@ function codigoDoErro(error) {
   return 'erro';
 }
 
+// Data e hora atual formatada no horário da Paraíba (YYYY-MM-DD HH:mm:ss)
+const agoraNaParaiba = () =>
+  new Intl.DateTimeFormat('sv-SE', {
+    timeZone: 'America/Fortaleza',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  }).format(new Date()).replace(',', '');
+
 export async function onRequest({ request, env }) {
   if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: CORS });
   if (request.method !== 'POST') return json({ message: 'Método não permitido.' }, 405);
@@ -50,7 +63,7 @@ export async function onRequest({ request, env }) {
   if (!env.DB) return json({ message: 'Banco não configurado.', codigo: 'sem_binding' }, 500);
 
   try {
-    // Incrementa o contador de cliques por link (e por site)
+    // Incrementa o contador de cliques por link (e por site) usando o horário local corrigido
     await env.DB
       .prepare(
         `INSERT INTO cliques (site, link, total_clicks, last_click)
@@ -58,7 +71,7 @@ export async function onRequest({ request, env }) {
          ON CONFLICT (site, link)
          DO UPDATE SET total_clicks = total_clicks + 1, last_click = ?3`
       )
-      .bind(site, link, new Date().toISOString())
+      .bind(site, link, agoraNaParaiba())
       .run();
 
     return json({ message: `Ação ${action} registrada com sucesso.`, link });
