@@ -15,7 +15,7 @@
     --cor-texto-cabecalho: #041e3d;       /* texto do cabeçalho sobre o degradê */
     --cor-texto-rodape: #041e3d;         /* texto do rodapé sobre o degradê */
     --cor-rodape-fim: var(--cor-tema);   /* cor onde o degradê do rodapé termina */
-    --filtro-icones-rodape: brightness(0) invert(1);   /* ícones do rodapé em branco */
+    --filtro-icones-rodape: brightness(0) saturate(100%) invert(8%) sepia(67%) saturate(2677%) hue-rotate(199deg) brightness(95%) contrast(103%);  /* ícones do rodapé em azul */
     --degrade-altura: 50vh;               /* até onde o degradê desce (ex.: 40vh, 400px) */
 }
 
