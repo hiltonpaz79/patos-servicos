@@ -583,7 +583,7 @@ a:hover .partner-logo {
   width: 28px;
   height: 28px;
   transition: transform 0.2s ease, opacity 0.2s ease;
-  filter: var(--filtro-icones-rodape);
+  filter: brightness(0) saturate(100%) invert(14%) sepia(43%) saturate(2256%) hue-rotate(202deg) brightness(93%) contrast(96%);
 }
 .footer-contact a:hover .social-icon-footer {
   transform: scale(1.1);
