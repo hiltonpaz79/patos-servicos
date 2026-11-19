@@ -687,6 +687,35 @@ function iniciarBanner() {
         timer = setInterval(() => mostrarSlide((atual + 1) % slides.length), 4000);
     }
 
+    // Deslizar com o dedo: arrastar para a esquerda = próximo banner, para a direita = anterior
+    let inicio = null;
+    let deslizou = false;
+    container.addEventListener('pointerdown', (e) => {
+        if (e.pointerType === 'mouse') return;       // só toque/caneta
+        inicio = { x: e.clientX, y: e.clientY };
+        deslizou = false;
+        clearInterval(timer);                        // pausa a troca automática enquanto o dedo está na tela
+    });
+    container.addEventListener('pointerup', (e) => {
+        if (!inicio) return;
+        const dx = e.clientX - inicio.x;
+        const dy = e.clientY - inicio.y;
+        inicio = null;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) {   // movimento horizontal de verdade
+            deslizou = true;
+            mostrarSlide((atual + (dx < 0 ? 1 : -1) + slides.length) % slides.length);
+        }
+        reiniciarTimer();
+    });
+    container.addEventListener('pointercancel', () => {   // o navegador assumiu o gesto (rolagem vertical)
+        inicio = null;
+        reiniciarTimer();
+    });
+    // depois de deslizar, o toque não pode virar um clique no link do banner
+    container.addEventListener('click', (e) => {
+        if (deslizou) { e.preventDefault(); e.stopPropagation(); deslizou = false; }
+    }, true);
+
     slides.forEach(s => s.classList.remove('active'));
     mostrarSlide(atual);
     reiniciarTimer();

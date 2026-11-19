@@ -3,6 +3,20 @@
     box-sizing: border-box;
 }
 
+/* =====================================================================
+   TEMA DO SITE — única parte do CSS que muda entre Patos (laranja) e Ita (azul)
+   ===================================================================== */
+:root {
+    --cor-tema: #e25101;                  /* cor da marca: topo do degradê e sombra dos cards premium */
+    --cor-tema-escura: #c2410c;           /* botões e textos de destaque (contraste ok com branco) */
+    --cor-tema-hover: #9a3412;            /* botão voltar ao topo ao passar o mouse */
+    --cor-tema-rgb: 226, 81, 1;           /* a cor da marca em RGB, para sombras com transparência */
+    --cor-tema-escura-rgb: 194, 65, 12;
+    --cor-texto-cabecalho: #041e3d;       /* texto do cabeçalho sobre o degradê */
+    --degrade-altura: 50vh;               /* até onde o degradê desce (ex.: 40vh, 400px) */
+}
+
+
 /* Escolha da font do site */
 body {
   font-family: 'Montserrat', Arial, sans-serif;
@@ -10,9 +24,8 @@ body {
   padding: 0;
   /* Degradê do topo da página: laranja da marca -> cor de fundo do site.
      Termina exatamente em #f4f4f9, então não existe linha de fronteira. */
-  --degrade-altura: 50vh; /* até onde o degradê vai (ex.: 40vh, 400px) */
   background-color: #f4f4f9;
-  background-image: linear-gradient(to bottom, #e25101 0, #f4f4f9 var(--degrade-altura));
+  background-image: linear-gradient(to bottom, var(--cor-tema) 0, #f4f4f9 var(--degrade-altura));
   background-repeat: no-repeat;
 }
 
@@ -94,7 +107,7 @@ button, .footer-contact a {
 
 header {
     /* Sem fundo próprio: o degradê vem do body e continua abaixo do cabeçalho */
-    color: #041e3d;
+    color: var(--cor-texto-cabecalho);
     padding: 0.05rem 0;
     text-align: center;
 }
@@ -457,10 +470,13 @@ button:hover {
 /* RODAPÉ */
 /* ============================= */
 .site-footer {
-  background: #e6681a;
+  /* Degradê de baixo para cima em relação ao cabeçalho: começa na cor do fundo da página e termina na cor do tema.
+     O texto começa só depois do degradê, onde o fundo já é a cor cheia do tema. */
+  --degrade-rodape: 80px;
+  background: linear-gradient(to bottom, #f4f4f9 0, var(--cor-tema) var(--degrade-rodape), var(--cor-tema) 100%);
   color: #fff;
-  padding: 30px 16px;
-  margin-top: 40px;
+  padding: calc(var(--degrade-rodape) - 10px) 16px 30px;
+  margin-top: 0;
 }
 
 /* Conteiner pai*/
@@ -624,7 +640,7 @@ body {
 /* Ajuste para telas pequenas */
 @media (max-width: 600px) {
     .site-footer {
-        padding: 15px 10px;
+        padding: calc(var(--degrade-rodape) - 10px) 10px 15px;
     }
 }
 
@@ -849,8 +865,6 @@ body {
    ===================================================================== */
 
 :root {
-    --laranja: #e25101;
-    --laranja-escuro: #c2410c;     /* contraste ok com texto branco */
     --foto-proporcao: 1 / 1;       /* só do esqueleto de carregamento (a capa real mantém a proporção da imagem) */
 }
 
@@ -858,20 +872,20 @@ body {
 .item { position: relative; }
 
 .item[data-secao="premium"] {
-    box-shadow: 0 4px 14px rgba(226, 81, 1, 0.22);
+    box-shadow: 0 4px 14px rgba(var(--cor-tema-rgb), 0.22);
 }
 .item[data-secao="premium"]:hover {
-    box-shadow: 0 8px 20px rgba(226, 81, 1, 0.32);
+    box-shadow: 0 8px 20px rgba(var(--cor-tema-rgb), 0.32);
 }
 .item[data-secao="premium"]::before {
-    content: "⭐ Destaque";
+    content: "Destaque";
     position: absolute;
     top: 10px;
     right: 10px;
     z-index: 1;
     padding: 3px 10px;
     border-radius: 999px;
-    background: #447fe4;
+    background: #ff9800;
     color: #fff;
     font: 700 12px/1.4 'Montserrat', Arial, sans-serif;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
@@ -912,10 +926,10 @@ body {
 .clear-filters {
     height: 48px;
     padding: 0 18px;
-    border: 1.5px solid var(--laranja-escuro);
+    border: 1.5px solid var(--cor-tema-escura);
     border-radius: 8px;
     background: #fff;
-    color: var(--laranja-escuro);
+    color: var(--cor-tema-escura);
     font: 600 15px 'Montserrat', Arial, sans-serif;
     white-space: nowrap;
     cursor: pointer;
@@ -923,7 +937,7 @@ body {
 }
 .clear-filters:hover,
 .clear-filters:focus-visible {
-    background: var(--laranja-escuro);
+    background: var(--cor-tema-escura);
     color: #fff;
 }
 
@@ -1015,6 +1029,10 @@ body {
 }
 .catalogo-erro p { margin: 0; }
 
+/* ---------- Banner: deslizar com o dedo ---------- */
+/* o navegador cuida da rolagem vertical da página; o script cuida do deslize horizontal */
+.banner-container { touch-action: pan-y; }
+
 /* ---------- Banner: indicadores (bolinhas) ---------- */
 .banner-dots {
     position: absolute;
@@ -1069,14 +1087,14 @@ body {
     padding: 0;
     border: none;
     border-radius: 50%;
-    background: var(--laranja-escuro);
+    background: var(--cor-tema-escura);
     color: #fff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 }
 .voltar-topo:hover,
-.voltar-topo:focus-visible { background: #9a3412; color: #fff; }
+.voltar-topo:focus-visible { background: var(--cor-tema-hover); color: #fff; }
 
 /* ---------- Botões de contato com área de toque de 44px ---------- */
 .social-link,
@@ -1104,6 +1122,7 @@ body {
 .card-corpo.recortavel {
     max-height: var(--corpo-max);
     overflow: hidden;
+    overflow: clip;                /* recorta sem criar bloco próprio: o espaçamento fica igual ao dos cards sem corte */
     transition: max-height 0.3s ease;
 }
 .card-corpo.recortavel.expandido { max-height: none; }
@@ -1132,7 +1151,7 @@ body {
     border: none;
     border-radius: 8px;
     background: transparent;
-    color: var(--laranja-escuro);
+    color: var(--cor-tema-escura);
     font: 600 13px 'Montserrat', Arial, sans-serif;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
@@ -1140,8 +1159,8 @@ body {
 .card-expandir[hidden] { display: none; }
 .card-expandir:hover,
 .card-expandir:focus-visible {
-    background: rgba(194, 65, 12, 0.08);
-    color: var(--laranja-escuro);
+    background: rgba(var(--cor-tema-escura-rgb), 0.08);
+    color: var(--cor-tema-escura);
 }
 .card-expandir:focus-visible { outline: 3px solid #041e3d; outline-offset: 2px; }
 
