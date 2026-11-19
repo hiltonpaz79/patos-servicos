@@ -13,6 +13,9 @@
     --cor-tema-rgb: 226, 81, 1;           /* a cor da marca em RGB, para sombras com transparência */
     --cor-tema-escura-rgb: 194, 65, 12;
     --cor-texto-cabecalho: #041e3d;       /* texto do cabeçalho sobre o degradê */
+    --cor-texto-rodape: #041e3d;         /* texto do rodapé sobre o degradê */
+    --cor-rodape-fim: var(--cor-tema);   /* cor onde o degradê do rodapé termina */
+    --filtro-icones-rodape: brightness(0) invert(1);   /* ícones do rodapé em branco */
     --degrade-altura: 50vh;               /* até onde o degradê desce (ex.: 40vh, 400px) */
 }
 
@@ -470,13 +473,24 @@ button:hover {
 /* RODAPÉ */
 /* ============================= */
 .site-footer {
-  /* Degradê de baixo para cima em relação ao cabeçalho: começa na cor do fundo da página e termina na cor do tema.
-     O texto começa só depois do degradê, onde o fundo já é a cor cheia do tema. */
-  --degrade-rodape: 80px;
-  background: linear-gradient(to bottom, #f4f4f9 0, var(--cor-tema) var(--degrade-rodape), var(--cor-tema) 100%);
-  color: #fff;
-  padding: calc(var(--degrade-rodape) - 10px) 16px 30px;
-  margin-top: 0;
+  position: relative;
+  color: var(--cor-texto-rodape);
+  padding: 30px 16px;
+  margin-top: 40px;
+}
+
+/* Degradê do rodapé: espelho do cabeçalho, com o MESMO alcance (--degrade-altura).
+   Fica atrás do conteúdo da página: do fundo claro (em cima) até a cor do tema (embaixo). */
+.site-footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--degrade-altura);
+  background: linear-gradient(to top, var(--cor-rodape-fim) 0, #f4f4f9 100%);
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* Conteiner pai*/
@@ -503,7 +517,7 @@ button:hover {
 /* título ita serviços */
 .footer-heading--brand {
   font-size: 0.85rem;      /* um tiquinho maior */
-  opacity: 0.9;            /* um pouco mais visível */
+  opacity: 1;            /* um pouco mais visível */
   letter-spacing: 0.6px;   /* ajuste fino */
   text-transform: none;
   line-height: 1.5;
@@ -521,7 +535,7 @@ button:hover {
   text-transform: uppercase;  /* texto normal: none; , primeira letra maiúscula: capitalize; , caixa alta: uppercase;*/
   letter-spacing: 1px;
   font-weight: 400;   /* remove o negrito */
-  opacity: 0.7;
+  opacity: 1;
   margin: 0;
   line-height: 1.2;
 }
@@ -569,7 +583,7 @@ a:hover .partner-logo {
   width: 28px;
   height: 28px;
   transition: transform 0.2s ease, opacity 0.2s ease;
-  filter: brightness(0) invert(1);
+  filter: var(--filtro-icones-rodape);
 }
 .footer-contact a:hover .social-icon-footer {
   transform: scale(1.1);
@@ -586,7 +600,7 @@ a:hover .partner-logo {
 
 .footer-copy {
   font-size: 13px;
-  opacity: 0.8;
+  opacity: 1;
   margin-top: 8px;
 }
 
@@ -622,11 +636,11 @@ body {
 .site-footer p {
     margin: 0;
     font-size: 0.9rem;
-    opacity: 0.8;
+    opacity: 1;
 }
 
 .footer-links a {
-    color: #ffffff; /* Azul claro para destaque */
+    color: var(--cor-texto-rodape);
     text-decoration: none;
     font-weight: 500;
     font-size: 0.9rem;
@@ -640,7 +654,7 @@ body {
 /* Ajuste para telas pequenas */
 @media (max-width: 600px) {
     .site-footer {
-        padding: calc(var(--degrade-rodape) - 10px) 10px 15px;
+        padding: 15px 10px;
     }
 }
 
