@@ -74,13 +74,21 @@ async function carregarJson(url) {
     return resp.json();
 }
 
+// Ordem dos cards: Premium primeiro, depois Básico, Grátis e (por último) os cards de "vagas"
+const RANK = { premium: 0, basico: 1, gratis: 2, vagas: 3 };
+
 async function carregarDados() {
-    const [cad, filtros] = await Promise.all([
+    const [cad, filtros, d1] = await Promise.all([
         carregarJson(CONFIG.cadastrosUrl),
-        carregarJson(CONFIG.filtrosUrl)
+        carregarJson(CONFIG.filtrosUrl),
+        carregarJson(`${CONFIG.apiBase}/api/cards`).catch(() => ({ cards: [] }))   // cards criados pelo formulário (D1); se falhar, o site segue só com o JSON
     ]);
+    const agora = Date.now();
+    const todos = [...(cad.cadastros || []), ...(d1.cards || [])]
+        .filter(c => c.ativo !== false && (!c.expira_em || c.expira_em > agora))   // expira_em: fim do plano pago
+        .sort((a, b) => (RANK[a.secao] ?? 1) - (RANK[b.secao] ?? 1));              // sort é estável: mantém a ordem dentro de cada plano
     return {
-        cadastros: (cad.cadastros || []).filter(c => c.ativo !== false),
+        cadastros: todos,
         cidades: filtros.cidades || [],
         categorias: filtros.categorias || []
     };

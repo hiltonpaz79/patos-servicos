@@ -1,8 +1,85 @@
 // Salvar como: functions/api/admin.js   (GET lista | POST ação)  — protegido por ADMIN_TOKEN
-import { json, UM_ANO, T } from '../../lib/util.js';
+import { json, UM_ANO, T, GITHUB_REPO, cardParaJson } from '../../lib/util.js';
 
 const autorizado = (request, env) =>
   env.ADMIN_TOKEN && request.headers.get('Authorization') === `Bearer ${env.ADMIN_TOKEN}`;
+
+const b64ParaTexto = (b64) => new TextDecoder().decode(Uint8Array.from(atob(b64.replace(/\s/g, '')), ch => ch.charCodeAt(0)));
+
+const LOTE_MAX = 20;   // limite de subrequisições por chamada no plano grátis da Cloudflare
+
+const ghApi = (env, caminho, init = {}) =>
+  fetch(`https://api.github.com/repos/${GITHUB_REPO}/${caminho}`, {
+    ...init,
+    headers: {
+      Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'guia-servicos-admin', 'content-type': 'application/json'
+    }
+  });
+
+async function ghJson(env, caminho, init) {
+  const r = await ghApi(env, caminho, init);
+  if (!r.ok) throw new Error(`GitHub ${r.status} em ${caminho}: ${(await r.text()).slice(0, 160)}`);
+  return r.json();
+}
+
+// Arquiva vários cards num ÚNICO commit: imagens em imagens_cards/ + inserção no cadastros.json.
+// Só apaga as imagens do D1 depois que o commit foi aceito.
+async function arquivarLote(env, cards) {
+  if (!env.GITHUB_TOKEN) throw new Error('Falta o secret GITHUB_TOKEN no projeto Pages.');
+  const prontos = [];
+  for (const c of cards) {
+    if (c.status !== 'ativo' || !c.imagem_id) continue;
+    const img = await env.DB.prepare(`SELECT tipo, dados_b64 FROM ${T.img} WHERE id=?`).bind(c.imagem_id).first();
+    if (!img) continue;
+    const ext = /png/.test(img.tipo) ? 'png' : /webp/.test(img.tipo) ? 'webp' : 'jpg';
+    prontos.push({ c, img, caminho: `imagens_cards/${c.id}.${ext}` });
+  }
+  if (!prontos.length) throw new Error('Nenhum card ativo com imagem para arquivar.');
+
+  const repo = await ghJson(env, '');
+  const ref = await ghJson(env, `git/ref/heads/${repo.default_branch}`);
+  const baseCommit = ref.object.sha;
+  const base = await ghJson(env, `git/commits/${baseCommit}`);
+
+  // cadastros.json atual (texto) + inserção dos novos cards no começo da lista
+  const arq = await ghJson(env, 'contents/cadastros.json');
+  let texto = b64ParaTexto(arq.content);
+  const novos = prontos.filter(p => !texto.includes(`"id": "d1-${p.c.id}"`));
+  const blocos = novos.map(p => {
+    const card = cardParaJson(p.c, p.caminho);
+    card.cadastro = new Date(p.c.ativo_em).toISOString().slice(0, 10);
+    return JSON.stringify(card, null, 2).split('\n').map(l => '    ' + l).join('\n') + ',';
+  });
+  if (blocos.length) {
+    const novo = texto.replace(/("cadastros"\s*:\s*\[)/, (m) => `${m}\n${blocos.join('\n')}`);
+    if (novo === texto) throw new Error('Não achei a lista "cadastros" no cadastros.json.');
+    JSON.parse(novo);                                   // JSON inválido? aborta antes de gravar
+    texto = novo;
+  }
+
+  // blobs -> árvore -> commit -> branch
+  const arvore = [];
+  for (const p of prontos) {
+    const bl = await ghJson(env, 'git/blobs', { method: 'POST', body: JSON.stringify({ content: p.img.dados_b64, encoding: 'base64' }) });
+    arvore.push({ path: p.caminho, mode: '100644', type: 'blob', sha: bl.sha });
+  }
+  const blJson = await ghJson(env, 'git/blobs', { method: 'POST', body: JSON.stringify({ content: texto, encoding: 'utf-8' }) });
+  arvore.push({ path: 'cadastros.json', mode: '100644', type: 'blob', sha: blJson.sha });
+
+  const tree = await ghJson(env, 'git/trees', { method: 'POST', body: JSON.stringify({ base_tree: base.tree.sha, tree: arvore }) });
+  const nomes = prontos.map(p => p.c.nome).join(', ');
+  const commit = await ghJson(env, 'git/commits', { method: 'POST', body: JSON.stringify({
+    message: `Arquivar ${prontos.length} card(s) do D1: ${nomes}`.slice(0, 200), tree: tree.sha, parents: [baseCommit] }) });
+  await ghJson(env, `git/refs/heads/${repo.default_branch}`, { method: 'PATCH', body: JSON.stringify({ sha: commit.sha }) });
+
+  // commit aceito: agora enxuga o D1 (a linha fica como 'arquivado'; a imagem é apagada)
+  await env.DB.batch(prontos.flatMap(p => [
+    env.DB.prepare(`UPDATE ${T.cad} SET status='arquivado', imagem_id=NULL WHERE id=?`).bind(p.c.id),
+    env.DB.prepare(`DELETE FROM ${T.img} WHERE id=?`).bind(p.c.imagem_id)
+  ]));
+  return prontos.length;
+}
 
 export async function onRequestGet({ request, env }) {
   if (!autorizado(request, env)) return json({ erro: 'Não autorizado' }, 401);
@@ -16,8 +93,19 @@ export async function onRequestGet({ request, env }) {
 export async function onRequestPost({ request, env }) {
   if (!autorizado(request, env)) return json({ erro: 'Não autorizado' }, 401);
   const { id, acao, motivo } = await request.json();
+
+  if (acao === 'arquivar_todos') {
+    const { results } = await env.DB.prepare(
+      `SELECT * FROM ${T.cad} WHERE status='ativo' AND imagem_id IS NOT NULL ORDER BY ativo_em ASC`).all();
+    if (!results.length) return json({ erro: 'Não há cards ativos no D1 para arquivar.' }, 400);
+    try {
+      const n = await arquivarLote(env, results.slice(0, LOTE_MAX));
+      const resta = results.length - n;
+      return json({ ok: true, aviso: `${n} card(s) enviados ao GitHub em 1 commit.` + (resta > 0 ? ` Restam ${resta}: clique de novo para o próximo lote.` : '') + ' O deploy leva ~1 minuto.' });
+    } catch (e) { return json({ erro: String(e.message || e) }, 500); }
+  }
   const agora = Date.now();
-  const c = await env.DB.prepare(`SELECT plano,status FROM ${T.cad} WHERE id=?`).bind(id).first();
+  const c = await env.DB.prepare(`SELECT * FROM ${T.cad} WHERE id=?`).bind(id).first();
   if (!c) return json({ erro: 'Card não encontrado' }, 404);
 
   if (acao === 'aprovar') {
@@ -28,6 +116,10 @@ export async function onRequestPost({ request, env }) {
   } else if (acao === 'recusar' || acao === 'remover') {
     await env.DB.prepare(`UPDATE ${T.cad} SET status=?, motivo_recusa=? WHERE id=?`)
       .bind(acao === 'recusar' ? 'recusado' : 'removido', motivo || null, id).run();
+  } else if (acao === 'arquivar') {
+    try { await arquivarLote(env, [c]); }
+    catch (e) { return json({ erro: String(e.message || e) }, 500); }
+    return json({ ok: true, aviso: 'Card enviado ao GitHub. Em ~1 minuto o deploy termina e ele volta ao catálogo (vindo do cadastros.json).' });
   } else return json({ erro: 'Ação inválida' }, 400);
   return json({ ok: true });
 }

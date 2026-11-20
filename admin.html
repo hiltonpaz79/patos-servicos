@@ -29,8 +29,10 @@
     <option value="ativo">Ativos</option>
     <option value="recusado">Recusados</option>
     <option value="removido">Removidos</option>
+    <option value="arquivado">Arquivados (já no GitHub)</option>
   </select>
   <button id="recarregar">Atualizar</button>
+  <button id="arquivarTodos" class="ok" hidden>Arquivar todos os ativos</button>
 </div>
 <div class="grid" id="lista"></div>
 
@@ -46,11 +48,12 @@ async function carregar() {
   if (r.status === 401) { sessionStorage.removeItem('adm'); $('lista').textContent = 'Token inválido. Recarregue a página.'; return; }
   const { itens } = await r.json();
   $('lista').innerHTML = itens.length ? '' : 'Nada por aqui.';
+  $('arquivarTodos').hidden = !($('status').value === 'ativo' && itens.length);
   itens.forEach(c => {
     const d = document.createElement('div'); d.className = 'c';
     d.innerHTML = `
       <span class="pl ${c.plano}">${c.plano.toUpperCase()}</span>
-      <a href="/api/imagem/${c.imagem_id}?t=${encodeURIComponent(token)}" download="${c.id}.jpg" target="_blank"><img src="/api/imagem/${c.imagem_id}?t=${encodeURIComponent(token)}" alt=""></a>
+      ${c.imagem_id ? `<a href="/api/imagem/${c.imagem_id}?t=${encodeURIComponent(token)}" download="${c.id}.jpg" target="_blank"><img src="/api/imagem/${c.imagem_id}?t=${encodeURIComponent(token)}" alt=""></a>` : ''}
       <p><strong>${txt(c.nome)}</strong></p>
       ${c.slogan ? `<p><em>${txt(c.slogan)}</em></p>` : ''}
       ${c.descricao ? `<p>${txt(c.descricao)}</p>` : ''}
@@ -63,19 +66,32 @@ async function carregar() {
     const bt = (rot, cls, acao, pedeMotivo) => {
       const b = document.createElement('button'); b.textContent = rot; b.className = cls;
       b.onclick = async () => {
+        if (acao === 'arquivar' && !confirm('Enviar imagem e dados para o GitHub e apagar a imagem do D1?')) return;
         const motivo = pedeMotivo ? prompt('Motivo (opcional):') : null;
         if (pedeMotivo && motivo === null) return;
-        await fetch('/api/admin', { method: 'POST', headers: { Authorization: 'Bearer ' + token, 'content-type': 'application/json' }, body: JSON.stringify({ id: c.id, acao, motivo }) });
+        b.disabled = true; b.textContent = 'Aguarde...';
+        const r = await fetch('/api/admin', { method: 'POST', headers: { Authorization: 'Bearer ' + token, 'content-type': 'application/json' }, body: JSON.stringify({ id: c.id, acao, motivo }) });
+        const j = await r.json().catch(() => ({}));
+        if (!r.ok) alert('Erro: ' + (j.erro || r.status)); else if (j.aviso) alert(j.aviso);
         carregar();
       };
       ac.appendChild(b);
     };
     if (c.status === 'em_analise') { bt('Aprovar', 'ok', 'aprovar'); bt('Recusar', 'no', 'recusar', true); }
-    if (c.status === 'ativo') bt('Remover', 'no', 'remover', true);
+    if (c.status === 'ativo') { bt('Arquivar no GitHub', 'ok', 'arquivar'); bt('Remover', 'no', 'remover', true); }
     if (c.status === 'recusado' || c.status === 'removido') bt('Reativar', 'ok', 'aprovar');
     $('lista').appendChild(d);
   });
 }
+$('arquivarTodos').onclick = async () => {
+  if (!confirm('Enviar os cards ativos (até 20 por vez) ao GitHub num único commit e apagar as imagens do D1?')) return;
+  const b = $('arquivarTodos'); b.disabled = true; b.textContent = 'Aguarde...';
+  const r = await fetch('/api/admin', { method: 'POST', headers: { Authorization: 'Bearer ' + token, 'content-type': 'application/json' }, body: JSON.stringify({ acao: 'arquivar_todos' }) });
+  const j = await r.json().catch(() => ({}));
+  alert(r.ok ? j.aviso : 'Erro: ' + (j.erro || r.status));
+  b.disabled = false; b.textContent = 'Arquivar todos os ativos';
+  carregar();
+};
 $('status').onchange = carregar; $('recarregar').onclick = carregar; carregar();
 </script>
 </body>
