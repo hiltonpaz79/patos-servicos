@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin | Patos Serviços</title>
+<style>
+  body { font-family: 'Montserrat', Arial, sans-serif; background: #f4f4f9; margin: 0; padding: 1rem; color: #041e3d; }
+  .topo { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }
+  select, button, input { font: inherit; padding: 8px 12px; border-radius: 8px; border: 1px solid #ccc; }
+  button { cursor: pointer; background: #fff; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+  .c { background: #fff; border-radius: 10px; padding: 1rem; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
+  .c img { width: 100%; border-radius: 6px; }
+  .c .pl { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px; color: #fff; background: #64748b; }
+  .c .pl.premium { background: #ff9800; } .c .pl.basico { background: #2563eb; }
+  .acoes { display: flex; gap: 6px; flex-wrap: wrap; margin-top: .6rem; }
+  .ok { background: #16a34a; color: #fff; border: none; } .no { background: #dc2626; color: #fff; border: none; }
+  p { margin: .3rem 0; font-size: .9rem; word-break: break-word; }
+</style>
+</head>
+<body>
+<div class="topo">
+  <strong>Painel de aprovação</strong>
+  <select id="status">
+    <option value="em_analise">Em análise</option>
+    <option value="aguardando_pagamento">Aguardando pagamento</option>
+    <option value="ativo">Ativos</option>
+    <option value="recusado">Recusados</option>
+    <option value="removido">Removidos</option>
+  </select>
+  <button id="recarregar">Atualizar</button>
+</div>
+<div class="grid" id="lista"></div>
+
+<script>
+let token = sessionStorage.getItem('adm') || prompt('Token de administrador:') || '';
+sessionStorage.setItem('adm', token);
+const $ = (id) => document.getElementById(id);
+const dt = (t) => t ? new Date(t).toLocaleDateString('pt-BR') : '—';
+const txt = (s) => { const d = document.createElement('div'); d.textContent = s ?? ''; return d.innerHTML; };
+
+async function carregar() {
+  const r = await fetch('/api/admin?status=' + $('status').value, { headers: { Authorization: 'Bearer ' + token } });
+  if (r.status === 401) { sessionStorage.removeItem('adm'); $('lista').textContent = 'Token inválido. Recarregue a página.'; return; }
+  const { itens } = await r.json();
+  $('lista').innerHTML = itens.length ? '' : 'Nada por aqui.';
+  itens.forEach(c => {
+    const d = document.createElement('div'); d.className = 'c';
+    d.innerHTML = `
+      <span class="pl ${c.plano}">${c.plano.toUpperCase()}</span>
+      <a href="/api/imagem/${c.imagem_id}?t=${encodeURIComponent(token)}" download="${c.id}.jpg" target="_blank"><img src="/api/imagem/${c.imagem_id}?t=${encodeURIComponent(token)}" alt=""></a>
+      <p><strong>${txt(c.nome)}</strong></p>
+      ${c.slogan ? `<p><em>${txt(c.slogan)}</em></p>` : ''}
+      ${c.descricao ? `<p>${txt(c.descricao)}</p>` : ''}
+      <p>📱 <a href="https://wa.me/${c.whatsapp}" target="_blank">${c.whatsapp}</a>${c.instagram ? ` · 📷 @${txt(c.instagram)}` : ''}</p>
+      <p>📍 ${JSON.parse(c.cidades).join(', ')}<br>🏷️ ${JSON.parse(c.categorias).join(', ')}</p>
+      <p>Criado: ${dt(c.criado_em)} · Pago: ${dt(c.pago_em)} · Ativo: ${dt(c.ativo_em)} · Expira: ${dt(c.expira_em)}</p>
+      <p style="font-size:12px;color:#555">ID: ${c.id} (nome do arquivo para imagens_cards: ${c.id}.jpg)</p>
+      <div class="acoes"></div>`;
+    const ac = d.querySelector('.acoes');
+    const bt = (rot, cls, acao, pedeMotivo) => {
+      const b = document.createElement('button'); b.textContent = rot; b.className = cls;
+      b.onclick = async () => {
+        const motivo = pedeMotivo ? prompt('Motivo (opcional):') : null;
+        if (pedeMotivo && motivo === null) return;
+        await fetch('/api/admin', { method: 'POST', headers: { Authorization: 'Bearer ' + token, 'content-type': 'application/json' }, body: JSON.stringify({ id: c.id, acao, motivo }) });
+        carregar();
+      };
+      ac.appendChild(b);
+    };
+    if (c.status === 'em_analise') { bt('Aprovar', 'ok', 'aprovar'); bt('Recusar', 'no', 'recusar', true); }
+    if (c.status === 'ativo') bt('Remover', 'no', 'remover', true);
+    if (c.status === 'recusado' || c.status === 'removido') bt('Reativar', 'ok', 'aprovar');
+    $('lista').appendChild(d);
+  });
+}
+$('status').onchange = carregar; $('recarregar').onclick = carregar; carregar();
+</script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divulgue seu negócio | Patos Serviços</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="imagens_icons/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { display: block; }
+  .cad { max-width: 960px; margin: 0 auto; padding: 0 1rem 3rem; color: #041e3d; }
+  .cad h1 { text-align: center; font-size: 1.6rem; margin: 1rem 0 .25rem; }
+  .cad .sub { text-align: center; margin: 0 0 1.5rem; }
+  .planos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .plano { position: relative; background: #fff; border: 2px solid #ddd; border-radius: 12px; padding: 1.2rem 1rem; text-align: center; cursor: pointer; transition: border-color .2s, box-shadow .2s; }
+  .plano.sel { border-color: var(--cor-tema-escura); box-shadow: 0 6px 18px rgba(var(--cor-tema-rgb), .25); }
+  .plano h2 { margin: 0; font-size: 1.15rem; }
+  .plano .preco { font-size: 1.6rem; font-weight: 700; margin: .4rem 0; color: var(--cor-tema-escura); }
+  .plano .preco small { font-size: .8rem; font-weight: 500; color: #555; }
+  .plano ul { list-style: none; padding: 0; margin: .6rem 0 0; text-align: left; font-size: .9rem; }
+  .plano li { padding: 3px 0 3px 22px; position: relative; }
+  .plano li::before { content: "✔"; position: absolute; left: 0; color: #16a34a; font-weight: 700; }
+  .plano .tag { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: #ff9800; color: #fff; font-size: 12px; font-weight: 700; padding: 2px 12px; border-radius: 999px; white-space: nowrap; }
+  .plano .vagas { font-size: .8rem; color: #b45309; font-weight: 600; margin-top: .5rem; }
+  .plano.esgotado { opacity: .55; pointer-events: none; }
+  form { background: #fff; border-radius: 12px; padding: 1.2rem; margin-top: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  form[hidden] { display: none; }
+  .campo { margin-bottom: 1rem; }
+  .campo > label { display: block; font-weight: 600; margin-bottom: 4px; }
+  .campo input[type=text], .campo input[type=tel], .campo textarea, .campo select { width: 100%; padding: 10px 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 8px; font-family: inherit; background: #fff; }
+  .campo textarea { min-height: 110px; resize: vertical; }
+  .campo small { color: #555; }
+  .so-pago[hidden] { display: none; }
+  .multi-linha { display: flex; gap: 6px; margin-bottom: 6px; }
+  .multi-linha button { border: 1px solid #ccc; background: #fff; color: #041e3d; border-radius: 8px; width: 44px; cursor: pointer; font-size: 18px; }
+  .btn-mais { background: none; border: 1.5px dashed var(--cor-tema-escura); color: var(--cor-tema-escura); border-radius: 8px; padding: 8px 12px; font-weight: 600; cursor: pointer; }
+  .btn-mais[hidden] { display: none; }
+  #previa { max-width: 220px; border-radius: 8px; display: block; margin-top: 8px; }
+  .aviso { background: #fff7ed; border-left: 4px solid var(--cor-tema); padding: 10px 12px; border-radius: 6px; font-size: .9rem; margin: 1rem 0; }
+  .termos { display: flex; gap: 8px; align-items: flex-start; margin: 1rem 0; font-size: .92rem; }
+  .termos input { margin-top: 4px; width: 20px; height: 20px; flex: none; }
+  .enviar { width: 100%; min-height: 48px; border: none; border-radius: 999px; background: var(--cor-tema-escura); color: #fff; font: 700 16px 'Montserrat', Arial, sans-serif; cursor: pointer; }
+  .enviar:disabled { opacity: .6; cursor: wait; }
+  .erro { color: #b91c1c; font-weight: 600; margin-top: .6rem; }
+  .ok-box { background: #fff; border-radius: 12px; padding: 2rem 1rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.08); margin-top: 1.5rem; }
+  .hp { position: absolute; left: -9999px; }
+  .voltar { display: block; text-align: center; margin-top: 1.5rem; color: #041e3d; font-weight: 600; }
+  @media (max-width: 700px) { .planos { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main class="cad">
+  <h1>Divulgue seu negócio</h1>
+  <p class="sub">Escolha um plano e apareça para quem procura serviços na sua cidade.</p>
+
+  <div id="retorno"></div>
+
+  <section class="planos" id="planos">
+    <article class="plano" data-plano="gratis" tabindex="0">
+      <h2>Grátis</h2>
+      <div class="preco">R$ 0,00 <small>para sempre</small></div>
+      <ul><li>Nome do profissional/empresa</li><li>WhatsApp</li><li>Foto do card</li></ul>
+    </article>
+    <article class="plano" data-plano="basico" tabindex="0">
+      <h2>Básico</h2>
+      <div class="preco">R$ 39,90 <small>/ano</small></div>
+      <ul><li>Nome do profissional/empresa</li><li>Slogan/subtítulo</li><li>Descrição</li><li>WhatsApp</li><li>Instagram</li></ul>
+    </article>
+    <article class="plano" data-plano="premium" tabindex="0">
+      <span class="tag">Mais completo</span>
+      <h2>Premium</h2>
+      <div class="preco">R$ 99,90 <small>/ano</small></div>
+      <ul>
+        <li>Tudo do plano Básico</li>
+        <li>Entre os primeiros cards, com selo <strong>Destaque</strong></li>
+        <li>Banner dinâmico por 1 mês (nós criamos, em até 1 dia útil)</li>
+        <li>Divulgação eventual no Instagram do Patos Serviços</li>
+      </ul>
+      <div class="vagas" id="vagas"></div>
+    </article>
+  </section>
+
+  <form id="form" hidden novalidate>
+    <h2 id="tituloForm" style="margin-top:0"></h2>
+    <input type="hidden" name="plano" id="plano">
+    <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <div class="campo">
+      <label for="nome">Nome do profissional ou empresa *</label>
+      <input type="text" id="nome" name="nome" maxlength="60" required>
+    </div>
+
+    <div class="campo so-pago" hidden>
+      <label for="slogan">Slogan / subtítulo</label>
+      <input type="text" id="slogan" name="slogan" maxlength="80" placeholder="Ex.: Instalação e manutenção de ar-condicionado">
+    </div>
+
+    <div class="campo so-pago" hidden>
+      <label for="descricao">Descrição</label>
+      <textarea id="descricao" name="descricao" maxlength="600" placeholder="Conte o que você faz, seus diferenciais, horário de atendimento..."></textarea>
+      <small>Até 600 caracteres. Links e códigos não são exibidos.</small>
+    </div>
+
+    <div class="campo">
+      <label for="whatsapp">WhatsApp (com DDD) *</label>
+      <input type="tel" id="whatsapp" name="whatsapp" inputmode="numeric" placeholder="(83) 99999-9999" required>
+    </div>
+
+    <div class="campo so-pago" hidden>
+      <label for="instagram">Instagram</label>
+      <input type="text" id="instagram" name="instagram" placeholder="@seuperfil">
+    </div>
+
+    <div class="campo">
+      <label>Cidade(s) onde atende *</label>
+      <div id="cidades"></div>
+      <button type="button" class="btn-mais" id="maisCidade">+ Adicionar outra cidade</button>
+    </div>
+
+    <div class="campo">
+      <label>Ramo / tipo de serviço *</label>
+      <div id="categorias"></div>
+      <button type="button" class="btn-mais" id="maisCategoria">+ Adicionar outro ramo</button>
+      <small style="display:block;margin-top:4px">Você pode escolher até 3 cidades e 3 ramos.</small>
+    </div>
+
+    <div class="campo">
+      <label for="imagem">Foto do card *</label>
+      <input type="file" id="imagem" accept="image/jpeg,image/png,image/webp" required>
+      <small>Logo, foto sua ou do seu trabalho. Ela é reduzida automaticamente. Pode ser quadrada.</small>
+      <img id="previa" alt="" hidden>
+    </div>
+
+    <div class="aviso">
+      ℹ️ O Patos Serviços não usa contas de usuário. Para <strong>alterar ou excluir</strong> seu card depois,
+      é só chamar nosso <a href="https://wa.me/5583996476030?text=Ol%C3%A1!%20Preciso%20alterar%20ou%20excluir%20meu%20card." target="_blank" rel="noopener"><strong>WhatsApp de suporte</strong></a>
+      (o mesmo do rodapé do site).<br>
+      Todo card passa por uma análise rápida antes de aparecer no site.
+    </div>
+
+    <label class="termos">
+      <input type="checkbox" name="termos" id="termos">
+      <span>Li e concordo com os <a href="termos.html" target="_blank" rel="noopener">Termos e Condições</a>
+      e a <a href="politica-privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>.</span>
+    </label>
+
+    <button type="submit" class="enviar" id="enviar"></button>
+    <div class="erro" id="erro" role="alert"></div>
+  </form>
+
+  <div class="ok-box" id="okBox" hidden></div>
+  <a class="voltar" href="index.html">← Voltar ao catálogo</a>
+</main>
+
+<script>
+const PRECOS = { gratis: 'Criar meu card grátis', basico: 'Ir para o pagamento — R$ 39,90', premium: 'Ir para o pagamento — R$ 99,90' };
+const NOMES = { gratis: 'Plano Grátis', basico: 'Plano Básico', premium: 'Plano Premium' };
+const $ = (id) => document.getElementById(id);
+let filtros = { cidades: [], categorias: [] };
+
+/* ---------- seletores múltiplos (cidade / ramo) ---------- */
+function criarMulti(containerId, btnId, nomeCampo, opcoes, textoVazio) {
+  const box = $(containerId), btn = $(btnId);
+  const ordenadas = [...opcoes].sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
+  function linha(removivel) {
+    const d = document.createElement('div'); d.className = 'multi-linha';
+    const s = document.createElement('select'); s.name = nomeCampo; s.required = !removivel;
+    s.innerHTML = `<option value="">${textoVazio}</option>` + ordenadas.map(o => `<option value="${o.valor}">${o.nome}</option>`).join('');
+    d.appendChild(s);
+    if (removivel) {
+      const x = document.createElement('button'); x.type = 'button'; x.textContent = '×'; x.setAttribute('aria-label', 'Remover');
+      x.onclick = () => { d.remove(); atualizar(); };
+      d.appendChild(x);
+    }
+    return d;
+  }
+  function atualizar() { btn.hidden = box.children.length >= 3; }
+  btn.onclick = () => { box.appendChild(linha(true)); atualizar(); };
+  box.replaceChildren(linha(false)); atualizar();
+}
+
+/* ---------- escolha do plano ---------- */
+function escolher(plano) {
+  document.querySelectorAll('.plano').forEach(p => p.classList.toggle('sel', p.dataset.plano === plano));
+  $('plano').value = plano;
+  $('tituloForm').textContent = `Dados do seu card — ${NOMES[plano]}`;
+  $('enviar').textContent = PRECOS[plano];
+  document.querySelectorAll('.so-pago').forEach(e => e.hidden = plano === 'gratis');
+  $('form').hidden = false; $('okBox').hidden = true;
+  $('form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+document.querySelectorAll('.plano').forEach(p => {
+  p.onclick = () => escolher(p.dataset.plano);
+  p.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); escolher(p.dataset.plano); } };
+});
+
+/* ---------- foto: reduz para até 900px (JPEG) antes de enviar ---------- */
+let fotoBlob = null;
+$('imagem').addEventListener('change', async (e) => {
+  const file = e.target.files[0]; fotoBlob = null; $('previa').hidden = true;
+  if (!file) return;
+  try {
+    const bmp = await createImageBitmap(file);
+    const esc = Math.min(1, 900 / Math.max(bmp.width, bmp.height));
+    const c = document.createElement('canvas');
+    c.width = Math.round(bmp.width * esc); c.height = Math.round(bmp.height * esc);
+    const ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height); ctx.drawImage(bmp, 0, 0, c.width, c.height);
+    fotoBlob = await new Promise(r => c.toBlob(r, 'image/jpeg', 0.85));
+    $('previa').src = URL.createObjectURL(fotoBlob); $('previa').hidden = false;
+  } catch (_) { $('erro').textContent = 'Não foi possível ler essa imagem. Tente outra.'; e.target.value = ''; }
+});
+
+/* ---------- máscara simples do WhatsApp ---------- */
+$('whatsapp').addEventListener('input', (e) => {
+  const d = e.target.value.replace(/\D/g, '').slice(0, 11);
+  e.target.value = d.length > 6 ? `(${d.slice(0, 2)}) ${d.slice(2, d.length - 4)}-${d.slice(-4)}` : d.length > 2 ? `(${d.slice(0, 2)}) ${d.slice(2)}` : d;
+});
+
+/* ---------- envio ---------- */
+$('form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  $('erro').textContent = '';
+  if (!$('form').checkValidity()) { $('form').reportValidity(); return; }
+  if (!fotoBlob) { $('erro').textContent = 'Envie a foto do card.'; return; }
+  if (!$('termos').checked) { $('erro').textContent = 'Marque "Concordo com os Termos e Condições" para continuar.'; return; }
+
+  const fd = new FormData($('form'));
+  fd.delete('imagem'); fd.append('imagem', fotoBlob, 'card.jpg');
+  const btn = $('enviar'); btn.disabled = true; const txt = btn.textContent; btn.textContent = 'Enviando...';
+  try {
+    const r = await fetch('/api/cadastro', { method: 'POST', body: fd });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(j.erro || 'Erro ao enviar. Tente novamente.');
+    if (j.pago && j.url_pagamento) { location.href = j.url_pagamento; return; }   // Mercado Pago (Pix ou cartão)
+    $('form').hidden = true; $('planos').hidden = true;
+    $('okBox').hidden = false;
+    $('okBox').innerHTML = '<h2>✅ Cadastro enviado!</h2><p>Seu card vai passar por uma análise rápida e, aprovado, aparece no site.<br>Para alterar ou excluir depois, chame o WhatsApp de suporte do rodapé.</p>';
+  } catch (err) { $('erro').textContent = err.message; btn.disabled = false; btn.textContent = txt; }
+});
+
+/* ---------- retorno do Mercado Pago ---------- */
+const ret = new URLSearchParams(location.search).get('retorno');
+if (ret) {
+  const msg = {
+    sucesso: ['✅ Pagamento recebido!', 'Seu card entrou na análise e será publicado em breve. O prazo do seu plano começa a contar a partir do dia em que ele ficar ativo no site.'],
+    pendente: ['⏳ Pagamento pendente', 'Assim que o Pix/cartão for confirmado, seu card entra na análise automaticamente.'],
+    falha: ['❌ O pagamento não foi concluído', 'Seu cadastro ficou salvo, mas sem pagamento. Chame o WhatsApp de suporte e te ajudamos a finalizar.']
+  }[ret];
+  if (msg) { $('retorno').innerHTML = `<div class="ok-box"><h2>${msg[0]}</h2><p>${msg[1]}</p></div>`; $('planos').hidden = true; }
+}
+
+/* ---------- dados iniciais ---------- */
+(async () => {
+  try { filtros = await (await fetch('filtros.json', { cache: 'no-cache' })).json(); } catch (_) {}
+  criarMulti('cidades', 'maisCidade', 'cidade', filtros.cidades, 'Selecione a cidade');
+  criarMulti('categorias', 'maisCategoria', 'categoria', filtros.categorias, 'Selecione o ramo');
+  try {
+    const { vagas_premium } = await (await fetch('/api/cards')).json();
+    const el = $('vagas');
+    if (vagas_premium <= 0) { el.textContent = 'Vagas esgotadas no momento'; document.querySelector('[data-plano=premium]').classList.add('esgotado'); }
+    else el.textContent = `Restam ${vagas_premium} de 16 vagas`;
+  } catch (_) {}
+  const pre = new URLSearchParams(location.search).get('plano');
+  if (pre && NOMES[pre] && !ret) escolher(pre);
+})();
+</script>
+</body>
+</html>
