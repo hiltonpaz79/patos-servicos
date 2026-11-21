@@ -117,7 +117,8 @@ export async function onRequestGet({ request, env }) {
 
 export async function onRequestPost({ request, env }) {
   if (!autorizado(request, env)) return json({ erro: 'Não autorizado' }, 401);
-  const { id, acao, motivo } = await request.json();
+  const corpo = await request.json();
+  const { id, acao, motivo } = corpo;
 
   if (acao === 'arquivar_todos') {
     const { results } = await env.DB.prepare(
@@ -143,7 +144,6 @@ export async function onRequestPost({ request, env }) {
       .bind(acao === 'recusar' ? 'recusado' : 'removido', motivo || null, id).run();
   } else if (acao === 'editar') {
     if (c.status === 'arquivado') return json({ erro: 'Card já arquivado: edite direto no cadastros.json.' }, 400);
-    const corpo = await request.clone().json();
     const nome = limparNome(corpo.nome ?? c.nome).slice(0, 60) || c.nome;
     const corta = (v, n, atual) => v === undefined ? atual : (String(v).trim().slice(0, n) || null);
     const slogan = c.plano === 'gratis' ? null : corta(corpo.slogan, 80, c.slogan);
