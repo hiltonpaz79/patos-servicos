@@ -651,6 +651,8 @@ body {
     color: #ffa938;
 }
 
+.footer-links { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+
 /* Ajuste para telas pequenas */
 @media (max-width: 600px) {
     .site-footer {
