@@ -16,6 +16,10 @@
     {
       "valor": "pedra_branca",
       "nome": "Pedra Branca"
+    },
+    {
+      "valor": "serra_grande",
+      "nome": "Serra Grande"
     }
   ],
   "categorias": [
@@ -686,6 +690,10 @@
     {
       "valor": "agua_mineral",
       "nome": "Água Mineral"
+    },
+    {
+      "valor": "desenvolvedor",
+      "nome": "Desenvolvedor"
     }
   ]
 }
