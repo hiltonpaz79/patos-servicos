@@ -1,5 +1,5 @@
 // Salvar como: functions/api/cadastro.js   (POST /api/cadastro)
-import { PLANOS, LIMITE_PREMIUM, TERMOS_VERSAO, SITE_NOME, json, paraBase64, lerArquivoEstatico, contarPremium, T } from '../../lib/util.js';
+import { PLANOS, LIMITE_PREMIUM, TERMOS_VERSAO, SITE_NOME, json, paraBase64, lerArquivoEstatico, contarPremium, T, limparNome, nomeValido, resolverFiltro } from '../../lib/util.js';
 
 const MAX_IMG = 700 * 1024;
 const TIPOS = ['image/jpeg', 'image/png', 'image/webp'];
@@ -30,9 +30,27 @@ export async function onRequestPost({ request, env }) {
   const filtros = await lerArquivoEstatico(env, request, 'filtros.json');
   const okCid = new Set(filtros.cidades.map(c => c.valor));
   const okCat = new Set(filtros.categorias.map(c => c.valor));
-  const cidades = [...new Set(f.getAll('cidade'))].filter(v => okCid.has(v)).slice(0, 3);
-  const categorias = [...new Set(f.getAll('categoria'))].filter(v => okCat.has(v)).slice(0, 3);
+  // o cliente escolhe da lista ou digita ("Outra"). O que for digitado vira filtro novo, que você revisa no admin.
+  const novos = { cidades: [], categorias: [] };
+  const montar = (tipo, valoresLista, textos, ok, lista) => {
+    const set = new Set(valoresLista.filter(v => ok.has(v)));
+    for (const t0 of textos) {
+      const t = limparNome(t0);
+      if (!t) continue;
+      if (!nomeValido(t)) return null;
+      const r = resolverFiltro(lista, t);
+      set.add(r.valor);
+      if (r.novo && !novos[tipo].some(n => n.valor === r.valor)) novos[tipo].push({ valor: r.valor, nome: r.nome });
+    }
+    const valores = [...set].slice(0, 3);
+    novos[tipo] = novos[tipo].filter(n => valores.includes(n.valor));
+    return valores;
+  };
+  const cidades = montar('cidades', f.getAll('cidade'), f.getAll('cidade_nova'), okCid, filtros.cidades);
+  const categorias = montar('categorias', f.getAll('categoria'), f.getAll('categoria_nova'), okCat, filtros.categorias);
+  if (!cidades || !categorias) return json({ erro: 'Cidade ou ramo com caracteres inválidos. Use só letras e números.' }, 400);
   if (!cidades.length || !categorias.length) return json({ erro: 'Escolha ao menos uma cidade e um ramo.' }, 400);
+  const filtrosNovos = (novos.cidades.length || novos.categorias.length) ? JSON.stringify(novos) : null;
 
   // campos extras só valem nos planos pagos
   let slogan = null, descricao = null, instagram = null;
@@ -45,8 +63,8 @@ export async function onRequestPost({ request, env }) {
   }
 
   const img = f.get('imagem');
-  if (!img || typeof img === 'string') return json({ erro: 'Envie a foto do card.' }, 400);
-  if (!TIPOS.includes(img.type) || img.size > MAX_IMG) return json({ erro: 'Foto inválida (JPG, PNG ou WebP até 700 KB).' }, 400);
+  if (!img || typeof img === 'string') return json({ erro: 'Envie a arte do card.' }, 400);
+  if (!TIPOS.includes(img.type) || img.size > MAX_IMG) return json({ erro: 'Arte inválida (JPG, PNG ou WebP até 700 KB).' }, 400);
 
   if (plano === 'premium' && await contarPremium(env, request) >= LIMITE_PREMIUM) {
     return json({ erro: 'As vagas Premium estão esgotadas no momento. Escolha o Básico ou fale conosco.' }, 409);
@@ -67,9 +85,9 @@ export async function onRequestPost({ request, env }) {
     env.DB.prepare(`INSERT INTO ${T.img} (id,tipo,dados_b64,criado_em) VALUES (?,?,?,?)`)
       .bind(imagemId, img.type, paraBase64(await img.arrayBuffer()), agora),
     env.DB.prepare(`INSERT INTO ${T.cad} (id,plano,status,nome,slogan,descricao,whatsapp,instagram,cidades,categorias,
-        imagem_id,termos_versao,termos_aceite_em,ip_hash,criado_em) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`)
+        imagem_id,termos_versao,termos_aceite_em,ip_hash,criado_em,filtros_novos) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`)
       .bind(id, plano, status, nome, slogan, descricao, zap, instagram, JSON.stringify(cidades), JSON.stringify(categorias),
-        imagemId, TERMOS_VERSAO, agora, ipHash, agora)
+        imagemId, TERMOS_VERSAO, agora, ipHash, agora, filtrosNovos)
   ]);
 
   if (plano === 'gratis') return json({ ok: true, id, pago: false });

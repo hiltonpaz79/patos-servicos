@@ -1200,3 +1200,5 @@ body {
         scroll-behavior: auto !important;
     }
 }
+
+.item[data-id^="d1-"] > img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 16px; }

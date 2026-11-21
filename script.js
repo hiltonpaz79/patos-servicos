@@ -87,10 +87,16 @@ async function carregarDados() {
     const todos = [...(cad.cadastros || []), ...(d1.cards || [])]
         .filter(c => c.ativo !== false && (!c.expira_em || c.expira_em > agora))   // expira_em: fim do plano pago
         .sort((a, b) => (RANK[a.secao] ?? 1) - (RANK[b.secao] ?? 1));              // sort é estável: mantém a ordem dentro de cada plano
+    // cidades/categorias novas vindas dos cards do formulário (já aprovados) entram nos filtros
+    const extra = d1.filtros_novos || {};
+    const unir = (base, novos) => {
+        const tem = new Set(base.map(i => i.valor));
+        return [...base, ...(novos || []).filter(i => !tem.has(i.valor))];
+    };
     return {
         cadastros: todos,
-        cidades: filtros.cidades || [],
-        categorias: filtros.categorias || []
+        cidades: unir(filtros.cidades || [], extra.cidades),
+        categorias: unir(filtros.categorias || [], extra.categorias)
     };
 }
 

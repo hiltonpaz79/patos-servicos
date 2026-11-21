@@ -39,7 +39,11 @@
   .multi-linha button { border: 1px solid #ccc; background: #fff; color: #041e3d; border-radius: 8px; width: 44px; cursor: pointer; font-size: 18px; }
   .btn-mais { background: none; border: 1.5px dashed var(--cor-tema-escura); color: var(--cor-tema-escura); border-radius: 8px; padding: 8px 12px; font-weight: 600; cursor: pointer; }
   .btn-mais[hidden] { display: none; }
-  #previa { max-width: 220px; border-radius: 8px; display: block; margin-top: 8px; }
+  .recorte { max-width: 320px; margin-top: 10px; }
+  .recorte[hidden], .outra[hidden] { display: none; }
+  #recorte { width: 100%; aspect-ratio: 1 / 1; display: block; border-radius: 16px; background: #eee; touch-action: none; cursor: grab; }
+  .recorte input[type=range] { width: 100%; margin: 8px 0 2px; }
+  .outra { flex: 1 1 100%; }
   .aviso { background: #fff7ed; border-left: 4px solid var(--cor-tema); padding: 10px 12px; border-radius: 6px; font-size: .9rem; margin: 1rem 0; }
   .termos { display: flex; gap: 8px; align-items: flex-start; margin: 1rem 0; font-size: .92rem; }
   .termos input { margin-top: 4px; width: 20px; height: 20px; flex: none; }
@@ -63,7 +67,7 @@
     <article class="plano" data-plano="gratis" tabindex="0">
       <h2>Grátis</h2>
       <div class="preco">R$ 0,00 <small>para sempre</small></div>
-      <ul><li>Nome do profissional/empresa</li><li>WhatsApp</li><li>Foto do card</li></ul>
+      <ul><li>Nome do profissional/empresa</li><li>WhatsApp</li><li>Arte do card</li></ul>
     </article>
     <article class="plano" data-plano="basico" tabindex="0">
       <h2>Básico</h2>
@@ -129,10 +133,14 @@
     </div>
 
     <div class="campo">
-      <label for="imagem">Foto do card *</label>
+      <label for="imagem">Arte do card *</label>
       <input type="file" id="imagem" accept="image/jpeg,image/png,image/webp" required>
-      <small>Logo, foto sua ou do seu trabalho. Ela é reduzida automaticamente. Pode ser quadrada.</small>
-      <img id="previa" alt="" hidden>
+      <small>Envie sua logo ou arte profissional. Ela será recortada em formato quadrado, com cantos arredondados, igual aos demais cards.</small>
+      <div class="recorte" id="recorteBox" hidden>
+        <canvas id="recorte" width="480" height="480"></canvas>
+        <input type="range" id="zoom" min="1" max="3" step="0.01" value="1" aria-label="Zoom da arte">
+        <small>Arraste a arte para enquadrar e use a barra para aproximar. A prévia mostra como ela ficará no card.</small>
+      </div>
     </div>
 
     <div class="aviso">
@@ -168,14 +176,21 @@ function criarMulti(containerId, btnId, nomeCampo, opcoes, textoVazio) {
   const ordenadas = [...opcoes].sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
   function linha(removivel) {
     const d = document.createElement('div'); d.className = 'multi-linha';
+    d.style.flexWrap = 'wrap';
     const s = document.createElement('select'); s.name = nomeCampo; s.required = !removivel;
-    s.innerHTML = `<option value="">${textoVazio}</option>` + ordenadas.map(o => `<option value="${o.valor}">${o.nome}</option>`).join('');
+    s.innerHTML = `<option value="">${textoVazio}</option>` + ordenadas.map(o => `<option value="${o.valor}">${o.nome}</option>`).join('')
+      + '<option value="__outra__">Outra (digitar)…</option>';
+    s.style.flex = '1';
     d.appendChild(s);
+    const t = document.createElement('input'); t.type = 'text'; t.name = nomeCampo + '_nova'; t.className = 'outra';
+    t.maxLength = 40; t.placeholder = 'Digite o nome'; t.hidden = true; t.disabled = true;
+    s.onchange = () => { const o = s.value === '__outra__'; t.hidden = !o; t.disabled = !o; t.required = o; if (!o) t.value = ''; else t.focus(); };
     if (removivel) {
       const x = document.createElement('button'); x.type = 'button'; x.textContent = '×'; x.setAttribute('aria-label', 'Remover');
       x.onclick = () => { d.remove(); atualizar(); };
       d.appendChild(x);
     }
+    d.appendChild(t);
     return d;
   }
   function atualizar() { btn.hidden = box.children.length >= 3; }
@@ -198,21 +213,46 @@ document.querySelectorAll('.plano').forEach(p => {
   p.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); escolher(p.dataset.plano); } };
 });
 
-/* ---------- foto: reduz para até 900px (JPEG) antes de enviar ---------- */
-let fotoBlob = null;
+/* ---------- arte: recorte quadrado (arrastar + zoom) ---------- */
+const cv = $('recorte'), cctx = cv.getContext('2d'), PV = cv.width;
+let bmp = null, zoom = 1, cx = 0, cy = 0, arrasto = null;
+const lado = () => Math.min(bmp.width, bmp.height) / zoom;          // lado da área recortada, em pixels da imagem original
+function limitar() { const v = lado(); cx = Math.min(bmp.width - v / 2, Math.max(v / 2, cx)); cy = Math.min(bmp.height - v / 2, Math.max(v / 2, cy)); }
+function desenhar(ctx, S) {
+  const v = lado();
+  ctx.imageSmoothingQuality = 'high';
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, S, S);
+  ctx.drawImage(bmp, cx - v / 2, cy - v / 2, v, v, 0, 0, S, S);
+}
+function redesenhar() { limitar(); desenhar(cctx, PV); }
+
 $('imagem').addEventListener('change', async (e) => {
-  const file = e.target.files[0]; fotoBlob = null; $('previa').hidden = true;
+  const file = e.target.files[0]; bmp = null; $('recorteBox').hidden = true; $('erro').textContent = '';
   if (!file) return;
   try {
-    const bmp = await createImageBitmap(file);
-    const esc = Math.min(1, 900 / Math.max(bmp.width, bmp.height));
-    const c = document.createElement('canvas');
-    c.width = Math.round(bmp.width * esc); c.height = Math.round(bmp.height * esc);
-    const ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height); ctx.drawImage(bmp, 0, 0, c.width, c.height);
-    fotoBlob = await new Promise(r => c.toBlob(r, 'image/jpeg', 0.85));
-    $('previa').src = URL.createObjectURL(fotoBlob); $('previa').hidden = false;
+    bmp = await createImageBitmap(file);
+    zoom = 1; $('zoom').value = 1; cx = bmp.width / 2; cy = bmp.height / 2;
+    $('recorteBox').hidden = false; redesenhar();
   } catch (_) { $('erro').textContent = 'Não foi possível ler essa imagem. Tente outra.'; e.target.value = ''; }
 });
+$('zoom').addEventListener('input', (e) => { if (!bmp) return; zoom = +e.target.value; redesenhar(); });
+cv.addEventListener('pointerdown', (e) => { if (!bmp) return; cv.setPointerCapture(e.pointerId); arrasto = { x: e.clientX, y: e.clientY }; cv.style.cursor = 'grabbing'; });
+cv.addEventListener('pointermove', (e) => {
+  if (!arrasto || !bmp) return;
+  const k = lado() / cv.getBoundingClientRect().width;               // pixels da imagem por pixel da tela
+  cx -= (e.clientX - arrasto.x) * k; cy -= (e.clientY - arrasto.y) * k;
+  arrasto = { x: e.clientX, y: e.clientY }; redesenhar();
+});
+['pointerup', 'pointercancel'].forEach(ev => cv.addEventListener(ev, () => { arrasto = null; cv.style.cursor = 'grab'; }));
+
+// gera o arquivo final: quadrado 800x800 em JPEG (os cantos arredondados são aplicados pelo CSS do card)
+async function exportarArte() {
+  const c = document.createElement('canvas'); c.width = c.height = 800;
+  desenhar(c.getContext('2d'), 800);
+  let blob = await new Promise(r => c.toBlob(r, 'image/jpeg', 0.88));
+  if (blob.size > 650 * 1024) blob = await new Promise(r => c.toBlob(r, 'image/jpeg', 0.7));
+  return blob;
+}
 
 /* ---------- máscara simples do WhatsApp ---------- */
 $('whatsapp').addEventListener('input', (e) => {
@@ -225,11 +265,11 @@ $('form').addEventListener('submit', async (e) => {
   e.preventDefault();
   $('erro').textContent = '';
   if (!$('form').checkValidity()) { $('form').reportValidity(); return; }
-  if (!fotoBlob) { $('erro').textContent = 'Envie a foto do card.'; return; }
+  if (!bmp) { $('erro').textContent = 'Envie a arte do card.'; return; }
   if (!$('termos').checked) { $('erro').textContent = 'Marque "Concordo com os Termos e Condições" para continuar.'; return; }
 
   const fd = new FormData($('form'));
-  fd.delete('imagem'); fd.append('imagem', fotoBlob, 'card.jpg');
+  fd.delete('imagem'); fd.append('imagem', await exportarArte(), 'card.jpg');
   const btn = $('enviar'); btn.disabled = true; const txt = btn.textContent; btn.textContent = 'Enviando...';
   try {
     const r = await fetch('/api/cadastro', { method: 'POST', body: fd });
@@ -256,14 +296,21 @@ if (ret) {
 /* ---------- dados iniciais ---------- */
 (async () => {
   try { filtros = await (await fetch('filtros.json', { cache: 'no-cache' })).json(); } catch (_) {}
-  criarMulti('cidades', 'maisCidade', 'cidade', filtros.cidades, 'Selecione a cidade');
-  criarMulti('categorias', 'maisCategoria', 'categoria', filtros.categorias, 'Selecione o ramo');
+  let vagas = null;
   try {
-    const { vagas_premium } = await (await fetch('/api/cards')).json();
-    const el = $('vagas');
-    if (vagas_premium <= 0) { el.textContent = 'Vagas esgotadas no momento'; document.querySelector('[data-plano=premium]').classList.add('esgotado'); }
-    else el.textContent = `Restam ${vagas_premium} de 16 vagas`;
+    const d = await (await fetch('/api/cards')).json();
+    vagas = d.vagas_premium;
+    const unir = (base, novos) => { const tem = new Set(base.map(i => i.valor)); return [...base, ...(novos || []).filter(i => !tem.has(i.valor))]; };
+    filtros.cidades = unir(filtros.cidades || [], d.filtros_novos?.cidades);       // cidades/ramos novos já aprovados
+    filtros.categorias = unir(filtros.categorias || [], d.filtros_novos?.categorias);
   } catch (_) {}
+  criarMulti('cidades', 'maisCidade', 'cidade', filtros.cidades || [], 'Selecione a cidade');
+  criarMulti('categorias', 'maisCategoria', 'categoria', filtros.categorias || [], 'Selecione o ramo');
+  if (vagas !== null) {
+    const el = $('vagas');
+    if (vagas <= 0) { el.textContent = 'Vagas esgotadas no momento'; document.querySelector('[data-plano=premium]').classList.add('esgotado'); }
+    else el.textContent = `Restam ${vagas} de 16 vagas`;
+  }
   const pre = new URLSearchParams(location.search).get('plano');
   if (pre && NOMES[pre] && !ret) escolher(pre);
 })();

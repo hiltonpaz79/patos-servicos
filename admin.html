@@ -15,6 +15,12 @@
   .c img { width: 100%; border-radius: 6px; }
   .c .pl { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px; color: #fff; background: #64748b; }
   .c .pl.premium { background: #ff9800; } .c .pl.basico { background: #2563eb; }
+  details { margin-top: .6rem; border: 1px solid #e2e8f0; border-radius: 8px; padding: 6px 10px; }
+  summary { cursor: pointer; font-weight: 600; }
+  details label { display: block; font-size: .8rem; margin-top: .5rem; color: #475569; }
+  details input, details textarea { width: 100%; box-sizing: border-box; font: inherit; padding: 6px 8px; border: 1px solid #ccc; border-radius: 6px; }
+  details textarea { min-height: 90px; }
+  .novo { background: #fef9c3; border-radius: 6px; padding: 4px 8px; font-size: .85rem; }
   .acoes { display: flex; gap: 6px; flex-wrap: wrap; margin-top: .6rem; }
   .ok { background: #16a34a; color: #fff; border: none; } .no { background: #dc2626; color: #fff; border: none; }
   p { margin: .3rem 0; font-size: .9rem; word-break: break-word; }
@@ -42,6 +48,7 @@ sessionStorage.setItem('adm', token);
 const $ = (id) => document.getElementById(id);
 const dt = (t) => t ? new Date(t).toLocaleDateString('pt-BR') : '—';
 const txt = (s) => { const d = document.createElement('div'); d.textContent = s ?? ''; return d.innerHTML; };
+const attr = (s) => txt(s).replace(/"/g, '&quot;');
 
 async function carregar() {
   const r = await fetch('/api/admin?status=' + $('status').value, { headers: { Authorization: 'Bearer ' + token } });
@@ -50,6 +57,7 @@ async function carregar() {
   $('lista').innerHTML = itens.length ? '' : 'Nada por aqui.';
   $('arquivarTodos').hidden = !($('status').value === 'ativo' && itens.length);
   itens.forEach(c => {
+    const fn = c.filtros_novos ? JSON.parse(c.filtros_novos) : { cidades: [], categorias: [] };
     const d = document.createElement('div'); d.className = 'c';
     d.innerHTML = `
       <span class="pl ${c.plano}">${c.plano.toUpperCase()}</span>
@@ -58,10 +66,31 @@ async function carregar() {
       ${c.slogan ? `<p><em>${txt(c.slogan)}</em></p>` : ''}
       ${c.descricao ? `<p>${txt(c.descricao)}</p>` : ''}
       <p>📱 <a href="https://wa.me/${c.whatsapp}" target="_blank">${c.whatsapp}</a>${c.instagram ? ` · 📷 @${txt(c.instagram)}` : ''}</p>
-      <p>📍 ${JSON.parse(c.cidades).join(', ')}<br>🏷️ ${JSON.parse(c.categorias).join(', ')}</p>
+      <p>📍 ${JSON.parse(c.cidades).map(txt).join(', ')}<br>🏷️ ${JSON.parse(c.categorias).map(txt).join(', ')}</p>
       <p>Criado: ${dt(c.criado_em)} · Pago: ${dt(c.pago_em)} · Ativo: ${dt(c.ativo_em)} · Expira: ${dt(c.expira_em)}</p>
       <p style="font-size:12px;color:#555">ID: ${c.id} (nome do arquivo para imagens_cards: ${c.id}.jpg)</p>
+      ${(fn.cidades.length || fn.categorias.length) ? `<p class="novo">🆕 ${fn.cidades.length ? 'Cidade nova: <strong>' + fn.cidades.map(i => txt(i.nome)).join(', ') + '</strong>' : ''} ${fn.categorias.length ? 'Ramo novo: <strong>' + fn.categorias.map(i => txt(i.nome)).join(', ') + '</strong>' : ''} — confira a escrita em Editar.</p>` : ''}
+      ${c.status !== 'arquivado' ? `<details><summary>✏️ Editar / corrigir</summary>
+        <label>Nome<input class="e-nome" maxlength="60" value="${attr(c.nome)}"></label>
+        ${c.plano !== 'gratis' ? `<label>Slogan<input class="e-slogan" maxlength="80" value="${attr(c.slogan)}"></label>
+        <label>Descrição<textarea class="e-desc" maxlength="600">${txt(c.descricao)}</textarea></label>` : ''}
+        ${fn.cidades.map(i => `<label>🆕 Cidade nova<input class="e-cid" maxlength="40" data-valor="${attr(i.valor)}" value="${attr(i.nome)}"></label>`).join('')}
+        ${fn.categorias.map(i => `<label>🆕 Ramo novo<input class="e-cat" maxlength="40" data-valor="${attr(i.valor)}" value="${attr(i.nome)}"></label>`).join('')}
+        <div class="acoes"><button class="ok e-salvar">Salvar correções</button></div>
+      </details>` : ''}
       <div class="acoes"></div>`;
+    const salvar = d.querySelector('.e-salvar');
+    if (salvar) salvar.onclick = async () => {
+      const lista = (cls) => [...d.querySelectorAll(cls)].map(i => ({ valor: i.dataset.valor, nome: i.value }));
+      const corpo = { id: c.id, acao: 'editar', nome: d.querySelector('.e-nome').value,
+        cidades_novas: lista('.e-cid'), categorias_novas: lista('.e-cat') };
+      if (d.querySelector('.e-slogan')) { corpo.slogan = d.querySelector('.e-slogan').value; corpo.descricao = d.querySelector('.e-desc').value; }
+      salvar.disabled = true; salvar.textContent = 'Salvando...';
+      const r = await fetch('/api/admin', { method: 'POST', headers: { Authorization: 'Bearer ' + token, 'content-type': 'application/json' }, body: JSON.stringify(corpo) });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) alert('Erro: ' + (j.erro || r.status)); else alert('Correções salvas.');
+      carregar();
+    };
     const ac = d.querySelector('.acoes');
     const bt = (rot, cls, acao, pedeMotivo) => {
       const b = document.createElement('button'); b.textContent = rot; b.className = cls;

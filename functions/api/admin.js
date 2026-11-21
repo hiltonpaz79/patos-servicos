@@ -1,5 +1,5 @@
 // Salvar como: functions/api/admin.js   (GET lista | POST ação)  — protegido por ADMIN_TOKEN
-import { json, UM_ANO, T, GITHUB_REPO, cardParaJson } from '../../lib/util.js';
+import { json, UM_ANO, T, GITHUB_REPO, cardParaJson, lerArquivoEstatico, limparNome, nomeValido, resolverFiltro } from '../../lib/util.js';
 
 const autorizado = (request, env) =>
   env.ADMIN_TOKEN && request.headers.get('Authorization') === `Bearer ${env.ADMIN_TOKEN}`;
@@ -58,6 +58,27 @@ async function arquivarLote(env, cards) {
     texto = novo;
   }
 
+  // cidades/categorias novas dos cards arquivados passam a constar no filtros.json
+  let filtrosTexto = null;
+  const pend = { cidades: [], categorias: [] };
+  for (const p of prontos) {
+    try {
+      const fn = JSON.parse(p.c.filtros_novos || 'null');
+      if (fn) for (const t of ['cidades', 'categorias']) (fn[t] || []).forEach(i => pend[t].push(i));
+    } catch (_) {}
+  }
+  if (pend.cidades.length || pend.categorias.length) {
+    const fa = await ghJson(env, 'contents/filtros.json');
+    const fo = JSON.parse(b64ParaTexto(fa.content));
+    let mudou = false;
+    for (const t of ['cidades', 'categorias']) {
+      for (const i of pend[t]) {
+        if (!(fo[t] || []).some(x => x.valor === i.valor)) { (fo[t] = fo[t] || []).push({ valor: i.valor, nome: i.nome }); mudou = true; }
+      }
+    }
+    if (mudou) filtrosTexto = JSON.stringify(fo, null, 2);
+  }
+
   // blobs -> árvore -> commit -> branch
   const arvore = [];
   for (const p of prontos) {
@@ -66,6 +87,10 @@ async function arquivarLote(env, cards) {
   }
   const blJson = await ghJson(env, 'git/blobs', { method: 'POST', body: JSON.stringify({ content: texto, encoding: 'utf-8' }) });
   arvore.push({ path: 'cadastros.json', mode: '100644', type: 'blob', sha: blJson.sha });
+  if (filtrosTexto) {
+    const blF = await ghJson(env, 'git/blobs', { method: 'POST', body: JSON.stringify({ content: filtrosTexto, encoding: 'utf-8' }) });
+    arvore.push({ path: 'filtros.json', mode: '100644', type: 'blob', sha: blF.sha });
+  }
 
   const tree = await ghJson(env, 'git/trees', { method: 'POST', body: JSON.stringify({ base_tree: base.tree.sha, tree: arvore }) });
   const nomes = prontos.map(p => p.c.nome).join(', ');
@@ -85,7 +110,7 @@ export async function onRequestGet({ request, env }) {
   if (!autorizado(request, env)) return json({ erro: 'Não autorizado' }, 401);
   const status = new URL(request.url).searchParams.get('status') || 'em_analise';
   const { results } = await env.DB.prepare(
-    `SELECT id,plano,status,nome,slogan,descricao,whatsapp,instagram,cidades,categorias,imagem_id,criado_em,pago_em,ativo_em,expira_em
+    `SELECT id,plano,status,nome,slogan,descricao,whatsapp,instagram,cidades,categorias,filtros_novos,imagem_id,criado_em,pago_em,ativo_em,expira_em
      FROM ${T.cad} WHERE status=? ORDER BY criado_em ASC LIMIT 100`).bind(status).all();
   return json({ itens: results });
 }
@@ -116,6 +141,32 @@ export async function onRequestPost({ request, env }) {
   } else if (acao === 'recusar' || acao === 'remover') {
     await env.DB.prepare(`UPDATE ${T.cad} SET status=?, motivo_recusa=? WHERE id=?`)
       .bind(acao === 'recusar' ? 'recusado' : 'removido', motivo || null, id).run();
+  } else if (acao === 'editar') {
+    if (c.status === 'arquivado') return json({ erro: 'Card já arquivado: edite direto no cadastros.json.' }, 400);
+    const corpo = await request.clone().json();
+    const nome = limparNome(corpo.nome ?? c.nome).slice(0, 60) || c.nome;
+    const corta = (v, n, atual) => v === undefined ? atual : (String(v).trim().slice(0, n) || null);
+    const slogan = c.plano === 'gratis' ? null : corta(corpo.slogan, 80, c.slogan);
+    const descricao = c.plano === 'gratis' ? null : corta(corpo.descricao, 600, c.descricao);
+
+    const filtros = await lerArquivoEstatico(env, request, 'filtros.json');
+    const cidades = JSON.parse(c.cidades), categorias = JSON.parse(c.categorias);
+    const fn = { cidades: [], categorias: [] };
+    for (const [tipo, lista, arr] of [['cidades', filtros.cidades, cidades], ['categorias', filtros.categorias, categorias]]) {
+      for (const item of (corpo[tipo + '_novas'] || [])) {
+        const i = arr.indexOf(item.valor);
+        if (i < 0) continue;
+        const txt = limparNome(item.nome);
+        if (!nomeValido(txt)) return json({ erro: `Nome inválido: "${txt}"` }, 400);
+        const r = resolverFiltro(lista, txt);          // se já existir um filtro igual, usa o existente
+        arr[i] = r.valor;
+        if (r.novo && !fn[tipo].some(n => n.valor === r.valor)) fn[tipo].push({ valor: r.valor, nome: r.nome });
+      }
+    }
+    const unicos = (a) => [...new Set(a)];
+    await env.DB.prepare(`UPDATE ${T.cad} SET nome=?, slogan=?, descricao=?, cidades=?, categorias=?, filtros_novos=? WHERE id=?`)
+      .bind(nome, slogan, descricao, JSON.stringify(unicos(cidades)), JSON.stringify(unicos(categorias)),
+        (fn.cidades.length || fn.categorias.length) ? JSON.stringify(fn) : null, id).run();
   } else if (acao === 'arquivar') {
     try { await arquivarLote(env, [c]); }
     catch (e) { return json({ erro: String(e.message || e) }, 500); }
