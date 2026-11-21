@@ -2,34 +2,6 @@
   "versao": 1,
   "cadastros": [
     {
-      "id": "d1-0d6ce7efcd434a77",
-      "ativo": true,
-      "secao": "gratis",
-      "categorias": [
-        "desenvolvedor"
-      ],
-      "cidades": [
-        "serra_grande"
-      ],
-      "imagem": "imagens_cards/0d6ce7efcd434a77.jpg",
-      "alt": "José Hilton",
-      "nome": "José Hilton",
-      "conteudo": [
-        {
-          "tipo": "contato",
-          "rede": "whatsapp",
-          "rotulo": "(83) 99862-4640",
-          "url": "https://wa.me/5583998624640?text=Ol%C3%A1!%20Vim%20pelo%20Cat%C3%A1logo%20do%20Patos%20Servi%C3%A7os."
-        },
-        {
-          "tipo": "contato",
-          "rede": "compartilhar",
-          "rotulo": "Cartão de Visita"
-        }
-      ],
-      "cadastro": "2026-11-21"
-    },
-    {
       "id": "wanderley-junior",
       "ativo": true,
       "secao": "premium",
