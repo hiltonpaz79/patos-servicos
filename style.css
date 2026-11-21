@@ -1201,4 +1201,4 @@ body {
     }
 }
 
-.item[data-id^="d1-"] > img { width: 95%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 9px; margin-top: 8px; }
+.item[data-id^="d1-"] > img { width: 95%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 9px; margin-top: 7px; }
