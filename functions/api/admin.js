@@ -9,7 +9,7 @@ const b64ParaTexto = (b64) => new TextDecoder().decode(Uint8Array.from(atob(b64.
 const LOTE_MAX = 20;   // limite de subrequisições por chamada no plano grátis da Cloudflare
 
 const ghApi = (env, caminho, init = {}) =>
-  fetch(`https://api.github.com/repos/${GITHUB_REPO}/${caminho}`, {
+  fetch(`https://api.github.com/repos/${GITHUB_REPO}${caminho ? '/' + caminho : ''}`, {   // sem barra no fim: o GitHub responde 404 a "/repos/dono/repo/"
     ...init,
     headers: {
       Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: 'application/vnd.github+json',
@@ -19,7 +19,7 @@ const ghApi = (env, caminho, init = {}) =>
 
 async function ghJson(env, caminho, init) {
   const r = await ghApi(env, caminho, init);
-  if (!r.ok) throw new Error(`GitHub ${r.status} em ${caminho}: ${(await r.text()).slice(0, 160)}`);
+  if (!r.ok) throw new Error(`GitHub ${r.status} em /${caminho || 'repo'}: ${(await r.text()).slice(0, 160)}`);
   return r.json();
 }
 
