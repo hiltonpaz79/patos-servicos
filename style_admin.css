@@ -1,11 +1,11 @@
-/* =====================================================================
+/* ======================================================================
    PAINEL ADMIN — Patos Serviços
    Para o Ita Serviços, troque só as cores do bloco :root
-   ===================================================================== */
+   ====================================================================== */
 :root {
-  --tema: #e25101;
+  --tema: #ec7d41;
   --tema-escuro: #c2410c;
-  --tema-hover: #9a3412;
+  --tema-hover: #df7e30;
   --tema-rgb: 226, 81, 1;
   --azul: #041e3d;
   --fundo: #f4f4f9;
@@ -23,7 +23,7 @@ body {
   font-family: 'Montserrat', Arial, sans-serif;
   color: var(--azul);
   background-color: var(--fundo);
-  background-image: linear-gradient(to bottom, var(--tema) 0, var(--fundo) 380px);
+  background-image: linear-gradient(to bottom, var(--tema) 0, var(--fundo) 580px);
   background-repeat: no-repeat;
 }
 
