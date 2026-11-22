@@ -4,7 +4,7 @@
    ====================================================================== */
 :root {
   --tema: #ec7d41;
-  --tema-escuro: #c2410c;
+  --tema-escuro: #df7e30;
   --tema-hover: #df7e30;
   --tema-rgb: 226, 81, 1;
   --azul: #041e3d;
@@ -23,7 +23,7 @@ body {
   font-family: 'Montserrat', Arial, sans-serif;
   color: var(--azul);
   background-color: var(--fundo);
-  background-image: linear-gradient(to bottom, var(--tema) 0, var(--fundo) 580px);
+  background-image: linear-gradient(to bottom, var(--tema) 0, var(--fundo) 680px);
   background-repeat: no-repeat;
 }
 
