@@ -6,3 +6,5 @@
   Cache-Control: no-cache
 /*.json
   Cache-Control: no-cache
+  /imagens_icons/*
+  Cache-Control: no-cache
