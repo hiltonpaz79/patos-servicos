@@ -1,5 +1,5 @@
 // Salvar como: functions/api/cadastro.js   (POST /api/cadastro)
-import { PLANOS, LIMITE_PREMIUM, TERMOS_VERSAO, SITE_NOME, json, paraBase64, lerArquivoEstatico, contarPremium, T, limparNome, nomeValido, resolverFiltro } from '../../lib/util.js';
+import { PLANOS, LIMITE_PREMIUM, TERMOS_VERSAO, SITE_NOME, json, paraBase64, lerArquivoEstatico, contarPremium, T, limparNome, nomeValido, resolverFiltro, notificar } from '../../lib/util.js';
 
 const MAX_IMG = 700 * 1024;
 const TIPOS = ['image/jpeg', 'image/png', 'image/webp'];
@@ -10,7 +10,7 @@ async function hashIp(request) {
   return [...new Uint8Array(d)].slice(0, 8).map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost({ request, env, waitUntil }) {
   const f = await request.formData();
   if (f.get('website')) return json({ ok: true });                       // honeypot anti-robô
 
@@ -90,7 +90,10 @@ export async function onRequestPost({ request, env }) {
         imagemId, TERMOS_VERSAO, agora, ipHash, agora, filtrosNovos)
   ]);
 
-  if (plano === 'gratis') return json({ ok: true, id, pago: false });
+  if (plano === 'gratis') {
+    waitUntil(notificar(env, `🆕 Novo card GRÁTIS para analisar: ${nome}\nAprove em: ${new URL(request.url).origin}/admin.html`));
+    return json({ ok: true, id, pago: false });
+  }
 
   // ---- Mercado Pago (Checkout Pro: Pix + cartão) ----
   const origem = new URL(request.url).origin;
