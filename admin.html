@@ -4,31 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Admin | Patos Serviços</title>
-<style>
-  body { font-family: 'Montserrat', Arial, sans-serif; background: #f4f4f9; margin: 0; padding: 1rem; color: #041e3d; }
-  .topo { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }
-  select, button, input { font: inherit; padding: 8px 12px; border-radius: 8px; border: 1px solid #ccc; }
-  button { cursor: pointer; background: #fff; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
-  .c { background: #fff; border-radius: 10px; padding: 1rem; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
-  .c img { width: 100%; border-radius: 6px; }
-  .c .pl { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px; color: #fff; background: #64748b; }
-  .c .pl.premium { background: #ff9800; } .c .pl.basico { background: #2563eb; }
-  details { margin-top: .6rem; border: 1px solid #e2e8f0; border-radius: 8px; padding: 6px 10px; }
-  summary { cursor: pointer; font-weight: 600; }
-  details label { display: block; font-size: .8rem; margin-top: .5rem; color: #475569; }
-  details input, details textarea { width: 100%; box-sizing: border-box; font: inherit; padding: 6px 8px; border: 1px solid #ccc; border-radius: 6px; }
-  details textarea { min-height: 90px; }
-  .novo { background: #fef9c3; border-radius: 6px; padding: 4px 8px; font-size: .85rem; }
-  .acoes { display: flex; gap: 6px; flex-wrap: wrap; margin-top: .6rem; }
-  .ok { background: #16a34a; color: #fff; border: none; } .no { background: #dc2626; color: #fff; border: none; }
-  p { margin: .3rem 0; font-size: .9rem; word-break: break-word; }
-</style>
+<title>Admin - Patos Serviços</title>
+<link rel="icon" type="image/png" href="imagens_icons/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style_admin.css">
 </head>
 <body>
+<div class="pagina">
+<header class="cabecalho">
+  <img src="imagens_icons/logo-patos-servicos.png" alt="Patos Serviços">
+  <h1>Painel de aprovação</h1>
+  <p>Admin - Patos Serviços</p>
+</header>
 <div class="topo">
-  <strong>Painel de aprovação</strong>
   <select id="status">
     <option value="em_analise">Em análise</option>
     <option value="aguardando_pagamento">Aguardando pagamento</option>
@@ -41,6 +31,7 @@
   <button id="arquivarTodos" class="ok" hidden>Arquivar todos os ativos</button>
 </div>
 <div class="grid" id="lista"></div>
+</div>
 
 <script>
 let token = sessionStorage.getItem('adm') || prompt('Token de administrador:') || '';
@@ -52,23 +43,23 @@ const attr = (s) => txt(s).replace(/"/g, '&quot;');
 
 async function carregar() {
   const r = await fetch('/api/admin?status=' + $('status').value, { headers: { Authorization: 'Bearer ' + token } });
-  if (r.status === 401) { sessionStorage.removeItem('adm'); $('lista').textContent = 'Token inválido. Recarregue a página.'; return; }
+  if (r.status === 401) { sessionStorage.removeItem('adm'); $('lista').innerHTML = '<p class="vazio">Token inválido. Recarregue a página.</p>'; return; }
   const { itens } = await r.json();
-  $('lista').innerHTML = itens.length ? '' : 'Nada por aqui.';
+  $('lista').innerHTML = itens.length ? '' : '<p class="vazio">Nada por aqui.</p>';
   $('arquivarTodos').hidden = !($('status').value === 'ativo' && itens.length);
   itens.forEach(c => {
     const fn = c.filtros_novos ? JSON.parse(c.filtros_novos) : { cidades: [], categorias: [] };
     const d = document.createElement('div'); d.className = 'c';
     d.innerHTML = `
       <span class="pl ${c.plano}">${c.plano.toUpperCase()}</span>
-      ${c.imagem_id ? `<a href="/api/imagem/${c.imagem_id}?t=${encodeURIComponent(token)}" download="${c.id}.jpg" target="_blank"><img src="/api/imagem/${c.imagem_id}?t=${encodeURIComponent(token)}" alt=""></a>` : ''}
-      <p><strong>${txt(c.nome)}</strong></p>
-      ${c.slogan ? `<p><em>${txt(c.slogan)}</em></p>` : ''}
-      ${c.descricao ? `<p>${txt(c.descricao)}</p>` : ''}
-      <p>📱 <a href="https://wa.me/${c.whatsapp}" target="_blank">${c.whatsapp}</a>${c.instagram ? ` · 📷 @${txt(c.instagram)}` : ''}</p>
-      <p>📍 ${JSON.parse(c.cidades).map(txt).join(', ')}<br>🏷️ ${JSON.parse(c.categorias).map(txt).join(', ')}</p>
-      <p>Criado: ${dt(c.criado_em)} · Pago: ${dt(c.pago_em)} · Ativo: ${dt(c.ativo_em)} · Expira: ${dt(c.expira_em)}</p>
-      <p style="font-size:12px;color:#555">ID: ${c.id} (nome do arquivo para imagens_cards: ${c.id}.jpg)</p>
+      ${c.imagem_id ? `<a class="arte" href="/api/imagem/${c.imagem_id}?t=${encodeURIComponent(token)}" download="${c.id}.jpg" target="_blank"><img src="/api/imagem/${c.imagem_id}?t=${encodeURIComponent(token)}" alt=""></a>` : ''}
+      <p class="nome">${txt(c.nome)}</p>
+      ${c.slogan ? `<p class="slogan"><em>${txt(c.slogan)}</em></p>` : ''}
+      ${c.descricao ? `<p class="desc">${txt(c.descricao)}</p>` : ''}
+      <p class="contato">📱 <a href="https://wa.me/${c.whatsapp}" target="_blank">${c.whatsapp}</a>${c.instagram ? ` · 📷 @${txt(c.instagram)}` : ''}</p>
+      <p class="meta">📍 ${JSON.parse(c.cidades).map(txt).join(', ')}<br>🏷️ ${JSON.parse(c.categorias).map(txt).join(', ')}</p>
+      <p class="datas">Criado: ${dt(c.criado_em)} · Pago: ${dt(c.pago_em)} · Ativo: ${dt(c.ativo_em)} · Expira: ${dt(c.expira_em)}</p>
+      <p class="id">ID: ${c.id} (nome do arquivo para imagens_cards: ${c.id}.jpg)</p>
       ${(fn.cidades.length || fn.categorias.length) ? `<p class="novo">🆕 ${fn.cidades.length ? 'Cidade nova: <strong>' + fn.cidades.map(i => txt(i.nome)).join(', ') + '</strong>' : ''} ${fn.categorias.length ? 'Ramo novo: <strong>' + fn.categorias.map(i => txt(i.nome)).join(', ') + '</strong>' : ''} — confira a escrita em Editar.</p>` : ''}
       ${c.status !== 'arquivado' ? `<details><summary>✏️ Editar / corrigir</summary>
         <label>Nome<input class="e-nome" maxlength="60" value="${attr(c.nome)}"></label>

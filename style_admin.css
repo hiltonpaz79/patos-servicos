@@ -1,0 +1,216 @@
+/* =====================================================================
+   PAINEL ADMIN — Patos Serviços
+   Para o Ita Serviços, troque só as cores do bloco :root
+   ===================================================================== */
+:root {
+  --tema: #e25101;
+  --tema-escuro: #c2410c;
+  --tema-hover: #9a3412;
+  --tema-rgb: 226, 81, 1;
+  --azul: #041e3d;
+  --fundo: #f4f4f9;
+  --borda: #e2e8f0;
+  --texto-suave: #64748b;
+  --verde: #16a34a;
+  --vermelho: #dc2626;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: var(--azul);
+  background-color: var(--fundo);
+  background-image: linear-gradient(to bottom, var(--tema) 0, var(--fundo) 380px);
+  background-repeat: no-repeat;
+}
+
+button, input, select, textarea { font-family: inherit; }
+
+.pagina {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
+/* ---------- Cabeçalho ---------- */
+.cabecalho {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 1.2rem 0 1rem;
+  text-align: center;
+}
+.cabecalho img { height: 96px; width: auto; display: block; }
+.cabecalho h1 { margin: 0; font-size: 1.15rem; font-weight: 700; letter-spacing: .3px; }
+.cabecalho p { margin: 0; font-size: .85rem; opacity: .85; }
+
+/* ---------- Barra de ferramentas ---------- */
+.topo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto 1.5rem;
+  padding: 12px;
+  max-width: 760px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(4, 30, 61, .12);
+}
+
+/* Caixa de seleção personalizada */
+.topo select {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 1 1 240px;
+  min-width: 0;
+  height: 46px;
+  padding: 0 44px 0 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--azul);
+  background-color: #fff;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23c2410c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  border: 2px solid var(--tema-escuro);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+.topo select:hover { border-color: var(--tema-hover); }
+.topo select:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(var(--tema-rgb), .25); }
+
+/* ---------- Botões ---------- */
+button {
+  height: 46px;
+  padding: 0 20px;
+  border: 2px solid var(--borda);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--azul);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .2s ease, background-color .2s ease, opacity .2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+button:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(4, 30, 61, .18); }
+button:active:not(:disabled) { transform: scale(.97); }
+button:disabled { opacity: .6; cursor: wait; }
+button:focus-visible { outline: 3px solid var(--azul); outline-offset: 2px; }
+button[hidden] { display: none; }
+
+.ok { background: var(--verde); border-color: var(--verde); color: #fff; }
+.no { background: var(--vermelho); border-color: var(--vermelho); color: #fff; }
+
+/* ---------- Grade de cards ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 340px));
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.c {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(4, 30, 61, .12);
+  text-align: center;
+}
+.c p { margin: 0; font-size: .9rem; line-height: 1.45; word-break: break-word; }
+
+.c .pl {
+  align-self: center;
+  padding: 3px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  color: #fff;
+  background: var(--texto-suave);
+}
+.c .pl.premium { background: #ff9800; }
+.c .pl.basico { background: #2563eb; }
+
+.c .arte { display: block; }
+.c img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 16px;
+  background: #eef0f4;
+}
+
+.c .nome { font-size: 1.05rem; font-weight: 700; margin-top: 4px; }
+.c .slogan { color: var(--texto-suave); }
+.c .desc { text-align: left; }
+.c .contato a { color: var(--tema-escuro); font-weight: 600; text-decoration: none; }
+.c .contato a:hover { text-decoration: underline; }
+.c .meta { padding: 8px 10px; background: var(--fundo); border-radius: 10px; font-size: .82rem; }
+.c .datas { font-size: .78rem; color: var(--texto-suave); }
+.c .id { font-size: .72rem; color: var(--texto-suave); }
+
+.novo {
+  padding: 6px 10px !important;
+  background: #fef9c3;
+  border-radius: 10px;
+  font-size: .85rem !important;
+}
+
+/* ---------- Editar / corrigir ---------- */
+details {
+  text-align: left;
+  border: 2px solid var(--borda);
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+summary { cursor: pointer; font-weight: 700; font-size: .9rem; list-style-position: inside; }
+details[open] summary { margin-bottom: 4px; }
+details label { display: block; margin-top: 10px; font-size: .78rem; font-weight: 600; color: var(--texto-suave); }
+details input, details textarea {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 10px 12px;
+  font-size: 15px;
+  color: var(--azul);
+  background: #fff;
+  border: 2px solid var(--borda);
+  border-radius: 10px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+details textarea { min-height: 100px; resize: vertical; }
+details input:focus, details textarea:focus {
+  outline: none;
+  border-color: var(--tema-escuro);
+  box-shadow: 0 0 0 4px rgba(var(--tema-rgb), .18);
+}
+
+.acoes { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 6px; }
+.c > .acoes { margin-top: auto; padding-top: 6px; }   /* botões sempre no pé do card, alinhados entre cards vizinhos */
+.acoes button { flex: 1 1 130px; }
+
+.vazio {
+  grid-column: 1 / -1;
+  padding: 2.5rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--texto-suave);
+}
+
+@media (max-width: 600px) {
+  .cabecalho img { height: 80px; }
+  .grid { grid-template-columns: 1fr; }
+  .topo button { flex: 1 1 100%; }
+}
