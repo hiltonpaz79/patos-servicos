@@ -25,7 +25,7 @@ const CONFIG = {
     instaPadrao: 'patosservicos_pb',             // usado no cartão de visita se o card não tiver Instagram
     fundoCartao: 'imagens_icons/background-patos.png', // fundo do cartão de visita
     // ---- ajustes gerais ----
-    itensPorPagina: 4,
+    itensPorPagina: 10,
     textoLongo: 90,         // parágrafos maiores que isso ficam alinhados à esquerda
     corteTolerancia: 40     // só recorta a descrição se o excesso passar de ~40px (a altura máxima fica em --corpo-max, no CSS)
 };
@@ -62,6 +62,10 @@ let cards = [];                       // [{ dados, el, busca }]
 let limiteVisivel = CONFIG.itensPorPagina;
 let copyCount = 0;
 let opcoesCategoria = [];             // <option> originais, já em ordem alfabética
+let macros = [];                      // macrocategorias (vêm do filtros.json): { valor, nome, icone }
+let macroAtual = 'all';               // macrocategoria selecionada nos ícones
+const MACRO_DE = new Map();           // categoria -> macrocategoria (categoria sem macro cai em 'outros')
+const macroDe = (cat) => MACRO_DE.get(cat) || 'outros';
 
 const normalizar = (s) => (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
@@ -96,7 +100,8 @@ async function carregarDados() {
     return {
         cadastros: todos,
         cidades: unir(filtros.cidades || [], extra.cidades),
-        categorias: unir(filtros.categorias || [], extra.categorias)
+        categorias: unir(filtros.categorias || [], extra.categorias),
+        macros: filtros.macros || []
     };
 }
 
@@ -154,79 +159,75 @@ function criarContato(c) {
     return wrap;
 }
 
-/* ---- Descrição recortável ("Mostrar completo") ---- */
-function criarBotaoExpandir(corpo) {
-    const b = criar('button', 'card-expandir');
+/* ---- Card compacto (padrão) <-> completo ---- */
+const NOMES_CATEGORIA = new Map();   // valor -> nome: serve de "ramo" quando o card não tem slogan
+
+// Estrelas: só aparecem se o card tiver "nota" (e, opcionalmente, "avaliacoes") no JSON/banco. Ex.: "nota": 4.8, "avaliacoes": 124
+function criarEstrelas(d) {
+    const nota = Number(d.nota);
+    if (d.nota == null || !isFinite(nota)) return null;
+    const n = Math.max(0, Math.min(5, nota));
+    const box = criar('div', 'estrelas');
+    box.setAttribute('role', 'img');
+    box.setAttribute('aria-label', `Nota ${n.toFixed(1).replace('.', ',')} de 5`);
+    const icones = criar('span', 'estrelas-icones');
+    icones.textContent = '★★★★★';
+    icones.style.setProperty('--nota', n);
+    icones.setAttribute('aria-hidden', 'true');
+    const texto = criar('span', 'estrelas-texto');
+    texto.textContent = n.toFixed(1).replace('.', ',') + (d.avaliacoes ? ` (${d.avaliacoes})` : '');
+    box.append(icones, texto);
+    return box;
+}
+
+// Botões pequenos de WhatsApp e Instagram do card compacto (o texto fica direto no <a>, sem <span>,
+// para o cartão de visita continuar lendo o número/@ do contato completo)
+function criarAcoesCompactas(contatos) {
+    const wrap = criar('div', 'card-acoes');
+    const ordem = { whatsapp: 0, instagram: 1 };           // WhatsApp sempre primeiro
+    [...contatos].sort((x, y) => (ordem[x.rede] ?? 9) - (ordem[y.rede] ?? 9)).forEach(c => {
+        if (c.tipo !== 'contato' || !c.url || (c.rede !== 'whatsapp' && c.rede !== 'instagram')) return;
+        if (wrap.querySelector(`.${c.rede}`)) return;          // no máximo 1 botão de cada rede (o card completo mostra todos os contatos)
+        const p = { ...REDES[c.rede], ...c };
+        const a = criar('a', `${p.classe} acao-compacta`);
+        a.setAttribute('href', c.url);
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener');
+        const img = criar('img', 'social-icon');
+        img.setAttribute('src', p.icone);
+        img.setAttribute('alt', '');
+        a.append(img, c.rede === 'whatsapp' ? 'WhatsApp' : 'Instagram');
+        wrap.appendChild(a);
+    });
+    return wrap.children.length ? wrap : null;
+}
+
+function criarBotaoCompacto() {
+    const b = criar('button', 'card-toggle');
     b.type = 'button';
-    b.hidden = true;                                  // só aparece se a descrição for recortada
     b.setAttribute('aria-expanded', 'false');
-    b.setAttribute('aria-controls', corpo.id);
-    b.innerHTML = '<span class="card-expandir-texto">Mostrar completo</span>' +
-        '<svg class="card-expandir-seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+    b.textContent = 'Exibir completo';
     return b;
 }
 
-const alturaMaxCorpo = (corpo) =>
-    parseFloat(getComputedStyle(corpo).getPropertyValue('--corpo-max')) || 176;
-
-// Decide se a descrição precisa ser recortada. Roda quando o card aparece
-// ou muda de tamanho (girar o celular, fonte carregando etc.).
-function avaliarCorpo(corpo) {
-    if (corpo.classList.contains('expandido') || corpo.dataset.animando) return;
-    if (corpo.offsetParent === null) return;          // card oculto: avalia quando aparecer
-    const recortar = corpo.scrollHeight > alturaMaxCorpo(corpo) + CONFIG.corteTolerancia;
-    if (corpo.classList.contains('recortavel') !== recortar) {
-        corpo.classList.toggle('recortavel', recortar);
-        corpo.nextElementSibling.hidden = !recortar;
-    }
-}
-
-const observadorCorpo = new ResizeObserver(entradas => entradas.forEach(e => avaliarCorpo(e.target)));
-
-function alternarCorpo(botao) {
-    const corpo = botao.previousElementSibling;
-    const abrir = botao.getAttribute('aria-expanded') !== 'true';
-    const limite = alturaMaxCorpo(corpo);
-
-    const terminar = () => {
-        clearTimeout(reserva);
-        corpo.removeEventListener('transitionend', aoTerminar);
-        corpo.style.maxHeight = '';
-        delete corpo.dataset.animando;
-    };
-    const aoTerminar = (ev) => { if (ev.propertyName === 'max-height') terminar(); };
-    const reserva = setTimeout(terminar, 500);        // garantia caso o navegador não dispare o evento
-    corpo.dataset.animando = '1';
-    corpo.addEventListener('transitionend', aoTerminar);
-
-    if (abrir) {
-        corpo.style.maxHeight = corpo.clientHeight + 'px';
-        corpo.classList.add('expandido');
-        requestAnimationFrame(() => { corpo.style.maxHeight = corpo.scrollHeight + 'px'; });
-    } else {
-        corpo.style.maxHeight = corpo.scrollHeight + 'px';
-        corpo.classList.remove('expandido');
-        void corpo.offsetHeight;                      // força o navegador a registrar o ponto de partida
-        corpo.style.maxHeight = limite + 'px';
-        // se o topo do card ficou para cima da tela, traz ele de volta à vista
+function iniciarCompactar() {
+    catalogo.addEventListener('click', (e) => {
+        const botao = e.target.closest('.card-toggle');
+        if (!botao) return;
         const card = botao.closest('.item');
-        if (card.getBoundingClientRect().top < 0) {
+        const abrir = card.classList.contains('compacto');
+        card.classList.toggle('compacto', !abrir);
+        botao.setAttribute('aria-expanded', abrir ? 'true' : 'false');
+        botao.textContent = abrir ? 'Exibir menos' : 'Exibir completo';
+        // ao recolher, se o topo do card ficou acima da tela, traz ele de volta à vista
+        if (!abrir && card.getBoundingClientRect().top < 0) {
             card.scrollIntoView({ block: 'nearest', behavior: reduzirMovimento ? 'auto' : 'smooth' });
         }
-    }
-    botao.setAttribute('aria-expanded', abrir ? 'true' : 'false');
-    botao.querySelector('.card-expandir-texto').textContent = abrir ? 'Mostrar menos' : 'Mostrar completo';
-}
-
-function iniciarExpandir() {
-    catalogo.addEventListener('click', (e) => {
-        const botao = e.target.closest('.card-expandir');
-        if (botao) alternarCorpo(botao);
     });
 }
 
 function criarCard(d) {
-    const card = criar('div', 'item');
+    const card = criar('div', 'item compacto');     // todo card nasce compacto; "Exibir completo" expande
     card.dataset.category = d.categorias.join(',');
     card.dataset.city = d.cidades.join(',');
     card.dataset.id = d.id;
@@ -246,13 +247,18 @@ function criarCard(d) {
     if (d.nome_html) h3.innerHTML = d.nome_html; else h3.textContent = d.nome;
     card.appendChild(h3);
 
-    if (d.ramo) {
-        const s = document.createElement('strong');
-        s.innerHTML = d.ramo;
-        card.appendChild(s);
-    }
-    // A descrição (tudo antes do 1º contato) fica numa caixa recortável com botão
-    // "Mostrar completo". Os contatos nunca são escondidos.
+    // ramo: o slogan do card; se não tiver, o nome da 1ª categoria
+    const ramo = document.createElement('strong');
+    if (d.ramo) ramo.innerHTML = d.ramo;
+    else ramo.textContent = NOMES_CATEGORIA.get((d.categorias || [])[0]) || '';
+    if (ramo.textContent) card.appendChild(ramo);
+
+    const estrelas = criarEstrelas(d);
+    if (estrelas) card.appendChild(estrelas);
+    const acoes = criarAcoesCompactas(d.conteudo || []);
+    if (acoes) card.appendChild(acoes);
+
+    // A descrição (tudo antes do 1º contato) fica numa caixa; os contatos completos só aparecem no card expandido.
     let corpo = null;
     let chegouContato = false;
     (d.conteudo || []).forEach(e => {
@@ -265,23 +271,21 @@ function criarCard(d) {
         } else {
             if (!corpo) {
                 corpo = criar('div', 'card-corpo');
-                corpo.id = `corpo-${d.id}`;
-                card.append(corpo, criarBotaoExpandir(corpo));
+                card.appendChild(corpo);
             }
             corpo.appendChild(criarBloco(e));
         }
     });
+    card.appendChild(criarBotaoCompacto());
     return card;
 }
 
 function renderizarCards(lista) {
     const frag = document.createDocumentFragment();
-    observadorCorpo.disconnect();
     cards = lista.map(dados => {
         const el = criarCard(dados);
         frag.appendChild(el);
-        el.querySelectorAll('.card-corpo').forEach(c => observadorCorpo.observe(c));
-        return { dados, el, busca: normalizar(el.textContent) };
+        return { dados, el, busca: normalizar(el.textContent.replace('Exibir completo', '')) };
     });
     catalogo.replaceChildren(frag);
 }
@@ -305,7 +309,7 @@ function aplicarFiltros() {
     const categoria = filtroCategoria.value;
     const cidade    = filtroCidade.value;
     const texto     = normalizar(campoBusca.value).trim();
-    const filtrando = categoria !== 'all' || cidade !== 'all' || texto !== '';
+    const filtrando = categoria !== 'all' || cidade !== 'all' || texto !== '' || macroAtual !== 'all';
 
     // banner só aparece na tela inicial "limpa"
     const banner = document.querySelector('.banner');
@@ -314,6 +318,7 @@ function aplicarFiltros() {
     if (!filtrando) limiteVisivel = Math.max(limiteVisivel, CONFIG.itensPorPagina);
 
     const correspondentes = cards.filter(c =>
+        (macroAtual === 'all' || c.dados.categorias.some(cat => macroDe(cat) === macroAtual)) &&
         (categoria === 'all' || c.dados.categorias.includes(categoria)) &&
         (cidade === 'all'    || c.dados.cidades.includes(cidade)) &&
         c.busca.includes(texto)
@@ -324,7 +329,7 @@ function aplicarFiltros() {
 
     cards.forEach(c => {
         c.el.classList.toggle('hidden', !conjunto.has(c));
-        c.el.style.display = exibSet.has(c) ? 'block' : 'none';
+        c.el.style.display = exibSet.has(c) ? '' : 'none';   // '' = usa o display do CSS (grade no compacto, bloco no completo)
     });
 
     if (btnExibirMais) {
@@ -353,6 +358,8 @@ function aplicarFiltros() {
 }
 
 function limparFiltros() {
+    macroAtual = 'all';
+    marcarMacro();
     filtroCidade.value = 'all';
     atualizarCategoriasPorCidade();
     filtroCategoria.value = 'all';
@@ -366,7 +373,7 @@ function atualizarCategoriasPorCidade() {
     const disponiveis = new Set();
     cards.forEach(c => {
         if (cidade === 'all' || c.dados.cidades.includes(cidade)) {
-            c.dados.categorias.forEach(cat => disponiveis.add(cat));
+            c.dados.categorias.forEach(cat => { if (macroAtual === 'all' || macroDe(cat) === macroAtual) disponiveis.add(cat); });
         }
     });
     const atual = filtroCategoria.value;
@@ -409,6 +416,53 @@ function iniciarFiltros() {
             aplicarFiltros();
         });
     }
+}
+
+/* ---- Macrocategorias (ícones acima da lista; ícones da biblioteca Lucide) ---- */
+function marcarMacro() {
+    document.querySelectorAll('#macros .macro-chip').forEach(b =>
+        b.setAttribute('aria-pressed', b.dataset.macro === macroAtual ? 'true' : 'false'));
+}
+
+// Só aparecem as macrocategorias que têm pelo menos um card
+function renderizarMacros() {
+    const box = $('macros');
+    if (!box) return;
+    const presentes = new Set();
+    cards.forEach(c => c.dados.categorias.forEach(cat => presentes.add(macroDe(cat))));
+    const lista = macros.filter(m => presentes.has(m.valor));
+    if (presentes.has('outros') && !lista.some(m => m.valor === 'outros')) lista.push({ valor: 'outros', nome: 'Outros', icone: 'ellipsis' });
+    if (macroAtual !== 'all' && !lista.some(m => m.valor === macroAtual)) macroAtual = 'all';
+    box.hidden = lista.length < 2;
+    box.replaceChildren(...lista.map(m => {
+        const b = criar('button', 'macro-chip');
+        b.type = 'button';
+        b.dataset.macro = m.valor;
+        const i = document.createElement('i');
+        i.setAttribute('data-lucide', m.icone || 'tag');
+        i.setAttribute('aria-hidden', 'true');
+        const t = document.createElement('span');
+        t.textContent = m.nome;
+        b.append(i, t);
+        return b;
+    }));
+    marcarMacro();
+    if (window.lucide) window.lucide.createIcons();   // sem internet/CDN os nomes aparecem sem ícone, e tudo continua funcionando
+}
+
+function iniciarMacros() {
+    const box = $('macros');
+    if (!box) return;
+    box.addEventListener('click', (e) => {
+        const b = e.target.closest('.macro-chip');
+        if (!b) return;
+        macroAtual = (b.dataset.macro === macroAtual) ? 'all' : b.dataset.macro;   // tocar de novo desmarca
+        marcarMacro();
+        filtroCategoria.value = 'all';
+        atualizarCategoriasPorCidade();
+        limiteVisivel = CONFIG.itensPorPagina;
+        aplicarFiltros();
+    });
 }
 
 /* =========================
@@ -785,7 +839,10 @@ async function carregarCatalogo() {
     feedback.textContent = 'Carregando cadastros...';
     try {
         const dados = await carregarDados();
+        dados.categorias.forEach(c => { NOMES_CATEGORIA.set(c.valor, c.nome); if (c.macro) MACRO_DE.set(c.valor, c.macro); });
+        macros = dados.macros;
         renderizarCards(dados.cadastros);
+        renderizarMacros();
         if (!filtrosIniciados) {
             preencherSelect(filtroCidade, dados.cidades);
             preencherSelect(filtroCategoria, dados.categorias);
@@ -805,7 +862,8 @@ async function iniciar() {
     iniciarInstalacao();
     iniciarRastreamento();
     iniciarCompartilhar();
-    iniciarExpandir();
+    iniciarCompactar();
+    iniciarMacros();
     iniciarBarraFiltros();
     iniciarVoltarTopo();
     registrarAcesso();

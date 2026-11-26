@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cards-compactos.css">
     <!-- Ícone na aba: duas linhas com a mesma função -->
     <link rel="icon" type="image/png" sizes="144x144" href="imagens_icons/favicon.png">
     <link rel="icon" href="imagens_icons/favicon.png" type="image/png">
@@ -133,6 +134,9 @@
             <button type="button" id="clearFilters" class="clear-filters hidden-btn">Limpar filtros</button>
         </div>
 
+        <!-- Macrocategorias (ícones): montadas pelo script.js a partir do filtros.json -->
+        <nav class="macros" id="macros" aria-label="Categorias principais" hidden></nav>
+
         <div class="feedback" id="feedback">Exibindo todos os itens</div>
 
         <div class="catalog" id="catalog">
@@ -213,6 +217,8 @@
 <!----------------------Biblioteca compartilhar Cartão de Visitas------------------->
 <!---------------------------------------------------------------------------------->
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<!-- Ícones das macrocategorias (Lucide) -->
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
 <!-------------------------------BLOCO 12.1 Script.js------------------------------->
 <script src="script.js" defer></script>
 

@@ -1,5 +1,77 @@
 {
   "versao": 1,
+  "macros": [
+    {
+      "valor": "alimentacao",
+      "nome": "Alimentação",
+      "icone": "utensils"
+    },
+    {
+      "valor": "saude",
+      "nome": "Saúde e Bem-estar",
+      "icone": "heart-pulse"
+    },
+    {
+      "valor": "beleza",
+      "nome": "Beleza",
+      "icone": "scissors"
+    },
+    {
+      "valor": "construcao",
+      "nome": "Construção e Reformas",
+      "icone": "hammer"
+    },
+    {
+      "valor": "casa",
+      "nome": "Casa e Manutenção",
+      "icone": "wrench"
+    },
+    {
+      "valor": "automotivo",
+      "nome": "Automotivo",
+      "icone": "car"
+    },
+    {
+      "valor": "tecnologia",
+      "nome": "Tecnologia",
+      "icone": "laptop"
+    },
+    {
+      "valor": "educacao",
+      "nome": "Educação",
+      "icone": "graduation-cap"
+    },
+    {
+      "valor": "negocios",
+      "nome": "Negócios e Finanças",
+      "icone": "briefcase"
+    },
+    {
+      "valor": "eventos",
+      "nome": "Eventos e Festas",
+      "icone": "party-popper"
+    },
+    {
+      "valor": "moda",
+      "nome": "Moda e Compras",
+      "icone": "shopping-bag"
+    },
+    {
+      "valor": "viagens",
+      "nome": "Viagens e Transporte",
+      "icone": "bus"
+    },
+    {
+      "valor": "imoveis",
+      "nome": "Vagas e Imóveis",
+      "icone": "building-2"
+    },
+    {
+      "valor": "outros",
+      "nome": "Outros",
+      "icone": "ellipsis"
+    }
+  ],
   "cidades": [
     {
       "valor": "patos",
@@ -21,675 +93,838 @@
   "categorias": [
     {
       "valor": "a1_vagas_emprego",
-      "nome": "# Vagas de Emprego"
+      "nome": "# Vagas de Emprego",
+      "macro": "imoveis"
     },
     {
       "valor": "acupuntura",
-      "nome": "Acupuntura"
+      "nome": "Acupuntura",
+      "macro": "saude"
     },
     {
       "valor": "advocacia",
-      "nome": "Advocacia"
+      "nome": "Advocacia",
+      "macro": "negocios"
     },
     {
       "valor": "agronomia",
-      "nome": "Agronomia"
+      "nome": "Agronomia",
+      "macro": "negocios"
     },
     {
       "valor": "agencia_marketing_digital_publicidade",
-      "nome": "Agência de Marketing Digital e Publicidade"
+      "nome": "Agência de Marketing Digital e Publicidade",
+      "macro": "negocios"
     },
     {
       "valor": "a2_aluguel_venda_imovel",
-      "nome": "Aluguel e Venda de Imóvel"
+      "nome": "Aluguel e Venda de Imóvel",
+      "macro": "imoveis"
     },
     {
       "valor": "ar_condicionado",
-      "nome": "Ar-condicionado"
+      "nome": "Ar-condicionado",
+      "macro": "casa"
     },
     {
       "valor": "arquitetura",
-      "nome": "Arquitetura"
+      "nome": "Arquitetura",
+      "macro": "construcao"
     },
     {
       "valor": "artes_marciais",
-      "nome": "Artes Marciais"
+      "nome": "Artes Marciais",
+      "macro": "saude"
     },
     {
       "valor": "artesanato",
-      "nome": "Artesanato"
+      "nome": "Artesanato",
+      "macro": "moda"
     },
     {
       "valor": "artigos_femininos",
-      "nome": "Artigos Femininos"
+      "nome": "Artigos Femininos",
+      "macro": "moda"
     },
     {
       "valor": "assessorias_cursos",
-      "nome": "Assessorias e Cursos"
+      "nome": "Assessorias e Cursos",
+      "macro": "educacao"
     },
     {
       "valor": "assistencia_tecnica",
-      "nome": "Assistência Técnica"
+      "nome": "Assistência Técnica",
+      "macro": "tecnologia"
     },
     {
       "valor": "assistencia_celular",
-      "nome": "Assistência Técnica de Celulares"
+      "nome": "Assistência Técnica de Celulares",
+      "macro": "tecnologia"
     },
     {
       "valor": "autoescola",
-      "nome": "Autoescola"
+      "nome": "Autoescola",
+      "macro": "automotivo"
     },
     {
       "valor": "auxiliar_cozinha",
-      "nome": "Auxiliar de Cozinha"
+      "nome": "Auxiliar de Cozinha",
+      "macro": "alimentacao"
     },
     {
       "valor": "auxiliar_servicos",
-      "nome": "Auxiliar de Serviços Gerais"
+      "nome": "Auxiliar de Serviços Gerais",
+      "macro": "casa"
     },
     {
       "valor": "azulejista",
-      "nome": "Azulejista"
+      "nome": "Azulejista",
+      "macro": "construcao"
     },
     {
       "valor": "acaiteria",
-      "nome": "Açaiteria"
+      "nome": "Açaiteria",
+      "macro": "alimentacao"
     },
     {
       "valor": "barbearia",
-      "nome": "Barbearia"
+      "nome": "Barbearia",
+      "macro": "beleza"
     },
     {
       "valor": "bolos",
-      "nome": "Bolos"
+      "nome": "Bolos",
+      "macro": "alimentacao"
     },
     {
       "valor": "borracharia",
-      "nome": "Borracharia"
+      "nome": "Borracharia",
+      "macro": "automotivo"
     },
     {
       "valor": "brinquedos",
-      "nome": "Brinquedos"
+      "nome": "Brinquedos",
+      "macro": "moda"
     },
     {
       "valor": "cabeleireiro",
-      "nome": "Cabeleireiro"
+      "nome": "Cabeleireiro",
+      "macro": "beleza"
     },
     {
       "valor": "cafeteria",
-      "nome": "Cafeteria"
+      "nome": "Cafeteria",
+      "macro": "alimentacao"
     },
     {
       "valor": "calcados",
-      "nome": "Calçados"
+      "nome": "Calçados",
+      "macro": "moda"
     },
     {
       "valor": "cama_mesa_banho",
-      "nome": "Cama, Mesa e Banho"
+      "nome": "Cama, Mesa e Banho",
+      "macro": "moda"
     },
     {
       "valor": "carvao_vegetal",
-      "nome": "Carvão Vegetal"
+      "nome": "Carvão Vegetal",
+      "macro": "moda"
     },
     {
       "valor": "cerimonialista",
-      "nome": "Cerimonialista"
+      "nome": "Cerimonialista",
+      "macro": "eventos"
     },
     {
       "valor": "churrascaria",
-      "nome": "Churrascaria"
+      "nome": "Churrascaria",
+      "macro": "alimentacao"
     },
     {
       "valor": "churros",
-      "nome": "Churros"
+      "nome": "Churros",
+      "macro": "alimentacao"
     },
     {
       "valor": "chacara",
-      "nome": "Chácara"
+      "nome": "Chácara",
+      "macro": "imoveis"
     },
     {
       "valor": "climatizacao",
-      "nome": "Climatização"
+      "nome": "Climatização",
+      "macro": "casa"
     },
     {
       "valor": "climatizacao_automotiva",
-      "nome": "Climatização Automotiva"
+      "nome": "Climatização Automotiva",
+      "macro": "automotivo"
     },
     {
       "valor": "confeccao_fardamentos",
-      "nome": "Confecção de Fardamentos"
+      "nome": "Confecção de Fardamentos",
+      "macro": "moda"
     },
     {
       "valor": "conserto_eletronicos",
-      "nome": "Conserto de Eletrônicos"
+      "nome": "Conserto de Eletrônicos",
+      "macro": "tecnologia"
     },
     {
       "valor": "construtora",
-      "nome": "Construtora"
+      "nome": "Construtora",
+      "macro": "construcao"
     },
     {
       "valor": "const_civil",
-      "nome": "Construção Civil"
+      "nome": "Construção Civil",
+      "macro": "construcao"
     },
     {
       "valor": "consultoria_ambiental",
-      "nome": "Consultoria Ambiental"
+      "nome": "Consultoria Ambiental",
+      "macro": "negocios"
     },
     {
       "valor": "consultoria_beleza",
-      "nome": "Consultoria de Beleza"
+      "nome": "Consultoria de Beleza",
+      "macro": "beleza"
     },
     {
       "valor": "cons_empresarial",
-      "nome": "Consultoria Empresarial"
+      "nome": "Consultoria Empresarial",
+      "macro": "negocios"
     },
     {
       "valor": "consorcio",
-      "nome": "Consórcio"
+      "nome": "Consórcio",
+      "macro": "negocios"
     },
     {
       "valor": "contabilidade",
-      "nome": "Contabilidade"
+      "nome": "Contabilidade",
+      "macro": "negocios"
     },
     {
       "valor": "conveniencia_bebidas",
-      "nome": "Conveniência de Bebidas"
+      "nome": "Conveniência de Bebidas",
+      "macro": "alimentacao"
     },
     {
       "valor": "cosmeticos",
-      "nome": "Cosméticos"
+      "nome": "Cosméticos",
+      "macro": "beleza"
     },
     {
       "valor": "costureira",
-      "nome": "Costureira"
+      "nome": "Costureira",
+      "macro": "moda"
     },
     {
       "valor": "croche",
-      "nome": "Crochê"
+      "nome": "Crochê",
+      "macro": "moda"
     },
     {
       "valor": "credito_pessoal",
-      "nome": "Crédito Pessoal"
+      "nome": "Crédito Pessoal",
+      "macro": "negocios"
     },
     {
       "valor": "cuidadora_hospitalar",
-      "nome": "Cuidadora Hospitalar"
+      "nome": "Cuidadora Hospitalar",
+      "macro": "saude"
     },
     {
       "valor": "cursinho",
-      "nome": "Cursinho"
+      "nome": "Cursinho",
+      "macro": "educacao"
     },
     {
       "valor": "cameras_seguranca",
-      "nome": "Câmeras de Segurança"
+      "nome": "Câmeras de Segurança",
+      "macro": "tecnologia"
     },
     {
       "valor": "decoracoes_festas",
-      "nome": "Decorações de Festas"
+      "nome": "Decorações de Festas",
+      "macro": "eventos"
     },
     {
       "valor": "delivery_comida",
-      "nome": "Delivery de Comida"
+      "nome": "Delivery de Comida",
+      "macro": "alimentacao"
     },
     {
       "valor": "depilacao_feminina",
-      "nome": "Depilação Feminina"
+      "nome": "Depilação Feminina",
+      "macro": "beleza"
     },
     {
       "valor": "desconto_energia",
-      "nome": "Desconto em Energia Elétrica"
+      "nome": "Desconto em Energia Elétrica",
+      "macro": "negocios"
     },
     {
       "valor": "design",
-      "nome": "Design"
+      "nome": "Design",
+      "macro": "negocios"
     },
     {
       "valor": "design_sobrancelhas",
-      "nome": "Design de Sobrancelhas"
+      "nome": "Design de Sobrancelhas",
+      "macro": "beleza"
     },
     {
       "valor": "designer_grafico",
-      "nome": "Designer Gráfico"
+      "nome": "Designer Gráfico",
+      "macro": "negocios"
     },
     {
       "valor": "diarista",
-      "nome": "Diarista"
+      "nome": "Diarista",
+      "macro": "casa"
     },
     {
       "valor": "doceria",
-      "nome": "Doceria"
+      "nome": "Doceria",
+      "macro": "alimentacao"
     },
     {
       "valor": "doces",
-      "nome": "Doces"
+      "nome": "Doces",
+      "macro": "alimentacao"
     },
     {
       "valor": "educacao",
-      "nome": "Educação"
+      "nome": "Educação",
+      "macro": "educacao"
     },
     {
       "valor": "eletricista",
-      "nome": "Eletricista"
+      "nome": "Eletricista",
+      "macro": "casa"
     },
     {
       "valor": "eletrica_automotiva",
-      "nome": "Elétrica Automotiva"
+      "nome": "Elétrica Automotiva",
+      "macro": "automotivo"
     },
     {
       "valor": "encanador",
-      "nome": "Encanador"
+      "nome": "Encanador",
+      "macro": "casa"
     },
     {
       "valor": "energia_solar",
-      "nome": "Energia Solar"
+      "nome": "Energia Solar",
+      "macro": "casa"
     },
     {
       "valor": "eng_civil",
-      "nome": "Engenheiro Civil"
+      "nome": "Engenheiro Civil",
+      "macro": "construcao"
     },
     {
       "valor": "entrega_leite",
-      "nome": "Entrega de Leite"
+      "nome": "Entrega de Leite",
+      "macro": "alimentacao"
     },
     {
       "valor": "equipadora_automotiva",
-      "nome": "Equipadora Automotiva"
+      "nome": "Equipadora Automotiva",
+      "macro": "automotivo"
     },
     {
       "valor": "escola",
-      "nome": "Escola"
+      "nome": "Escola",
+      "macro": "educacao"
     },
     {
       "valor": "estofamentos_automotivos",
-      "nome": "Estofamentos Automotivos"
+      "nome": "Estofamentos Automotivos",
+      "macro": "automotivo"
     },
     {
       "valor": "evento",
-      "nome": "Evento"
+      "nome": "Evento",
+      "macro": "eventos"
     },
     {
       "valor": "farmacia",
-      "nome": "Farmácia"
+      "nome": "Farmácia",
+      "macro": "saude"
     },
     {
       "valor": "fisioterapia",
-      "nome": "Fisioterapia"
+      "nome": "Fisioterapia",
+      "macro": "saude"
     },
     {
       "valor": "gesso",
-      "nome": "Gesso"
+      "nome": "Gesso",
+      "macro": "construcao"
     },
     {
       "valor": "grafica",
-      "nome": "Gráfica"
+      "nome": "Gráfica",
+      "macro": "negocios"
     },
     {
       "valor": "gas",
-      "nome": "Gás"
+      "nome": "Gás",
+      "macro": "casa"
     },
     {
       "valor": "hamburgueria",
-      "nome": "Hamburgueria"
+      "nome": "Hamburgueria",
+      "macro": "alimentacao"
     },
     {
       "valor": "higienizacao_estofados",
-      "nome": "Higienização de Estofados"
+      "nome": "Higienização de Estofados",
+      "macro": "casa"
     },
     {
       "valor": "home_care",
-      "nome": "Home Care"
+      "nome": "Home Care",
+      "macro": "saude"
     },
     {
       "valor": "iluminacao_profissional",
-      "nome": "Iluminação Profissional"
+      "nome": "Iluminação Profissional",
+      "macro": "construcao"
     },
     {
       "valor": "informatica",
-      "nome": "Informática"
+      "nome": "Informática",
+      "macro": "tecnologia"
     },
     {
       "valor": "jardinagem",
-      "nome": "Jardinagem"
+      "nome": "Jardinagem",
+      "macro": "casa"
     },
     {
       "valor": "joias_acessorios",
-      "nome": "Joias e Acessórios"
+      "nome": "Joias e Acessórios",
+      "macro": "moda"
     },
     {
       "valor": "lanches",
-      "nome": "Lanches"
+      "nome": "Lanches",
+      "macro": "alimentacao"
     },
     {
       "valor": "limpeza_caixa_d_agua",
-      "nome": "Limpeza de caixa d'água"
+      "nome": "Limpeza de caixa d'água",
+      "macro": "casa"
     },
     {
       "valor": "locadora_veiculos",
-      "nome": "Locadora de Veículos"
+      "nome": "Locadora de Veículos",
+      "macro": "automotivo"
     },
     {
       "valor": "loja_animes",
-      "nome": "Loja de Animes"
+      "nome": "Loja de Animes",
+      "macro": "moda"
     },
     {
       "valor": "loja_veiculos",
-      "nome": "Loja de Veículos"
+      "nome": "Loja de Veículos",
+      "macro": "automotivo"
     },
     {
       "valor": "madeireira",
-      "nome": "Madeireira"
+      "nome": "Madeireira",
+      "macro": "construcao"
     },
     {
       "valor": "manicure",
-      "nome": "Manicure"
+      "nome": "Manicure",
+      "macro": "beleza"
     },
     {
       "valor": "manutencao_aluminio_vidros",
-      "nome": "Manutenção em alumínio e vidros"
+      "nome": "Manutenção em alumínio e vidros",
+      "macro": "construcao"
     },
     {
       "valor": "manutencao_motores_portao",
-      "nome": "Manutenção em motores de portão"
+      "nome": "Manutenção em motores de portão",
+      "macro": "casa"
     },
     {
       "valor": "maquiagem",
-      "nome": "Maquiagem"
+      "nome": "Maquiagem",
+      "macro": "beleza"
     },
     {
       "valor": "marcenaria",
-      "nome": "Marcenaria"
+      "nome": "Marcenaria",
+      "macro": "construcao"
     },
     {
       "valor": "marketing_digital",
-      "nome": "Marketing Digital"
+      "nome": "Marketing Digital",
+      "macro": "negocios"
     },
     {
       "valor": "marmitas_caseiras",
-      "nome": "Marmitas Caseiras"
+      "nome": "Marmitas Caseiras",
+      "macro": "alimentacao"
     },
     {
       "valor": "marmoaria",
-      "nome": "Marmoaria"
+      "nome": "Marmoaria",
+      "macro": "construcao"
     },
     {
       "valor": "meteriais_esportivos",
-      "nome": "Materiais Esportivos"
+      "nome": "Materiais Esportivos",
+      "macro": "moda"
     },
     {
       "valor": "mercadinho",
-      "nome": "Mercadinho"
+      "nome": "Mercadinho",
+      "macro": "alimentacao"
     },
     {
       "valor": "microcredito",
-      "nome": "Microcrédito"
+      "nome": "Microcrédito",
+      "macro": "negocios"
     },
     {
       "valor": "mobilidade_urbana",
-      "nome": "Mobilidade Urbana"
+      "nome": "Mobilidade Urbana",
+      "macro": "viagens"
     },
     {
       "valor": "moda_fitness",
-      "nome": "Moda Fitness"
+      "nome": "Moda Fitness",
+      "macro": "moda"
     },
     {
       "valor": "montador_moveis",
-      "nome": "Montador de Móveis"
+      "nome": "Montador de Móveis",
+      "macro": "casa"
     },
     {
       "valor": "motocicleta",
-      "nome": "Motocicletas"
+      "nome": "Motocicletas",
+      "macro": "automotivo"
     },
     {
       "valor": "mudancas",
-      "nome": "Mudanças"
+      "nome": "Mudanças",
+      "macro": "casa"
     },
     {
       "valor": "med_veterinario",
-      "nome": "Médico Veterinário"
+      "nome": "Médico Veterinário",
+      "macro": "saude"
     },
     {
       "valor": "moveis_planejados",
-      "nome": "Móveis Planejados"
+      "nome": "Móveis Planejados",
+      "macro": "construcao"
     },
     {
       "valor": "noticia",
-      "nome": "Notícia"
+      "nome": "Notícia",
+      "macro": "outros"
     },
     {
       "valor": "nutricionista",
-      "nome": "Nutricionista"
+      "nome": "Nutricionista",
+      "macro": "saude"
     },
     {
       "valor": "oficina_motos",
-      "nome": "Oficina de Motos"
+      "nome": "Oficina de Motos",
+      "macro": "automotivo"
     },
     {
       "valor": "paisagismo",
-      "nome": "Paisagismo"
+      "nome": "Paisagismo",
+      "macro": "casa"
     },
     {
       "valor": "pedicure",
-      "nome": "Pedicure"
+      "nome": "Pedicure",
+      "macro": "beleza"
     },
     {
       "valor": "pedreiro",
-      "nome": "Pedreiro"
+      "nome": "Pedreiro",
+      "macro": "construcao"
     },
     {
       "valor": "perfumaria",
-      "nome": "Perfumaria"
+      "nome": "Perfumaria",
+      "macro": "beleza"
     },
     {
       "valor": "personal_shopper",
-      "nome": "Personal Shopper"
+      "nome": "Personal Shopper",
+      "macro": "moda"
     },
     {
       "valor": "personal_trainer",
-      "nome": "Personal Trainer"
+      "nome": "Personal Trainer",
+      "macro": "saude"
     },
     {
       "valor": "personalizados",
-      "nome": "Personalizados"
+      "nome": "Personalizados",
+      "macro": "moda"
     },
     {
       "valor": "pescados",
-      "nome": "Pescados"
+      "nome": "Pescados",
+      "macro": "alimentacao"
     },
     {
       "valor": "pintor",
-      "nome": "Pintor"
+      "nome": "Pintor",
+      "macro": "construcao"
     },
     {
       "valor": "pintura_artes",
-      "nome": "Pintura e Artes"
+      "nome": "Pintura e Artes",
+      "macro": "moda"
     },
     {
       "valor": "pizzaria",
-      "nome": "Pizzaria"
+      "nome": "Pizzaria",
+      "macro": "alimentacao"
     },
     {
       "valor": "playgrounds",
-      "nome": "Playgrounds"
+      "nome": "Playgrounds",
+      "macro": "eventos"
     },
     {
       "valor": "podagem",
-      "nome": "Podagem"
+      "nome": "Podagem",
+      "macro": "casa"
     },
     {
       "valor": "porcelananto",
-      "nome": "Porcelananto"
+      "nome": "Porcelananto",
+      "macro": "construcao"
     },
     {
       "valor": "pousada",
-      "nome": "Pousada"
+      "nome": "Pousada",
+      "macro": "viagens"
     },
     {
       "valor": "produtos_orientais",
-      "nome": "Produtos Orientais"
+      "nome": "Produtos Orientais",
+      "macro": "moda"
     },
     {
       "valor": "producoes_eventos",
-      "nome": "Produções e Eventos"
+      "nome": "Produções e Eventos",
+      "macro": "eventos"
     },
     {
       "valor": "projetos_eletricos",
-      "nome": "Projetos Elétricos"
+      "nome": "Projetos Elétricos",
+      "macro": "construcao"
     },
     {
       "valor": "protecao_veicular",
-      "nome": "Proteção Veicular"
+      "nome": "Proteção Veicular",
+      "macro": "automotivo"
     },
     {
       "valor": "pre_moldados",
-      "nome": "Pré-Moldados"
+      "nome": "Pré-Moldados",
+      "macro": "construcao"
     },
     {
       "valor": "publicidade",
-      "nome": "Publicidade"
+      "nome": "Publicidade",
+      "macro": "negocios"
     },
     {
       "valor": "radiadores_intercooler",
-      "nome": "Radiadores e Intercooler"
+      "nome": "Radiadores e Intercooler",
+      "macro": "automotivo"
     },
     {
       "valor": "reboque",
-      "nome": "Reboque"
+      "nome": "Reboque",
+      "macro": "automotivo"
     },
     {
       "valor": "reforco_escolar",
-      "nome": "Reforço Escolar"
+      "nome": "Reforço Escolar",
+      "macro": "educacao"
     },
     {
       "valor": "refrigeracao",
-      "nome": "Refrigeração"
+      "nome": "Refrigeração",
+      "macro": "casa"
     },
     {
       "valor": "removedor_aranha",
-      "nome": "Removedor de Teia de Aranha"
+      "nome": "Removedor de Teia de Aranha",
+      "macro": "casa"
     },
     {
       "valor": "restaurante",
-      "nome": "Restaurante"
+      "nome": "Restaurante",
+      "macro": "alimentacao"
     },
     {
       "valor": "restaurante_chines",
-      "nome": "Restaurante Chinês"
+      "nome": "Restaurante Chinês",
+      "macro": "alimentacao"
     },
     {
       "valor": "revestimentos_forros",
-      "nome": "Revestimentos e forros"
+      "nome": "Revestimentos e forros",
+      "macro": "construcao"
     },
     {
       "valor": "roupas_vestuario",
-      "nome": "Roupas e Vestuário"
+      "nome": "Roupas e Vestuário",
+      "macro": "moda"
     },
     {
       "valor": "roupas_infantis",
-      "nome": "Roupas Infantis"
+      "nome": "Roupas Infantis",
+      "macro": "moda"
     },
     {
       "valor": "sacole_gourmet",
-      "nome": "Sacolé Gourmet"
+      "nome": "Sacolé Gourmet",
+      "macro": "alimentacao"
     },
     {
       "valor": "salgados",
-      "nome": "Salgados"
+      "nome": "Salgados",
+      "macro": "alimentacao"
     },
     {
       "valor": "salao_beleza",
-      "nome": "Salão de Beleza"
+      "nome": "Salão de Beleza",
+      "macro": "beleza"
     },
     {
       "valor": "seguranca_tecnologia",
-      "nome": "Segurança e Tecnologia"
+      "nome": "Segurança e Tecnologia",
+      "macro": "tecnologia"
     },
     {
       "valor": "seguros",
-      "nome": "Seguros"
+      "nome": "Seguros",
+      "macro": "negocios"
     },
     {
       "valor": "serralheria",
-      "nome": "Serralheria"
+      "nome": "Serralheria",
+      "macro": "construcao"
     },
     {
       "valor": "servico_limpeza",
-      "nome": "Serviço de Limpeza"
+      "nome": "Serviço de Limpeza",
+      "macro": "casa"
     },
     {
       "valor": "servicos_automotivos",
-      "nome": "Serviços Automotivos"
+      "nome": "Serviços Automotivos",
+      "macro": "automotivo"
     },
     {
       "valor": "serv_bancarios",
-      "nome": "Serviços Bancários"
+      "nome": "Serviços Bancários",
+      "macro": "negocios"
     },
     {
       "valor": "soldagem",
-      "nome": "Soldagem"
+      "nome": "Soldagem",
+      "macro": "construcao"
     },
     {
       "valor": "sopa",
-      "nome": "Sopa"
+      "nome": "Sopa",
+      "macro": "alimentacao"
     },
     {
       "valor": "sorveteria",
-      "nome": "Sorveteria"
+      "nome": "Sorveteria",
+      "macro": "alimentacao"
     },
     {
       "valor": "tapestes_personalizados",
-      "nome": "Tapestes Personalizados"
+      "nome": "Tapestes Personalizados",
+      "macro": "moda"
     },
     {
       "valor": "temperos_ervas",
-      "nome": "Temperos e Ervas"
+      "nome": "Temperos e Ervas",
+      "macro": "alimentacao"
     },
     {
       "valor": "terapeuta_ocupacional",
-      "nome": "Terapeuta Ocupacional"
+      "nome": "Terapeuta Ocupacional",
+      "macro": "saude"
     },
     {
       "valor": "topografia",
-      "nome": "Topografia"
+      "nome": "Topografia",
+      "macro": "construcao"
     },
     {
       "valor": "transportadora",
-      "nome": "Transportadora"
+      "nome": "Transportadora",
+      "macro": "viagens"
     },
     {
       "valor": "turismo",
-      "nome": "Turismo"
+      "nome": "Turismo",
+      "macro": "viagens"
     },
     {
       "valor": "taxi",
-      "nome": "Táxi"
+      "nome": "Táxi",
+      "macro": "viagens"
     },
     {
       "valor": "tec_enfermagem",
-      "nome": "Técnico em Enfermagem"
+      "nome": "Técnico em Enfermagem",
+      "macro": "saude"
     },
     {
       "valor": "vet_home",
-      "nome": "Vet Home"
+      "nome": "Vet Home",
+      "macro": "saude"
     },
     {
       "valor": "viagens_fretes_encomendas",
-      "nome": "Viagens, Fretes e Encomendas"
+      "nome": "Viagens, Fretes e Encomendas",
+      "macro": "viagens"
     },
     {
       "valor": "vidracaria",
-      "nome": "Vidraçaria"
+      "nome": "Vidraçaria",
+      "macro": "construcao"
     },
     {
       "valor": "workshop",
-      "nome": "Workshop"
+      "nome": "Workshop",
+      "macro": "educacao"
     },
     {
       "valor": "agua_mineral",
-      "nome": "Água Mineral"
-    },
-    {
-      "valor": "desenvolvedor",
-      "nome": "Desenvolvedor"
+      "nome": "Água Mineral",
+      "macro": "alimentacao"
     }
   ]
 }
